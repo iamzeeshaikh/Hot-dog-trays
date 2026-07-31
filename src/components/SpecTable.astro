@@ -1,0 +1,70 @@
+---
+import type { SpecTable } from '../data/products';
+
+export interface Props {
+  spec: SpecTable;
+  caption: string;
+}
+const { spec, caption } = Astro.props;
+---
+
+{
+  spec.rows.length > 0 && (
+    <div class="hdt-table-scroll">
+      <table class="hdt-spec-table">
+        <caption class="hdt-visually-hidden">{caption}</caption>
+        {spec.headers.length > 0 && (
+          <thead>
+            <tr>
+              {spec.headers.map((h) => <th scope="col">{h}</th>)}
+            </tr>
+          </thead>
+        )}
+        <tbody>
+          {spec.rows.map((row) => (
+            <tr>
+              {row.map((cell, i) =>
+                i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+<style>
+  .hdt-spec-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-size: 0.92rem;
+  }
+
+  .hdt-spec-table th,
+  .hdt-spec-table td {
+    padding: 12px 14px;
+    border: 1px solid #e5e5e5;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .hdt-spec-table thead th {
+    background: #1d3557;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .hdt-spec-table tbody th {
+    background: #fff9ec;
+    font-weight: 700;
+    color: #1d3557;
+    white-space: nowrap;
+  }
+
+  .hdt-spec-table tbody tr:nth-child(even) td {
+    background: #fafafa;
+  }
+</style>

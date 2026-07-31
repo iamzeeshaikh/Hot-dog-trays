@@ -1,0 +1,6 @@
+broken_link,found_on,status,resolution
+/blog/,Footer quick links (every page),404 on live site,Removed from the footer. No blog exists.
+/returns-policy/,FAQ page + all 14 product pages (15 links),never existed,"Retargeted to /terms-conditions/, which contains the actual ""6. Returns and Refunds"" section. The WordPress ""Refund and Returns Policy"" page is still an unpublished draft."
+/products/,Contact page quick links,404,"Retargeted to /product-category/products/, the category archive that exists."
+/wp-admin/,Sample Page body copy,"403 on live, not migrated",Link removed; surrounding sentence kept.
+/send-quote.php,Quote form action (every page with a form),does not exist in the export,Replaced with the server-side /api/quote/ endpoint. The live forms have no working backend.

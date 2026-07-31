@@ -1,0 +1,45 @@
+---
+import QuoteSidebar from './home/QuoteSidebar.astro';
+
+/**
+ * The sidebar + form pairing that the Elementor templates place near the foot
+ * of the homepage, About, Contact, FAQ and Get Quote pages.
+ */
+export interface Props {
+  headingId: string;
+}
+const { headingId } = Astro.props;
+---
+
+<section class="hdt-quote-section" aria-labelledby={headingId}>
+  <div class="hdt-quote-grid">
+    <QuoteSidebar />
+    <div>
+      <h2 id={headingId} class="hdt-visually-hidden">Request a free quote</h2>
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hdt-quote-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #fff9ec, #ffffff);
+  }
+
+  .hdt-quote-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 992px) {
+    .hdt-quote-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+</style>

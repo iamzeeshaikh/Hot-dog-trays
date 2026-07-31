@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import ContactContent from '../components/pages/ContactContent.astro';
+import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+
+const path = '/contact/';
+const title = 'Contact - Hot Dog Trays';
+// No Yoast description existed for this page; created from the visible intro.
+const description =
+  'Contact Hot Dog Trays by phone, email or WhatsApp for help choosing the right custom hot dog packaging.';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Contact', url: path },
+];
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(path, title, description),
+  breadcrumbs(path, crumbs),
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <ContactContent />
+  <QuoteBlock headingId="contact-quote-heading">
+    <QuoteForm idPrefix="contact-quote" />
+  </QuoteBlock>
+</BaseLayout>

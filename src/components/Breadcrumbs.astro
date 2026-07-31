@@ -1,0 +1,68 @@
+---
+import type { Crumb } from '../lib/schema';
+
+export interface Props {
+  crumbs: Crumb[];
+}
+const { crumbs } = Astro.props;
+---
+
+<nav class="hdt-breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {
+      crumbs.map((c, i) =>
+        i === crumbs.length - 1 ? (
+          <li aria-current="page">{c.name}</li>
+        ) : (
+          <li>
+            <a href={c.url}>{c.name}</a>
+            <span class="hdt-breadcrumb-sep" aria-hidden="true">/</span>
+          </li>
+        ),
+      )
+    }
+  </ol>
+</nav>
+
+<style>
+  .hdt-breadcrumbs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 20px 0;
+  }
+
+  .hdt-breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .hdt-breadcrumbs a {
+    display: inline-block;
+    padding: 4px 0;
+    color: #1d3557;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .hdt-breadcrumbs a:hover {
+    color: #e63946;
+    text-decoration: underline;
+  }
+
+  .hdt-breadcrumb-sep {
+    margin-left: 6px;
+    color: #b9b9b9;
+  }
+
+  .hdt-breadcrumbs li[aria-current='page'] {
+    font-weight: 700;
+    color: #1d3557;
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import { productsAlphabetical } from '../../data/products';
+import { CATEGORY } from '../../data/site';
+import { graph, organization, website, breadcrumbs, collectionPage } from '../../lib/schema';
+
+const path = CATEGORY.url;
+// Yoast metadata from the live category archive, preserved verbatim.
+const title = 'Custom Hot Dog Trays | Wholesale Paper, Cardboard & Kraft Trays';
+const description =
+  'Shop wholesale hot dog trays in paper, cardboard, kraft & plastic. Free design, fast USA delivery & bulk pricing. Get a free quote!';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: CATEGORY.name, url: path },
+];
+
+const schema = graph([
+  organization(),
+  website(),
+  ...collectionPage(path, 'Hot Dog Trays Products', description, productsAlphabetical),
+  breadcrumbs(path, crumbs),
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="hdt-archive">
+    <h1 class="hdt-archive-title">Products</h1>
+    <p class="hdt-archive-intro">
+      Browse custom hot dog trays, paper holders, food boats, plates, and disposable serving
+      packaging for restaurants, food trucks, events, and takeaway food businesses.
+    </p>
+    <p class="hdt-archive-count">Showing all {productsAlphabetical.length} results</p>
+    <ProductGrid products={productsAlphabetical} label="Products in this category" />
+  </div>
+</BaseLayout>

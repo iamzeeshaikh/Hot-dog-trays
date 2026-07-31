@@ -1,0 +1,49 @@
+---
+import ProductGrid from './ProductGrid.astro';
+import type { Product } from '../data/products';
+
+export interface Props {
+  products: Product[];
+}
+const { products } = Astro.props;
+---
+
+{
+  products.length > 0 && (
+    <section class="hdt-related" aria-labelledby="related-heading">
+      <div class="hdt-related-container">
+        <h2 id="related-heading" class="hdt-related-title">Related Products</h2>
+        <p class="hdt-related-subtitle">
+          Other hot dog packaging our customers order alongside this product
+        </p>
+        <ProductGrid products={products} label="Related products" />
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .hdt-related {
+    padding: 60px 20px 80px;
+    background: #fafafa;
+  }
+
+  .hdt-related-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hdt-related-title {
+    margin: 0 0 6px;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: #1d3557;
+    text-align: center;
+  }
+
+  .hdt-related-subtitle {
+    margin: 0 0 34px;
+    color: #666;
+    text-align: center;
+  }
+</style>

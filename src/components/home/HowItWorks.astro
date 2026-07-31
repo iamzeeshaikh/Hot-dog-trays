@@ -1,0 +1,361 @@
+<section class="hdt-how-it-works">
+    <div class="hdt-how-container">
+        <div class="hdt-how-header">
+            <div class="hdt-how-badge">Simple Process</div>
+            <h2 class="hdt-how-title">How It Works</h2>
+            <p class="hdt-how-subtitle">
+                From order to delivery in 4 easy steps. Get your custom hot dog trays in just 7-10 days.
+            </p>
+        </div>
+        <div class="hdt-steps-container">
+            <div class="hdt-progress-line"></div>
+            <div class="hdt-steps-grid">
+                <div class="hdt-step-card">
+                    <div class="hdt-step-number">1</div>
+                    <div class="hdt-step-icon">📝</div>
+                    <h3 class="hdt-step-title">Place Your Order</h3>
+                    <p class="hdt-step-description">
+                        Choose your product, quantity, and material. Fill out our simple quote form.
+                    </p>
+                    <div class="hdt-step-details">
+                        <span class="hdt-step-detail">Select product type</span>
+                        <span class="hdt-step-detail">Choose quantity</span>
+                        <span class="hdt-step-detail">Get instant quote</span>
+                    </div>
+                </div>
+                <div class="hdt-step-card">
+                    <div class="hdt-step-number">2</div>
+                    <div class="hdt-step-icon">🎨</div>
+                    <h3 class="hdt-step-title">Design & Approve</h3>
+                    <p class="hdt-step-description">
+                        Our team creates your custom design. You review and approve before production.
+                    </p>
+                    <div class="hdt-step-details">
+                        <span class="hdt-step-detail">Free design service</span>
+                        <span class="hdt-step-detail">Review digital proof</span>
+                        <span class="hdt-step-detail">Request revisions</span>
+                    </div>
+                </div>
+                <div class="hdt-step-card">
+                    <div class="hdt-step-number">3</div>
+                    <div class="hdt-step-icon">🖨️</div>
+                    <h3 class="hdt-step-title">Production</h3>
+                    <p class="hdt-step-description">
+                        Your order goes into production with strict quality control at every stage.
+                    </p>
+                    <div class="hdt-step-details">
+                        <span class="hdt-step-detail">High-quality printing</span>
+                        <span class="hdt-step-detail">Quality inspection</span>
+                        <span class="hdt-step-detail">Secure packaging</span>
+                    </div>
+                </div>
+                <div class="hdt-step-card">
+                    <div class="hdt-step-number">4</div>
+                    <div class="hdt-step-icon">🚚</div>
+                    <h3 class="hdt-step-title">Fast Delivery</h3>
+                    <p class="hdt-step-description">
+                        Your order ships fast with full tracking. Delivered right to your door.
+                    </p>
+                    <div class="hdt-step-details">
+                        <span class="hdt-step-detail">Express shipping</span>
+                        <span class="hdt-step-detail">Real-time tracking</span>
+                        <span class="hdt-step-detail">7-10 day delivery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hdt-how-cta">
+            <p class="hdt-how-cta-text">Ready to get started with your custom hot dog trays?</p>
+            <a href="/get-quote/" class="hdt-how-cta-btn">
+                Get Free Quote →
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Migrated from the Elementor "HowItWorks" HTML widget. */
+/* Force everything clickable */
+.hdt-how-it-works,
+.hdt-how-it-works * {
+    pointer-events: auto !important;
+}
+
+/* How It Works Section */
+.hdt-how-it-works {
+    background: linear-gradient(180deg, #F1FAEE 0%, #FFFFFF 100%);
+    padding: 80px 0;
+}
+
+.hdt-how-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Header */
+.hdt-how-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.hdt-how-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #1D3557, #E63946);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hdt-how-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #1D3557;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hdt-how-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Steps Container */
+.hdt-steps-container {
+    position: relative;
+    padding: 40px 0;
+}
+
+/* Progress Line */
+.hdt-progress-line {
+    position: absolute;
+    top: 90px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 4px;
+    background: #E5E5E5;
+    z-index: 0;
+}
+
+.hdt-progress-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #F9C74F, #E63946);
+    animation: progressFill 3s ease-in-out infinite;
+}
+
+@keyframes progressFill {
+    0%, 100% { transform: scaleX(0); transform-origin: left; }
+    50% { transform: scaleX(1); transform-origin: left; }
+    51% { transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* Steps Grid */
+.hdt-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Step Card */
+.hdt-step-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.hdt-step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(230, 57, 70, 0.2);
+}
+
+/* Step Number */
+.hdt-step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 900;
+    box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
+    border: 4px solid white;
+}
+
+/* Step Icon */
+.hdt-step-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #1D3557, #E63946);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 2.2rem;
+    box-shadow: 0 10px 25px rgba(29, 53, 87, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hdt-step-card:hover .hdt-step-icon {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 15px 35px rgba(230, 57, 70, 0.5);
+}
+
+/* Step Content */
+.hdt-step-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1D3557;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.hdt-step-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.hdt-step-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hdt-step-detail {
+    font-size: 0.85rem;
+    color: #1D3557;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hdt-step-detail::before {
+    content: '→';
+    color: #E63946;
+    font-weight: 900;
+}
+
+/* Call to Action */
+.hdt-how-cta {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.hdt-how-cta-text {
+    font-size: 1.3rem;
+    color: #1D3557;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.hdt-how-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 40px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    color: #1D3557;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(249, 199, 79, 0.4);
+}
+
+.hdt-how-cta-btn:hover {
+    background: linear-gradient(135deg, #E63946, #1D3557);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(230, 57, 70, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hdt-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+    }
+    
+    .hdt-progress-line {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-how-it-works {
+        padding: 60px 0;
+    }
+    
+    .hdt-how-title {
+        font-size: 2.2rem;
+    }
+    
+    .hdt-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .hdt-step-card {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-how-title {
+        font-size: 1.8rem;
+    }
+    
+    .hdt-step-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+    
+    .hdt-step-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Performance Optimization */
+@media (prefers-reduced-motion: reduce) {
+    .hdt-progress-line::after,
+    .hdt-step-card,
+    .hdt-step-icon,
+    .hdt-how-cta-btn {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>

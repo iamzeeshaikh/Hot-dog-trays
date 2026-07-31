@@ -1,0 +1,724 @@
+---
+import { products } from '../data/products';
+import { CONTACT } from '../data/site';
+
+/**
+ * Migrated from the Elementor "Header" template.
+ *
+ * The product list is generated from the catalogue rather than hand-listed, so
+ * the desktop dropdown and the mobile accordion can never drift apart.
+ */
+const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
+---
+
+<header class="hdt-header" id="site-header">
+  <div class="hdt-header-container">
+    <a href="/" class="hdt-logo">
+      <div class="hdt-logo-icon" aria-hidden="true">🌭</div>
+      <div class="hdt-logo-text">
+        <span class="hdt-logo-name">HotDogTrays</span>
+        <span class="hdt-logo-tagline">Premium Wholesale Trays</span>
+      </div>
+    </a>
+
+    <nav class="hdt-nav" aria-label="Primary">
+      <div class="hdt-nav-item" data-dropdown>
+        <a
+          href="/shop/"
+          class="hdt-nav-link"
+          aria-expanded="false"
+          aria-controls="products-dropdown"
+          data-dropdown-trigger
+        >
+          All Products
+          <span class="hdt-nav-arrow" aria-hidden="true">▼</span>
+        </a>
+        <div class="hdt-dropdown" id="products-dropdown">
+          {
+            navProducts.map((p) => (
+              <a href={p.url} class="hdt-dropdown-item">
+                {p.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <a href="/about/" class="hdt-nav-link">About Us</a>
+      <a href="/contact/" class="hdt-nav-link">Contact</a>
+    </nav>
+
+    <div class="hdt-header-contact">
+      <a href={CONTACT.phoneHref} class="hdt-contact-item">
+        <div class="hdt-contact-icon" aria-hidden="true">📞</div>
+        <span>{CONTACT.phoneDisplay}</span>
+        <span class="hdt-visually-hidden">Call {CONTACT.phoneDisplay}</span>
+      </a>
+      <a href={CONTACT.emailHref} class="hdt-contact-item">
+        <div class="hdt-contact-icon" aria-hidden="true">✉️</div>
+        <span>Email Us</span>
+        <span class="hdt-visually-hidden">Email {CONTACT.email}</span>
+      </a>
+    </div>
+
+    <a href="/get-quote/" class="hdt-header-cta">Get Free Quote</a>
+
+    <button
+      class="hdt-mobile-toggle"
+      id="mobileToggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span class="hdt-visually-hidden">Menu</span>
+    </button>
+  </div>
+
+  <div class="hdt-mobile-menu" id="mobileMenu">
+    <nav class="hdt-mobile-nav" aria-label="Mobile">
+      <div class="hdt-mobile-nav-item" id="mobileProducts">
+        <a href="/shop/" class="hdt-mobile-nav-link">All Products</a>
+        <button
+          type="button"
+          class="hdt-mobile-sub-toggle"
+          aria-expanded="false"
+          aria-controls="mobileProductsList"
+        >
+          <span aria-hidden="true">▼</span>
+          <span class="hdt-visually-hidden">Show all products</span>
+        </button>
+        <div class="hdt-mobile-dropdown" id="mobileProductsList">
+          {
+            navProducts.map((p) => (
+              <a href={p.url} class="hdt-mobile-dropdown-item">
+                {p.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hdt-mobile-nav-item">
+        <a href="/about/" class="hdt-mobile-nav-link">About Us</a>
+      </div>
+      <div class="hdt-mobile-nav-item">
+        <a href="/contact/" class="hdt-mobile-nav-link">Contact</a>
+      </div>
+      <div class="hdt-mobile-nav-item">
+        <a href="/get-quote/" class="hdt-mobile-nav-link">Get Free Quote</a>
+      </div>
+    </nav>
+
+    <div class="hdt-mobile-contact">
+      <a href={CONTACT.phoneHref} class="hdt-mobile-contact-item">
+        <div class="hdt-contact-icon" aria-hidden="true">📞</div>
+        <span>{CONTACT.phoneDisplay}</span>
+      </a>
+      <a href={CONTACT.emailHref} class="hdt-mobile-contact-item">
+        <div class="hdt-contact-icon" aria-hidden="true">✉️</div>
+        <span>{CONTACT.email}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('mobileToggle');
+  const menu = document.getElementById('mobileMenu');
+
+  function closeMobile() {
+    toggle?.classList.remove('active');
+    menu?.classList.remove('active');
+    toggle?.setAttribute('aria-expanded', 'false');
+  }
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('active');
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+
+  // Mobile sub-menu: a real button so it is reachable by keyboard, leaving the
+  // adjacent "All Products" link free to navigate to /shop/.
+  const subToggle = document.querySelector<HTMLButtonElement>('.hdt-mobile-sub-toggle');
+  const subItem = document.getElementById('mobileProducts');
+  subToggle?.addEventListener('click', () => {
+    const open = subItem?.classList.toggle('active');
+    subToggle.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+
+  // Desktop dropdown works on hover via CSS; these handlers add keyboard and
+  // touch support without changing the visual behaviour.
+  const dropdown = document.querySelector<HTMLElement>('[data-dropdown]');
+  const trigger = document.querySelector<HTMLAnchorElement>('[data-dropdown-trigger]');
+
+  function openDropdown(open: boolean) {
+    dropdown?.classList.toggle('is-open', open);
+    trigger?.setAttribute('aria-expanded', String(open));
+  }
+
+  dropdown?.addEventListener('focusin', () => openDropdown(true));
+  dropdown?.addEventListener('focusout', (e) => {
+    if (!dropdown.contains(e.relatedTarget as Node)) openDropdown(false);
+  });
+  dropdown?.addEventListener('mouseleave', () => openDropdown(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    openDropdown(false);
+    closeMobile();
+    if (menu?.classList.contains('active')) toggle?.focus();
+  });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (menu?.classList.contains('active') && !menu.contains(target) && !toggle?.contains(target)) {
+      closeMobile();
+    }
+    if (dropdown && !dropdown.contains(target)) openDropdown(false);
+  });
+
+  let ticking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        header?.classList.toggle('scrolled', window.scrollY > 100);
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
+</script>
+
+<style>
+/* Migrated from the Elementor "Header" template. */
+/* Force everything clickable */
+.hdt-header,
+.hdt-header * {
+    pointer-events: auto !important;
+}
+
+.hdt-header a,
+.hdt-header button {
+    cursor: pointer !important;
+}
+
+/* Header Container */
+.hdt-header {
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.hdt-header.scrolled {
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hdt-header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+/* Logo */
+.hdt-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.hdt-logo:hover {
+    transform: scale(1.05);
+}
+
+.hdt-logo-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
+}
+
+.hdt-logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.hdt-logo-name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1D3557;
+    line-height: 1;
+}
+
+.hdt-logo-tagline {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* Navigation */
+.hdt-nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+/* Nav Items */
+.hdt-nav-item {
+    position: relative;
+}
+
+.hdt-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #1D3557;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.3s;
+    padding: 8px 0;
+}
+
+.hdt-nav-link:hover {
+    color: #E63946;
+}
+
+.hdt-nav-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s;
+}
+
+.hdt-nav-item:hover .hdt-nav-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.hdt-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    min-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    padding: 15px 0;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.hdt-nav-item:hover .hdt-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.hdt-dropdown-item {
+    display: block;
+    padding: 12px 25px;
+    color: #1D3557;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.hdt-dropdown-item:hover {
+    background: rgba(249, 199, 79, 0.1);
+    color: #E63946;
+    padding-left: 30px;
+}
+
+/* Contact Info */
+.hdt-header-contact {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.hdt-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #1D3557;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.hdt-contact-item:hover {
+    color: #E63946;
+}
+
+.hdt-contact-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(249, 199, 79, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+/* CTA Button */
+.hdt-header-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    color: #1D3557;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
+}
+
+.hdt-header-cta:hover {
+    background: linear-gradient(135deg, #E63946, #F9C74F);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.5);
+    color: #1D3557;
+}
+
+/* Mobile Menu Toggle */
+.hdt-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hdt-mobile-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #1D3557;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.hdt-mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hdt-mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hdt-mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+.hdt-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.hdt-mobile-menu.active {
+    transform: translateY(0);
+}
+
+.hdt-mobile-nav {
+    padding: 20px;
+}
+
+.hdt-mobile-nav-item {
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.hdt-mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    color: #1D3557;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.hdt-mobile-dropdown {
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.hdt-mobile-nav-item.active .hdt-mobile-dropdown {
+    max-height: 1000px;
+}
+
+.hdt-mobile-dropdown-item {
+    display: block;
+    padding: 12px 0;
+    color: #666;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.hdt-mobile-dropdown-item:hover {
+    color: #E63946;
+}
+
+.hdt-mobile-contact {
+    padding: 20px;
+    background: rgba(249, 199, 79, 0.1);
+    margin-top: 20px;
+}
+
+.hdt-mobile-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    color: #1D3557;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hdt-nav {
+        gap: 25px;
+    }
+    
+    .hdt-header-contact {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hdt-contact-item span {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-nav,
+    .hdt-header-contact {
+        display: none;
+    }
+    
+    .hdt-mobile-toggle,
+    .hdt-mobile-menu {
+        display: block;
+    }
+    
+    .hdt-header-cta {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-header-container {
+        height: 70px;
+    }
+    
+    .hdt-logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .hdt-logo-name {
+        font-size: 1.2rem;
+    }
+    
+    .hdt-logo-tagline {
+        font-size: 0.65rem;
+    }
+    
+    .hdt-mobile-menu {
+        top: 70px;
+        max-height: calc(100vh - 70px);
+    }
+}
+
+/* Scrollbar Styling for Dropdown */
+.hdt-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hdt-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.hdt-dropdown::-webkit-scrollbar-thumb {
+    background: #E63946;
+    border-radius: 10px;
+}
+
+.hdt-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #F9C74F;
+}
+
+/* --- migration additions: keyboard + touch support for the dropdown ------- */
+/* CSS hover is preserved; these rules mirror it for focus and pointer taps.  */
+.hdt-nav-item.is-open .hdt-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.hdt-nav-item.is-open .hdt-nav-arrow {
+    transform: rotate(180deg);
+}
+
+/* The mobile "All Products" row is a link plus a separate disclosure button so
+   both actions stay reachable; the original used one link for both. */
+.hdt-mobile-nav-item {
+    position: relative;
+}
+
+.hdt-mobile-sub-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 54px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #1D3557;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#mobileProducts .hdt-mobile-sub-toggle {
+    display: flex;
+}
+
+#mobileProducts.active .hdt-mobile-sub-toggle {
+    transform: rotate(180deg);
+}
+
+#mobileProducts > .hdt-mobile-nav-link {
+    padding-right: 52px;
+}
+
+/* The closed mobile menu is only translated off-screen, so when its content is
+   taller than the viewport its lower edge lands back on top of the header bar.
+   Hiding it properly also keeps its links out of the tab order while closed. */
+.hdt-mobile-menu {
+    visibility: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hdt-mobile-menu.active {
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 999;
+}
+
+/* --- mobile header layout -------------------------------------------------
+   The source rule set `display: block` on the toggle, which dropped its column
+   flex layout and let the flex container squeeze it to a 16px tap target. */
+@media (max-width: 768px) {
+    .hdt-header-container {
+        gap: 12px;
+    }
+
+    .hdt-logo {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .hdt-logo-text {
+        min-width: 0;
+    }
+
+    .hdt-logo-name,
+    .hdt-logo-tagline {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .hdt-header-cta {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .hdt-mobile-toggle {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-header-cta {
+        padding: 9px 14px;
+        font-size: 0.72rem;
+    }
+
+    .hdt-logo {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    /* Below this width the CTA cannot share the bar with the logo and the
+       toggle; the mobile menu carries the same "Get Free Quote" link. */
+    .hdt-header-cta {
+        display: none;
+    }
+}
+</style>

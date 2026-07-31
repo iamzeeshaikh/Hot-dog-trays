@@ -1,0 +1,354 @@
+<section class="hdt-hero">
+    <div class="hdt-hero-container">
+        <div class="hdt-hero-content">
+            <div class="hdt-hero-badge">
+                Premium Hot Dog Trays
+            </div>
+            <h1 class="hdt-hero-title">
+                Custom <span class="hdt-hero-title-highlight">Hot Dog Trays</span> for Your Business
+            </h1>
+            <p class="hdt-hero-subtitle">
+                Premium quality disposable hot dog trays, boats, and holders. Perfect for food trucks, stadiums, events, and restaurants. Fast shipping to USA, UK, Australia, Europe & Canada.
+            </p>
+            <div class="hdt-hero-buttons">
+                <a href="/get-quote/" class="hdt-hero-btn hdt-hero-btn-primary">
+                    Get Free Quote →
+                </a>
+                <a href="/shop/" class="hdt-hero-btn hdt-hero-btn-secondary">
+                    View Products
+                </a>
+            </div>
+            <div class="hdt-hero-trust">
+                <div class="hdt-trust-badge">
+                    <div class="hdt-trust-icon">📦</div>
+                    <div class="hdt-trust-text">
+                        <strong>Free Shipping</strong>
+                        <span>On orders over $500</span>
+                    </div>
+                </div>
+                <div class="hdt-trust-badge">
+                    <div class="hdt-trust-icon">⚡</div>
+                    <div class="hdt-trust-text">
+                        <strong>Fast Delivery</strong>
+                        <span>7-10 business days</span>
+                    </div>
+                </div>
+                <div class="hdt-trust-badge">
+                    <div class="hdt-trust-icon">♻</div>
+                    <div class="hdt-trust-text">
+                        <strong>Eco-Friendly</strong>
+                        <span>100% recyclable</span>
+                    </div>
+                </div>
+                <div class="hdt-trust-badge">
+                    <div class="hdt-trust-icon">✓</div>
+                    <div class="hdt-trust-text">
+                        <strong>Free Design</strong>
+                        <span>Custom printing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Migrated from the Elementor "Hero" HTML widget. */
+/* Force everything clickable */
+.hdt-hero,
+.hdt-hero * {
+    pointer-events: auto !important;
+}
+
+.hdt-hero a,
+.hdt-hero button {
+    cursor: pointer !important;
+}
+
+/* Hero Section */
+.hdt-hero {
+    position: relative;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #1D3557 0%, #E63946 100%);
+    overflow: hidden;
+}
+
+/* Background Image Overlay */
+.hdt-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Migration note: the source referenced
+       wp-content/uploads/2026/01/Hot-Dog-Holders.jpg, which 404s on the live
+       site, so the live hero renders as the gradient alone. The rule is kept
+       without an image so the migrated hero matches it pixel for pixel. Restore
+       by setting background-image once the asset exists. See MIGRATION_REPORT.md. */
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Decorative Elements */
+.hdt-hero::after {
+    content: '🌭';
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.06;
+    top: 15%;
+    right: 8%;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.hdt-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hdt-hero-content {
+    max-width: 700px;
+}
+
+/* Badge */
+.hdt-hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    color: #1D3557;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(249, 199, 79, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Headline */
+.hdt-hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #F1FAEE;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hdt-hero-title-highlight {
+    color: #F9C74F;
+    position: relative;
+    display: inline-block;
+}
+
+.hdt-hero-title-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: rgba(249, 199, 79, 0.3);
+    z-index: -1;
+}
+
+/* Subheading */
+.hdt-hero-subtitle {
+    font-size: 1.4rem;
+    color: #F1FAEE;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA Buttons */
+.hdt-hero-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.hdt-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hdt-hero-btn-primary {
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    color: #1D3557;
+}
+
+.hdt-hero-btn-primary:hover {
+    background: linear-gradient(135deg, #E63946, #F9C74F);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(249, 199, 79, 0.5);
+    color: #1D3557;
+}
+
+.hdt-hero-btn-secondary {
+    background: rgba(241, 250, 238, 0.15);
+    color: #F1FAEE;
+    border: 3px solid #F1FAEE;
+    backdrop-filter: blur(10px);
+}
+
+.hdt-hero-btn-secondary:hover {
+    background: #F1FAEE;
+    color: #1D3557;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(241, 250, 238, 0.4);
+}
+
+/* Trust Badges */
+.hdt-hero-trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.hdt-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(241, 250, 238, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(241, 250, 238, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.hdt-trust-badge:hover {
+    background: rgba(241, 250, 238, 0.2);
+    border-color: #F9C74F;
+    transform: translateY(-3px);
+}
+
+.hdt-trust-icon {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
+}
+
+.hdt-trust-text {
+    flex: 1;
+}
+
+.hdt-trust-text strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #F1FAEE;
+    margin-bottom: 2px;
+}
+
+.hdt-trust-text span {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(241, 250, 238, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hdt-hero-title {
+        font-size: 3rem;
+    }
+    .hdt-hero-trust {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-hero {
+        min-height: 600px;
+    }
+    
+    .hdt-hero-container {
+        padding: 60px 20px;
+    }
+    
+    .hdt-hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hdt-hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hdt-hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hdt-hero-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 30px;
+        font-size: 1rem;
+    }
+    
+    .hdt-hero-trust {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hdt-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hdt-hero-badge {
+        font-size: 0.8rem;
+        padding: 8px 20px;
+    }
+}
+
+/* Performance Optimization */
+@media (prefers-reduced-motion: reduce) {
+    .hdt-hero::after,
+    .hdt-hero-badge {
+        animation: none !important;
+    }
+}
+</style>

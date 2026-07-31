@@ -1,0 +1,137 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+
+/**
+ * Shared shell for the long-form policy pages that WordPress rendered with the
+ * default theme template: Privacy Policy, Terms, Shipping, Sample Page.
+ */
+export interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  path: string;
+  noindex?: boolean;
+  /** Pre-sanitised HTML fragment migrated from the WordPress post content. */
+  body: string;
+}
+
+const { title, description, heading, path, noindex = false, body } = Astro.props;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: heading, url: path },
+];
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(path, title, description),
+  breadcrumbs(path, crumbs),
+]);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  noindex={noindex}
+  schema={noindex ? undefined : schema}
+>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="hdt-policy">
+    <h1 class="hdt-policy-title">{heading}</h1>
+    <div class="hdt-policy-body" set:html={body} />
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .hdt-policy {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px 70px;
+  }
+
+  .hdt-policy-title {
+    margin: 0 0 8px;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: #1d3557;
+  }
+
+  .hdt-policy-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin-top: 14px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+  }
+
+  .hdt-policy-body {
+    margin-top: 28px;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .hdt-policy-body h2 {
+    margin: 34px 0 12px;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1d3557;
+  }
+
+  .hdt-policy-body h3 {
+    margin: 24px 0 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1d3557;
+  }
+
+  .hdt-policy-body p {
+    margin: 0 0 16px;
+  }
+
+  .hdt-policy-body ul,
+  .hdt-policy-body ol {
+    margin: 0 0 18px;
+    padding-left: 22px;
+  }
+
+  .hdt-policy-body li {
+    margin-bottom: 8px;
+  }
+
+  .hdt-policy-body a {
+    color: #C92A35;
+    font-weight: 600;
+  }
+
+  .hdt-policy-body blockquote {
+    margin: 0 0 18px;
+    padding: 14px 20px;
+    border-left: 4px solid #f9c74f;
+    background: #fffaf0;
+    font-style: italic;
+  }
+
+  .hdt-policy-body table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hdt-policy-body th,
+  .hdt-policy-body td {
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    text-align: left;
+  }
+</style>

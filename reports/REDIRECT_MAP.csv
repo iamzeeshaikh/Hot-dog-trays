@@ -1,0 +1,3 @@
+"source","destination","status","reason","verified_single_hop"
+"/cart/","/get-quote/","301","WooCommerce cart has no equivalent; the quote page is the conversion action","yes"
+"/checkout/","/get-quote/","301","WooCommerce checkout has no equivalent; the quote page is the conversion action","yes"

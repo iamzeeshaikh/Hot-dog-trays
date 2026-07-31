@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import AboutContent from '../components/pages/AboutContent.astro';
+import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+
+const path = '/about/';
+const title = 'About - Hot Dog Trays';
+// No Yoast description existed for this page; created from the visible intro.
+const description =
+  'Since 2015 HotDogTrays.com has supplied custom hot dog packaging to food service businesses worldwide.';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'About', url: path },
+];
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(path, title, description),
+  breadcrumbs(path, crumbs),
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <AboutContent />
+  <QuoteBlock headingId="about-quote-heading">
+    <QuoteForm idPrefix="about-quote" />
+  </QuoteBlock>
+</BaseLayout>

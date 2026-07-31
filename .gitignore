@@ -1,0 +1,38 @@
+# build output
+dist/
+.vercel/
+.astro/
+
+# dependencies
+node_modules/
+
+# secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Private migration sources. The WordPress SQL/XML/CSV exports live one
+# directory up and must never enter the repository or the build output.
+*.sql
+*.xml
+*.csv
+# ...but the migration deliverables in reports/ are public metadata and are
+# meant to be committed.
+!reports/*.csv
+
+# screenshots produced by scripts/shots.mjs
+shots/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# macOS
+.DS_Store
+
+# editors
+.idea/
+*.swp

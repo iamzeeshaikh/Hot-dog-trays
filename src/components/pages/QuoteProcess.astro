@@ -1,0 +1,212 @@
+<section class="hdt-quote-process">
+    <div class="hdt-quote-process-container">
+        <div class="hdt-quote-process-header">
+            <h2 class="hdt-quote-process-title">How to Get Your Quote</h2>
+            <p class="hdt-quote-process-subtitle">
+                Our simple 4-step process gets you from inquiry to production in just days
+            </p>
+        </div>
+        <div class="hdt-quote-steps">
+            <div class="hdt-quote-step">
+                <div class="hdt-quote-step-number">1</div>
+                <div class="hdt-quote-step-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="hdt-quote-step-title">Contact Us</h3>
+                <p class="hdt-quote-step-text">
+                    Call, email, or message us with your requirements. Tell us about your project.
+                </p>
+                <span class="hdt-quote-step-time">⏱️ 5 Minutes</span>
+            </div>
+            <div class="hdt-quote-step">
+                <div class="hdt-quote-step-number">2</div>
+                <div class="hdt-quote-step-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h3 class="hdt-quote-step-title">Get Your Quote</h3>
+                <p class="hdt-quote-step-text">
+                    Receive detailed pricing, material options, and expert recommendations.
+                </p>
+                <span class="hdt-quote-step-time">⏱️ 2 Hours</span>
+            </div>
+            <div class="hdt-quote-step">
+                <div class="hdt-quote-step-number">3</div>
+                <div class="hdt-quote-step-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="hdt-quote-step-title">Approve Design</h3>
+                <p class="hdt-quote-step-text">
+                    Our designers create your custom artwork. Review and approve your proof.
+                </p>
+                <span class="hdt-quote-step-time">⏱️ 24-48 Hours</span>
+            </div>
+            <div class="hdt-quote-step">
+                <div class="hdt-quote-step-number">4</div>
+                <div class="hdt-quote-step-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="hdt-quote-step-title">Receive Order</h3>
+                <p class="hdt-quote-step-text">
+                    We produce and ship your trays. Track your order every step of the way.
+                </p>
+                <span class="hdt-quote-step-time">⏱️ 10-17 Days</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Migrated from the Elementor "QuoteProcess" HTML widget. */
+/* How It Works Section */
+.hdt-quote-process {
+    background: linear-gradient(180deg, #F1FAEE 0%, #FFFFFF 100%);
+    padding: 80px 0;
+}
+
+.hdt-quote-process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hdt-quote-process-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hdt-quote-process-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #1D3557;
+    margin-bottom: 20px;
+}
+
+.hdt-quote-process-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Steps Grid */
+.hdt-quote-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+}
+
+/* Progress Line */
+.hdt-quote-steps::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 4px;
+    background: linear-gradient(90deg, #F9C74F, #E63946);
+    z-index: 0;
+}
+
+/* Step Card */
+.hdt-quote-step {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.hdt-quote-step:hover {
+    border-color: #F9C74F;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(249, 199, 79, 0.3);
+}
+
+.hdt-quote-step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 8px 25px rgba(249, 199, 79, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.hdt-quote-step-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(249, 199, 79, 0.1);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.hdt-quote-step-icon i {
+    font-size: 2rem;
+    color: #E63946;
+}
+
+.hdt-quote-step-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1D3557;
+    margin-bottom: 15px;
+}
+
+.hdt-quote-step-text {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.hdt-quote-step-time {
+    display: inline-block;
+    background: rgba(249, 199, 79, 0.2);
+    color: #E63946;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hdt-quote-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hdt-quote-steps::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-quote-process {
+        padding: 60px 0;
+    }
+    
+    .hdt-quote-process-title {
+        font-size: 2.2rem;
+    }
+    
+    .hdt-quote-steps {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+</style>

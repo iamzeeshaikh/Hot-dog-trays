@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+
+import Hero from '../components/home/Hero.astro';
+import TrustBar from '../components/home/TrustBar.astro';
+import FeaturedProducts from '../components/home/FeaturedProducts.astro';
+import Categories from '../components/home/Categories.astro';
+import WhyChoose from '../components/home/WhyChoose.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import Materials from '../components/home/Materials.astro';
+import UseCases from '../components/home/UseCases.astro';
+import CtaBanner from '../components/home/CtaBanner.astro';
+import HomeFaq from '../components/home/HomeFaq.astro';
+
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
+import { homeFaqs } from '../data/page-faqs';
+import ogImage from '../assets/products/Hot-dog-serving-tray-wholesale.jpg';
+
+const path = '/';
+// Yoast metadata from the WordPress export, preserved verbatim.
+const title = 'Custom Hot Dog Food Trays & Holders | Hot Dog Trays';
+const description =
+  'Order premium hot dog trays and disposable food packaging for food vendors and events. Bulk quantities available! Free Shipping!';
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(path, title, description),
+  breadcrumbs(path, [{ name: 'Home', url: '/' }]),
+  faqPage(path, homeFaqs),
+]);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogImage={ogImage.src}
+  schema={schema}
+>
+  <Hero />
+  <TrustBar />
+  <FeaturedProducts />
+  <Categories />
+  <WhyChoose />
+  <HowItWorks />
+  <Materials />
+  <UseCases />
+
+  <QuoteBlock headingId="home-quote-heading">
+    <QuoteForm idPrefix="home-quote" />
+  </QuoteBlock>
+
+  <CtaBanner />
+  <HomeFaq />
+</BaseLayout>

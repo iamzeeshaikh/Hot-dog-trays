@@ -1,0 +1,262 @@
+---
+/**
+ * Compact above-the-fold product inquiry form.
+ *
+ * Migrated from the Elementor "Instant Quote" form on the product template:
+ * Name, Email, Phone, Product, Message and an artwork upload. The product
+ * field is pre-filled from the page it renders on.
+ */
+export interface Props {
+  productName: string;
+  idPrefix?: string;
+}
+
+const { productName, idPrefix = 'inquiry' } = Astro.props;
+const id = (name: string) => `${idPrefix}-${name}`;
+---
+
+<div class="hdt-inquiry-form">
+  <h2 class="hdt-inquiry-title">Instant Quote</h2>
+  <p class="hdt-inquiry-subtitle">
+    Tell us what you need and we'll send pricing for <strong>{productName}</strong>.
+  </p>
+
+  <div
+    id={id('message')}
+    class="hdt-form-message"
+    role="status"
+    aria-live="polite"
+    tabindex="-1"
+    data-form-message
+  >
+  </div>
+
+  <form
+    id={id('form')}
+    method="POST"
+    action="/api/quote/"
+    enctype="multipart/form-data"
+    data-quote-form
+    novalidate
+  >
+    <input type="hidden" name="kind" value="inquiry" />
+    <input type="hidden" name="pageUrl" data-page-url value="" />
+
+    <div class="hdt-inquiry-group">
+      <label for={id('name')}>Name <span class="required">*</span></label>
+      <input
+        type="text"
+        id={id('name')}
+        name="name"
+        autocomplete="name"
+        maxlength="120"
+        required
+      />
+    </div>
+
+    <div class="hdt-inquiry-group">
+      <label for={id('email')}>Email <span class="required">*</span></label>
+      <input
+        type="email"
+        id={id('email')}
+        name="email"
+        autocomplete="email"
+        maxlength="200"
+        required
+      />
+    </div>
+
+    <div class="hdt-inquiry-group">
+      <label for={id('phone')}>Phone <span class="required">*</span></label>
+      <input type="tel" id={id('phone')} name="phone" autocomplete="tel" maxlength="40" required />
+    </div>
+
+    <div class="hdt-inquiry-group">
+      <label for={id('product')}>Product</label>
+      <input type="text" id={id('product')} name="product" value={productName} maxlength="160" readonly />
+    </div>
+
+    <div class="hdt-inquiry-group">
+      <label for={id('details')}>Message</label>
+      <textarea id={id('details')} name="details" rows="4" maxlength="5000"></textarea>
+    </div>
+
+    <div class="hdt-inquiry-group">
+      <label for={id('artwork')}>Artwork (optional)</label>
+      <input
+        type="file"
+        id={id('artwork')}
+        name="artwork"
+        multiple
+        accept=".pdf,.ai,.eps,.psd,.png,.jpg,.jpeg,.svg,.zip"
+      />
+      <span class="hdt-inquiry-hint">PDF, AI, EPS, PSD, PNG, JPG, SVG or ZIP · up to 8 MB each</span>
+    </div>
+
+    <div class="hdt-hp" aria-hidden="true">
+      <label for={id('website')}>Website</label>
+      <input type="text" id={id('website')} name="website_hp" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <button type="submit" class="hdt-inquiry-submit">Get Free Quote</button>
+
+    <p class="hdt-inquiry-privacy">
+      We reply within 2 business hours. Read our <a href="/privacy-policy/">Privacy Policy</a>.
+    </p>
+  </form>
+</div>
+
+<script>
+  import { wireQuoteForm } from '../scripts/quote-form';
+  document
+    .querySelectorAll<HTMLFormElement>('.hdt-inquiry-form [data-quote-form]')
+    .forEach(wireQuoteForm);
+</script>
+
+<style>
+  .hdt-inquiry-form {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 8%);
+    padding: 28px;
+  }
+
+  .hdt-inquiry-title {
+    margin: 0 0 6px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #1d3557;
+  }
+
+  .hdt-inquiry-subtitle {
+    margin: 0 0 18px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .hdt-inquiry-group {
+    margin-bottom: 14px;
+  }
+
+  .hdt-inquiry-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1d3557;
+  }
+
+  .required {
+    color: #e63946;
+  }
+
+  .hdt-inquiry-group input,
+  .hdt-inquiry-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fff;
+    transition: border-color 0.2s;
+  }
+
+  .hdt-inquiry-group input[readonly] {
+    background: #f7f7f7;
+    color: #444;
+  }
+
+  .hdt-inquiry-group input:focus,
+  .hdt-inquiry-group textarea:focus {
+    border-color: #f9c74f;
+  }
+
+  .hdt-inquiry-group input[aria-invalid='true'],
+  .hdt-inquiry-group textarea[aria-invalid='true'] {
+    border-color: #e63946;
+  }
+
+  .hdt-inquiry-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: #5f5f5f;
+  }
+
+  .hdt-inquiry-submit {
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .hdt-inquiry-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgb(230 57 70 / 40%);
+  }
+
+  .hdt-inquiry-submit:disabled {
+    opacity: 0.65;
+    cursor: progress;
+  }
+
+  .hdt-inquiry-privacy {
+    margin: 12px 0 0;
+    font-size: 0.75rem;
+    /* #888 is 3.54:1 on white, below AA for this size */
+    color: #5f5f5f;
+    text-align: center;
+  }
+
+  .hdt-inquiry-privacy a {
+    color: #c92a35;
+    font-weight: 600;
+  }
+
+  .hdt-inquiry-form .hdt-form-message {
+    display: none;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .hdt-inquiry-form .hdt-form-message.is-visible {
+    display: block;
+  }
+
+  .hdt-inquiry-form .hdt-form-message[data-state='success'] {
+    background: #e7f6ec;
+    color: #1b6b39;
+  }
+
+  .hdt-inquiry-form .hdt-form-message[data-state='error'] {
+    background: #fdeaec;
+    color: #a4212c;
+  }
+
+  .hdt-inquiry-form .hdt-form-message[data-state='pending'] {
+    background: #f4f4f4;
+    color: #555;
+  }
+
+  .hdt-hp {
+    position: absolute !important;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>

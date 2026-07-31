@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import FaqContent from '../components/pages/FaqContent.astro';
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
+import { faqPageFaqs } from '../data/page-faqs';
+
+const path = '/faq/';
+const title = 'FAQ - Hot Dog Trays';
+// No Yoast description existed for this page; created from the visible intro.
+const description =
+  'Answers to common questions about ordering, customisation, shipping and payment for custom hot dog trays.';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'FAQ', url: path },
+];
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(path, title, description),
+  breadcrumbs(path, crumbs),
+  faqPage(path, faqPageFaqs),
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <FaqContent />
+  <QuoteBlock headingId="faq-quote-heading">
+    <QuoteForm idPrefix="faq-quote" />
+  </QuoteBlock>
+</BaseLayout>

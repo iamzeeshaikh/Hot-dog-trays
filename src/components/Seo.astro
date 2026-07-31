@@ -1,0 +1,44 @@
+---
+import { SITE_URL, SITE_NAME } from '../data/site';
+
+export interface Props {
+  title: string;
+  description?: string;
+  /** Canonical path including the trailing slash, e.g. "/about/". */
+  path: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'product';
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = '',
+  path,
+  ogImage,
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path, SITE_URL).href;
+const image = ogImage ? new URL(ogImage, SITE_URL).href : undefined;
+const robots = noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large';
+---
+
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={robots} />
+
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content={SITE_NAME} />
+{image && <meta property="og:image" content={image} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+{description && <meta name="twitter:description" content={description} />}
+{image && <meta name="twitter:image" content={image} />}

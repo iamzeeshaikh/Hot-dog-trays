@@ -1,0 +1,341 @@
+<section class="hdt-trust-bar">
+    <div class="hdt-trust-bar-container">
+        <div class="hdt-stats-grid">
+            <div class="hdt-stat-item">
+                <div class="hdt-stat-icon">📅</div>
+                <div class="hdt-stat-number">10+</div>
+                <div class="hdt-stat-label">Years in Business</div>
+            </div>
+            <div class="hdt-stat-item">
+                <div class="hdt-stat-icon">😊</div>
+                <div class="hdt-stat-number">50K+</div>
+                <div class="hdt-stat-label">Happy Customers</div>
+            </div>
+            <div class="hdt-stat-item">
+                <div class="hdt-stat-icon">📦</div>
+                <div class="hdt-stat-number">5M+</div>
+                <div class="hdt-stat-label">Products Delivered</div>
+            </div>
+            <div class="hdt-stat-item">
+                <div class="hdt-stat-icon">🌍</div>
+                <div class="hdt-stat-number">25+</div>
+                <div class="hdt-stat-label">Countries Served</div>
+            </div>
+        </div>
+        <div class="hdt-trust-indicators">
+            <div class="hdt-trust-indicator">
+                <div class="hdt-trust-indicator-icon">🔒</div>
+                <div class="hdt-trust-indicator-text">
+                    <strong>SSL Secure</strong>
+                    <span>256-bit Encryption</span>
+                </div>
+            </div>
+            <div class="hdt-trust-indicator">
+                <div class="hdt-trust-indicator-icon">💰</div>
+                <div class="hdt-trust-indicator-text">
+                    <strong>Money Back</strong>
+                    <span>100% Guarantee</span>
+                </div>
+            </div>
+            <div class="hdt-trust-indicator">
+                <div class="hdt-trust-indicator-icon">✓</div>
+                <div class="hdt-trust-indicator-text">
+                    <strong>Quality Assured</strong>
+                    <span>Premium Materials</span>
+                </div>
+            </div>
+            <div class="hdt-trust-indicator">
+                <div class="hdt-trust-indicator-icon">💬</div>
+                <div class="hdt-trust-indicator-text">
+                    <strong>24/7 Support</strong>
+                    <span>Always Available</span>
+                </div>
+            </div>
+        </div>
+        <div class="hdt-shipping-badges">
+            <h2 class="hdt-shipping-title">We Ship Worldwide</h2>
+            <div class="hdt-shipping-grid">
+                <div class="hdt-shipping-badge">
+                    <div class="hdt-shipping-badge-icon">🇺🇸</div>
+                    <div class="hdt-shipping-badge-text">USA<br>3-5 Days</div>
+                </div>
+                <div class="hdt-shipping-badge">
+                    <div class="hdt-shipping-badge-icon">🇬🇧</div>
+                    <div class="hdt-shipping-badge-text">UK<br>5-7 Days</div>
+                </div>
+                <div class="hdt-shipping-badge">
+                    <div class="hdt-shipping-badge-icon">🇦🇺</div>
+                    <div class="hdt-shipping-badge-text">Australia<br>7-10 Days</div>
+                </div>
+                <div class="hdt-shipping-badge">
+                    <div class="hdt-shipping-badge-icon">🇪🇺</div>
+                    <div class="hdt-shipping-badge-text">Europe<br>5-7 Days</div>
+                </div>
+                <div class="hdt-shipping-badge">
+                    <div class="hdt-shipping-badge-icon">🇨🇦</div>
+                    <div class="hdt-shipping-badge-text">Canada<br>3-5 Days</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Migrated from the Elementor "TrustBar" HTML widget. */
+/* Force everything clickable */
+.hdt-trust-bar,
+.hdt-trust-bar * {
+    pointer-events: auto !important;
+}
+
+/* Trust Bar Section */
+.hdt-trust-bar {
+    background: linear-gradient(135deg, #F1FAEE 0%, #FFFFFF 100%);
+    padding: 60px 0;
+    border-top: 4px solid #F9C74F;
+}
+
+.hdt-trust-bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Stats Grid */
+.hdt-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.hdt-stat-item {
+    text-align: center;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hdt-stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #F9C74F, #E63946);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.hdt-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15);
+}
+
+.hdt-stat-item:hover::before {
+    transform: scaleX(1);
+}
+
+.hdt-stat-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 20px rgba(249, 199, 79, 0.4);
+}
+
+.hdt-stat-number {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1D3557;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.hdt-stat-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Trust Indicators */
+.hdt-trust-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 40px 0;
+    border-top: 2px solid rgba(29, 53, 87, 0.1);
+    border-bottom: 2px solid rgba(29, 53, 87, 0.1);
+}
+
+.hdt-trust-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.hdt-trust-indicator:hover {
+    transform: scale(1.05);
+}
+
+.hdt-trust-indicator-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #1D3557, #E63946);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.hdt-trust-indicator-text {
+    text-align: left;
+}
+
+.hdt-trust-indicator-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #1D3557;
+    margin-bottom: 2px;
+}
+
+.hdt-trust-indicator-text span {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* Shipping Badges */
+.hdt-shipping-badges {
+    margin-top: 40px;
+    padding: 30px 40px;
+    background: linear-gradient(135deg, rgba(249, 199, 79, 0.1), rgba(230, 57, 70, 0.1));
+    border-radius: 20px;
+    border: 2px solid rgba(249, 199, 79, 0.3);
+}
+
+.hdt-shipping-title {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1D3557;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hdt-shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.hdt-shipping-badge {
+    text-align: center;
+    padding: 20px 15px;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hdt-shipping-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hdt-shipping-badge-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.hdt-shipping-badge-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1D3557;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hdt-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .hdt-shipping-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-trust-bar {
+        padding: 40px 0;
+    }
+    
+    .hdt-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .hdt-stat-number {
+        font-size: 2rem;
+    }
+    
+    .hdt-trust-indicators {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 0;
+    }
+    
+    .hdt-shipping-badges {
+        padding: 25px 20px;
+    }
+    
+    .hdt-shipping-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .hdt-stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Performance Optimization */
+@media (prefers-reduced-motion: reduce) {
+    .hdt-stat-item,
+    .hdt-trust-indicator,
+    .hdt-shipping-badge {
+        transition: none !important;
+    }
+}
+</style>

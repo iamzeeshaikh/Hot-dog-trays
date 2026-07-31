@@ -1,0 +1,257 @@
+---
+import SpecTable from './SpecTable.astro';
+import FaqAccordion from './FaqAccordion.astro';
+import type { ProductFaq, SpecTable as Spec } from '../data/products';
+
+/**
+ * Replacement for the WooCommerce product data tabs (Description /
+ * Specifications / Faqs).
+ *
+ * Rendered as a real tab widget with roving focus. Every panel stays in the
+ * DOM so the content remains crawlable, exactly as WooCommerce had it.
+ */
+export interface Props {
+  description: string;
+  spec: Spec;
+  faqs: ProductFaq[];
+  productName: string;
+}
+
+const { description, spec, faqs, productName } = Astro.props;
+
+const tabs = [
+  { id: 'description', label: 'Description', enabled: Boolean(description) },
+  { id: 'specifications', label: 'Specifications', enabled: spec.rows.length > 0 },
+  { id: 'faqs', label: 'FAQs', enabled: faqs.length > 0 },
+].filter((t) => t.enabled);
+---
+
+<section class="hdt-tabs-section" aria-labelledby="product-details-heading">
+  <div class="hdt-tabs-container">
+    <!-- layout: vertical tab rail beside the panel, as the live template renders -->
+    <h2 id="product-details-heading" class="hdt-visually-hidden">
+      {productName} details
+    </h2>
+
+    <div class="hdt-tablist" role="tablist" aria-label={`${productName} information`}>
+      {
+        tabs.map((tab, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${tab.id}`}
+            aria-controls={`panel-${tab.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            class="hdt-tab"
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+
+    {
+      tabs.map((tab, i) => (
+        <div
+          role="tabpanel"
+          id={`panel-${tab.id}`}
+          aria-labelledby={`tab-${tab.id}`}
+          tabindex="0"
+          class="hdt-tabpanel"
+          hidden={i !== 0}
+        >
+          {tab.id === 'description' && (
+            <div class="hdt-product-description" set:html={description} />
+          )}
+          {tab.id === 'specifications' && (
+            <SpecTable spec={spec} caption={`${productName} specifications`} />
+          )}
+          {tab.id === 'faqs' && <FaqAccordion faqs={faqs} idPrefix="product-faq" />}
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  const list = document.querySelector<HTMLElement>('.hdt-tablist');
+  if (list) {
+    const tabs = Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+
+    function select(tab: HTMLButtonElement) {
+      tabs.forEach((t) => {
+        const selected = t === tab;
+        t.setAttribute('aria-selected', String(selected));
+        t.tabIndex = selected ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute('aria-controls') ?? '');
+        if (panel) panel.hidden = !selected;
+      });
+    }
+
+    tabs.forEach((tab) => tab.addEventListener('click', () => select(tab)));
+
+    list.addEventListener('keydown', (event) => {
+      const current = tabs.indexOf(document.activeElement as HTMLButtonElement);
+      if (current < 0) return;
+      const map: Record<string, number> = {
+        ArrowRight: current + 1,
+        ArrowLeft: current - 1,
+        Home: 0,
+        End: tabs.length - 1,
+      };
+      const next = map[event.key];
+      if (next === undefined) return;
+      event.preventDefault();
+      const target = tabs[(next + tabs.length) % tabs.length];
+      target.focus();
+      select(target);
+    });
+  }
+</script>
+
+<style is:global>
+  .hdt-tabs-section {
+    padding: 50px 20px;
+    background: #fff;
+  }
+
+  .hdt-tabs-container {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 46px;
+    align-items: start;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .hdt-tablist {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 100px;
+  }
+
+  .hdt-tab {
+    padding: 14px 18px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+    border-left: 3px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background 0.2s;
+  }
+
+  .hdt-tab:hover {
+    color: #e63946;
+    background: #fffaf0;
+  }
+
+  .hdt-tab[aria-selected='true'] {
+    color: #1d3557;
+    font-weight: 800;
+    border-left-color: #e63946;
+    background: #fff9ec;
+  }
+
+  @media (max-width: 900px) {
+    .hdt-tabs-container {
+      /* minmax(0, …) so the scrollable spec table cannot force the grid column
+         wider than the viewport. */
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .hdt-tablist {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #eee;
+    }
+
+    .hdt-tab {
+      border-left: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      padding: 12px 20px;
+    }
+
+    .hdt-tab[aria-selected='true'] {
+      border-bottom-color: #e63946;
+      background: none;
+    }
+  }
+
+  .hdt-tabpanel:focus-visible {
+    outline: 3px solid #e63946;
+    outline-offset: 4px;
+  }
+
+  .hdt-product-description {
+    color: #333;
+    line-height: 1.8;
+  }
+
+  .hdt-product-description h2 {
+    margin: 32px 0 12px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1d3557;
+  }
+
+  .hdt-product-description h2:first-child {
+    margin-top: 0;
+  }
+
+  .hdt-product-description h3 {
+    margin: 26px 0 10px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1d3557;
+  }
+
+  .hdt-product-description p {
+    margin: 0 0 16px;
+  }
+
+  .hdt-product-description ul,
+  .hdt-product-description ol {
+    margin: 0 0 18px;
+    padding-left: 22px;
+  }
+
+  .hdt-product-description li {
+    margin-bottom: 8px;
+  }
+
+  .hdt-product-description a {
+    color: #C92A35;
+    font-weight: 600;
+  }
+
+  /* Migrated descriptions can contain wide tables; they scroll inside their
+     own box rather than widening the page. */
+  .hdt-product-description table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hdt-product-description th,
+  .hdt-product-description td {
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    text-align: left;
+  }
+</style>

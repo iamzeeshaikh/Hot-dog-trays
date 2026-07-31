@@ -1,0 +1,123 @@
+---
+import type { ProductFaq } from '../data/products';
+
+/**
+ * Keyboard- and screen-reader-accessible accordion for the product-specific
+ * FAQs that WooCommerce rendered inside a tab.
+ */
+export interface Props {
+  faqs: ProductFaq[];
+  idPrefix: string;
+}
+const { faqs, idPrefix } = Astro.props;
+---
+
+<div class="hdt-accordion">
+  {
+    faqs.map((faq, i) => (
+      <div class="hdt-accordion-item">
+        <h3 class="hdt-accordion-heading">
+          <button
+            type="button"
+            class="hdt-accordion-trigger"
+            id={`${idPrefix}-q-${i}`}
+            aria-expanded="false"
+            aria-controls={`${idPrefix}-a-${i}`}
+          >
+            <span>{faq.question}</span>
+            <span class="hdt-accordion-icon" aria-hidden="true">
+              +
+            </span>
+          </button>
+        </h3>
+        <div
+          class="hdt-accordion-panel"
+          id={`${idPrefix}-a-${i}`}
+          role="region"
+          aria-labelledby={`${idPrefix}-q-${i}`}
+          hidden
+        >
+          <div class="hdt-accordion-content" set:html={faq.answer} />
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.hdt-accordion-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const panel = document.getElementById(trigger.getAttribute('aria-controls') ?? '');
+      const open = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!open));
+      if (panel) panel.hidden = open;
+    });
+  });
+</script>
+
+<style>
+  .hdt-accordion-item {
+    border: 1px solid #e9e9e9;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .hdt-accordion-heading {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .hdt-accordion-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1d3557;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .hdt-accordion-trigger:hover {
+    background: #fffaf0;
+  }
+
+  .hdt-accordion-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    font-weight: 900;
+    transition: transform 0.25s;
+  }
+
+  .hdt-accordion-trigger[aria-expanded='true'] .hdt-accordion-icon {
+    transform: rotate(45deg);
+  }
+
+  .hdt-accordion-content {
+    padding: 0 20px 18px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .hdt-accordion-content :global(p) {
+    margin: 0 0 12px;
+  }
+
+  .hdt-accordion-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

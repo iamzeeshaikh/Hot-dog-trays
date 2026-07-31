@@ -1,0 +1,308 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import ProductInquiryForm from '../../components/ProductInquiryForm.astro';
+import RelatedProducts from '../../components/RelatedProducts.astro';
+import ProductTabs from '../../components/ProductTabs.astro';
+
+import Features from '../../components/product/Features.astro';
+import MaterialOptions from '../../components/product/MaterialOptions.astro';
+import Customization from '../../components/product/Customization.astro';
+import SizeGuide from '../../components/product/SizeGuide.astro';
+import OrderProcess from '../../components/product/OrderProcess.astro';
+import ProductUseCases from '../../components/product/ProductUseCases.astro';
+import ProductFaqSection from '../../components/product/ProductFaqSection.astro';
+import Guarantee from '../../components/product/Guarantee.astro';
+
+import { products, getRelated, startingPrice, type Product } from '../../data/products';
+import { CATEGORY } from '../../data/site';
+import { productPageFaqs } from '../../data/page-faqs';
+import {
+  graph,
+  organization,
+  website,
+  breadcrumbs,
+  faqPage,
+  product as productSchema,
+} from '../../lib/schema';
+
+import payments from '../../assets/site/payments.png';
+import paymentImage from '../../assets/site/payment-image.jpeg';
+import dmca from '../../assets/site/dmca-badge-w250-2x1-01.png';
+import secureIcons from '../../assets/site/secure-icons.png';
+import guaranteeImage from '../../assets/site/guarantee_image.webp';
+
+export const getStaticPaths = (() =>
+  products.map((p) => ({ params: { slug: p.slug }, props: { product: p } }))) satisfies GetStaticPaths;
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const files = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/products/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+const galleryUrls = product.images
+  .map((i) => files[`/src/assets/products/${i.file}`]?.default.src)
+  .filter((s): s is string => Boolean(s));
+
+const price = startingPrice(product);
+const related = getRelated(product);
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: CATEGORY.name, url: CATEGORY.url },
+  { name: product.name, url: product.url },
+];
+
+// One FAQPage node covering every question visible on the page: the
+// product-specific set from WooCommerce plus the shared ordering FAQs below it.
+const seen = new Set<string>();
+const visibleFaqs = [...product.faqs, ...productPageFaqs].filter((f) => {
+  const key = f.question.trim().toLowerCase();
+  if (seen.has(key)) return false;
+  seen.add(key);
+  return true;
+});
+
+const schema = graph([
+  organization(),
+  website(),
+  productSchema(product, galleryUrls),
+  breadcrumbs(product.url, crumbs),
+  faqPage(product.url, visibleFaqs),
+]);
+---
+
+<BaseLayout
+  title={product.metaTitle}
+  description={product.metaDescription}
+  path={product.url}
+  ogType="product"
+  ogImage={galleryUrls[0]}
+  schema={schema}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <div class="hdt-product-hero">
+    <h1 class="hdt-product-title">{product.name}</h1>
+
+    <div class="hdt-product-layout">
+      <div class="hdt-product-summary">
+        <div class="hdt-product-short" set:html={product.shortDescription} />
+
+        <dl class="hdt-product-meta">
+          {
+            price && (
+              <>
+                <dt>Starting price</dt>
+                <dd class="hdt-product-price">
+                  ${price} <span>per unit</span>
+                </dd>
+              </>
+            )
+          }
+          <dt>Availability</dt>
+          <dd>{product.inStock ? 'In stock — made to order' : 'Currently unavailable'}</dd>
+          <dt>SKU</dt>
+          <dd>{product.sku}</dd>
+          <dt>Category</dt>
+          <dd><a href={CATEGORY.url}>{product.category}</a></dd>
+        </dl>
+
+        <a href="#inquiry-form" class="hdt-product-cta">Get Free Quote</a>
+      </div>
+
+      <div class="hdt-product-form" id="inquiry-form">
+        <ProductInquiryForm productName={product.name} />
+      </div>
+
+      <div class="hdt-product-media">
+        <ProductGallery images={product.images} productName={product.name} />
+      </div>
+    </div>
+
+    <div class="hdt-trust-badges">
+      <Image src={paymentImage} alt="Accepted payment methods" loading="lazy" densities={[1]} />
+      <Image src={payments} alt="Card payment providers" loading="lazy" densities={[1]} />
+      <Image src={dmca} alt="DMCA protected" loading="lazy" densities={[1]} />
+      <Image src={secureIcons} alt="Secure checkout and SSL protection" loading="lazy" densities={[1]} />
+      <Image src={guaranteeImage} alt="Satisfaction guarantee" loading="lazy" densities={[1]} />
+    </div>
+  </div>
+
+  <ProductTabs
+    description={product.description}
+    spec={product.specifications}
+    faqs={product.faqs}
+    productName={product.name}
+  />
+
+  <Features />
+  <MaterialOptions />
+  <Customization />
+  <SizeGuide />
+  <OrderProcess />
+  <ProductUseCases />
+  <ProductFaqSection />
+  <Guarantee />
+
+  <RelatedProducts products={related} />
+</BaseLayout>
+
+<style is:global>
+  .hdt-product-hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px 40px;
+  }
+
+  /* Centred, matching the live product template and the supplied design. */
+  .hdt-product-title {
+    margin: 10px 0 30px;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: #1d3557;
+    text-align: center;
+  }
+
+  .hdt-product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 34px;
+    align-items: start;
+  }
+
+  .hdt-product-short {
+    color: #444;
+    line-height: 1.75;
+  }
+
+  .hdt-product-short p {
+    margin: 0 0 14px;
+  }
+
+  .hdt-product-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 18px;
+    margin: 22px 0;
+    padding: 18px 20px;
+    background: #fff9ec;
+    border-radius: 12px;
+    font-size: 0.92rem;
+  }
+
+  .hdt-product-meta dt {
+    font-weight: 700;
+    color: #1d3557;
+  }
+
+  .hdt-product-meta dd {
+    margin: 0;
+    color: #555;
+  }
+
+  .hdt-product-meta dd a {
+    display: inline-block;
+    padding: 3px 0;
+    color: #c92a35;
+    font-weight: 600;
+  }
+
+  .hdt-product-price {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #e63946;
+  }
+
+  .hdt-product-price span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #777;
+  }
+
+  .hdt-product-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px 26px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgb(249 199 79 / 40%);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .hdt-product-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgb(230 57 70 / 50%);
+  }
+
+  .hdt-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+  }
+
+  .hdt-trust-badges img {
+    max-height: 90px;
+    width: auto;
+  }
+
+  @media (max-width: 600px) {
+    .hdt-trust-badges {
+      gap: 18px;
+    }
+
+    .hdt-trust-badges img {
+      max-height: 62px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .hdt-product-layout {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Keep the gallery beside the copy and drop the form to its own row. */
+    .hdt-product-media {
+      order: -1;
+    }
+
+    .hdt-product-form {
+      grid-column: 1 / -1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hdt-product-layout {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .hdt-product-form {
+      max-width: none;
+    }
+  }
+</style>

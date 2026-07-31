@@ -1,0 +1,19 @@
+---
+import PolicyLayout from '../layouts/PolicyLayout.astro';
+import body from '../content/pages/sample-page.html?raw';
+
+/*
+ * WordPress boilerplate that was left published and indexable. The URL is kept
+ * at 200 so nothing breaks, but it is marked noindex and excluded from the
+ * sitemap because it carries no content of its own. See MIGRATION_REPORT.md.
+ */
+---
+
+<PolicyLayout
+  title="Sample Page - Hot Dog Trays"
+  description="Sample page retained from the previous WordPress installation."
+  heading="Sample Page"
+  path="/sample-page/"
+  noindex
+  body={body}
+/>

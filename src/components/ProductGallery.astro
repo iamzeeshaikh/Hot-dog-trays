@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import type { ProductImage } from '../data/products';
+
+/**
+ * Replacement for the WooCommerce product gallery: a main image plus
+ * thumbnails, with no jQuery, FlexSlider or PhotoSwipe.
+ */
+export interface Props {
+  images: ProductImage[];
+  productName: string;
+}
+
+const { images, productName } = Astro.props;
+
+const files = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/products/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+
+const resolved = images
+  .map((img) => ({
+    meta: files[`/src/assets/products/${img.file}`]?.default,
+    alt: img.alt,
+    file: img.file,
+  }))
+  .filter((i): i is { meta: ImageMetadata; alt: string; file: string } => Boolean(i.meta));
+
+const [main, ...rest] = resolved;
+---
+
+{
+  main && (
+    <div class="hdt-gallery">
+      <div class="hdt-gallery-main">
+        <Image
+          id="gallery-main-image"
+          src={main.meta}
+          alt={main.alt}
+          widths={[416, 768, 1080]}
+          sizes="(max-width: 768px) 92vw, 480px"
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
+          class="hdt-gallery-image"
+        />
+      </div>
+
+      {rest.length > 0 && (
+        <div class="hdt-gallery-thumbs" role="group" aria-label={`${productName} images`}>
+          {resolved.map((img, i) => (
+            <button
+              type="button"
+              class:list={['hdt-gallery-thumb', { 'is-active': i === 0 }]}
+              data-full={img.meta.src}
+              data-alt={img.alt}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+            >
+              <Image
+                src={img.meta}
+                alt={i === 0 ? '' : img.alt}
+                width={100}
+                height={100}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hdt-visually-hidden">Show image {i + 1}: {img.alt}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+<script>
+  const main = document.getElementById('gallery-main-image') as HTMLImageElement | null;
+  const thumbs = document.querySelectorAll<HTMLButtonElement>('.hdt-gallery-thumb');
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      if (!main) return;
+      const full = thumb.dataset.full;
+      if (!full) return;
+      // srcset would otherwise keep overriding the swapped src
+      main.removeAttribute('srcset');
+      main.src = full;
+      main.alt = thumb.dataset.alt ?? '';
+      thumbs.forEach((t) => {
+        t.classList.toggle('is-active', t === thumb);
+        t.setAttribute('aria-pressed', String(t === thumb));
+      });
+    });
+  });
+</script>
+
+<style>
+  .hdt-gallery-main {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  .hdt-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hdt-gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .hdt-gallery-thumb {
+    padding: 0;
+    background: none;
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+  }
+
+  .hdt-gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hdt-gallery-thumb:hover {
+    transform: translateY(-2px);
+  }
+
+  .hdt-gallery-thumb.is-active {
+    border-color: #e63946;
+  }
+</style>

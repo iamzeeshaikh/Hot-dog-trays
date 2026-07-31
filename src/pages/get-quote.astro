@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import QuoteHero from '../components/pages/QuoteHero.astro';
+import QuoteProcess from '../components/pages/QuoteProcess.astro';
+import QuoteInfo from '../components/pages/QuoteInfo.astro';
+import QuotePricing from '../components/pages/QuotePricing.astro';
+import QuoteCta from '../components/pages/QuoteCta.astro';
+import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+
+const path = '/get-quote/';
+const title = 'Get Quote - Hot Dog Trays';
+// No Yoast description existed for this page; created from the visible intro.
+const description =
+  'Request a free custom quote for hot dog trays. Free design service, no setup fees and a response within two hours.';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Get Quote', url: path },
+];
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(path, title, description),
+  breadcrumbs(path, crumbs),
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <QuoteHero />
+  <QuoteBlock headingId="get-quote-heading">
+    <QuoteForm idPrefix="get-quote" />
+  </QuoteBlock>
+  <QuoteProcess />
+  <QuoteInfo />
+  <QuotePricing />
+  <QuoteCta />
+</BaseLayout>

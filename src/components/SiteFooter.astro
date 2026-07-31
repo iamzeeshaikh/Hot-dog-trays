@@ -1,0 +1,559 @@
+---
+import { products } from '../data/products';
+import { CONTACT } from '../data/site';
+
+/**
+ * Migrated from the Elementor "Footer" template.
+ *
+ * Two corrections to the source, both recorded in MIGRATION_REPORT.md:
+ *  - the "Blog" quick link is dropped because /blog/ 404s on the live site;
+ *  - the newsletter form posts to the real /api/quote/ endpoint instead of
+ *    reporting success with no delivery.
+ */
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'All Products', href: '/shop/' },
+  { label: 'About Us', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Get Free Quote', href: '/get-quote/' },
+  { label: 'FAQ', href: '/faq/' },
+  { label: 'Shipping Info', href: '/shipping/' },
+  { label: 'Privacy Policy', href: '/privacy-policy/' },
+  { label: 'Terms & Conditions', href: '/terms-conditions/' },
+];
+
+const socials = [
+  { href: 'https://facebook.com/hotdogtrays', label: 'Facebook', glyph: '📘' },
+  { href: 'https://instagram.com/hotdogtrays', label: 'Instagram', glyph: '📷' },
+  { href: 'https://twitter.com/hotdogtrays', label: 'Twitter', glyph: '🐦' },
+  { href: 'https://linkedin.com/company/hotdogtrays', label: 'LinkedIn', glyph: '💼' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="hdt-footer">
+  <div class="hdt-footer-container">
+    <div class="hdt-footer-main">
+      <div class="hdt-footer-column">
+        <div class="hdt-footer-logo">
+          <div class="hdt-footer-logo-icon" aria-hidden="true">🌭</div>
+          <div class="hdt-footer-logo-text">HotDogTrays</div>
+        </div>
+        <p class="hdt-footer-about">
+          Your trusted source for premium wholesale hot dog trays. We've been serving food trucks,
+          stadiums, restaurants, and catering businesses worldwide for over 10 years with quality
+          products and exceptional service.
+        </p>
+        <h3>Follow Us</h3>
+        <div class="hdt-social-links">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                class="hdt-social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${s.label} (opens in a new tab)`}
+              >
+                <span aria-hidden="true">{s.glyph}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hdt-footer-column">
+        <h3 id="footer-quick-links">Quick Links</h3>
+        <nav class="hdt-footer-links" aria-labelledby="footer-quick-links">
+          {quickLinks.map((l) => <a href={l.href} class="hdt-footer-link">{l.label}</a>)}
+        </nav>
+      </div>
+
+      <div class="hdt-footer-column">
+        <h3 id="footer-products">Our Products</h3>
+        <nav class="hdt-footer-links" aria-labelledby="footer-products">
+          {products.map((p) => <a href={p.url} class="hdt-footer-link">{p.name}</a>)}
+        </nav>
+      </div>
+
+      <div class="hdt-footer-column">
+        <h3>Contact Us</h3>
+        <div class="hdt-footer-contact-item">
+          <div class="hdt-footer-contact-icon" aria-hidden="true">📞</div>
+          <div class="hdt-footer-contact-text">
+            <strong>Phone</strong>
+            <a href={CONTACT.phoneHref}>{CONTACT.phoneDisplay}</a>
+          </div>
+        </div>
+        <div class="hdt-footer-contact-item">
+          <div class="hdt-footer-contact-icon" aria-hidden="true">✉️</div>
+          <div class="hdt-footer-contact-text">
+            <strong>Email</strong>
+            <a href={CONTACT.emailHref}>{CONTACT.email}</a>
+          </div>
+        </div>
+        <div class="hdt-footer-contact-item">
+          <div class="hdt-footer-contact-icon" aria-hidden="true">📍</div>
+          <div class="hdt-footer-contact-text">
+            <strong>Address</strong>
+            <span>{CONTACT.address.street}<br />New York, NY 10030</span>
+          </div>
+        </div>
+
+        <h3 class="hdt-footer-newsletter-heading">Newsletter</h3>
+        <p class="hdt-newsletter-text">
+          Get special offers and updates delivered to your inbox!
+        </p>
+        <form class="hdt-newsletter-form" id="newsletterForm" novalidate>
+          <label class="hdt-visually-hidden" for="newsletter-email">Your email address</label>
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            class="hdt-newsletter-input"
+            placeholder="Your email"
+            autocomplete="email"
+            required
+          />
+          <!-- honeypot: hidden from users, filled only by bots -->
+          <div class="hdt-hp" aria-hidden="true">
+            <label for="newsletter-company">Company</label>
+            <input type="text" id="newsletter-company" name="company_hp" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="hdt-newsletter-btn">Subscribe</button>
+        </form>
+        <p class="hdt-newsletter-message" id="newsletterMessage" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="hdt-footer-bottom">
+      <div class="hdt-footer-bottom-content">
+        <div class="hdt-footer-copyright">
+          © {year} <a href="/">HotDogTrays.com</a>. All Rights Reserved.
+        </div>
+        <div class="hdt-payment-methods">
+          <span class="hdt-payment-label">We Accept:</span>
+          <div class="hdt-payment-icons">
+            <div class="hdt-payment-icon" aria-hidden="true">💳</div>
+            <div class="hdt-payment-icon" aria-hidden="true">💵</div>
+            <div class="hdt-payment-icon" aria-hidden="true">💰</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('newsletterForm') as HTMLFormElement | null;
+  const out = document.getElementById('newsletterMessage');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!out) return;
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      out.textContent = 'Please enter a valid email address.';
+      out.dataset.state = 'error';
+      return;
+    }
+
+    button.disabled = true;
+    out.dataset.state = 'pending';
+    out.textContent = 'Subscribing…';
+
+    try {
+      const res = await fetch('/api/quote/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kind: 'newsletter',
+          email,
+          company_hp: (form.elements.namedItem('company_hp') as HTMLInputElement).value,
+          pageUrl: window.location.href,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        out.dataset.state = 'success';
+        out.textContent = 'Thanks — you are on the list.';
+        form.reset();
+      } else {
+        out.dataset.state = 'error';
+        out.textContent = data.error || 'Subscription failed. Please try again later.';
+      }
+    } catch {
+      out.dataset.state = 'error';
+      out.textContent = 'Network error. Please try again later.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+
+<style>
+/* Migrated from the Elementor "Footer" template. */
+/* Force everything clickable */
+.hdt-footer,
+.hdt-footer * {
+    pointer-events: auto !important;
+}
+
+.hdt-footer a,
+.hdt-footer button,
+.hdt-footer input {
+    cursor: pointer !important;
+}
+
+/* Footer */
+.hdt-footer {
+    background: linear-gradient(135deg, #1D3557 0%, #2A4A6F 100%);
+    color: rgba(241, 250, 238, 0.9);
+    padding: 60px 0 0;
+}
+
+.hdt-footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Footer Main */
+.hdt-footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 1.5fr;
+    gap: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid rgba(241, 250, 238, 0.1);
+}
+
+/* Footer Column */
+.hdt-footer-column h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #F9C74F;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* About Section */
+.hdt-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.hdt-footer-logo-icon {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 5px 20px rgba(249, 199, 79, 0.4);
+}
+
+.hdt-footer-logo-text {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #F1FAEE;
+}
+
+.hdt-footer-about {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: rgba(241, 250, 238, 0.8);
+}
+
+/* Footer Links */
+.hdt-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hdt-footer-link {
+    color: rgba(241, 250, 238, 0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.hdt-footer-link:hover {
+    color: #F9C74F;
+    padding-left: 5px;
+}
+
+/* Contact Info */
+.hdt-footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.hdt-footer-contact-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(249, 199, 79, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.hdt-footer-contact-text {
+    flex: 1;
+}
+
+.hdt-footer-contact-text strong {
+    display: block;
+    color: #F9C74F;
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+
+.hdt-footer-contact-text a {
+    display: inline-block;
+    padding: 4px 0;
+    color: rgba(241, 250, 238, 0.9);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.hdt-footer-contact-text a:hover {
+    color: #F9C74F;
+}
+
+.hdt-footer-contact-text span {
+    color: rgba(241, 250, 238, 0.9);
+    font-size: 1rem;
+}
+
+/* Newsletter */
+.hdt-newsletter-text {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: rgba(241, 250, 238, 0.8);
+}
+
+.hdt-newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.hdt-newsletter-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid rgba(241, 250, 238, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.hdt-newsletter-input::placeholder {
+    color: rgba(241, 250, 238, 0.5);
+}
+
+.hdt-newsletter-input:focus {
+    outline: none;
+    border-color: #F9C74F;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hdt-newsletter-btn {
+    padding: 14px 25px;
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    color: #1D3557;
+    border: none;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.hdt-newsletter-btn:hover {
+    background: linear-gradient(135deg, #E63946, #F9C74F);
+    transform: translateY(-2px);
+}
+
+/* Social Media */
+.hdt-social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.hdt-social-link {
+    width: 45px;
+    height: 45px;
+    background: rgba(249, 199, 79, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F9C74F;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s;
+}
+
+.hdt-social-link:hover {
+    background: linear-gradient(135deg, #F9C74F, #E63946);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Footer Bottom */
+.hdt-footer-bottom {
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.hdt-footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hdt-footer-copyright {
+    font-size: 0.9rem;
+    color: rgba(241, 250, 238, 0.7);
+}
+
+.hdt-footer-copyright a {
+    color: #F9C74F;
+    text-decoration: none;
+}
+
+.hdt-footer-copyright a:hover {
+    text-decoration: underline;
+}
+
+/* Payment Methods */
+.hdt-payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hdt-payment-label {
+    font-size: 0.85rem;
+    color: rgba(241, 250, 238, 0.7);
+    font-weight: 700;
+}
+
+.hdt-payment-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.hdt-payment-icon {
+    width: 50px;
+    height: 32px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hdt-footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-footer {
+        padding: 40px 0 0;
+    }
+    
+    .hdt-footer-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .hdt-newsletter-form {
+        flex-direction: column;
+    }
+    
+    .hdt-newsletter-btn {
+        width: 100%;
+    }
+    
+    .hdt-footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hdt-payment-methods {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-footer-logo-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.7rem;
+    }
+    
+    .hdt-footer-logo-text {
+        font-size: 1.3rem;
+    }
+}
+
+/* --- migration additions -------------------------------------------------- */
+.hdt-footer-newsletter-heading {
+    margin-top: 30px;
+}
+
+/* honeypot: off-screen rather than display:none so bots still fill it */
+.hdt-hp {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.hdt-newsletter-message {
+    margin: 10px 0 0;
+    min-height: 1.2em;
+    font-size: 0.85rem;
+}
+
+.hdt-newsletter-message[data-state="success"] { color: #7bd389; }
+.hdt-newsletter-message[data-state="error"]   { color: #ffb3b8; }
+.hdt-newsletter-message[data-state="pending"] { opacity: 0.8; }
+</style>

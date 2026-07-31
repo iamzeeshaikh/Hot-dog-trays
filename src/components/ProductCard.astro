@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import type { Product } from '../data/products';
+import { startingPrice } from '../data/products';
+
+export interface Props {
+  product: Product;
+  /** The first row of an archive should not lazy-load. */
+  eager?: boolean;
+}
+const { product, eager = false } = Astro.props;
+
+const files = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/products/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+
+const first = product.images[0];
+const meta = first ? files[`/src/assets/products/${first.file}`]?.default : undefined;
+const price = startingPrice(product);
+---
+
+<li class="hdt-product-card">
+  <a href={product.url} class="hdt-product-card-link">
+    {
+      meta && (
+        <Image
+          src={meta}
+          alt={first.alt}
+          widths={[324, 416, 768]}
+          sizes="(max-width: 600px) 46vw, (max-width: 1024px) 30vw, 300px"
+          loading={eager ? 'eager' : 'lazy'}
+          decoding={eager ? 'sync' : 'async'}
+          class="hdt-product-card-image"
+        />
+      )
+    }
+    <h2 class="hdt-product-card-title">{product.name}</h2>
+  </a>
+  {price && <p class="hdt-product-card-price">From <strong>${price}</strong> per unit</p>}
+  <a href={product.url} class="hdt-product-card-cta">
+    Get Free Quote
+    <span class="hdt-visually-hidden">for {product.name}</span>
+  </a>
+</li>
+
+<style>
+  .hdt-product-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgb(0 0 0 / 6%);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .hdt-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgb(0 0 0 / 12%);
+  }
+
+  .hdt-product-card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .hdt-product-card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .hdt-product-card-title {
+    margin: 0;
+    padding: 16px 18px 6px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1d3557;
+  }
+
+  .hdt-product-card-price {
+    margin: 0;
+    padding: 0 18px 14px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .hdt-product-card-price strong {
+    color: #e63946;
+  }
+
+  .hdt-product-card-cta {
+    margin: auto 18px 18px;
+    padding: 11px 18px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+  }
+
+  .hdt-product-card-cta:hover {
+    box-shadow: 0 6px 16px rgb(230 57 70 / 40%);
+  }
+</style>

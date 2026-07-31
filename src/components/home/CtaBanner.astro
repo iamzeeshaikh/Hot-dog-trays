@@ -1,0 +1,327 @@
+<section class="hdt-cta-banner">
+    <div class="hdt-cta-container">
+        <div class="hdt-cta-badge">Let's Get Started</div>
+        <h2 class="hdt-cta-title">
+            Ready to Order <span class="hdt-cta-title-highlight">Premium Hot Dog Trays?</span>
+        </h2>
+        <p class="hdt-cta-subtitle">
+            Get your free quote today and discover why 50,000+ businesses trust us for their hot dog trays!
+        </p>
+        <div class="hdt-cta-buttons">
+            <a href="tel:5033580443" class="hdt-cta-btn hdt-cta-btn-phone">
+                Call (503) 358-0443
+            </a>
+            <a href="mailto:info@hotdogtrays.com" class="hdt-cta-btn hdt-cta-btn-email">
+                Email Us Now
+            </a>
+        </div>
+        <div class="hdt-cta-features">
+            <div class="hdt-cta-feature">
+                <div class="hdt-cta-feature-icon">✓</div>
+                <span>Free Design Service</span>
+            </div>
+            <div class="hdt-cta-feature">
+                <div class="hdt-cta-feature-icon">⚡</div>
+                <span>7-10 Day Delivery</span>
+            </div>
+            <div class="hdt-cta-feature">
+                <div class="hdt-cta-feature-icon">💰</div>
+                <span>Starting at $0.70/unit</span>
+            </div>
+        </div>
+        <div class="hdt-cta-contact">
+            <p class="hdt-cta-contact-text">Prefer to get a quote online?</p>
+            <div class="hdt-cta-contact-items">
+                <div class="hdt-cta-contact-item">
+                    <a href="/get-quote/">Request Quote Online →</a>
+                </div>
+                <div class="hdt-cta-contact-item">
+                    <a href="/shop/">Browse All Products →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Migrated from the Elementor "CtaBanner" HTML widget. */
+/* Force everything clickable */
+.hdt-cta-banner,
+.hdt-cta-banner * {
+    pointer-events: auto !important;
+}
+
+.hdt-cta-banner a,
+.hdt-cta-banner button {
+    cursor: pointer !important;
+}
+
+/* CTA Banner Section */
+.hdt-cta-banner {
+    background: linear-gradient(135deg, #E63946 0%, #F9C74F 50%, #E63946 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Pattern */
+.hdt-cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(29, 53, 87, 0.1) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Decorative Elements */
+.hdt-cta-banner::after {
+    content: '🌭';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.05;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    z-index: 0;
+}
+
+.hdt-cta-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA Badge */
+.hdt-cta-badge {
+    display: inline-block;
+    background: rgba(29, 53, 87, 0.9);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA Title */
+.hdt-cta-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #1D3557;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.hdt-cta-title-highlight {
+    color: white;
+    text-shadow: 3px 3px 6px rgba(29, 53, 87, 0.5);
+}
+
+/* CTA Subtitle */
+.hdt-cta-subtitle {
+    font-size: 1.4rem;
+    color: #1D3557;
+    margin-bottom: 40px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* CTA Buttons */
+.hdt-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.hdt-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 45px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hdt-cta-btn-phone {
+    background: linear-gradient(135deg, #1D3557, #2A4A6F);
+    color: white;
+}
+
+.hdt-cta-btn-phone:hover {
+    background: linear-gradient(135deg, #2A4A6F, #1D3557);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(29, 53, 87, 0.5);
+    color: white;
+}
+
+.hdt-cta-btn-email {
+    background: white;
+    color: #1D3557;
+    border: 3px solid #1D3557;
+}
+
+.hdt-cta-btn-email:hover {
+    background: #1D3557;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(29, 53, 87, 0.5);
+}
+
+/* Trust Features */
+.hdt-cta-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.hdt-cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    color: #1D3557;
+    font-weight: 700;
+}
+
+.hdt-cta-feature-icon {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Info */
+.hdt-cta-contact {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 3px solid rgba(29, 53, 87, 0.2);
+}
+
+.hdt-cta-contact-text {
+    font-size: 1rem;
+    color: #1D3557;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.hdt-cta-contact-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.hdt-cta-contact-item {
+    font-size: 1.1rem;
+    color: #1D3557;
+    font-weight: 700;
+}
+
+.hdt-cta-contact-item a {
+    color: #1D3557;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.hdt-cta-contact-item a:hover {
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hdt-cta-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hdt-cta-banner {
+        padding: 60px 0;
+    }
+    
+    .hdt-cta-title {
+        font-size: 2.2rem;
+    }
+    
+    .hdt-cta-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hdt-cta-buttons {
+        flex-direction: column;
+    }
+    
+    .hdt-cta-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 18px 35px;
+        font-size: 1.1rem;
+    }
+    
+    .hdt-cta-features {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hdt-cta-title {
+        font-size: 1.8rem;
+    }
+    
+    .hdt-cta-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hdt-cta-contact-items {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Performance Optimization */
+@media (prefers-reduced-motion: reduce) {
+    .hdt-cta-banner::before,
+    .hdt-cta-btn {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* WCAG 2.2 target size: these are standalone action links, not prose. */
+.hdt-cta-contact-item a {
+    display: inline-block;
+    padding: 3px 0;
+}
+</style>

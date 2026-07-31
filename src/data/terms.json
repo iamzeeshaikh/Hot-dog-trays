@@ -1,0 +1,10 @@
+{
+ "products": {
+  "name": "Products",
+  "desc": ""
+ },
+ "uncategorized": {
+  "name": "Uncategorized",
+  "desc": ""
+ }
+}

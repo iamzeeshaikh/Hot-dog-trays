@@ -1,0 +1,11 @@
+---
+export interface Props {
+  data: unknown;
+}
+const { data } = Astro.props;
+
+// `<` is escaped so the payload can never terminate the script element early.
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" is:inline set:html={json} />

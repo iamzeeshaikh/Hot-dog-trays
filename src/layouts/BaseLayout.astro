@@ -1,0 +1,51 @@
+---
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/solid.css';
+import '@fortawesome/fontawesome-free/css/brands.css';
+import '../styles/global.css';
+
+import Seo from '../components/Seo.astro';
+import JsonLd from '../components/JsonLd.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import favicon from '../assets/site/favicon.png';
+
+export interface Props {
+  title: string;
+  description?: string;
+  path: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'product';
+  noindex?: boolean;
+  schema?: unknown;
+}
+
+const { title, description, path, ogImage, ogType, noindex, schema } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+    />
+    {schema && <JsonLd data={schema} />}
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="hdt-skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

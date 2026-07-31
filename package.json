@@ -1,0 +1,38 @@
+{
+  "name": "hotdogtrays-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "node scripts/preview-server.mjs",
+    "check": "astro check",
+    "qa": "node scripts/qa.mjs",
+    "qa:a11y": "node scripts/a11y.mjs",
+    "qa:responsive": "node scripts/responsive.mjs",
+    "qa:forms": "node scripts/test-forms.mjs",
+    "qa:all": "npm run build && npm run check && npm run qa && npm run qa:a11y && npm run qa:responsive",
+    "reports": "node scripts/reports.mjs",
+    "shots": "node scripts/shots.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^11.0.4",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "astro": "^7.1.6",
+    "nodemailer": "^9.0.3",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/nodemailer": "^8.0.1",
+    "playwright": "^1.62.1",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "path-to-regexp": "^6.3.0"
+  }
+}

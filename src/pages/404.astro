@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { products } from '../data/products';
+
+const suggestions = products.slice(0, 6);
+---
+
+<BaseLayout title="Page not found - Hot Dog Trays" path="/404/" noindex>
+  <div class="hdt-404">
+    <p class="hdt-404-code">404</p>
+    <h1 class="hdt-404-title">We couldn't find that page</h1>
+    <p class="hdt-404-text">
+      The page you asked for doesn't exist or has moved. Try one of the links below, or
+      <a href="/get-quote/">request a free quote</a> and we'll point you in the right direction.
+    </p>
+
+    <div class="hdt-404-actions">
+      <a href="/" class="hdt-404-primary">Back to homepage</a>
+      <a href="/shop/" class="hdt-404-secondary">Browse all products</a>
+    </div>
+
+    <h2 class="hdt-404-subtitle">Popular hot dog packaging</h2>
+    <ul class="hdt-404-list">
+      {suggestions.map((p) => <li><a href={p.url}>{p.name}</a></li>)}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .hdt-404 {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 70px 20px 90px;
+    text-align: center;
+  }
+
+  .hdt-404-code {
+    margin: 0;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hdt-404-title {
+    margin: 10px 0 14px;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 900;
+    color: #1d3557;
+  }
+
+  .hdt-404-text {
+    margin: 0 auto 30px;
+    max-width: 560px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .hdt-404-text a {
+    color: #e63946;
+    font-weight: 700;
+  }
+
+  .hdt-404-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 50px;
+  }
+
+  .hdt-404-primary,
+  .hdt-404-secondary {
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  .hdt-404-primary {
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+  }
+
+  .hdt-404-secondary {
+    border: 2px solid #1d3557;
+    color: #1d3557;
+  }
+
+  .hdt-404-subtitle {
+    margin: 0 0 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1d3557;
+  }
+
+  .hdt-404-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hdt-404-list a {
+    color: #1d3557;
+    font-weight: 600;
+  }
+</style>
