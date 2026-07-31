@@ -75,39 +75,8 @@ const tabs = [
 </section>
 
 <script>
-  const list = document.querySelector<HTMLElement>('.hdt-tablist');
-  if (list) {
-    const tabs = Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
-
-    function select(tab: HTMLButtonElement) {
-      tabs.forEach((t) => {
-        const selected = t === tab;
-        t.setAttribute('aria-selected', String(selected));
-        t.tabIndex = selected ? 0 : -1;
-        const panel = document.getElementById(t.getAttribute('aria-controls') ?? '');
-        if (panel) panel.hidden = !selected;
-      });
-    }
-
-    tabs.forEach((tab) => tab.addEventListener('click', () => select(tab)));
-
-    list.addEventListener('keydown', (event) => {
-      const current = tabs.indexOf(document.activeElement as HTMLButtonElement);
-      if (current < 0) return;
-      const map: Record<string, number> = {
-        ArrowRight: current + 1,
-        ArrowLeft: current - 1,
-        Home: 0,
-        End: tabs.length - 1,
-      };
-      const next = map[event.key];
-      if (next === undefined) return;
-      event.preventDefault();
-      const target = tabs[(next + tabs.length) % tabs.length];
-      target.focus();
-      select(target);
-    });
-  }
+  import { wireProductTabs } from '../scripts/product-tabs';
+  wireProductTabs();
 </script>
 
 <style is:global>

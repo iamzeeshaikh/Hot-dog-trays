@@ -146,52 +146,8 @@ const year = new Date().getFullYear();
 </footer>
 
 <script>
-  const form = document.getElementById('newsletterForm') as HTMLFormElement | null;
-  const out = document.getElementById('newsletterMessage');
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!out) return;
-    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      out.textContent = 'Please enter a valid email address.';
-      out.dataset.state = 'error';
-      return;
-    }
-
-    button.disabled = true;
-    out.dataset.state = 'pending';
-    out.textContent = 'Subscribing…';
-
-    try {
-      const res = await fetch('/api/quote/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          kind: 'newsletter',
-          email,
-          company_hp: (form.elements.namedItem('company_hp') as HTMLInputElement).value,
-          pageUrl: window.location.href,
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (res.ok && data.ok) {
-        out.dataset.state = 'success';
-        out.textContent = 'Thanks — you are on the list.';
-        form.reset();
-      } else {
-        out.dataset.state = 'error';
-        out.textContent = data.error || 'Subscription failed. Please try again later.';
-      }
-    } catch {
-      out.dataset.state = 'error';
-      out.textContent = 'Network error. Please try again later.';
-    } finally {
-      button.disabled = false;
-    }
-  });
+  import { wireNewsletter } from '../scripts/newsletter';
+  wireNewsletter();
 </script>
 
 <style>

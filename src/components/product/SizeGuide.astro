@@ -112,11 +112,11 @@
                         <div class="hdt-capacity-label">Max Load</div>
                     </div>
                 </div>
-                <div style="margin-top: 25px; padding: 20px; background: rgba(249, 199, 79, 0.1); border-radius: 10px; border-left: 4px solid #F9C74F;">
-                    <strong style="color: #1D3557; font-size: 1rem; display: block; margin-bottom: 10px;">
-                        <i class="fas fa-check-circle" style="color: #2A9D8F;"></i> Best For:
+                <div class="hdt-best-for">
+                    <strong class="hdt-best-for-label">
+                        <i class="fas fa-check-circle hdt-best-for-icon" aria-hidden="true"></i> Best For:
                     </strong>
-                    <p id="best-for-text" style="color: #666; margin: 0; line-height: 1.6;">
+                    <p id="best-for-text" class="hdt-best-for-text">
                         Standard hot dogs, sausages, bratwurst. Perfect for food trucks, stadiums, and casual dining.
                     </p>
                 </div>
@@ -156,16 +156,16 @@
             </div>
             <div class="hdt-visual-comparison">
                 <div class="hdt-comparison-bars">
-                    <div class="hdt-comparison-bar" style="height: 50%;">
+                    <div class="hdt-comparison-bar hdt-bar-50">
                         <span class="hdt-bar-label">Small (6")</span>
                     </div>
-                    <div class="hdt-comparison-bar" style="height: 67%;">
+                    <div class="hdt-comparison-bar hdt-bar-67">
                         <span class="hdt-bar-label">Medium (8")</span>
                     </div>
-                    <div class="hdt-comparison-bar" style="height: 84%;">
+                    <div class="hdt-comparison-bar hdt-bar-84">
                         <span class="hdt-bar-label">Large (10")</span>
                     </div>
-                    <div class="hdt-comparison-bar" style="height: 100%;">
+                    <div class="hdt-comparison-bar hdt-bar-100">
                         <span class="hdt-bar-label">X-Large (12")</span>
                     </div>
                 </div>
@@ -750,4 +750,36 @@
         transform: translateX(-50%);
     }
 }
+
+/* Migrated from inline style attributes so the site can run a strict
+   Content-Security-Policy without 'unsafe-inline' for styles. */
+.hdt-best-for {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(249, 199, 79, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #F9C74F;
+}
+
+.hdt-best-for-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #1D3557;
+}
+
+.hdt-best-for-icon {
+    color: #2A9D8F;
+}
+
+.hdt-best-for-text {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.hdt-bar-50  { height: 50%; }
+.hdt-bar-67  { height: 67%; }
+.hdt-bar-84  { height: 84%; }
+.hdt-bar-100 { height: 100%; }
 </style>

@@ -74,24 +74,8 @@ const [main, ...rest] = resolved;
 }
 
 <script>
-  const main = document.getElementById('gallery-main-image') as HTMLImageElement | null;
-  const thumbs = document.querySelectorAll<HTMLButtonElement>('.hdt-gallery-thumb');
-
-  thumbs.forEach((thumb) => {
-    thumb.addEventListener('click', () => {
-      if (!main) return;
-      const full = thumb.dataset.full;
-      if (!full) return;
-      // srcset would otherwise keep overriding the swapped src
-      main.removeAttribute('srcset');
-      main.src = full;
-      main.alt = thumb.dataset.alt ?? '';
-      thumbs.forEach((t) => {
-        t.classList.toggle('is-active', t === thumb);
-        t.setAttribute('aria-pressed', String(t === thumb));
-      });
-    });
-  });
+  import { wireProductGallery } from '../scripts/product-gallery';
+  wireProductGallery();
 </script>
 
 <style>

@@ -100,6 +100,12 @@ Manual checks that automation cannot cover:
       accordions
 - [ ] Confirm security headers:
       `curl -sI https://PREVIEW/ | grep -iE 'content-security|x-content-type|referrer|permissions|strict-transport'`
+- [ ] **Open the browser console on a product page and confirm zero CSP
+      violations**, then click through the Description / Specifications / FAQs
+      tabs, a gallery thumbnail and an FAQ accordion. Astro's CSP carries
+      hashes for the scripts it inlines; if a script is ever added inline
+      without going through a `src/scripts/` module, these widgets go silent in
+      production while still working locally.
 - [ ] View source on a product page and confirm no SMTP values appear
 
 Only proceed when all of the above pass.

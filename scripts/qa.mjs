@@ -251,6 +251,45 @@ if (broken.size) {
   pass('all internal links resolve');
 }
 
+// --- 9b. every page carries a CSP that covers its own inline scripts ------
+// Regression guard: Astro inlines small script chunks, so a strict
+// `script-src 'self'` with no hashes silently kills every interactive widget.
+for (const p of pages) {
+  const meta = p.html.match(
+    /<meta http-equiv="content-security-policy" content="([^"]*)"/i,
+  )?.[1];
+  if (!meta) {
+    fail(`CSP meta present: ${p.path}`, 'missing');
+    continue;
+  }
+
+  const inlineScripts = [...p.html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)];
+  const scriptSrc = meta.match(/script-src ([^;]*)/)?.[1] ?? '';
+  const hashCount = (scriptSrc.match(/'sha\d{3}-/g) ?? []).length;
+
+  if (inlineScripts.length > hashCount) {
+    fail(
+      `CSP covers inline scripts: ${p.path}`,
+      `${inlineScripts.length} inline script(s), ${hashCount} hash(es)`,
+    );
+  } else {
+    pass(`CSP covers inline scripts: ${p.path}`, `${inlineScripts.length} inline, ${hashCount} hashed`);
+  }
+
+  if (/'unsafe-inline'/.test(scriptSrc)) {
+    fail(`CSP script-src has no unsafe-inline: ${p.path}`, scriptSrc.slice(0, 60));
+  }
+}
+
+// inline style attributes cannot be hashed; they need 'unsafe-inline'
+for (const p of pages) {
+  const styleAttrs = (p.body.match(/\sstyle="/g) ?? []).length;
+  if (styleAttrs > 0) {
+    fail(`no inline style attributes: ${p.path}`, `${styleAttrs} found`);
+  }
+}
+pass('no inline style attributes anywhere (strict style-src)');
+
 // --- 10. no secrets or private exports in the build ----------------------
 const allFiles = await walk(ROOT);
 const leaked = allFiles.filter((f) => /\.(sql|csv)$/i.test(f) || /\.xml$/i.test(f) && !f.endsWith('sitemap.xml'));

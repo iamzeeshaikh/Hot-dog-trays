@@ -14,6 +14,20 @@ import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+/**
+ * The production security headers from vercel.json are applied here too, so the
+ * preview fails the same way production would if, say, the CSP blocks a script.
+ */
+const vercelConfig = JSON.parse(
+  await readFile(fileURLToPath(new URL('../vercel.json', import.meta.url)), 'utf8'),
+);
+const GLOBAL_HEADERS = Object.fromEntries(
+  (vercelConfig.headers.find((h) => h.source === '/(.*)')?.headers ?? []).map((h) => [
+    h.key,
+    h.value,
+  ]),
+);
+
 const ROOT = fileURLToPath(new URL('../dist/client', import.meta.url));
 const PORT = Number(process.argv[2] ?? 4321);
 
@@ -95,8 +109,8 @@ const server = createServer(async (req, res) => {
     if (!body) continue;
     res
       .writeHead(200, {
+        ...GLOBAL_HEADERS,
         'Content-Type': MIME[extname(candidate)] ?? 'application/octet-stream',
-        'X-Content-Type-Options': 'nosniff',
       })
       .end(body);
     return;

@@ -212,21 +212,8 @@ import imgPaperFoodTrays from '../../assets/products/Paper-Food-Trays.jpg';
 </section>
 
 <script>
-  // Each "select" button simply checks the radio inside its own card; the rest
-  // of the original handler only wrote to the console.
-  document
-    .querySelectorAll<HTMLButtonElement>('.hdt-material-select-btn')
-    .forEach((button) => {
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        const input = button
-          .closest('.hdt-material-card')
-          ?.querySelector<HTMLInputElement>('.hdt-material-input');
-        if (!input) return;
-        input.checked = true;
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-      });
-    });
+  import { wireMaterialSelect } from '../../scripts/material-select';
+  wireMaterialSelect();
 </script>
 
 <style>

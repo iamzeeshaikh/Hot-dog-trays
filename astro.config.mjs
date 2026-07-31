@@ -25,6 +25,31 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   /*
+   * Astro inlines small script and style chunks, which a `script-src 'self'`
+   * policy would block. Letting Astro own the CSP means it emits SHA-256
+   * hashes for exactly what it inlined, so the policy stays strict with no
+   * 'unsafe-inline'. vercel.json keeps the header-only directives (CSP in a
+   * <meta> tag cannot express frame-ancestors).
+   */
+  security: {
+    csp: {
+      algorithm: 'SHA-256',
+      directives: [
+        "default-src 'self'",
+        "base-uri 'self'",
+        "object-src 'none'",
+        "form-action 'self'",
+        "img-src 'self' data:",
+        "font-src 'self'",
+        "connect-src 'self'",
+        "manifest-src 'self'",
+        'upgrade-insecure-requests',
+      ],
+      scriptDirective: { resources: ["'self'"] },
+      styleDirective: { resources: ["'self'"] },
+    },
+  },
+  /*
    * WooCommerce checkout URLs that have no equivalent in the quotation model.
    * The quote page is the genuine replacement for both, so these are the only
    * 301s the migration introduces; every other old URL is unchanged and 200s.

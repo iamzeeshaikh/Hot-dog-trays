@@ -45,14 +45,8 @@ const { faqs, idPrefix } = Astro.props;
 </div>
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>('.hdt-accordion-trigger').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      const panel = document.getElementById(trigger.getAttribute('aria-controls') ?? '');
-      const open = trigger.getAttribute('aria-expanded') === 'true';
-      trigger.setAttribute('aria-expanded', String(!open));
-      if (panel) panel.hidden = open;
-    });
-  });
+  import { wireAccordion } from '../scripts/accordion';
+  wireAccordion();
 </script>
 
 <style>
