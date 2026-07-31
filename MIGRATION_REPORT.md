@@ -141,7 +141,12 @@ destinations are preserved. One H1 per page, verified across all 26 pages.
 | `/cart/` | `/get-quote/` | 301 | No cart in the quotation model; the quote page is the equivalent conversion action |
 | `/checkout/` | `/get-quote/` | 301 | Same; the live site already 302'd this to `/cart/`, so the chain is now shorter |
 
-Both verified as single hops landing on a 200.
+Both verified as single hops landing on a 200, **on the deployed site** — not
+just locally. They are declared in `vercel.json`, not in Astro's `redirects`
+config: the Vercel adapter compiles `'/cart'` to the route `^/cart$`, which
+never matches `/cart/`, the trailing-slash form the old site actually served.
+`vercel.json` also pins `statusCode: 301`, because Vercel's `permanent: true`
+emits 308.
 
 ### Gone (1)
 
@@ -154,7 +159,10 @@ Both verified as single hops landing on a 200.
 - `trailingSlash: 'always'`; `/about` → 308 → `/about/`.
 - Unknown URLs return a genuine 404 — never redirected to the homepage.
 - WordPress traps (`/wp-admin/`, `/wp-login.php`, `/wp-json/`, `/feed/`, date
-  archives) simply don't exist and 404 naturally. None are in the sitemap.
+  archives) simply don't exist. On Vercel the edge firewall answers the
+  well-known WordPress probe paths with 403 before the request reaches the app;
+  everything else 404s. Both are non-indexable and neither redirects to the
+  homepage. None are in the sitemap.
 - `www.hotdogtrays.com` → `hotdogtrays.com` 301 via `vercel.json`.
 - HTTP → HTTPS and HSTS handled by Vercel + `Strict-Transport-Security`.
 - No redirect chains and no loops (verified by `npm run qa`).
@@ -327,7 +335,13 @@ reversible.
 
 14. **Accessibility fixes** beyond the original — detailed in §9.
 
-15. **CSP made compatible with Astro's script inlining.** Astro inlines small
+15. **Redirects moved from `astro.config.mjs` to `vercel.json`.** The adapter
+    compiled them to `^/cart$`, so `/cart/` — the URL the old site actually
+    served — fell through to a 404. This only surfaced on the deployed site,
+    because the preview server had been restating the redirect map by hand
+    instead of reading it from `vercel.json`. It now reads the real config.
+
+16. **CSP made compatible with Astro's script inlining.** Astro inlines small
     script chunks, so the original header policy of `script-src 'self'` would
     have silently disabled the product tabs, gallery, FAQ accordions, material
     selector and newsletter *in production only* — everything worked locally

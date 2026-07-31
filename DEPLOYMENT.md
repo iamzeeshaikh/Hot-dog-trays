@@ -69,8 +69,18 @@ Deploy to a **preview URL** — do not attach the domain yet:
 vercel
 ```
 
-Vercel picks up `vercel.json` (trailing slashes, www redirect, security headers)
-and `astro.config.mjs` (the `/cart/` and `/checkout/` 301s).
+Vercel picks up `vercel.json` — trailing slashes, the www redirect, the retired
+`/cart/` and `/checkout/` 301s, and the security headers.
+
+> Redirects belong in `vercel.json`, **not** in Astro's `redirects` config: the
+> adapter compiles `'/cart'` to `^/cart$`, which never matches the real
+> trailing-slash URL. Verify redirects against a deployment, never only locally.
+
+> If the deployment URL asks you to sign in, Deployment Protection is on for
+> this project. Either sign in with the Vercel account that owns it, or turn it
+> off under Settings → Deployment Protection while testing. Vercel keeps
+> `x-robots-tag: noindex` on `.vercel.app` URLs either way, so an accessible
+> preview cannot be indexed.
 
 > Note: Vercel builds on Node 24. If your local Node is 25 the build still
 > works, but set the Node version in Project Settings → General to 24 to match.

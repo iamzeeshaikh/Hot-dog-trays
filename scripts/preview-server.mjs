@@ -31,11 +31,16 @@ const GLOBAL_HEADERS = Object.fromEntries(
 const ROOT = fileURLToPath(new URL('../dist/client', import.meta.url));
 const PORT = Number(process.argv[2] ?? 4321);
 
-/** Mirrors the `redirects` block in astro.config.mjs. */
-const REDIRECTS = new Map([
-  ['/cart/', '/get-quote/'],
-  ['/checkout/', '/get-quote/'],
-]);
+/**
+ * Redirects are read from vercel.json rather than restated here. A hardcoded
+ * copy previously hid a real bug: the rules did not match the trailing-slash
+ * URLs, which only showed up once deployed.
+ */
+const REDIRECTS = new Map(
+  (vercelConfig.redirects ?? [])
+    .filter((r) => !r.has && !r.destination.startsWith('http'))
+    .map((r) => [r.source, r.destination]),
+);
 
 /** Mirrors src/pages/my-account/index.astro, which responds 410. */
 const GONE = new Set(['/my-account/']);

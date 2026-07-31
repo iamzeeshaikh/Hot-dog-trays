@@ -382,10 +382,15 @@ if (serverUp) {
   }
 
   // unknown URLs are genuine 404s, never redirected to the homepage
+  // Vercel's edge firewall answers well-known WordPress probe paths with 403
+  // before the request reaches the app. Either is acceptable: both are
+  // non-indexable and neither redirects to the homepage.
+  const wpProbe = /^\/(wp-|feed|xmlrpc)/;
   for (const u of ['/no-such-page/', '/wp-admin/', '/wp-login.php', '/wp-json/', '/feed/', '/2026/01/']) {
     const r = await head(BASE + u);
-    if (r.status === 404) pass(`404: ${u}`);
-    else fail(`404: ${u}`, `status ${r.status} -> ${r.location ?? ''}`);
+    const ok = wpProbe.test(u) ? [403, 404, 410].includes(r.status) : r.status === 404;
+    if (ok) pass(`not found: ${u}`, `status ${r.status}`);
+    else fail(`not found: ${u}`, `status ${r.status} -> ${r.location ?? ''}`);
   }
 
   // trailing-slash normalisation

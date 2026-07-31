@@ -25,6 +25,12 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   /*
+   * The retired WooCommerce URLs (/cart/, /checkout/) are redirected in
+   * vercel.json rather than here: the adapter compiles Astro's `redirects`
+   * to `^/cart$`, which never matches the trailing-slash URL the old site
+   * actually served.
+   */
+  /*
    * Astro inlines small script and style chunks, which a `script-src 'self'`
    * policy would block. Letting Astro own the CSP means it emits SHA-256
    * hashes for exactly what it inlined, so the policy stays strict with no
@@ -48,15 +54,6 @@ export default defineConfig({
       scriptDirective: { resources: ["'self'"] },
       styleDirective: { resources: ["'self'"] },
     },
-  },
-  /*
-   * WooCommerce checkout URLs that have no equivalent in the quotation model.
-   * The quote page is the genuine replacement for both, so these are the only
-   * 301s the migration introduces; every other old URL is unchanged and 200s.
-   */
-  redirects: {
-    '/cart': { status: 301, destination: '/get-quote/' },
-    '/checkout': { status: 301, destination: '/get-quote/' },
   },
   vite: {
     build: { assetsInlineLimit: 1024 },

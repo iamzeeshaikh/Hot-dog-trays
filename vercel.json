@@ -3,6 +3,26 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/cart",
+      "destination": "/get-quote/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cart/",
+      "destination": "/get-quote/",
+      "statusCode": 301
+    },
+    {
+      "source": "/checkout",
+      "destination": "/get-quote/",
+      "statusCode": 301
+    },
+    {
+      "source": "/checkout/",
+      "destination": "/get-quote/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -11,7 +31,7 @@
         }
       ],
       "destination": "https://hotdogtrays.com/:path*",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "headers": [
