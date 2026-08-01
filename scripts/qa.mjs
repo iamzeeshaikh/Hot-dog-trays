@@ -40,6 +40,7 @@ function pathOf(file) {
   const rel = relative(ROOT, file);
   if (rel === 'index.html') return '/';
   if (rel === '404.html') return '/404/';
+  if (rel === '410.html') return '/410/';
   return '/' + rel.replace(/index\.html$/, '');
 }
 
@@ -54,6 +55,8 @@ const files = (await walk(ROOT)).filter((f) => f.endsWith('.html'));
 const pages = [];
 
 for (const file of files) {
+  // static error documents are not pages: no canonical, schema or CSP
+  if (/(?:^|\/)(?:404|410)\.html$/.test(file)) continue;
   const html = await readFile(file, 'utf8');
   pages.push({ file, path: pathOf(file), html, body: strip(html) });
 }

@@ -49,13 +49,12 @@ const GONE = new Set(['/my-account/']);
  * Mirrors the spam-parameter rewrite in vercel.json: a request carrying
  * `f=<six or more digits>` is served the 410 page instead of the real route.
  */
-const SPAM_PARAM = (vercelConfig.rewrites ?? []).find(
-  (r) => r.destination === '/api/gone',
-);
-const SPAM_KEY = SPAM_PARAM?.has?.[0]?.key;
-const SPAM_VALUE = SPAM_PARAM
-  ? new RegExp(`^${SPAM_PARAM.has[0].value.replace(/\(\?<\w+>/, '(')}$`)
-  : null;
+const buildRoutes = JSON.parse(
+  await readFile(fileURLToPath(new URL('../.vercel/output/config.json', import.meta.url)), 'utf8'),
+).routes;
+const SPAM_ROUTE = buildRoutes.find((r) => r.has?.[0]?.key === 'f' && r.status === 410);
+const SPAM_KEY = SPAM_ROUTE?.has?.[0]?.key ?? null;
+const SPAM_VALUE = SPAM_ROUTE ? new RegExp(`^${SPAM_ROUTE.has[0].value}$`) : null;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',

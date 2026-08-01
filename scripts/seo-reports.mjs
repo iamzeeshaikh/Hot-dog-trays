@@ -34,7 +34,7 @@ async function walk(dir) {
 const pages = [];
 for (const f of await walk(ROOT)) {
   const rel = relative(ROOT, f);
-  if (rel === '404.html') continue;
+  if (rel === '404.html' || rel === '410.html') continue;
   const html = await readFile(f, 'utf8');
   const body = strip(html);
   const g = (re) => decode(html.match(re)?.[1] ?? '');

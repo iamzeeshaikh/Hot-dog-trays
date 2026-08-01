@@ -61,7 +61,7 @@ async function pagesFromBuild() {
   const out = [];
   for (const f of files) {
     const rel = relative(DIST, f);
-    if (rel === '404.html') continue;
+    if (rel === '404.html' || rel === '410.html') continue;
     const path = rel === 'index.html' ? '/' : '/' + rel.replace(/index\.html$/, '');
     out.push({ path, html: await readFile(f, 'utf8') });
   }

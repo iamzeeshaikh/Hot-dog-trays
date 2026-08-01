@@ -105,18 +105,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "query",
-          "key": "f",
-          "value": "(?<spam>\\d{6,})"
-        }
-      ],
-      "destination": "/api/gone"
-    }
   ]
 }

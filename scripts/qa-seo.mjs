@@ -33,7 +33,7 @@ const text = (h) => h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 const pages = [];
 for (const f of await walk(ROOT)) {
   const rel = relative(ROOT, f);
-  if (rel === '404.html') continue;
+  if (rel === '404.html' || rel === '410.html') continue;
   const html = await readFile(f, 'utf8');
   const path = rel === 'index.html' ? '/' : '/' + rel.replace(/index\.html$/, '');
   pages.push({ path, html, body: strip(html) });

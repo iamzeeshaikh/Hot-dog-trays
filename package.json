@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/postbuild-routes.mjs",
     "preview": "node scripts/preview-server.mjs",
     "check": "astro check",
     "qa": "node scripts/qa.mjs",
