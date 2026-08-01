@@ -1,0 +1,350 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import ProductInquiryForm from '../components/ProductInquiryForm.astro';
+import { getProduct } from '../data/products';
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
+import type { Guide } from '../data/guides/types';
+
+/**
+ * Shared shell for the supporting guide pages.
+ *
+ * Only the chrome is shared. Every guide supplies its own intent, section
+ * sequence, table, lists, FAQs and link targets, so the pages do not read as
+ * one template with the nouns changed.
+ */
+export interface Props {
+  guide: Guide;
+}
+const { guide } = Astro.props;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Shop', url: '/shop/' },
+  { name: guide.crumb, url: guide.url },
+];
+
+const related = guide.relatedProducts
+  .map((slug) => getProduct(slug))
+  .filter((p): p is NonNullable<ReturnType<typeof getProduct>> => Boolean(p));
+
+const schema = graph([
+  organization(),
+  website(),
+  webPage(guide.url, guide.title, guide.description),
+  breadcrumbs(guide.url, crumbs),
+  faqPage(guide.url, guide.faqs.map((f) => ({ question: f.question, answer: `<p>${f.answer}</p>` }))),
+]);
+---
+
+<BaseLayout
+  title={guide.title}
+  description={guide.description}
+  path={guide.url}
+  ogType="article"
+  schema={schema}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <article class="hdt-guide">
+    <header class="hdt-guide-head">
+      <h1>{guide.h1}</h1>
+      <p class="hdt-guide-standfirst">{guide.standfirst}</p>
+    </header>
+
+    <div class="hdt-guide-body">
+      <div class="hdt-guide-main">
+        {guide.intro.map((p) => <p class="hdt-guide-lede" set:html={p} />)}
+
+        {
+          guide.sections.map((section) => (
+            <section class="hdt-guide-section">
+              <h2>{section.heading}</h2>
+              {section.body.map((p) => <p set:html={p} />)}
+
+              {section.subsections?.map((sub) => (
+                <>
+                  <h3>{sub.heading}</h3>
+                  {sub.body.map((p) => <p set:html={p} />)}
+                </>
+              ))}
+
+              {section.bullets && (
+                <>
+                  {section.bullets.intro && <p set:html={section.bullets.intro} />}
+                  <ul class="hdt-guide-list">
+                    {section.bullets.items.map((i) => <li set:html={i} />)}
+                  </ul>
+                </>
+              )}
+
+              {section.steps && (
+                <>
+                  {section.steps.intro && <p set:html={section.steps.intro} />}
+                  <ol class="hdt-guide-steps">
+                    {section.steps.items.map((i) => <li set:html={i} />)}
+                  </ol>
+                </>
+              )}
+
+              {section.table && (
+                <figure class="hdt-guide-figure">
+                  <div class="hdt-guide-table-scroll">
+                    <table class="hdt-guide-table">
+                      <caption class="hdt-visually-hidden">{section.table.caption}</caption>
+                      <thead>
+                        <tr>{section.table.headers.map((h) => <th scope="col">{h}</th>)}</tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row) => (
+                          <tr>
+                            {row.map((cell, i) =>
+                              i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {section.table.note && (
+                    <figcaption class="hdt-guide-note">{section.table.note}</figcaption>
+                  )}
+                </figure>
+              )}
+
+              {section.link && (
+                <p class="hdt-guide-pointer">
+                  <Fragment set:html={section.link.lead} />{' '}
+                  <a href={section.link.href}>{section.link.anchor}</a>.
+                </p>
+              )}
+            </section>
+          ))
+        }
+
+        <section class="hdt-guide-section" id="faqs">
+          <h2>Frequently asked questions</h2>
+          <FaqAccordion
+            faqs={guide.faqs.map((f) => ({ question: f.question, answer: `<p>${f.answer}</p>` }))}
+            idPrefix="guide-faq"
+          />
+        </section>
+      </div>
+
+      <aside class="hdt-guide-aside" id="quote">
+        <ProductInquiryForm productName={guide.quoteProduct ?? guide.h1} idPrefix="guide-quote" />
+      </aside>
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="hdt-guide-related" aria-labelledby="guide-related-heading">
+        <div class="hdt-guide-related-inner">
+          <h2 id="guide-related-heading">Products covered in this guide</h2>
+          <ProductGrid products={related} label="Related products" />
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style is:global>
+  .hdt-guide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px 20px;
+  }
+
+  .hdt-guide-head {
+    max-width: 780px;
+    margin: 0 0 34px;
+  }
+
+  .hdt-guide-head h1 {
+    margin: 10px 0 0;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: #1d3557;
+    line-height: 1.15;
+  }
+
+  .hdt-guide-head h1::after {
+    content: '';
+    display: block;
+    width: 74px;
+    height: 4px;
+    margin-top: 16px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #f9c74f, #e63946);
+  }
+
+  .hdt-guide-standfirst {
+    margin: 18px 0 0;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: #4a5568;
+  }
+
+  .hdt-guide-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+    gap: 46px;
+    align-items: start;
+  }
+
+  .hdt-guide-main {
+    max-width: 78ch;
+    color: #333;
+    line-height: 1.78;
+  }
+
+  .hdt-guide-lede {
+    font-size: 1.03rem;
+    color: #3d4655;
+  }
+
+  .hdt-guide-section {
+    margin-top: 38px;
+  }
+
+  .hdt-guide-main h2 {
+    margin: 0 0 14px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1d3557;
+  }
+
+  .hdt-guide-main h3 {
+    margin: 26px 0 10px;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #1d3557;
+  }
+
+  .hdt-guide-main p {
+    margin: 0 0 16px;
+  }
+
+  .hdt-guide-list,
+  .hdt-guide-steps {
+    margin: 0 0 18px;
+    padding-left: 22px;
+  }
+
+  .hdt-guide-list li,
+  .hdt-guide-steps li {
+    margin-bottom: 9px;
+  }
+
+  .hdt-guide-list li::marker {
+    color: #e63946;
+  }
+
+  .hdt-guide-steps li::marker {
+    color: #e63946;
+    font-weight: 800;
+  }
+
+  .hdt-guide-pointer {
+    padding: 14px 18px;
+    border-left: 4px solid #f9c74f;
+    background: #fffaf0;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .hdt-guide-pointer a {
+    color: #c92a35;
+    font-weight: 700;
+  }
+
+  .hdt-guide-figure {
+    margin: 0 0 20px;
+  }
+
+  .hdt-guide-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+  }
+
+  .hdt-guide-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 620px;
+    font-size: 0.92rem;
+  }
+
+  .hdt-guide-table th,
+  .hdt-guide-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .hdt-guide-table thead th {
+    background: #1d3557;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: none;
+  }
+
+  .hdt-guide-table tbody th {
+    background: #fff9ec;
+    font-weight: 700;
+    color: #1d3557;
+  }
+
+  .hdt-guide-table tbody tr:last-child th,
+  .hdt-guide-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .hdt-guide-note {
+    margin-top: 9px;
+    font-size: 0.82rem;
+    color: #66707f;
+  }
+
+  .hdt-guide-aside {
+    position: sticky;
+    top: 100px;
+  }
+
+  .hdt-guide-related {
+    padding: 56px 20px 76px;
+    background: #fafafa;
+    margin-top: 46px;
+  }
+
+  .hdt-guide-related-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hdt-guide-related-inner h2 {
+    margin: 0 0 28px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 900;
+    color: #1d3557;
+    text-align: center;
+  }
+
+  @media (max-width: 1100px) {
+    .hdt-guide-body {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 34px;
+    }
+
+    .hdt-guide-aside {
+      position: static;
+      max-width: 620px;
+    }
+  }
+</style>

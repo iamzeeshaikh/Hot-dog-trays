@@ -45,6 +45,18 @@ const REDIRECTS = new Map(
 /** Mirrors src/pages/my-account/index.astro, which responds 410. */
 const GONE = new Set(['/my-account/']);
 
+/**
+ * Mirrors the spam-parameter rewrite in vercel.json: a request carrying
+ * `f=<six or more digits>` is served the 410 page instead of the real route.
+ */
+const SPAM_PARAM = (vercelConfig.rewrites ?? []).find(
+  (r) => r.destination === '/api/gone',
+);
+const SPAM_KEY = SPAM_PARAM?.has?.[0]?.key;
+const SPAM_VALUE = SPAM_PARAM
+  ? new RegExp(`^${SPAM_PARAM.has[0].value.replace(/\(\?<\w+>/, '(')}$`)
+  : null;
+
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -90,6 +102,20 @@ const server = createServer(async (req, res) => {
   if (!hasExtension && !pathname.endsWith('/')) {
     res.writeHead(308, { Location: pathname + '/' + url.search }).end();
     return;
+  }
+
+  // confirmed spam parameter -> 410, before any routing
+  if (SPAM_KEY && SPAM_VALUE) {
+    const value = url.searchParams.get(SPAM_KEY);
+    if (value !== null && SPAM_VALUE.test(value)) {
+      res
+        .writeHead(410, {
+          'Content-Type': MIME['.html'],
+          'X-Robots-Tag': 'noindex, nofollow',
+        })
+        .end('<!doctype html><title>410 Gone</title><h1>This page is gone</h1>');
+      return;
+    }
   }
 
   if (REDIRECTS.has(pathname)) {

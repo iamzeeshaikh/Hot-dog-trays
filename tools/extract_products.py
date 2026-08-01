@@ -98,9 +98,12 @@ def clean_html(raw: str, autop: bool = True) -> str:
         for tag in ('li', 'td', 'th'):
             s = re.sub(rf'(<{tag}\b[^>]*>)\s*<p>(.*?)</p>\s*(</{tag}>)',
                        r'\1\2\3', s, flags=re.S | re.I)
-    # normalise internal links to root-relative with trailing slash
+    # normalise internal links to root-relative with trailing slash, then
+    # point any consolidated destination straight at its replacement
     s = re.sub(r'href="https?://(?:www\.)?hotdogtrays\.com(/[^"]*?)"',
                lambda m: 'href="' + ensure_slash(m.group(1)) + '"', s)
+    for old_url, new_url in LINK_CONSOLIDATION.items():
+        s = s.replace(f'href="{old_url}"', f'href="{new_url}"')
     # drop empty inline/blocks left behind
     for _ in range(4):
         s = re.sub(r'<(p|strong|em|li|h[1-6])>\s*</\1>', '', s, flags=re.I)
@@ -112,6 +115,15 @@ def clean_html(raw: str, autop: bool = True) -> str:
     s = re.sub(r'\s*\n\s*\n+', '\n', s)
     s = re.sub(r'[ \t]{2,}', ' ', s)
     return s.strip()
+
+
+# Destinations consolidated during the SEO cleanup. Internal links are
+# rewritten to the final URL so none of them travels through a redirect.
+LINK_CONSOLIDATION = {
+    '/product-category/products/': '/shop/',
+    '/product-category/products': '/shop/',
+    '/returns-policy/': '/terms-conditions/',
+}
 
 
 def ensure_slash(path: str) -> str:

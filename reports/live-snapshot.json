@@ -343,12 +343,17 @@
   [
    "/cart/",
    "/get-quote/",
-   "WooCommerce cart has no equivalent; the quote page is the conversion action"
+   "WooCommerce cart retired in the quotation model"
   ],
   [
    "/checkout/",
    "/get-quote/",
-   "WooCommerce checkout has no equivalent; the quote page is the conversion action"
+   "WooCommerce checkout retired in the quotation model"
+  ],
+  [
+   "/product-category/products/",
+   "/shop/",
+   "Duplicate product archive consolidated into the shop hub"
   ]
  ]
 }

@@ -1,0 +1,19 @@
+---
+import type { GetStaticPaths } from 'astro';
+import GuideLayout from '../layouts/GuideLayout.astro';
+import { guides, type Guide } from '../data/guides';
+
+/**
+ * Root-level supporting guides. Only the slugs listed in the guide data are
+ * generated, so this route cannot swallow any other page.
+ */
+export const getStaticPaths = (() =>
+  guides.map((guide) => ({ params: { guide: guide.slug }, props: { guide } }))) satisfies GetStaticPaths;
+
+interface Props {
+  guide: Guide;
+}
+const { guide } = Astro.props;
+---
+
+<GuideLayout guide={guide} />

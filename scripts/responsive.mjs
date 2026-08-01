@@ -19,6 +19,9 @@ const PAGES = [
   '/faq/',
   '/get-quote/',
   '/privacy-policy/',
+  '/hot-dog-tray-sizes/',
+  '/hot-dog-trays-in-bulk/',
+  '/paper-vs-plastic-hot-dog-trays/',
 ];
 
 const failures = [];

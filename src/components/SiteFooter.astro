@@ -1,5 +1,6 @@
 ---
 import { products } from '../data/products';
+import { guides } from '../data/guides';
 import { CONTACT } from '../data/site';
 
 /**
@@ -125,6 +126,13 @@ const year = new Date().getFullYear();
         </form>
         <p class="hdt-newsletter-message" id="newsletterMessage" role="status" aria-live="polite"></p>
       </div>
+    </div>
+
+    <div class="hdt-footer-guides">
+      <h3 id="footer-guides">Buying guides</h3>
+      <nav class="hdt-footer-guide-links" aria-labelledby="footer-guides">
+        {guides.map((g) => <a href={g.url} class="hdt-footer-link">{g.crumb}</a>)}
+      </nav>
     </div>
 
     <div class="hdt-footer-bottom">
@@ -512,4 +520,24 @@ const year = new Date().getFullYear();
 .hdt-newsletter-message[data-state="success"] { color: #7bd389; }
 .hdt-newsletter-message[data-state="error"]   { color: #ffb3b8; }
 .hdt-newsletter-message[data-state="pending"] { opacity: 0.8; }
+
+/* --- guides row ----------------------------------------------------------- */
+.hdt-footer-guides {
+    padding: 26px 0 6px;
+    border-top: 1px solid rgba(241, 250, 238, 0.12);
+}
+
+.hdt-footer-guides h3 {
+    margin-bottom: 14px;
+}
+
+.hdt-footer-guide-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+}
+
+.hdt-footer-guide-links .hdt-footer-link {
+    padding: 4px 0;
+}
 </style>

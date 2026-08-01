@@ -23,6 +23,16 @@
       "statusCode": 301
     },
     {
+      "source": "/product-category/products",
+      "destination": "/shop/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product-category/products/",
+      "destination": "/shop/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -94,6 +104,19 @@
           "value": "public, max-age=3600"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "f",
+          "value": "(?<spam>\\d{6,})"
+        }
+      ],
+      "destination": "/api/gone"
     }
   ]
 }

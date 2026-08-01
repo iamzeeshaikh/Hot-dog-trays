@@ -6,10 +6,11 @@ import { productsAlphabetical } from '../data/products';
 import { graph, organization, website, breadcrumbs, collectionPage } from '../lib/schema';
 
 const path = '/shop/';
-const title = 'Shop - Hot Dog Trays';
-// No Yoast description existed for the shop page; created from visible content.
+// Metadata inherited from /product-category/products/, the stronger of the two
+// archives WooCommerce produced, which is now 301'd here.
+const title = 'Custom Hot Dog Trays | Wholesale Paper, Cardboard & Kraft';
 const description =
-  'Browse all 14 custom hot dog trays, holders, plates and boats available for wholesale order with free design.';
+  'Shop wholesale hot dog trays in paper, cardboard, kraft and plastic. Custom sizes, custom printing and bulk pricing.';
 
 const crumbs = [
   { name: 'Home', url: '/' },

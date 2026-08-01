@@ -6,6 +6,7 @@ import QuoteBlock from '../components/QuoteBlock.astro';
 import Hero from '../components/home/Hero.astro';
 import TrustBar from '../components/home/TrustBar.astro';
 import FeaturedProducts from '../components/home/FeaturedProducts.astro';
+import ChooseFormat from '../components/home/ChooseFormat.astro';
 import Categories from '../components/home/Categories.astro';
 import WhyChoose from '../components/home/WhyChoose.astro';
 import HowItWorks from '../components/home/HowItWorks.astro';
@@ -19,10 +20,15 @@ import { homeFaqs } from '../data/page-faqs';
 import ogImage from '../assets/products/Hot-dog-serving-tray-wholesale.jpg';
 
 const path = '/';
-// Yoast metadata from the WordPress export, preserved verbatim.
-const title = 'Custom Hot Dog Food Trays & Holders | Hot Dog Trays';
+/*
+ * Title keeps the Yoast wording that already ranks for the head term and adds
+ * the wholesale intent the query cluster shows. The old description ended on an
+ * unsupported free-shipping claim, so it was rewritten around what the business
+ * genuinely offers.
+ */
+const title = 'Custom Hot Dog Trays | Wholesale & Printed | Hot Dog Trays';
 const description =
-  'Order premium hot dog trays and disposable food packaging for food vendors and events. Bulk quantities available! Free Shipping!';
+  'Custom hot dog trays in wholesale quantities. Paper, kraft, cardboard and plastic, printed with your branding in your own sizes.';
 
 const schema = graph([
   organization(),
@@ -43,6 +49,7 @@ const schema = graph([
   <Hero />
   <TrustBar />
   <FeaturedProducts />
+  <ChooseFormat />
   <Categories />
   <WhyChoose />
   <HowItWorks />

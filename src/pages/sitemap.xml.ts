@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { products } from '../data/products';
-import { SITE_URL, CATEGORY } from '../data/site';
+import { guides } from '../data/guides';
+import { SITE_URL } from '../data/site';
 
 /**
  * Hand-built sitemap so the file lives at exactly /sitemap.xml, the path the
@@ -12,7 +13,6 @@ import { SITE_URL, CATEGORY } from '../data/site';
 const staticPaths = [
   '/',
   '/shop/',
-  CATEGORY.url,
   '/about/',
   '/contact/',
   '/faq/',
@@ -23,7 +23,7 @@ const staticPaths = [
 ];
 
 export const GET: APIRoute = () => {
-  const urls = [...staticPaths, ...products.map((p) => p.url)];
+  const urls = [...staticPaths, ...products.map((p) => p.url), ...guides.map((g) => g.url)];
   const unique = [...new Set(urls)];
 
   const body = [

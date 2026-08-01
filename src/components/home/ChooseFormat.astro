@@ -1,0 +1,248 @@
+---
+/**
+ * Homepage product-type comparison.
+ *
+ * Added during the SEO expansion to give the broad "custom hot dog trays"
+ * cluster something genuinely useful to land on, and to carry prominent links
+ * to the products and guides that were previously reachable only through the
+ * nav. Each row links to one product; the notes underneath link to the guides.
+ */
+const formats = [
+  {
+    name: 'Paper hot dog trays',
+    href: '/product/paper-hot-dog-trays/',
+    holds: 'One hot dog, light toppings',
+    strength: 'Everyday counter service',
+    watch: 'Add a barrier for saucy menus',
+  },
+  {
+    name: 'Paper hot dog boats',
+    href: '/product/hot-dog-boats-paper/',
+    holds: 'A single long item, cradled',
+    strength: 'Fast service, eating standing up',
+    watch: 'Less suited to combo portions',
+  },
+  {
+    name: 'Cardboard hot dog holders',
+    href: '/product/cardboard-hot-dog-holders/',
+    holds: 'One hot dog in a close pocket',
+    strength: 'Handheld eating, minimal spill',
+    watch: 'Fixed shape suits one item only',
+  },
+  {
+    name: 'Plastic hot dog trays',
+    href: '/product/plastic-hot-dog-trays/',
+    holds: 'Wet or heavily loaded portions',
+    strength: 'Long journeys, wet menus',
+    watch: 'Limited printing, bulkier storage',
+  },
+  {
+    name: 'Kraft hot dog trays',
+    href: '/product/kraft-hot-dog-tray/',
+    holds: 'One hot dog, natural look',
+    strength: 'Understated branding',
+    watch: 'Colours shift on brown board',
+  },
+];
+---
+
+<section class="hdt-choose" aria-labelledby="choose-format-heading">
+  <div class="hdt-choose-container">
+    <div class="hdt-choose-header">
+      <span class="hdt-choose-badge">Choose a format</span>
+      <h2 id="choose-format-heading">Which hot dog tray suits your service?</h2>
+      <p class="hdt-choose-sub">
+        Every format below is made to order in your own sizes and printing. The differences that
+        matter are how the food sits, how far it travels, and how the board copes with sauce.
+      </p>
+    </div>
+
+    <div class="hdt-choose-scroll">
+      <table class="hdt-choose-table">
+        <caption class="hdt-visually-hidden">Comparison of custom hot dog tray formats</caption>
+        <thead>
+          <tr>
+            <th scope="col">Format</th>
+            <th scope="col">Holds</th>
+            <th scope="col">Strongest for</th>
+            <th scope="col">Worth knowing</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            formats.map((f) => (
+              <tr>
+                <th scope="row"><a href={f.href}>{f.name}</a></th>
+                <td>{f.holds}</td>
+                <td>{f.strength}</td>
+                <td>{f.watch}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="hdt-choose-note">
+      Not sure which size to specify? Work through
+      <a href="/hot-dog-tray-sizes/">measuring the portion before the tray</a>, or compare the two
+      most common families in <a href="/paper-vs-plastic-hot-dog-trays/">paper against plastic</a>.
+    </p>
+
+    <div class="hdt-choose-actions">
+      <a href="/shop/" class="hdt-choose-primary">See all tray formats</a>
+      <a href="/hot-dog-trays-in-bulk/" class="hdt-choose-secondary">Ordering in bulk</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hdt-choose {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 100%);
+  }
+
+  .hdt-choose-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hdt-choose-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 38px;
+  }
+
+  .hdt-choose-badge {
+    display: inline-block;
+    padding: 7px 18px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .hdt-choose-header h2 {
+    margin: 16px 0 12px;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    font-weight: 900;
+    color: #1d3557;
+  }
+
+  .hdt-choose-sub {
+    margin: 0;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+
+  .hdt-choose-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 22px rgb(29 53 87 / 6%);
+  }
+
+  .hdt-choose-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 720px;
+    font-size: 0.93rem;
+  }
+
+  .hdt-choose-table th,
+  .hdt-choose-table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .hdt-choose-table thead th {
+    background: #1d3557;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: none;
+  }
+
+  .hdt-choose-table tbody th {
+    background: #fff9ec;
+    font-weight: 700;
+  }
+
+  .hdt-choose-table tbody th a {
+    display: inline-block;
+    padding: 2px 0;
+    color: #c92a35;
+    text-decoration: none;
+  }
+
+  .hdt-choose-table tbody th a:hover {
+    text-decoration: underline;
+  }
+
+  .hdt-choose-table td {
+    color: #4a5568;
+  }
+
+  .hdt-choose-table tbody tr:last-child th,
+  .hdt-choose-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .hdt-choose-note {
+    margin: 20px auto 0;
+    max-width: 760px;
+    text-align: center;
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .hdt-choose-note a {
+    color: #c92a35;
+    font-weight: 700;
+  }
+
+  .hdt-choose-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .hdt-choose-primary,
+  .hdt-choose-secondary {
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+
+  .hdt-choose-primary {
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    box-shadow: 0 8px 20px rgb(230 57 70 / 25%);
+  }
+
+  .hdt-choose-secondary {
+    border: 2px solid #1d3557;
+    color: #1d3557;
+  }
+
+  @media (max-width: 600px) {
+    .hdt-choose {
+      padding: 56px 16px;
+    }
+  }
+</style>

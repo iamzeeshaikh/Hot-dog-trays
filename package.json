@@ -14,10 +14,12 @@
     "qa:a11y": "node scripts/a11y.mjs",
     "qa:responsive": "node scripts/responsive.mjs",
     "qa:forms": "node scripts/test-forms.mjs",
-    "qa:all": "npm run build && npm run check && npm run qa && npm run qa:a11y && npm run qa:responsive",
+    "qa:all": "npm run build && npm run check && npm run qa && npm run qa:seo && npm run qa:a11y && npm run qa:responsive",
     "reports": "node scripts/reports.mjs",
     "shots": "node scripts/shots.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "qa:seo": "node scripts/qa-seo.mjs",
+    "reports:seo": "node scripts/seo-reports.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^11.0.4",

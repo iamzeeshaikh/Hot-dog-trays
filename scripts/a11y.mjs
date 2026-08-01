@@ -9,7 +9,7 @@
 import { chromium } from 'playwright';
 
 const BASE = process.env.QA_BASE ?? 'http://localhost:4321';
-const PAGES = ['/', '/product/hot-dog-serving-tray/', '/shop/', '/faq/', '/contact/', '/get-quote/'];
+const PAGES = ['/', '/product/hot-dog-serving-tray/', '/product/hot-dog-boats-paper/', '/shop/', '/faq/', '/contact/', '/get-quote/', '/hot-dog-tray-sizes/', '/paper-vs-plastic-hot-dog-trays/'];
 
 const results = [];
 const pass = (n, d = '') => results.push({ ok: true, n, d });

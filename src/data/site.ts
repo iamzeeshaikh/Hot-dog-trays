@@ -34,9 +34,13 @@ export const SOCIAL = [
   { label: 'YouTube', href: 'https://youtube.com/@hotdogtrays', icon: 'fab fa-youtube' },
 ] as const;
 
-/** Product-category archive preserved from WooCommerce. */
+/**
+ * The product hub. WooCommerce shipped two identical archives — /shop/ and
+ * /product-category/products/ — so the category archive was consolidated into
+ * /shop/ with a 301, and every internal link points here directly.
+ */
 export const CATEGORY = {
   slug: 'products',
-  name: 'Products',
-  url: '/product-category/products/',
+  name: 'Shop',
+  url: '/shop/',
 } as const;
