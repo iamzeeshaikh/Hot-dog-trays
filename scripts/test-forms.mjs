@@ -117,10 +117,12 @@ try {
   const page = await browser.newPage();
   await page.goto(`${BASE}/product/hot-dog-serving-tray/`, { waitUntil: 'networkidle' });
 
-  const preset = await page.inputValue('#inquiry-product');
-  preset === 'Hot Dog Serving Tray'
+  // the product travels as a hidden field; the heading shows it to the user
+  const preset = await page.inputValue('.hdt-inquiry-form input[name="product"]');
+  const shown = await page.textContent('.hdt-inquiry-subtitle');
+  preset === 'Hot Dog Serving Tray' && shown.includes('Hot Dog Serving Tray')
     ? pass('product preselected in inquiry form', preset)
-    : fail('product preselected', preset);
+    : fail('product preselected', `${preset} / ${shown}`);
 
   // client-side validation blocks an empty submit
   await page.click('.hdt-inquiry-submit');

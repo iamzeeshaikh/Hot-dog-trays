@@ -1,70 +1,194 @@
 ---
 import type { SpecTable } from '../data/products';
 
+/**
+ * Specification grid migrated from the WooCommerce specifications field.
+ *
+ * The source tables run to six or more columns, which cannot fit a page
+ * column on any realistic screen. Rather than clipping them, the table
+ * collapses to one stacked card per row below 900px, and above that it scrolls
+ * inside its own box with a visible edge fade so the extra columns are
+ * discoverable.
+ */
 export interface Props {
   spec: SpecTable;
   caption: string;
 }
 const { spec, caption } = Astro.props;
+
+const headers = spec.headers.length ? spec.headers : [];
+const wide = headers.length > 4;
 ---
 
 {
   spec.rows.length > 0 && (
-    <div class="hdt-table-scroll">
-      <table class="hdt-spec-table">
-        <caption class="hdt-visually-hidden">{caption}</caption>
-        {spec.headers.length > 0 && (
-          <thead>
-            <tr>
-              {spec.headers.map((h) => <th scope="col">{h}</th>)}
-            </tr>
-          </thead>
-        )}
-        <tbody>
-          {spec.rows.map((row) => (
-            <tr>
-              {row.map((cell, i) =>
-                i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
-              )}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div class="hdt-spec">
+      <div class="hdt-spec-scroll" data-scroll-wrap>
+        <table class="hdt-spec-table" class:list={{ 'is-wide': wide }}>
+          <caption class="hdt-visually-hidden">{caption}</caption>
+          {headers.length > 0 && (
+            <thead>
+              <tr>
+                {headers.map((h) => <th scope="col">{h}</th>)}
+              </tr>
+            </thead>
+          )}
+          <tbody>
+            {spec.rows.map((row) => (
+              <tr>
+                {row.map((cell, i) =>
+                  i === 0 ? (
+                    <th scope="row" data-label={headers[i] ?? ''}>
+                      {cell}
+                    </th>
+                  ) : (
+                    <td data-label={headers[i] ?? ''}>{cell}</td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
 
 <style>
+  .hdt-spec {
+    position: relative;
+  }
+
+  .hdt-spec-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    /* fades the right edge while there is more table to scroll to */
+    background:
+      linear-gradient(to right, #fff 30%, rgb(255 255 255 / 0%)) left center,
+      linear-gradient(to left, #fff 30%, rgb(255 255 255 / 0%)) right center,
+      radial-gradient(farthest-side at 0 50%, rgb(29 53 87 / 18%), transparent) left center,
+      radial-gradient(farthest-side at 100% 50%, rgb(29 53 87 / 18%), transparent) right center;
+    background-repeat: no-repeat;
+    background-size:
+      40px 100%,
+      40px 100%,
+      14px 100%,
+      14px 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+
   .hdt-spec-table {
     border-collapse: collapse;
     width: 100%;
-    min-width: 640px;
     font-size: 0.92rem;
+  }
+
+  .hdt-spec-table.is-wide {
+    min-width: 860px;
   }
 
   .hdt-spec-table th,
   .hdt-spec-table td {
-    padding: 12px 14px;
-    border: 1px solid #e5e5e5;
+    padding: 13px 16px;
+    border-bottom: 1px solid #eee;
     text-align: left;
     vertical-align: top;
+    line-height: 1.5;
   }
 
   .hdt-spec-table thead th {
+    position: sticky;
+    top: 0;
     background: #1d3557;
     color: #fff;
     font-weight: 700;
     white-space: nowrap;
+    border-bottom: none;
+  }
+
+  .hdt-spec-table thead th:first-child {
+    border-top-left-radius: 12px;
+  }
+
+  .hdt-spec-table thead th:last-child {
+    border-top-right-radius: 12px;
   }
 
   .hdt-spec-table tbody th {
     background: #fff9ec;
     font-weight: 700;
     color: #1d3557;
-    white-space: nowrap;
+    min-width: 150px;
   }
 
-  .hdt-spec-table tbody tr:nth-child(even) td {
-    background: #fafafa;
+  .hdt-spec-table tbody tr:last-child th,
+  .hdt-spec-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .hdt-spec-table tbody tr:hover td {
+    background: #fcfcfc;
+  }
+
+  /* --- stacked cards on narrow screens ---------------------------------- */
+  @media (max-width: 900px) {
+    .hdt-spec-scroll {
+      overflow-x: visible;
+      border: none;
+      border-radius: 0;
+      background: none;
+    }
+
+    .hdt-spec-table,
+    .hdt-spec-table.is-wide {
+      min-width: 0;
+      display: block;
+    }
+
+    .hdt-spec-table thead {
+      display: none;
+    }
+
+    .hdt-spec-table tbody,
+    .hdt-spec-table tr {
+      display: block;
+    }
+
+    .hdt-spec-table tr {
+      margin-bottom: 16px;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .hdt-spec-table tbody th {
+      display: block;
+      font-size: 1rem;
+      border-bottom: 1px solid #f0e4c8;
+    }
+
+    .hdt-spec-table td {
+      display: grid;
+      grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+      gap: 14px;
+      padding: 11px 16px;
+    }
+
+    /* the column heading travels with the cell as a label */
+    .hdt-spec-table td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      color: #1d3557;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .hdt-spec-table td:empty {
+      display: none;
+    }
   }
 </style>

@@ -60,8 +60,11 @@ for (const width of WIDTHS) {
         const cs = getComputedStyle(el);
         if (r.width === 0 || cs.visibility === 'hidden' || cs.display === 'none') continue;
         if (el.closest('.hdt-hp') || el.classList.contains('hdt-skip-link')) continue;
-        // controls hidden behind a styled label (radio cards) are not the target
+        // controls hidden behind a styled label (radio cards, styled file
+        // inputs) are not the tap target - the label is
         if (Number(cs.opacity) === 0 || cs.pointerEvents === 'none') continue;
+        const clipped = cs.clip !== 'auto' || cs.clipPath !== 'none';
+        if (clipped && el.closest('label')) continue;
         // WCAG 2.2 SC 2.5.8 exempts links that flow inside a longer run of text
         if (el.tagName === 'A' && cs.display.startsWith('inline')) {
           const parentText = el.parentElement?.textContent?.trim() ?? '';

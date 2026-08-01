@@ -37,7 +37,7 @@ const price = startingPrice(product);
     }
     <h2 class="hdt-product-card-title">{product.name}</h2>
   </a>
-  {price && <p class="hdt-product-card-price">From <strong>${price}</strong> per unit</p>}
+  {price && <p class="hdt-product-card-price">From <strong>${price} USD</strong></p>}
   <a href={product.url} class="hdt-product-card-cta">
     Get Free Quote
     <span class="hdt-visually-hidden">for {product.name}</span>

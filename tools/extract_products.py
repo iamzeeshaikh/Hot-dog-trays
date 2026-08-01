@@ -123,7 +123,14 @@ def ensure_slash(path: str) -> str:
 
 
 def strip_tags(s: str) -> str:
-    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', s)).strip()
+    """Plain text from an HTML fragment, with entities decoded.
+
+    Table cells are rendered as text, so a literal '&amp;' left in the value
+    would show up on the page instead of an ampersand.
+    """
+    text = re.sub(r'<[^>]+>', ' ', s)
+    text = html.unescape(text)
+    return re.sub(r'\s+', ' ', text).strip()
 
 
 # ---------------------------------------------------------------- WP XML

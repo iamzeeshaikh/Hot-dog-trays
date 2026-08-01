@@ -91,52 +91,81 @@ const schema = graph([
 >
   <Breadcrumbs crumbs={crumbs} />
 
-  <div class="hdt-product-hero">
-    <h1 class="hdt-product-title">{product.name}</h1>
-
-    <div class="hdt-product-layout">
-      <div class="hdt-product-summary">
-        <div class="hdt-product-short" set:html={product.shortDescription} />
-
-        <dl class="hdt-product-meta">
-          {
-            price && (
-              <>
-                <dt>Starting price</dt>
-                <dd class="hdt-product-price">
-                  ${price} <span>per unit</span>
-                </dd>
-              </>
-            )
-          }
-          <dt>Availability</dt>
-          <dd>{product.inStock ? 'In stock — made to order' : 'Currently unavailable'}</dd>
-          <dt>SKU</dt>
-          <dd>{product.sku}</dd>
-          <dt>Category</dt>
-          <dd><a href={CATEGORY.url}>{product.category}</a></dd>
-        </dl>
-
-        <a href="#inquiry-form" class="hdt-product-cta">Get Free Quote</a>
+  <section class="hdt-product-hero">
+    <div class="hdt-product-hero-inner">
+      <div class="hdt-product-heading">
+        <span class="hdt-product-eyebrow">
+          <i class="fas fa-box-open" aria-hidden="true"></i> Custom Wholesale Packaging
+        </span>
+        <h1 class="hdt-product-title">{product.name}</h1>
       </div>
 
-      <div class="hdt-product-form" id="inquiry-form">
-        <ProductInquiryForm productName={product.name} />
+      <div class="hdt-product-layout">
+        <div class="hdt-product-summary">
+          <div class="hdt-product-short" set:html={product.shortDescription} />
+
+          <dl class="hdt-product-meta">
+            {
+              price && (
+                <div class="hdt-meta-row hdt-meta-price">
+                  <dt>Starting price</dt>
+                  <dd>
+                    <span class="hdt-price-value">${price}</span>
+                    <span class="hdt-price-currency">USD</span>
+                  </dd>
+                </div>
+              )
+            }
+            <div class="hdt-meta-row">
+              <dt>Availability</dt>
+              <dd>
+                <span class="hdt-stock">
+                  <i class="fas fa-circle-check" aria-hidden="true" />
+                  {product.inStock ? 'In stock — made to order' : 'Currently unavailable'}
+                </span>
+              </dd>
+            </div>
+            <div class="hdt-meta-row">
+              <dt>SKU</dt>
+              <dd>{product.sku}</dd>
+            </div>
+            <div class="hdt-meta-row">
+              <dt>Category</dt>
+              <dd><a href={CATEGORY.url}>{product.category}</a></dd>
+            </div>
+          </dl>
+
+          <ul class="hdt-product-usps">
+            <li><i class="fas fa-pen-ruler" aria-hidden="true" /> Free custom design</li>
+            <li><i class="fas fa-leaf" aria-hidden="true" /> Food-safe &amp; recyclable</li>
+            <li><i class="fas fa-truck-fast" aria-hidden="true" /> Fast worldwide shipping</li>
+            <li><i class="fas fa-layer-group" aria-hidden="true" /> Low minimums, bulk pricing</li>
+          </ul>
+
+          <a href="#inquiry-form" class="hdt-product-cta">
+            Get Free Quote
+            <i class="fas fa-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div class="hdt-product-form" id="inquiry-form">
+          <ProductInquiryForm productName={product.name} />
+        </div>
+
+        <div class="hdt-product-media">
+          <ProductGallery images={product.images} productName={product.name} />
+        </div>
       </div>
 
-      <div class="hdt-product-media">
-        <ProductGallery images={product.images} productName={product.name} />
+      <div class="hdt-trust-badges">
+        <Image src={paymentImage} alt="Accepted payment methods" loading="lazy" densities={[1]} />
+        <Image src={payments} alt="Card payment providers" loading="lazy" densities={[1]} />
+        <Image src={dmca} alt="DMCA protected" loading="lazy" densities={[1]} />
+        <Image src={secureIcons} alt="Secure checkout and SSL protection" loading="lazy" densities={[1]} />
+        <Image src={guaranteeImage} alt="Satisfaction guarantee" loading="lazy" densities={[1]} />
       </div>
     </div>
-
-    <div class="hdt-trust-badges">
-      <Image src={paymentImage} alt="Accepted payment methods" loading="lazy" densities={[1]} />
-      <Image src={payments} alt="Card payment providers" loading="lazy" densities={[1]} />
-      <Image src={dmca} alt="DMCA protected" loading="lazy" densities={[1]} />
-      <Image src={secureIcons} alt="Secure checkout and SSL protection" loading="lazy" densities={[1]} />
-      <Image src={guaranteeImage} alt="Satisfaction guarantee" loading="lazy" densities={[1]} />
-    </div>
-  </div>
+  </section>
 
   <ProductTabs
     description={product.description}
@@ -159,150 +188,292 @@ const schema = graph([
 
 <style is:global>
   .hdt-product-hero {
+    padding: 8px 20px 50px;
+    background:
+      radial-gradient(900px 320px at 12% 0%, rgb(249 199 79 / 13%), transparent 70%),
+      radial-gradient(760px 300px at 88% 8%, rgb(230 57 70 / 9%), transparent 70%),
+      #fff;
+  }
+
+  .hdt-product-hero-inner {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 10px 20px 40px;
   }
 
-  /* Centred, matching the live product template and the supplied design. */
+  /* --- heading ---------------------------------------------------------- */
+  .hdt-product-heading {
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+  .hdt-product-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 50px;
+    background: rgb(29 53 87 / 6%);
+    color: #1d3557;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .hdt-product-eyebrow i {
+    color: #e63946;
+  }
+
   .hdt-product-title {
-    margin: 10px 0 30px;
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin: 14px 0 0;
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
     font-weight: 900;
     color: #1d3557;
-    text-align: center;
+    line-height: 1.15;
   }
 
+  .hdt-product-title::after {
+    content: '';
+    display: block;
+    width: 74px;
+    height: 4px;
+    margin: 16px auto 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #f9c74f, #e63946);
+  }
+
+  /* --- layout ----------------------------------------------------------- */
   .hdt-product-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 34px;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr) minmax(0, 1fr);
+    gap: 32px;
     align-items: start;
   }
 
+  /* --- summary ---------------------------------------------------------- */
   .hdt-product-short {
-    color: #444;
+    color: #4a5568;
     line-height: 1.75;
+    font-size: 0.97rem;
   }
 
   .hdt-product-short p {
     margin: 0 0 14px;
   }
 
-  .hdt-product-meta {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 8px 18px;
-    margin: 22px 0;
-    padding: 18px 20px;
-    background: #fff9ec;
-    border-radius: 12px;
-    font-size: 0.92rem;
-  }
-
-  .hdt-product-meta dt {
-    font-weight: 700;
+  .hdt-product-short strong {
     color: #1d3557;
   }
 
-  .hdt-product-meta dd {
+  .hdt-product-meta {
+    margin: 22px 0;
+    padding: 6px 20px;
+    background: #fff;
+    border: 1px solid #efefef;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgb(29 53 87 / 5%);
+    font-size: 0.92rem;
+  }
+
+  .hdt-meta-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .hdt-meta-row:last-child {
+    border-bottom: none;
+  }
+
+  .hdt-meta-row dt {
+    font-weight: 700;
+    /* #7a8699 was 3.69:1 on white, below AA for this size */
+    color: #66707f;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .hdt-meta-row dd {
     margin: 0;
-    color: #555;
+    color: #1d3557;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .hdt-meta-price dd {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .hdt-price-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #e63946;
+    line-height: 1;
+  }
+
+  .hdt-price-currency {
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: #66707f;
+    letter-spacing: 0.06em;
+  }
+
+  .hdt-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hdt-stock i {
+    color: #2a9d8f;
   }
 
   .hdt-product-meta dd a {
     display: inline-block;
     padding: 3px 0;
     color: #c92a35;
-    font-weight: 600;
+    font-weight: 700;
   }
 
-  .hdt-product-price {
-    font-size: 1.15rem;
-    font-weight: 900;
+  /* --- selling points --------------------------------------------------- */
+  .hdt-product-usps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hdt-product-usps li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a5568;
+  }
+
+  .hdt-product-usps i {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: rgb(249 199 79 / 20%);
     color: #e63946;
+    font-size: 0.78rem;
   }
 
-  .hdt-product-price span {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #777;
-  }
-
+  /* --- cta -------------------------------------------------------------- */
   .hdt-product-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     width: 100%;
     padding: 15px 26px;
     background: linear-gradient(135deg, #f9c74f, #e63946);
     color: #1d3557;
     border-radius: 50px;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     text-decoration: none;
-    box-shadow: 0 5px 15px rgb(249 199 79 / 40%);
+    box-shadow: 0 8px 22px rgb(230 57 70 / 26%);
     transition:
-      transform 0.3s,
-      box-shadow 0.3s;
+      transform 0.25s,
+      box-shadow 0.25s;
+  }
+
+  .hdt-product-cta i {
+    transition: transform 0.25s;
   }
 
   .hdt-product-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgb(230 57 70 / 50%);
+    box-shadow: 0 12px 28px rgb(230 57 70 / 36%);
   }
 
+  .hdt-product-cta:hover i {
+    transform: translateX(4px);
+  }
+
+  /* --- trust badges ----------------------------------------------------- */
   .hdt-trust-badges {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 26px;
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid #eee;
+    gap: 30px;
+    margin-top: 46px;
+    padding-top: 32px;
+    border-top: 1px solid #ededed;
   }
 
   .hdt-trust-badges img {
-    max-height: 90px;
+    max-height: 74px;
     width: auto;
+    filter: grayscale(0.25);
+    opacity: 0.9;
+    transition:
+      filter 0.3s,
+      opacity 0.3s;
   }
 
-  @media (max-width: 600px) {
-    .hdt-trust-badges {
-      gap: 18px;
-    }
-
-    .hdt-trust-badges img {
-      max-height: 62px;
-    }
+  .hdt-trust-badges img:hover {
+    filter: none;
+    opacity: 1;
   }
 
+  /* --- responsive ------------------------------------------------------- */
   @media (max-width: 1100px) {
     .hdt-product-layout {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Keep the gallery beside the copy and drop the form to its own row. */
+    /* gallery beside the copy, form on its own full-width row */
     .hdt-product-media {
       order: -1;
     }
 
     .hdt-product-form {
       grid-column: 1 / -1;
-      max-width: 640px;
+      max-width: 620px;
       margin: 0 auto;
+      width: 100%;
     }
   }
 
   @media (max-width: 768px) {
     .hdt-product-layout {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 26px;
     }
 
     .hdt-product-form {
       max-width: none;
+    }
+
+    .hdt-product-usps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hdt-trust-badges {
+      gap: 20px;
+      margin-top: 34px;
+    }
+
+    .hdt-trust-badges img {
+      max-height: 54px;
     }
   }
 </style>

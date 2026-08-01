@@ -23,6 +23,7 @@ Audit and rebuild completed 31 July 2026. **Not deployed.**
 | Meta descriptions created (none existed) | **9** |
 | Forms implemented | **3** (product inquiry, site-wide quote, newsletter) |
 | Client JavaScript shipped | **36 KB total**, 3 modules on the homepage |
+| Starting price shown | **$0.50 USD** everywhere (see §13) |
 
 ---
 
@@ -483,10 +484,9 @@ mobile-header fixes in §9.
 
 Nothing is blocking. Items needing a decision from the site owner:
 
-1. **`$0.50` starting price.** Preserved because it is the live, indexed figure
-   and the only price the catalogue holds — but it contradicts the "starting at
-   $0.70/unit" copy in the static sections. Worth reconciling before launch;
-   it feeds the visible price and the `Offer` schema.
+1. ~~`$0.50` vs `$0.70` price conflict.~~ **Resolved.** Every starting price
+   across the site is now `$0.50 USD`, matching the catalogue and the `Offer`
+   schema. The `/ea` and `per unit` suffixes were replaced with `USD`.
 2. **Alt text `"Products"`** on the Hot Dog Serving Tray primary image.
    Preserved verbatim; better fixed at source.
 3. **Reviews.** If genuine reviews exist, add them and the `aggregateRating`

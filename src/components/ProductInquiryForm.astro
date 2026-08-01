@@ -13,126 +13,232 @@ export interface Props {
 
 const { productName, idPrefix = 'inquiry' } = Astro.props;
 const id = (name: string) => `${idPrefix}-${name}`;
+
+const reassurance = [
+  { icon: 'fa-bolt', label: 'Reply in 2 hrs' },
+  { icon: 'fa-pen-ruler', label: 'Free design' },
+  { icon: 'fa-tags', label: 'No setup fees' },
+];
 ---
 
 <div class="hdt-inquiry-form">
-  <h2 class="hdt-inquiry-title">Instant Quote</h2>
-  <p class="hdt-inquiry-subtitle">
-    Tell us what you need and we'll send pricing for <strong>{productName}</strong>.
-  </p>
-
-  <div
-    id={id('message')}
-    class="hdt-form-message"
-    role="status"
-    aria-live="polite"
-    tabindex="-1"
-    data-form-message
-  >
+  <div class="hdt-inquiry-head">
+    <span class="hdt-inquiry-badge">
+      <i class="fas fa-bolt" aria-hidden="true"></i> Instant Quote
+    </span>
+    <h2 class="hdt-inquiry-title">Get pricing in 2 hours</h2>
+    <p class="hdt-inquiry-subtitle">
+      Tell us what you need for <strong>{productName}</strong> — we'll send custom pricing, free.
+    </p>
   </div>
 
-  <form
-    id={id('form')}
-    method="POST"
-    action="/api/quote/"
-    enctype="multipart/form-data"
-    data-quote-form
-    novalidate
-  >
-    <input type="hidden" name="kind" value="inquiry" />
-    <input type="hidden" name="pageUrl" data-page-url value="" />
-
-    <div class="hdt-inquiry-group">
-      <label for={id('name')}>Name <span class="required">*</span></label>
-      <input
-        type="text"
-        id={id('name')}
-        name="name"
-        autocomplete="name"
-        maxlength="120"
-        required
-      />
+  <div class="hdt-inquiry-body">
+    <div
+      id={id('message')}
+      class="hdt-form-message"
+      role="status"
+      aria-live="polite"
+      tabindex="-1"
+      data-form-message
+    >
     </div>
 
-    <div class="hdt-inquiry-group">
-      <label for={id('email')}>Email <span class="required">*</span></label>
-      <input
-        type="email"
-        id={id('email')}
-        name="email"
-        autocomplete="email"
-        maxlength="200"
-        required
-      />
-    </div>
+    <form
+      id={id('form')}
+      method="POST"
+      action="/api/quote/"
+      enctype="multipart/form-data"
+      data-quote-form
+      novalidate
+    >
+      <input type="hidden" name="kind" value="inquiry" />
+      <input type="hidden" name="pageUrl" data-page-url value="" />
+      <input type="hidden" name="product" value={productName} />
 
-    <div class="hdt-inquiry-group">
-      <label for={id('phone')}>Phone <span class="required">*</span></label>
-      <input type="tel" id={id('phone')} name="phone" autocomplete="tel" maxlength="40" required />
-    </div>
+      <div class="hdt-inquiry-group">
+        <label for={id('name')}>Name <span class="required" aria-hidden="true">*</span></label>
+        <div class="hdt-input-wrap">
+          <i class="fas fa-user" aria-hidden="true"></i>
+          <input
+            type="text"
+            id={id('name')}
+            name="name"
+            placeholder="Your name"
+            autocomplete="name"
+            maxlength="120"
+            required
+          />
+        </div>
+      </div>
 
-    <div class="hdt-inquiry-group">
-      <label for={id('product')}>Product</label>
-      <input type="text" id={id('product')} name="product" value={productName} maxlength="160" readonly />
-    </div>
+      <div class="hdt-inquiry-row">
+        <div class="hdt-inquiry-group">
+          <label for={id('email')}>Email <span class="required" aria-hidden="true">*</span></label>
+          <div class="hdt-input-wrap">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <input
+              type="email"
+              id={id('email')}
+              name="email"
+              placeholder="you@company.com"
+              autocomplete="email"
+              maxlength="200"
+              required
+            />
+          </div>
+        </div>
 
-    <div class="hdt-inquiry-group">
-      <label for={id('details')}>Message</label>
-      <textarea id={id('details')} name="details" rows="4" maxlength="5000"></textarea>
-    </div>
+        <div class="hdt-inquiry-group">
+          <label for={id('phone')}>Phone <span class="required" aria-hidden="true">*</span></label>
+          <div class="hdt-input-wrap">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <input
+              type="tel"
+              id={id('phone')}
+              name="phone"
+              placeholder="(503) 358-0443"
+              autocomplete="tel"
+              maxlength="40"
+              required
+            />
+          </div>
+        </div>
+      </div>
 
-    <div class="hdt-inquiry-group">
-      <label for={id('artwork')}>Artwork (optional)</label>
-      <input
-        type="file"
-        id={id('artwork')}
-        name="artwork"
-        multiple
-        accept=".pdf,.ai,.eps,.psd,.png,.jpg,.jpeg,.svg,.zip"
-      />
-      <span class="hdt-inquiry-hint">PDF, AI, EPS, PSD, PNG, JPG, SVG or ZIP · up to 8 MB each</span>
-    </div>
+      <div class="hdt-inquiry-group">
+        <label for={id('details')}>
+          Quantity &amp; details <span class="hdt-optional">optional</span>
+        </label>
+        <textarea
+          id={id('details')}
+          name="details"
+          rows="3"
+          maxlength="5000"
+          placeholder="e.g. 5,000 units, kraft, printed one colour"></textarea>
+      </div>
 
-    <div class="hdt-hp" aria-hidden="true">
-      <label for={id('website')}>Website</label>
-      <input type="text" id={id('website')} name="website_hp" tabindex="-1" autocomplete="off" />
-    </div>
+      <div class="hdt-inquiry-group">
+        <label class="hdt-upload" for={id('artwork')}>
+          <i class="fas fa-paperclip" aria-hidden="true"></i>
+          <span class="hdt-upload-text">Attach artwork <span class="hdt-optional">optional</span></span>
+          <input
+            type="file"
+            id={id('artwork')}
+            name="artwork"
+            multiple
+            accept=".pdf,.ai,.eps,.psd,.png,.jpg,.jpeg,.svg,.zip"
+          />
+        </label>
+        <span class="hdt-inquiry-hint" id={id('artwork-hint')}>
+          PDF, AI, EPS, PSD, PNG, JPG, SVG or ZIP · up to 8 MB each
+        </span>
+      </div>
 
-    <button type="submit" class="hdt-inquiry-submit">Get Free Quote</button>
+      <div class="hdt-hp" aria-hidden="true">
+        <label for={id('website')}>Website</label>
+        <input type="text" id={id('website')} name="website_hp" tabindex="-1" autocomplete="off" />
+      </div>
 
-    <p class="hdt-inquiry-privacy">
-      We reply within 2 business hours. Read our <a href="/privacy-policy/">Privacy Policy</a>.
-    </p>
-  </form>
+      <button type="submit" class="hdt-inquiry-submit">
+        Get My Free Quote
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </button>
+
+      <ul class="hdt-inquiry-reassure">
+        {
+          reassurance.map((r) => (
+            <li>
+              <i class:list={['fas', r.icon]} aria-hidden="true" />
+              {r.label}
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="hdt-inquiry-privacy">
+        No spam, ever. Read our <a href="/privacy-policy/">Privacy Policy</a>.
+      </p>
+    </form>
+  </div>
 </div>
 
 <script>
   import { wireQuoteForm } from '../scripts/quote-form';
+  import { wireFileLabel } from '../scripts/file-label';
   document
     .querySelectorAll<HTMLFormElement>('.hdt-inquiry-form [data-quote-form]')
     .forEach(wireQuoteForm);
+  wireFileLabel();
 </script>
 
 <style>
   .hdt-inquiry-form {
     background: #fff;
-    border: 1px solid #eee;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgb(0 0 0 / 8%);
-    padding: 28px;
+    border: 1px solid #ececec;
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgb(29 53 87 / 10%);
+    overflow: hidden;
+    position: sticky;
+    top: 100px;
+  }
+
+  /* --- header ----------------------------------------------------------- */
+  .hdt-inquiry-head {
+    padding: 24px 26px 20px;
+    background: linear-gradient(135deg, #1d3557 0%, #2a4a6f 100%);
+    position: relative;
+  }
+
+  .hdt-inquiry-head::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f9c74f, #e63946);
+  }
+
+  .hdt-inquiry-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .hdt-inquiry-title {
-    margin: 0 0 6px;
-    font-size: 1.4rem;
+    margin: 12px 0 6px;
+    font-size: 1.5rem;
     font-weight: 900;
-    color: #1d3557;
+    color: #fff;
+    line-height: 1.2;
   }
 
   .hdt-inquiry-subtitle {
-    margin: 0 0 18px;
-    font-size: 0.9rem;
-    color: #666;
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: rgb(241 250 238 / 78%);
+  }
+
+  .hdt-inquiry-subtitle strong {
+    color: #f9c74f;
+  }
+
+  /* --- fields ----------------------------------------------------------- */
+  .hdt-inquiry-body {
+    padding: 22px 26px 26px;
+  }
+
+  .hdt-inquiry-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .hdt-inquiry-group {
@@ -142,95 +248,235 @@ const id = (name: string) => `${idPrefix}-${name}`;
   .hdt-inquiry-group label {
     display: block;
     margin-bottom: 6px;
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: 800;
     color: #1d3557;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .required {
     color: #e63946;
   }
 
-  .hdt-inquiry-group input,
-  .hdt-inquiry-group textarea {
-    width: 100%;
-    padding: 11px 14px;
-    border: 2px solid #e5e5e5;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    background: #fff;
-    transition: border-color 0.2s;
+  .hdt-optional {
+    font-weight: 600;
+    color: #8a8a8a;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
-  .hdt-inquiry-group input[readonly] {
-    background: #f7f7f7;
-    color: #444;
+  .hdt-input-wrap {
+    position: relative;
+  }
+
+  .hdt-input-wrap i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: #b9b9b9;
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.2s;
+  }
+
+  .hdt-inquiry-group input[type='text'],
+  .hdt-inquiry-group input[type='email'],
+  .hdt-inquiry-group input[type='tel'],
+  .hdt-inquiry-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: #fcfcfc;
+    color: #1d3557;
+    transition:
+      border-color 0.2s,
+      background 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .hdt-inquiry-group textarea {
+    resize: vertical;
+    min-height: 74px;
+  }
+
+  /* Matches the specificity of the field rule above and comes later, so the
+     leading icon gets its space instead of sitting on the placeholder. */
+  .hdt-input-wrap input[type='text'],
+  .hdt-input-wrap input[type='email'],
+  .hdt-input-wrap input[type='tel'] {
+    padding-left: 40px;
+  }
+
+  .hdt-inquiry-group input::placeholder,
+  .hdt-inquiry-group textarea::placeholder {
+    color: #aeaeae;
   }
 
   .hdt-inquiry-group input:focus,
   .hdt-inquiry-group textarea:focus {
+    outline: none;
+    background: #fff;
     border-color: #f9c74f;
+    box-shadow: 0 0 0 4px rgb(249 199 79 / 22%);
+  }
+
+  .hdt-input-wrap:focus-within i {
+    color: #e63946;
   }
 
   .hdt-inquiry-group input[aria-invalid='true'],
   .hdt-inquiry-group textarea[aria-invalid='true'] {
     border-color: #e63946;
+    background: #fffafa;
+  }
+
+  /* --- upload ----------------------------------------------------------- */
+  .hdt-upload {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 2px dashed #dcdcdc;
+    border-radius: 10px;
+    background: #fcfcfc;
+    cursor: pointer;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 0.88rem !important;
+    color: #555 !important;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+  }
+
+  .hdt-upload:hover {
+    border-color: #f9c74f;
+    background: #fffdf7;
+  }
+
+  .hdt-upload i {
+    color: #e63946;
+  }
+
+  .hdt-upload input[type='file'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hdt-upload:focus-within {
+    border-color: #f9c74f;
+    box-shadow: 0 0 0 4px rgb(249 199 79 / 22%);
   }
 
   .hdt-inquiry-hint {
     display: block;
     margin-top: 6px;
-    font-size: 0.75rem;
-    color: #5f5f5f;
+    font-size: 0.72rem;
+    color: #8a8a8a;
   }
 
+  /* --- submit ----------------------------------------------------------- */
   .hdt-inquiry-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    margin-top: 6px;
-    padding: 14px 20px;
+    margin-top: 4px;
+    padding: 15px 20px;
     background: linear-gradient(135deg, #f9c74f, #e63946);
     color: #1d3557;
     border: none;
     border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 800;
+    font-size: 0.98rem;
+    font-weight: 900;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
     cursor: pointer;
+    box-shadow: 0 8px 22px rgb(230 57 70 / 28%);
     transition:
-      transform 0.3s,
-      box-shadow 0.3s;
+      transform 0.25s,
+      box-shadow 0.25s,
+      filter 0.25s;
+  }
+
+  .hdt-inquiry-submit i {
+    transition: transform 0.25s;
   }
 
   .hdt-inquiry-submit:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgb(230 57 70 / 40%);
+    box-shadow: 0 12px 28px rgb(230 57 70 / 38%);
+    filter: saturate(1.1);
+  }
+
+  .hdt-inquiry-submit:hover:not(:disabled) i {
+    transform: translateX(4px);
   }
 
   .hdt-inquiry-submit:disabled {
     opacity: 0.65;
     cursor: progress;
+    transform: none;
+  }
+
+  /* --- reassurance ------------------------------------------------------ */
+  .hdt-inquiry-reassure {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hdt-inquiry-reassure li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #4a5568;
+  }
+
+  .hdt-inquiry-reassure i {
+    color: #2a9d8f;
+    font-size: 0.8rem;
   }
 
   .hdt-inquiry-privacy {
     margin: 12px 0 0;
-    font-size: 0.75rem;
-    /* #888 is 3.54:1 on white, below AA for this size */
-    color: #5f5f5f;
+    font-size: 0.72rem;
+    color: #8a8a8a;
     text-align: center;
   }
 
   .hdt-inquiry-privacy a {
     color: #c92a35;
-    font-weight: 600;
+    font-weight: 700;
   }
 
+  /* --- status message --------------------------------------------------- */
   .hdt-inquiry-form .hdt-form-message {
     display: none;
     margin-bottom: 14px;
     padding: 12px 14px;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
     font-weight: 600;
+    line-height: 1.45;
   }
 
   .hdt-inquiry-form .hdt-form-message.is-visible {
@@ -239,24 +485,50 @@ const id = (name: string) => `${idPrefix}-${name}`;
 
   .hdt-inquiry-form .hdt-form-message[data-state='success'] {
     background: #e7f6ec;
-    color: #1b6b39;
+    color: #14663a;
+    border: 1px solid #b8e3c7;
   }
 
   .hdt-inquiry-form .hdt-form-message[data-state='error'] {
     background: #fdeaec;
     color: #a4212c;
+    border: 1px solid #f3c4c9;
   }
 
   .hdt-inquiry-form .hdt-form-message[data-state='pending'] {
     background: #f4f4f4;
     color: #555;
+    border: 1px solid #e4e4e4;
   }
 
   .hdt-hp {
     position: absolute !important;
-    left: -9999px;
     width: 1px;
     height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .hdt-inquiry-form {
+      position: static;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .hdt-inquiry-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .hdt-inquiry-head,
+    .hdt-inquiry-body {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
   }
 </style>
