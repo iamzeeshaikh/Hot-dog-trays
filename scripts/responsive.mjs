@@ -63,8 +63,9 @@ for (const width of WIDTHS) {
         // controls hidden behind a styled label (radio cards, styled file
         // inputs) are not the tap target - the label is
         if (Number(cs.opacity) === 0 || cs.pointerEvents === 'none') continue;
-        const clipped = cs.clip !== 'auto' || cs.clipPath !== 'none';
-        if (clipped && el.closest('label')) continue;
+        // a control collapsed to a sliver inside a label (the visually-hidden
+        // pattern) is not the tap target - the label is
+        if (r.width <= 2 && r.height <= 2 && el.closest('label')) continue;
         // WCAG 2.2 SC 2.5.8 exempts links that flow inside a longer run of text
         if (el.tagName === 'A' && cs.display.startsWith('inline')) {
           const parentText = el.parentElement?.textContent?.trim() ?? '';

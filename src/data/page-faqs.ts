@@ -29,7 +29,7 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "How much do custom hot dog trays cost?",
-    "answer": "<p>Pricing starts at <strong>$0.70 per unit</strong> for bulk orders. The exact price depends on:</p> <ul> <li>Order quantity (larger orders = lower per-unit cost)</li> <li>Material type selected</li> <li>Printing requirements (full-color vs. plain)</li> <li>Special features or finishes</li> </ul> <p><strong>Request a free quote</strong> to get exact pricing for your specific needs. There are no hidden fees or setup charges.</p>"
+    "answer": "<p>Pricing starts at <strong>$0.50 USD</strong> for bulk orders. The exact price depends on:</p> <ul> <li>Order quantity (larger orders = lower per-unit cost)</li> <li>Material type selected</li> <li>Printing requirements (full-color vs. plain)</li> <li>Special features or finishes</li> </ul> <p><strong>Request a free quote</strong> to get exact pricing for your specific needs. There are no hidden fees or setup charges.</p>"
   },
   {
     "question": "Can I order samples before placing a bulk order?",
@@ -44,7 +44,7 @@ export const homeFaqs: ProductFaq[] = [
 export const productPageFaqs: ProductFaq[] = [
   {
     "question": "What is the minimum order quantity?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.70/ea</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount + free shipping</li> </ul> <p>For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
+    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.50 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount + free shipping</li> </ul> <p>For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
   },
   {
     "question": "Can I get custom printing on the trays?",
@@ -52,7 +52,7 @@ export const productPageFaqs: ProductFaq[] = [
   },
   {
     "question": "What materials are available?",
-    "answer": "<p>We offer hot dog trays in <strong>4 premium materials</strong>, each with unique benefits:</p> <p><strong>1. Kraft Paper (250gsm)</strong></p> <ul> <li>Natural, eco-friendly brown finish</li> <li>100% recyclable & biodegradable</li> <li>FSC-certified sustainable sourcing</li> <li>Starting at $0.70/unit</li> </ul> <p><strong>2. White Cardboard (300gsm)</strong></p> <ul> <li>Bright white finish for vibrant printing</li> <li>Excellent print quality</li> <li>Strong & rigid construction</li> <li>Starting at $0.75/unit</li> </ul> <p><strong>3. Corrugated (350gsm)</strong></p> <ul> <li>Maximum durability & strength</li> <li>Excellent heat insulation</li> <li>Prevents oil seepage</li> <li>Starting at $0.85/unit</li> </ul> <p><strong>4. Food-Safe Plastic (PP)</strong></p> <ul> <li>Reusable & dishwasher safe</li> <li>BPA-free, FDA approved</li> <li>Clear or colored options</li> <li>Starting at $0.95/unit</li> </ul> <p>All materials are <strong>FDA-approved</strong> and safe for direct food contact.</p>"
+    "answer": "<p>We offer hot dog trays in <strong>4 premium materials</strong>, each with unique benefits:</p> <p><strong>1. Kraft Paper (250gsm)</strong></p> <ul> <li>Natural, eco-friendly brown finish</li> <li>100% recyclable & biodegradable</li> <li>FSC-certified sustainable sourcing</li> <li>Starting at $0.50 USD</li> </ul> <p><strong>2. White Cardboard (300gsm)</strong></p> <ul> <li>Bright white finish for vibrant printing</li> <li>Excellent print quality</li> <li>Strong & rigid construction</li> <li>Starting at $0.50 USD</li> </ul> <p><strong>3. Corrugated (350gsm)</strong></p> <ul> <li>Maximum durability & strength</li> <li>Excellent heat insulation</li> <li>Prevents oil seepage</li> <li>Starting at $0.50 USD</li> </ul> <p><strong>4. Food-Safe Plastic (PP)</strong></p> <ul> <li>Reusable & dishwasher safe</li> <li>BPA-free, FDA approved</li> <li>Clear or colored options</li> <li>Starting at $0.50 USD</li> </ul> <p>All materials are <strong>FDA-approved</strong> and safe for direct food contact.</p>"
   },
   {
     "question": "How long does shipping take?",
@@ -79,7 +79,7 @@ export const productPageFaqs: ProductFaq[] = [
 export const faqPageFaqs: ProductFaq[] = [
   {
     "question": "What is the minimum order quantity?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.70/ea</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount + free shipping</li> </ul> <p>For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
+    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.50 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount + free shipping</li> </ul> <p>For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
   },
   {
     "question": "How do I place an order?",
@@ -87,7 +87,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "What are your prices?",
-    "answer": "<p>Pricing depends on several factors:</p> <ul> <li>Material type (Kraft, Cardboard, Corrugated, Plastic)</li> <li>Order quantity (volume discounts available)</li> <li>Size and dimensions</li> <li>Printing options (colors, coatings)</li> <li>Customization complexity</li> </ul> <p><strong>Starting prices:</strong></p> <ul> <li>Kraft Paper (250gsm): $0.70/unit</li> <li>White Cardboard (300gsm): $0.75/unit</li> <li>Corrugated (350gsm): $0.85/unit</li> <li>Plastic (PP): $0.95/unit</li> </ul> <p>Request a <a href=\"/get-quote/\">free quote</a> for exact pricing based on your needs.</p>"
+    "answer": "<p>Pricing depends on several factors:</p> <ul> <li>Material type (Kraft, Cardboard, Corrugated, Plastic)</li> <li>Order quantity (volume discounts available)</li> <li>Size and dimensions</li> <li>Printing options (colors, coatings)</li> <li>Customization complexity</li> </ul> <p><strong>Starting prices:</strong></p> <ul> <li>Kraft Paper (250gsm): $0.50 USD</li> <li>White Cardboard (300gsm): $0.50 USD</li> <li>Corrugated (350gsm): $0.50 USD</li> <li>Plastic (PP): $0.50 USD</li> </ul> <p>Request a <a href=\"/get-quote/\">free quote</a> for exact pricing based on your needs.</p>"
   },
   {
     "question": "Do you offer samples?",

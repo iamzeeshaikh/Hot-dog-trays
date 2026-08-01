@@ -166,6 +166,18 @@ for (const p of pages) {
   } else {
     pass(`FAQ schema visible: ${p.path}`, `${block.mainEntity.length} questions`);
   }
+
+  // The answers are mirrored from the components into src/data/page-faqs.ts.
+  // Comparing figures catches the mirror going stale after a copy edit, which
+  // is how stale prices once reached the page.
+  const schemaFigures = new Set(
+    (JSON.stringify(block.mainEntity).match(/\$\d+\.\d{2}/g) ?? []),
+  );
+  const pageFigures = new Set(text(p.body).match(/\$\d+\.\d{2}/g) ?? []);
+  const orphaned = [...schemaFigures].filter((f) => !pageFigures.has(f));
+  if (orphaned.length) {
+    fail(`FAQ schema figures match the page: ${p.path}`, orphaned.join(', '));
+  }
 }
 
 // --- 6. residue ----------------------------------------------------------
