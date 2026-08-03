@@ -22,6 +22,30 @@ PAGES = ['privacy-policy', 'terms-conditions', 'shipping', 'sample-page']
 
 WP_BLOCK_COMMENT = re.compile(r'<!--\s*/?wp:[^>]*?-->', re.S)
 
+# Content superseded since the migration. The WordPress export still carries the
+# original wording, so replacements are applied here rather than by hand, and
+# regenerating the pages cannot silently reinstate the old text.
+#
+# The returns paragraph was replaced once the business confirmed a 14-day
+# window; the structured data in src/data/shipping.ts states the same terms and
+# the two must agree.
+CONTENT_OVERRIDES = {
+    'terms-conditions': [
+        (
+            'Return and refund eligibility, if applicable, will be evaluated on a '
+            'case-by-case basis. Please contact us directly for return requests or '
+            'concerns regarding your order.',
+            'Orders may be returned within <strong>14 days of delivery</strong>. Because '
+            'every order is produced to your own size and artwork, returned goods must be '
+            'unused and in their original packaging.\n\nReturn carriage is paid by the '
+            'customer. Where an order arrives faulty, damaged or different from the approved '
+            'proof, we cover the return carriage and put the order right at no cost to you.'
+            '\n\nTo start a return, contact us within the 14-day window with your order '
+            'details.',
+        ),
+    ],
+}
+
 
 def main():
     os.makedirs(OUT, exist_ok=True)
@@ -37,7 +61,12 @@ def main():
         raise SystemExit(f'pages not present in the export: {", ".join(missing)}')
 
     for slug in PAGES:
-        raw = WP_BLOCK_COMMENT.sub('', found[slug])
+        raw = found[slug]
+        for old, new in CONTENT_OVERRIDES.get(slug, []):
+            if old not in raw:
+                print(f'   !! override text not found for {slug}; check the export')
+            raw = raw.replace(old, new)
+        raw = WP_BLOCK_COMMENT.sub('', raw)
         # the theme rendered the <header>/<div class="entry-*"> chrome itself
         raw = re.sub(r'</?header[^>]*>', '', raw, flags=re.I)
         raw = re.sub(r'<p class="entry-title">(.*?)</p>', r'<p>\1</p>', raw, flags=re.S | re.I)

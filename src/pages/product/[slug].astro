@@ -20,7 +20,7 @@ import Guarantee from '../../components/product/Guarantee.astro';
 
 import { products, getRelated, startingPrice, type Product } from '../../data/products';
 import { CATEGORY } from '../../data/site';
-import { SHIPPING, shippingCountriesSentence, shippingWindow } from '../../data/shipping';
+import { SHIPPING, RETURNS, shippingCountriesSentence, shippingWindow } from '../../data/shipping';
 import { productPageFaqs } from '../../data/page-faqs';
 import { productSeo } from '../../data/product-seo';
 import {
@@ -133,6 +133,23 @@ const schema = graph([
                   {product.inStock ? 'In stock — made to order' : 'Currently unavailable'}
                 </span>
               </dd>
+            </div>
+            <div class="hdt-meta-row">
+              <dt>Shipping</dt>
+              <dd>
+                <span class="hdt-stock">
+                  <i class="fas fa-truck-fast" aria-hidden="true" />
+                  {SHIPPING.free ? 'Free' : 'Quoted'} · {shippingWindow} once shipped
+                </span>
+              </dd>
+            </div>
+            <div class="hdt-meta-row">
+              <dt>Ships to</dt>
+              <dd>{shippingCountriesSentence}</dd>
+            </div>
+            <div class="hdt-meta-row">
+              <dt>Returns</dt>
+              <dd><a href="/terms-conditions/">{RETURNS.windowDays} days from delivery</a></dd>
             </div>
             <div class="hdt-meta-row">
               <dt>SKU</dt>

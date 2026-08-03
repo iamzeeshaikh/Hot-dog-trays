@@ -1,5 +1,5 @@
 import { SITE_URL, SITE_NAME, BRAND_NAME, CONTACT, SOCIAL } from '../data/site';
-import { SHIPPING } from '../data/shipping';
+import { SHIPPING, RETURNS } from '../data/shipping';
 import type { Product, ProductFaq } from '../data/products';
 
 /**
@@ -122,6 +122,21 @@ export function product(p: Product, imageUrls: string[]) {
             unitCode: 'DAY',
           },
         },
+      },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        '@id': `${SITE_URL}/#returnpolicy`,
+        applicableCountry: RETURNS.country,
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: RETURNS.windowDays,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        // The seller covers carriage on faulty or incorrect orders, but schema
+        // has no field for that exception, so the default case is declared here
+        // and the exception is stated on the Terms page.
+        returnFees: RETURNS.customerPaysReturnShipping
+          ? 'https://schema.org/ReturnShippingFees'
+          : 'https://schema.org/FreeReturn',
+        merchantReturnLink: `${SITE_URL}/terms-conditions/`,
       },
     };
   }

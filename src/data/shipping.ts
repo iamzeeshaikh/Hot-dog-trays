@@ -1,5 +1,5 @@
 /**
- * Shipping terms, confirmed by the business owner on 3 August 2026.
+ * Shipping and returns terms, confirmed by the business owner on 3 August 2026.
  *
  * These values drive both the visible copy and the `OfferShippingDetails`
  * node in Product schema. Google requires the two to agree, so they are
@@ -35,3 +35,19 @@ export const shippingCountriesSentence = (() => {
 
 /** "5-7 days" — for badges and short labels. */
 export const shippingWindow = `${SHIPPING.transitDaysMin}-${SHIPPING.transitDaysMax} days`;
+
+/**
+ * Returns, confirmed by the business owner on 3 August 2026.
+ *
+ * Fourteen days from delivery. The customer covers return carriage as the
+ * default, which is what `returnFees` declares; where an order arrives faulty
+ * or incorrect the business covers it, and that exception is stated on the
+ * Terms page because schema has no field for it.
+ */
+export const RETURNS = {
+  windowDays: 14,
+  /** Customer pays return carriage unless the order was faulty or incorrect. */
+  customerPaysReturnShipping: true,
+  faultyOrdersCoveredBySeller: true,
+  country: 'US',
+} as const;
