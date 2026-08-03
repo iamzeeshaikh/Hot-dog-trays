@@ -1,4 +1,5 @@
 import { SITE_URL, SITE_NAME, BRAND_NAME, CONTACT, SOCIAL } from '../data/site';
+import { SHIPPING } from '../data/shipping';
 import type { Product, ProductFaq } from '../data/products';
 
 /**
@@ -86,8 +87,9 @@ export function product(p: Product, imageUrls: string[]) {
     brand: { '@type': 'Brand', name: p.brand },
   };
 
-  // The starting price is the only commercial figure the catalogue actually
-  // carries; no discounts, shipping rates or return windows are invented.
+  // Shipping terms are the ones confirmed by the business and shown on the
+  // page: free delivery to four countries in a 5-7 day window. Nothing here
+  // is inferred — see src/data/shipping.ts.
   if (Number.isFinite(price)) {
     node.offers = {
       '@type': 'Offer',
@@ -99,6 +101,28 @@ export function product(p: Product, imageUrls: string[]) {
         : 'https://schema.org/OutOfStock',
       url: abs(p.url),
       seller: { '@id': `${SITE_URL}/#organization` },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        '@id': `${SITE_URL}/#shipping`,
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: SHIPPING.rate,
+          currency: SHIPPING.currency,
+        },
+        shippingDestination: SHIPPING.destinations.map((d) => ({
+          '@type': 'DefinedRegion',
+          addressCountry: d.code,
+        })),
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          transitTime: {
+            '@type': 'QuantitativeValue',
+            minValue: SHIPPING.transitDaysMin,
+            maxValue: SHIPPING.transitDaysMax,
+            unitCode: 'DAY',
+          },
+        },
+      },
     };
   }
 

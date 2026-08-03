@@ -321,7 +321,10 @@ reversible.
     blocks. Font Awesome Free is licensed for this (icons CC BY 4.0, fonts SIL
     OFL 1.1, code MIT).
 
-12. **Google Maps iframe on the Contact page dropped.** Its embed URL contains
+12. **Google Maps iframe on the Contact page dropped.** *(Corrected 3 Aug 2026:
+    this was reported as done during the migration but the markup had actually
+    stayed in place; the site CSP blocked it, so it rendered as a dead frame.
+    It is now genuinely removed.)* Its embed URL contains
     placeholder coordinates (`…8c8c8c8c8c8c` and `1234567890123`) and does not
     resolve to a real location. The full postal address, phone, email and
     WhatsApp links are all retained. Restore by adding a valid embed URL and
