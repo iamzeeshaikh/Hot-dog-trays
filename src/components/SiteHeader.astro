@@ -1,5 +1,6 @@
 ---
 import { products } from '../data/products';
+import { guides } from '../data/guides';
 import { CONTACT } from '../data/site';
 
 /**
@@ -9,6 +10,7 @@ import { CONTACT } from '../data/site';
  * the desktop dropdown and the mobile accordion can never drift apart.
  */
 const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
+const navGuides = guides.map((g) => ({ name: g.crumb, url: g.url }));
 ---
 
 <header class="hdt-header" id="site-header">
@@ -44,8 +46,27 @@ const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
         </div>
       </div>
 
-      <a href="/about/" class="hdt-nav-link">About Us</a>
-      <a href="/contact/" class="hdt-nav-link">Contact</a>
+      <div class="hdt-nav-item" data-dropdown>
+        <a
+          href="/hot-dog-tray-sizes/"
+          class="hdt-nav-link"
+          aria-expanded="false"
+          aria-controls="guides-dropdown"
+          data-dropdown-trigger
+        >
+          Buying Guides
+          <span class="hdt-nav-arrow" aria-hidden="true">▼</span>
+        </a>
+        <div class="hdt-dropdown" id="guides-dropdown">
+          {
+            navGuides.map((g) => (
+              <a href={g.url} class="hdt-dropdown-item">
+                {g.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </nav>
 
     <div class="hdt-header-contact">
@@ -101,12 +122,28 @@ const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
         </div>
       </div>
 
-      <div class="hdt-mobile-nav-item">
-        <a href="/about/" class="hdt-mobile-nav-link">About Us</a>
+      <div class="hdt-mobile-nav-item" id="mobileGuides">
+        <a href="/hot-dog-tray-sizes/" class="hdt-mobile-nav-link">Buying Guides</a>
+        <button
+          type="button"
+          class="hdt-mobile-sub-toggle"
+          aria-expanded="false"
+          aria-controls="mobileGuidesList"
+        >
+          <span aria-hidden="true">▼</span>
+          <span class="hdt-visually-hidden">Show all guides</span>
+        </button>
+        <div class="hdt-mobile-dropdown" id="mobileGuidesList">
+          {
+            navGuides.map((g) => (
+              <a href={g.url} class="hdt-mobile-dropdown-item">
+                {g.name}
+              </a>
+            ))
+          }
+        </div>
       </div>
-      <div class="hdt-mobile-nav-item">
-        <a href="/contact/" class="hdt-mobile-nav-link">Contact</a>
-      </div>
+
       <div class="hdt-mobile-nav-item">
         <a href="/get-quote/" class="hdt-mobile-nav-link">Get Free Quote</a>
       </div>
@@ -144,32 +181,40 @@ const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
 
   // Mobile sub-menu: a real button so it is reachable by keyboard, leaving the
   // adjacent "All Products" link free to navigate to /shop/.
-  const subToggle = document.querySelector<HTMLButtonElement>('.hdt-mobile-sub-toggle');
-  const subItem = document.getElementById('mobileProducts');
-  subToggle?.addEventListener('click', () => {
-    const open = subItem?.classList.toggle('active');
-    subToggle.setAttribute('aria-expanded', String(Boolean(open)));
-  });
+  for (const subToggle of document.querySelectorAll<HTMLButtonElement>('.hdt-mobile-sub-toggle')) {
+    const subItem = subToggle.closest('.hdt-mobile-nav-item');
+    subToggle.addEventListener('click', () => {
+      const open = subItem?.classList.toggle('active');
+      subToggle.setAttribute('aria-expanded', String(Boolean(open)));
+    });
+  }
 
   // Desktop dropdown works on hover via CSS; these handlers add keyboard and
   // touch support without changing the visual behaviour.
-  const dropdown = document.querySelector<HTMLElement>('[data-dropdown]');
-  const trigger = document.querySelector<HTMLAnchorElement>('[data-dropdown-trigger]');
+  const dropdowns = Array.from(document.querySelectorAll<HTMLElement>('[data-dropdown]'));
 
-  function openDropdown(open: boolean) {
-    dropdown?.classList.toggle('is-open', open);
-    trigger?.setAttribute('aria-expanded', String(open));
+  function openDropdown(dropdown: HTMLElement, open: boolean) {
+    dropdown.classList.toggle('is-open', open);
+    dropdown
+      .querySelector<HTMLAnchorElement>('[data-dropdown-trigger]')
+      ?.setAttribute('aria-expanded', String(open));
   }
 
-  dropdown?.addEventListener('focusin', () => openDropdown(true));
-  dropdown?.addEventListener('focusout', (e) => {
-    if (!dropdown.contains(e.relatedTarget as Node)) openDropdown(false);
-  });
-  dropdown?.addEventListener('mouseleave', () => openDropdown(false));
+  function closeAllDropdowns() {
+    for (const d of dropdowns) openDropdown(d, false);
+  }
+
+  for (const dropdown of dropdowns) {
+    dropdown.addEventListener('focusin', () => openDropdown(dropdown, true));
+    dropdown.addEventListener('focusout', (e) => {
+      if (!dropdown.contains(e.relatedTarget as Node)) openDropdown(dropdown, false);
+    });
+    dropdown.addEventListener('mouseleave', () => openDropdown(dropdown, false));
+  }
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    openDropdown(false);
+    closeAllDropdowns();
     closeMobile();
     if (menu?.classList.contains('active')) toggle?.focus();
   });
@@ -179,7 +224,7 @@ const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
     if (menu?.classList.contains('active') && !menu.contains(target) && !toggle?.contains(target)) {
       closeMobile();
     }
-    if (dropdown && !dropdown.contains(target)) openDropdown(false);
+    for (const d of dropdowns) if (!d.contains(target)) openDropdown(d, false);
   });
 
   let ticking = false;
@@ -636,15 +681,18 @@ const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
     transition: transform 0.3s;
 }
 
-#mobileProducts .hdt-mobile-sub-toggle {
+#mobileProducts .hdt-mobile-sub-toggle,
+#mobileGuides .hdt-mobile-sub-toggle {
     display: flex;
 }
 
-#mobileProducts.active .hdt-mobile-sub-toggle {
+#mobileProducts.active .hdt-mobile-sub-toggle,
+#mobileGuides.active .hdt-mobile-sub-toggle {
     transform: rotate(180deg);
 }
 
-#mobileProducts > .hdt-mobile-nav-link {
+#mobileProducts > .hdt-mobile-nav-link,
+#mobileGuides > .hdt-mobile-nav-link {
     padding-right: 52px;
 }
 
