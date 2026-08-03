@@ -53,6 +53,7 @@ const [main, ...rest] = resolved;
               type="button"
               class:list={['hdt-gallery-thumb', { 'is-active': i === 0 }]}
               data-full={img.meta.src}
+              data-width={img.meta.width}
               data-alt={img.alt}
               aria-pressed={i === 0 ? 'true' : 'false'}
             >
