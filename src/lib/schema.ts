@@ -96,6 +96,8 @@ export function product(p: Product, imageUrls: string[]) {
       '@id': `${abs(p.url)}#offer`,
       price: price.toFixed(2),
       priceCurrency: p.currency,
+      priceValidUntil: '2027-08-04',
+      itemCondition: 'https://schema.org/NewCondition',
       availability: p.inStock
         ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
