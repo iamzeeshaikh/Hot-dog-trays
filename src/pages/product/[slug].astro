@@ -48,7 +48,8 @@ interface Props {
 const { product } = Astro.props;
 
 const files = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/products/*.{jpg,jpeg,png,webp}',
+  // the negative pattern keeps macOS AppleDouble sidecars (._*.jpg) out of the build
+  ['/src/assets/products/*.{jpg,jpeg,png,webp}', '!**/._*'],
   { eager: true },
 );
 const galleryUrls = product.images

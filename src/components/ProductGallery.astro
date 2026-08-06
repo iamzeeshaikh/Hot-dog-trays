@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { ProductImage } from '../data/products';
 
 /**
@@ -14,17 +14,28 @@ export interface Props {
 const { images, productName } = Astro.props;
 
 const files = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/products/*.{jpg,jpeg,png,webp}',
+  // the negative pattern keeps macOS AppleDouble sidecars (._*.jpg) out of the build
+  ['/src/assets/products/*.{jpg,jpeg,png,webp}', '!**/._*'],
   { eager: true },
 );
 
-const resolved = images
+const matched = images
   .map((img) => ({
     meta: files[`/src/assets/products/${img.file}`]?.default,
     alt: img.alt,
     file: img.file,
   }))
   .filter((i): i is { meta: ImageMetadata; alt: string; file: string } => Boolean(i.meta));
+
+// The click swap sets the main <img> to data-full, so serve an optimised
+// rendition rather than the multi-hundred-KB original (all of these are
+// prefetched at idle by product-gallery.ts).
+const resolved = await Promise.all(
+  matched.map(async (img) => ({
+    ...img,
+    full: (await getImage({ src: img.meta, width: 1080 })).src,
+  })),
+);
 
 const [main, ...rest] = resolved;
 ---
@@ -52,7 +63,7 @@ const [main, ...rest] = resolved;
             <button
               type="button"
               class:list={['hdt-gallery-thumb', { 'is-active': i === 0 }]}
-              data-full={img.meta.src}
+              data-full={img.full}
               data-width={img.meta.width}
               data-alt={img.alt}
               aria-pressed={i === 0 ? 'true' : 'false'}
