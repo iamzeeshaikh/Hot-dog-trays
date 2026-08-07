@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { products } from '../data/products';
 import { guides } from '../data/guides';
+import { BLOG_POSTS } from '../lib/blog';
 import { SITE_URL } from '../data/site';
 
 /**
@@ -23,7 +24,13 @@ const staticPaths = [
 ];
 
 export const GET: APIRoute = () => {
-  const urls = [...staticPaths, ...products.map((p) => p.url), ...guides.map((g) => g.url)];
+  const urls = [
+    ...staticPaths,
+    '/blog/',
+    ...products.map((p) => p.url),
+    ...guides.map((g) => g.url),
+    ...BLOG_POSTS.map((b) => b.url),
+  ];
   const unique = [...new Set(urls)];
 
   const body = [
