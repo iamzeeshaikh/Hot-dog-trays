@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { breadcrumbs } from '../../lib/schema';
+import { blogPosting, breadcrumbs, graph, organization, website } from '../../lib/schema';
 import { BLOG_POSTS } from '../../lib/blog';
 
 export function getStaticPaths() {
@@ -23,6 +23,16 @@ const published = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US',
   day: 'numeric',
   timeZone: 'UTC',
 });
+
+// Previously this page passed a bare breadcrumb node, which reached the markup
+// with no @context and so was ignored. Wrapping it in graph() with the article
+// and the org/site nodes its @ids point at makes the whole document valid.
+const schema = graph([
+  organization(),
+  website(),
+  blogPosting(post),
+  breadcrumbs(post.url, crumbs),
+]);
 ---
 <BaseLayout
   title={post.metaTitle}
@@ -30,7 +40,7 @@ const published = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US',
   path={post.url}
   ogImage={post.image}
   ogType="article"
-  schema={breadcrumbs(post.url, crumbs)}
+  schema={schema}
 >
   <Breadcrumbs crumbs={crumbs} />
 

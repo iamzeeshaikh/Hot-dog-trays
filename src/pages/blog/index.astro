@@ -1,13 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { breadcrumbs } from '../../lib/schema';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 import { BLOG_POSTS } from '../../lib/blog';
 
 const crumbs = [
   { name: 'Home', url: '/' },
   { name: 'Blog', url: '/blog/' },
 ];
+
+// collectionPage() takes Products elsewhere, but it only reads name and url,
+// so the post list satisfies it.
+const schema = graph([
+  organization(),
+  website(),
+  ...collectionPage(
+    '/blog/',
+    'Hot Dog Packaging Blog',
+    'Guides on paper hot dog boats, custom printed trays and grease resistant packaging.',
+    BLOG_POSTS.map((p) => ({ name: p.title, url: p.url })) as any,
+  ),
+  breadcrumbs('/blog/', crumbs),
+]);
 
 const fmt = (iso: string) =>
   new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', {
@@ -21,7 +35,7 @@ const fmt = (iso: string) =>
   title="Blog | HotDogTrays.com"
   description="Guides on paper hot dog boats, custom printed trays and grease resistant packaging for food trucks, stands and restaurants."
   path="/blog/"
-  schema={breadcrumbs('/blog/', crumbs)}
+  schema={schema}
 >
   <Breadcrumbs crumbs={crumbs} />
 
