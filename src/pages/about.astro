@@ -20,7 +20,7 @@ const crumbs = [
 const schema = graph([
   organization(),
   website(),
-  webPage(path, title, description),
+  webPage(path, title, description, 'AboutPage'),
   breadcrumbs(path, crumbs),
 ]);
 ---

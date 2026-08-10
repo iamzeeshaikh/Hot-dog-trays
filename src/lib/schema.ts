@@ -204,9 +204,15 @@ export function blogPosting(post: {
   };
 }
 
-export function webPage(path: string, name: string, description: string) {
+export function webPage(
+  path: string,
+  name: string,
+  description: string,
+  /** Narrows the node where schema.org has a better fit than plain WebPage. */
+  type: 'WebPage' | 'AboutPage' | 'ContactPage' = 'WebPage',
+) {
   return {
-    '@type': 'WebPage',
+    '@type': type,
     '@id': `${abs(path)}#webpage`,
     url: abs(path),
     name,
