@@ -1,7 +1,8 @@
 ---
-import '@fortawesome/fontawesome-free/css/fontawesome.css';
-import '@fortawesome/fontawesome-free/css/solid.css';
-import '@fortawesome/fontawesome-free/css/brands.css';
+// Font Awesome, subset to the 81 icons this site renders — see
+// scripts/build-fa-subset.mjs. The full package was 27KB of render-blocking
+// CSS (86% unused) plus 231KB of webfont on every page with an icon.
+import '../styles/fontawesome-subset.css';
 import '../styles/global.css';
 
 import Seo from '../components/Seo.astro';
