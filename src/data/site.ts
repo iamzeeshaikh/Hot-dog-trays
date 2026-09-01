@@ -10,9 +10,9 @@ export const BRAND_NAME = 'HotDogTrays';
 export const TITLE_SUFFIX = ' - Hot Dog Trays';
 
 export const CONTACT = {
-  phoneDisplay: '(503) 358-0443',
-  phoneHref: 'tel:5033580443',
-  whatsappDisplay: '+1 (503) 358-0443',
+  phoneDisplay: '(503) 461-4788',
+  phoneHref: 'tel:5034614788',
+  whatsappDisplay: '+1 (503) 461-4788',
   whatsappHref: 'https://wa.me/15033580443',
   email: 'info@hotdogtrays.com',
   emailHref: 'mailto:info@hotdogtrays.com',

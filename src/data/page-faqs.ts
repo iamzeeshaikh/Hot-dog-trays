@@ -33,7 +33,7 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "Can I order samples before placing a bulk order?",
-    "answer": "<p><strong>Yes!</strong> We offer sample packs so you can feel the quality of our materials and see the printing quality before committing to a large order. Contact us at <strong>(503) 358-0443</strong> or <strong>info@hotdogtrays.com</strong> to request samples.</p> <p>Standard shipping costs apply for sample orders.</p>"
+    "answer": "<p><strong>Yes!</strong> We offer sample packs so you can feel the quality of our materials and see the printing quality before committing to a large order. Contact us at <strong>(503) 461-4788</strong> or <strong>info@hotdogtrays.com</strong> to request samples.</p> <p>Standard shipping costs apply for sample orders.</p>"
   },
   {
     "question": "What payment methods do you accept?",
@@ -60,7 +60,7 @@ export const productPageFaqs: ProductFaq[] = [
   },
   {
     "question": "Are samples available before I order?",
-    "answer": "<p><strong>Yes! We offer sample packs</strong> so you can feel the quality of our materials and see the printing quality before committing to a large order.</p> <p><strong>Sample options:</strong></p> <ul> <li><strong>Blank Samples:</strong> FREE - Request unprinted samples in each material</li> <li><strong>Pre-Printed Samples:</strong> $25 - Samples with generic designs</li> <li><strong>Custom Sample Run:</strong> From $50 - Small batch with your design (minimum 10 units)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Sample Credit:</strong> If you order within 30 days, we'll credit your sample cost toward your first order! </div> <p>Contact us at <a href=\"tel:5033580443\">(503) 358-0443</a> or <a href=\"mailto:info@hotdogtrays.com\">info@hotdogtrays.com</a> to request samples.</p>"
+    "answer": "<p><strong>Yes! We offer sample packs</strong> so you can feel the quality of our materials and see the printing quality before committing to a large order.</p> <p><strong>Sample options:</strong></p> <ul> <li><strong>Blank Samples:</strong> FREE - Request unprinted samples in each material</li> <li><strong>Pre-Printed Samples:</strong> $25 - Samples with generic designs</li> <li><strong>Custom Sample Run:</strong> From $50 - Small batch with your design (minimum 10 units)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Sample Credit:</strong> If you order within 30 days, we'll credit your sample cost toward your first order! </div> <p>Contact us at <a href=\"tel:5034614788\">(503) 461-4788</a> or <a href=\"mailto:info@hotdogtrays.com\">info@hotdogtrays.com</a> to request samples.</p>"
   },
   {
     "question": "What is your return policy?",
@@ -83,7 +83,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "How do I place an order?",
-    "answer": "<p>Ordering is simple! Follow these steps:</p> <ul> <li><strong>Step 1:</strong> Request a free quote through our <a href=\"/get-quote/\">quote form</a></li> <li><strong>Step 2:</strong> Our team will send you pricing and options within 2 hours</li> <li><strong>Step 3:</strong> Approve your design proof (free design service included)</li> <li><strong>Step 4:</strong> Make payment and we start production</li> <li><strong>Step 5:</strong> Receive your order in 10-17 days</li> </ul> <p>You can also call us at <a href=\"tel:5033580443\">(503) 358-0443</a> to speak with a packaging specialist.</p>"
+    "answer": "<p>Ordering is simple! Follow these steps:</p> <ul> <li><strong>Step 1:</strong> Request a free quote through our <a href=\"/get-quote/\">quote form</a></li> <li><strong>Step 2:</strong> Our team will send you pricing and options within 2 hours</li> <li><strong>Step 3:</strong> Approve your design proof (free design service included)</li> <li><strong>Step 4:</strong> Make payment and we start production</li> <li><strong>Step 5:</strong> Receive your order in 10-17 days</li> </ul> <p>You can also call us at <a href=\"tel:5034614788\">(503) 461-4788</a> to speak with a packaging specialist.</p>"
   },
   {
     "question": "What are your prices?",
@@ -103,7 +103,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "Do you offer rush orders?",
-    "answer": "<p><strong>Yes!</strong> We offer expedited production for urgent orders.</p> <p><strong>Rush options:</strong></p> <ul> <li><strong>Standard:</strong> 7-10 business days</li> <li><strong>Rush:</strong> 5-7 business days (+20% fee)</li> <li><strong>Super Rush:</strong> 3-5 business days (+40% fee)</li> </ul> <p>Rush production is subject to availability. Contact us at <a href=\"tel:5033580443\">(503) 358-0443</a> to check if rush service is available for your order.</p>"
+    "answer": "<p><strong>Yes!</strong> We offer expedited production for urgent orders.</p> <p><strong>Rush options:</strong></p> <ul> <li><strong>Standard:</strong> 7-10 business days</li> <li><strong>Rush:</strong> 5-7 business days (+20% fee)</li> <li><strong>Super Rush:</strong> 3-5 business days (+40% fee)</li> </ul> <p>Rush production is subject to availability. Contact us at <a href=\"tel:5034614788\">(503) 461-4788</a> to check if rush service is available for your order.</p>"
   },
   {
     "question": "Can I reorder the same design?",
