@@ -13,7 +13,7 @@ export const CONTACT = {
   phoneDisplay: '(503) 461-4788',
   phoneHref: 'tel:5034614788',
   whatsappDisplay: '+1 (503) 461-4788',
-  whatsappHref: 'https://wa.me/15033580443',
+  whatsappHref: 'https://wa.me/15034614788',
   email: 'info@hotdogtrays.com',
   emailHref: 'mailto:info@hotdogtrays.com',
   address: {
