@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 
+const LEAD_RECIPIENTS = ['shanimazhar82@gmail.com', 'dev@zeecustomboxes.com'] as const;
+
 export const prerender = false;
 
 /**
@@ -196,7 +198,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   // ---- transport ---------------------------------------------------------
   const env = import.meta.env;
-  const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'SMTP_TO', 'SMTP_FROM_EMAIL'];
+  const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'SMTP_FROM_EMAIL'];
   const missing = required.filter((k) => !env[k]);
   if (missing.length) {
     console.error(`[quote] missing SMTP configuration: ${missing.join(', ')}`);
@@ -204,7 +206,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       {
         ok: false,
         error:
-          'The quote service is temporarily unavailable. Please call (503) 358-0443 or email info@hotdogtrays.com.',
+          'The quote service is temporarily unavailable. Please call (503) 461-4788 or email info@hotdogtrays.com.',
       },
       503,
     );
@@ -264,7 +266,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         name: env.SMTP_FROM_NAME || 'Hot Dog Trays',
         address: env.SMTP_FROM_EMAIL,
       },
-      to: env.SMTP_TO,
+      to: [...LEAD_RECIPIENTS],
       replyTo: email,
       subject: `${label} — hotdogtrays.com`,
       text: textBody,
@@ -277,7 +279,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       {
         ok: false,
         error:
-          'We could not deliver your request. Please call (503) 358-0443 or email info@hotdogtrays.com.',
+          'We could not deliver your request. Please call (503) 461-4788 or email info@hotdogtrays.com.',
       },
       502,
     );

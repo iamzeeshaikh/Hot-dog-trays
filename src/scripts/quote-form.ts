@@ -103,14 +103,14 @@ export function wireQuoteForm(form: HTMLFormElement) {
         setMessage(
           message,
           data.error ||
-            'We could not send your request. Please call (503) 358-0443 or email info@hotdogtrays.com.',
+            'We could not send your request. Please call (503) 461-4788 or email info@hotdogtrays.com.',
           'error',
         );
       }
     } catch {
       setMessage(
         message,
-        'Network error — your request was not sent. Please call (503) 358-0443 or try again.',
+        'Network error — your request was not sent. Please call (503) 461-4788 or try again.',
         'error',
       );
     } finally {
