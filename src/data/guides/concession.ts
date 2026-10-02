@@ -5,7 +5,7 @@ export const concessionGuide: Guide = {
   url: '/hot-dog-trays-for-concession-stands/',
   title: 'Hot Dog Trays for Concession Stands | High Volume',
   description:
-    'Trays for stadium and event concessions: pre-staging, queue throughput, combo portions and counter organisation.',
+    'Trays for stadium and event concessions: pre-staging, queue throughput, combo portions and counter organization.',
   h1: 'Hot Dog Trays for Concession Stands',
   standfirst:
     'When the queue is long and the interval is short, packaging either helps you move people or quietly holds you up.',
@@ -64,7 +64,7 @@ export const concessionGuide: Guide = {
       },
     },
     {
-      heading: 'Combo portions and counter organisation',
+      heading: 'Combo portions and counter organization',
       body: [
         'Concessions rarely sell a hot dog alone. It arrives with fries, nachos or a drink, and how those travel together determines whether the customer manages the walk back to their seat.',
         'A tray sized for the hot dog alone forces the customer to juggle. One sized for the combination costs marginally more per unit and removes a genuine source of spills and complaints.',
@@ -85,8 +85,8 @@ export const concessionGuide: Guide = {
     {
       heading: 'Keeping it simple across several stands',
       body: [
-        'Venues with more than one outlet gain from standardising. A single format ordered for every stand simplifies stock, lets you move product between outlets mid-event, and presents consistently to the customer.',
-        'The temptation is to optimise each stand separately. The cost of that shows up on event day, when one stand runs out of something another has a full carton of.',
+        'Venues with more than one outlet gain from standardizing. A single format ordered for every stand simplifies stock, lets you move product between outlets mid-event, and presents consistently to the customer.',
+        'The temptation is to optimize each stand separately. The cost of that shows up on event day, when one stand runs out of something another has a full carton of.',
       ],
       steps: {
         intro: 'A sequence that works for multi-stand venues:',
@@ -109,7 +109,7 @@ export const concessionGuide: Guide = {
       link: {
         href: '/product/red-and-white-hot-dog-trays/',
         anchor: 'the classic striped format',
-        lead: 'For a recognisable concession look,',
+        lead: 'For a recognizable concession look,',
       },
     },
   ],

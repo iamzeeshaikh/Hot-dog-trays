@@ -6,12 +6,11 @@ import QuoteForm from '../components/QuoteForm.astro';
 import FaqContent from '../components/pages/FaqContent.astro';
 import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
 import { faqPageFaqs } from '../data/page-faqs';
+import { pageExtras } from '../data/page-extras';
 
 const path = '/faq/';
-const title = 'FAQ - Hot Dog Trays';
-// No Yoast description existed for this page; created from the visible intro.
-const description =
-  'Answers to common questions about ordering, customisation, shipping and payment for custom hot dog trays.';
+const title = pageExtras['faq'].title;
+const description = pageExtras['faq'].description;
 
 const crumbs = [
   { name: 'Home', url: '/' },

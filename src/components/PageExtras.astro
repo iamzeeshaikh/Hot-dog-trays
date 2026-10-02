@@ -1,0 +1,97 @@
+---
+import type { PageExtra } from '../data/page-extras';
+
+/**
+ * Page-specific sections and FAQs for the company pages. Bodies may carry one
+ * markdown-style [anchor](/path) link; everything else is escaped text.
+ */
+export interface Props {
+  extra: PageExtra;
+  id: string;
+}
+
+const { extra, id } = Astro.props;
+
+const esc = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const rich = (s: string) =>
+  esc(s).replace(/\[([^\]]+)\]\((\/[^)\s]*)\)/g, '<a href="$2">$1</a>');
+---
+
+<section class="hdt-extras" aria-labelledby={`${id}-extras`}>
+  <div class="hdt-extras-inner">
+    {
+      extra.sections.map((s, i) => (
+        <div class="hdt-extras-block">
+          <h2 id={i === 0 ? `${id}-extras` : undefined}>{s.title}</h2>
+          {s.body.split('\n\n').map((p) => <p set:html={rich(p)} />)}
+          {s.bullets && s.bullets.length > 0 && (
+            <ul>
+              {s.bullets.map((b) => <li set:html={rich(b)} />)}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+    {
+      extra.faqs.length > 0 && (
+        <div class="hdt-extras-block">
+          <h2>Questions about this page</h2>
+          {extra.faqs.map((f) => (
+            <details class="hdt-extras-faq">
+              <summary>{f.question}</summary>
+              <p set:html={rich(f.answer)} />
+            </details>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .hdt-extras {
+    padding: 10px 20px 50px;
+  }
+  .hdt-extras-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hdt-extras-block {
+    margin-top: 34px;
+  }
+  .hdt-extras h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+    font-weight: 800;
+    color: #1d3557;
+  }
+  .hdt-extras p,
+  .hdt-extras li {
+    color: #444;
+    line-height: 1.75;
+  }
+  .hdt-extras ul {
+    margin: 10px 0 0;
+    padding-left: 1.2em;
+  }
+  .hdt-extras a {
+    color: #c1121f;
+    text-decoration: underline;
+  }
+  .hdt-extras-faq {
+    border: 1px solid #e3e6ea;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: #fff;
+  }
+  .hdt-extras-faq summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #1d3557;
+  }
+  .hdt-extras-faq p {
+    margin: 10px 0 0;
+  }
+</style>

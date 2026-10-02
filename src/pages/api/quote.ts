@@ -59,7 +59,7 @@ function rateLimited(ip: string): boolean {
   return recent.length > MAX_PER_WINDOW;
 }
 
-// ---------------------------------------------------------------- sanitising
+// ---------------------------------------------------------------- sanitizing
 
 /** Strip control characters and header-injection attempts from a field. */
 function clean(value: unknown, maxLength = 5000): string {

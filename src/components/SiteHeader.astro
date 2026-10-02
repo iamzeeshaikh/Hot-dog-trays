@@ -6,7 +6,7 @@ import { CONTACT } from '../data/site';
 /**
  * Migrated from the Elementor "Header" template.
  *
- * The product list is generated from the catalogue rather than hand-listed, so
+ * The product list is generated from the catalog rather than hand-listed, so
  * the desktop dropdown and the mobile accordion can never drift apart.
  */
 const navProducts = products.map((p) => ({ name: p.name, url: p.url }));
@@ -198,7 +198,7 @@ const navGuides = guides.map((g) => ({ name: g.crumb, url: g.url }));
   }
 
   // Desktop dropdown works on hover via CSS; these handlers add keyboard and
-  // touch support without changing the visual behaviour.
+  // touch support without changing the visual behavior.
   const dropdowns = Array.from(document.querySelectorAll<HTMLElement>('[data-dropdown]'));
 
   function openDropdown(dropdown: HTMLElement, open: boolean) {

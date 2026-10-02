@@ -8,13 +8,13 @@ import QuoteProcess from '../components/pages/QuoteProcess.astro';
 import QuoteInfo from '../components/pages/QuoteInfo.astro';
 import QuotePricing from '../components/pages/QuotePricing.astro';
 import QuoteCta from '../components/pages/QuoteCta.astro';
-import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../data/page-extras';
 
 const path = '/get-quote/';
-const title = 'Get Quote - Hot Dog Trays';
-// No Yoast description existed for this page; created from the visible intro.
-const description =
-  'Request a free custom quote for hot dog trays. Free design service, no setup fees and a response within two hours.';
+const title = pageExtras['get-quote'].title;
+const description = pageExtras['get-quote'].description;
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -26,6 +26,7 @@ const schema = graph([
   website(),
   webPage(path, title, description),
   breadcrumbs(path, crumbs),
+  ...(pageExtras['get-quote'].faqs.length ? [faqPage(path, pageExtras['get-quote'].faqs)] : []),
 ]);
 ---
 
@@ -36,6 +37,7 @@ const schema = graph([
     <QuoteForm idPrefix="get-quote" />
   </QuoteBlock>
   <QuoteProcess />
+  <PageExtras extra={pageExtras['get-quote']} id="get-quote" />
   <QuoteInfo />
   <QuotePricing />
   <QuoteCta />

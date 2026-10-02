@@ -3,6 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 import { BLOG_POSTS } from '../../lib/blog';
+import PageExtras from '../../components/PageExtras.astro';
+import { pageExtras } from '../../data/page-extras';
+
+const extra = pageExtras['blog'];
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -32,8 +36,8 @@ const fmt = (iso: string) =>
   });
 ---
 <BaseLayout
-  title="Blog | HotDogTrays.com"
-  description="Guides on paper hot dog boats, custom printed trays and grease resistant packaging for food trucks, stands and restaurants."
+  title={extra.title}
+  description={extra.description}
   path="/blog/"
   schema={schema}
 >
@@ -68,6 +72,7 @@ const fmt = (iso: string) =>
       }
     </div>
   </section>
+  <PageExtras extra={extra} id="blog" />
 </BaseLayout>
 
 <style>

@@ -15,13 +15,11 @@ import Customization from '../../components/product/Customization.astro';
 import SizeGuide from '../../components/product/SizeGuide.astro';
 import OrderProcess from '../../components/product/OrderProcess.astro';
 import ProductUseCases from '../../components/product/ProductUseCases.astro';
-import ProductFaqSection from '../../components/product/ProductFaqSection.astro';
 import Guarantee from '../../components/product/Guarantee.astro';
 
 import { products, getRelated, startingPrice, type Product } from '../../data/products';
 import { CATEGORY } from '../../data/site';
 import { SHIPPING, RETURNS, shippingCountriesSentence, shippingWindow } from '../../data/shipping';
-import { productPageFaqs } from '../../data/page-faqs';
 import { productSeo } from '../../data/product-seo';
 import {
   graph,
@@ -72,10 +70,11 @@ const crumbs = [
   { name: product.name, url: product.url },
 ];
 
-// One FAQPage node covering every question visible on the page: the
-// product-specific set from WooCommerce plus the shared ordering FAQs below it.
+// One FAQPage node covering the product's own questions. The shared ordering
+// FAQs used to be printed on every product too, which put the same eight
+// questions on 14 pages; they live on the homepage and /faq/ now.
 const seen = new Set<string>();
-const visibleFaqs = [...product.faqs, ...productPageFaqs].filter((f) => {
+const visibleFaqs = [...product.faqs].filter((f) => {
   const key = f.question.trim().toLowerCase();
   if (seen.has(key)) return false;
   seen.add(key);
@@ -222,7 +221,6 @@ const schema = graph([
   <SizeGuide />
   <OrderProcess />
   <ProductUseCases />
-  <ProductFaqSection />
   <Guarantee />
 
   <RelatedProducts products={related} />

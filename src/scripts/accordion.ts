@@ -1,5 +1,5 @@
 /**
- * Disclosure behaviour for the product FAQ accordion.
+ * Disclosure behavior for the product FAQ accordion.
  *
  * In a module rather than inline so Astro emits it as a bundled file; the
  * site's Content-Security-Policy is `script-src 'self'`.

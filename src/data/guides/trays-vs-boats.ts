@@ -25,7 +25,7 @@ export const traysVsBoatsGuide: Guide = {
         {
           heading: 'Sidewalls do different jobs',
           body: [
-            'Boat walls follow the food and keep it centred. Tray walls form a boundary and let the contents find their own position within it. One is guidance, the other is a fence.',
+            'Boat walls follow the food and keep it centered. Tray walls form a boundary and let the contents find their own position within it. One is guidance, the other is a fence.',
           ],
         },
         {
@@ -51,7 +51,7 @@ export const traysVsBoatsGuide: Guide = {
         caption: 'Choosing between a boat and a tray by menu item',
         headers: ['Menu item', 'Better format', 'Why'],
         rows: [
-          ['Single hot dog, light toppings', 'Boat', 'Cradled fit holds it centred with no effort'],
+          ['Single hot dog, light toppings', 'Boat', 'Cradled fit holds it centered with no effort'],
           ['Footlong or long sausage', 'Boat', 'Sidewalls support the full length'],
           ['Hot dog plus fries', 'Tray', 'Two items need floor area, not a cradle'],
           ['Loaded chilli or slaw dog', 'Tray', 'Depth and width beat a close fit'],
@@ -124,7 +124,7 @@ export const traysVsBoatsGuide: Guide = {
     {
       question: 'Which is better for a single hot dog?',
       answer:
-        'A boat, usually. The cradled fit holds the portion centred without the customer doing anything, which is exactly what a single item needs.',
+        'A boat, usually. The cradled fit holds the portion centered without the customer doing anything, which is exactly what a single item needs.',
     },
     {
       question: 'Which format suits a hot dog with fries?',

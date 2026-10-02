@@ -18,7 +18,7 @@ export const footlongGuide: Guide = {
     {
       heading: 'Why length changes the engineering',
       body: [
-        'Hold a short tray at its centre and the load is close to your hand. Hold a long one the same way and the same weight sits much further out, so the tray wants to bow. Add a heavy sausage and a line of chilli and the bow becomes visible.',
+        'Hold a short tray at its center and the load is close to your hand. Hold a long one the same way and the same weight sits much further out, so the tray wants to bow. Add a heavy sausage and a line of chilli and the bow becomes visible.',
         'The failure is rarely dramatic. The tray does not snap; it sags, the bun creases, and the portion looks tired by the time it reaches the table. Preventing that is mostly about board choice and base geometry rather than about adding length.',
       ],
       subsections: [
@@ -53,7 +53,7 @@ export const footlongGuide: Guide = {
         rows: [
           ['Plain footlong', 'Light and evenly spread', 'Standard caliper', 'Flat base is sufficient'],
           ['Footlong with onions and sauce', 'Moderate, some liquid', 'Standard to heavier', 'Grease-resistant surface'],
-          ['Chilli or cheese footlong', 'Heavy and wet at the centre', 'Heavier caliper', 'Reinforced or ribbed base'],
+          ['Chilli or cheese footlong', 'Heavy and wet at the center', 'Heavier caliper', 'Reinforced or ribbed base'],
           ['Footlong plus a side', 'Heaviest, uneven distribution', 'Heavier caliper', 'Wider base, deeper wall'],
           ['Two footlongs in one tray', 'Very heavy across the length', 'Heaviest available', 'Wide flat base, full end support'],
         ],
@@ -102,13 +102,13 @@ export const footlongGuide: Guide = {
     {
       heading: 'Printing on a long panel',
       body: [
-        'A footlong tray offers an unusually long, narrow print area. That suits a wordmark, a strip of pattern or a repeated motif far better than a large centred logo, which can look stranded in the middle of the panel.',
-        'Remember that most of the panel is hidden once food is in place. Artwork that lives near the ends and along the outer wall stays visible during service; artwork centred on the base is seen only before the portion is built and after it is finished.',
+        'A footlong tray offers an unusually long, narrow print area. That suits a wordmark, a strip of pattern or a repeated motif far better than a large centered logo, which can look stranded in the middle of the panel.',
+        'Remember that most of the panel is hidden once food is in place. Artwork that lives near the ends and along the outer wall stays visible during service; artwork centered on the base is seen only before the portion is built and after it is finished.',
       ],
       link: {
         href: '/product/kraft-hot-dog-tray/',
-        anchor: 'kraft board shifts printed colours',
-        lead: 'Colour behaves differently by stock, and',
+        anchor: 'kraft board shifts printed colors',
+        lead: 'Color behaves differently by stock, and',
       },
     },
   ],
@@ -156,7 +156,7 @@ export const footlongGuide: Guide = {
     {
       question: 'Where should artwork sit on a long tray?',
       answer:
-        'Along the outer wall and towards the ends, where it stays visible once food is loaded. Artwork centred on the base is covered during service.',
+        'Along the outer wall and towards the ends, where it stays visible once food is loaded. Artwork centered on the base is covered during service.',
     },
     {
       question: 'How do I test whether a footlong tray is strong enough?',

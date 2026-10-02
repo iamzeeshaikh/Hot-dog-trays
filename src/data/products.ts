@@ -16,7 +16,7 @@ export interface SpecTable {
 
 export interface ProductFaq {
   question: string;
-  /** Sanitised HTML fragment. */
+  /** Sanitized HTML fragment. */
   answer: string;
 }
 
@@ -43,13 +43,13 @@ export interface Product {
   metaDescription: string;
   canonical: string;
   position: number;
-  /** Slugs of the four neighbouring products in catalogue order. */
+  /** Slugs of the four neighboring products in catalog order. */
   related: string[];
 }
 
 export const products: Product[] = rawProducts as Product[];
 
-/** Catalogue order used by WooCommerce archives (alphabetical by name). */
+/** Catalog order used by WooCommerce archives (alphabetical by name). */
 export const productsAlphabetical: Product[] = [...products].sort((a, b) =>
   a.name.localeCompare(b.name, 'en'),
 );
@@ -66,7 +66,7 @@ export function getRelated(product: Product): Product[] {
     .filter((p): p is Product => Boolean(p));
 }
 
-/** Lowest starting price across the catalogue, for the archive pages. */
+/** Lowest starting price across the catalog, for the archive pages. */
 export function startingPrice(product: Product): string | null {
   const n = Number.parseFloat(product.price);
   return Number.isFinite(n) ? n.toFixed(2) : null;

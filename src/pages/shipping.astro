@@ -1,12 +1,18 @@
 ---
 import PolicyLayout from '../layouts/PolicyLayout.astro';
 import body from '../content/pages/shipping.html?raw';
+import { pageExtras } from '../data/page-extras';
+
+// The policy text already covers what the extra sections said, so only the
+// FAQs are carried over.
+const extra = { ...pageExtras['shipping'], sections: [] };
 ---
 
 <PolicyLayout
-  title="Shipping - Hot Dog Trays"
-  description="How Hot Dog Trays orders are processed, shipped and delivered, including processing times, tracking and international shipping."
+  title={extra.title}
+  description={extra.description}
   heading="Shipping"
   path="/shipping/"
   body={body}
+  extra={extra}
 />

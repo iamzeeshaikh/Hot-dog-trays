@@ -9,11 +9,11 @@ import type { ProductFaq } from './products';
 export const homeFaqs: ProductFaq[] = [
   {
     "question": "What is the minimum order quantity?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production. We also offer significant bulk discounts for larger orders:</p> <ul> <li>100-500 units: Standard pricing</li> <li>500-1,000 units: 5% discount</li> <li>1,000-5,000 units: 10% discount</li> <li>5,000+ units: 15% discount</li> </ul>"
+    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.30 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount</li> </ul> <p>Shipping is free on every order, whatever the quantity. For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
   },
   {
     "question": "How long does production and delivery take?",
-    "answer": "<p><strong>Standard production time is 7-10 business days</strong> after design approval. Shipping times vary by location:</p> <ul> <li><strong>USA:</strong> 3-5 business days</li> <li><strong>Canada:</strong> 3-5 business days</li> <li><strong>UK:</strong> 5-7 business days</li> <li><strong>Australia:</strong> 7-10 business days</li> <li><strong>Europe:</strong> 5-7 business days</li> </ul> <p>Rush production options are available for an additional fee if you need your order faster.</p>"
+    "answer": "<p><strong>Production starts after you approve the design proof, and the production time for your order is confirmed on your quote.</strong> Once dispatched, delivery takes 5-7 days.</p> <ul> <li><strong>Shipping:</strong> free on all orders</li> <li><strong>Destinations:</strong> USA, UK, Canada and Australia</li> </ul> <p>Rush production options are available for an additional fee if you need your order faster.</p>"
   },
   {
     "question": "Do you offer custom printing and design services?",
@@ -21,7 +21,7 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "What materials are your hot dog trays made from?",
-    "answer": "<p>We offer hot dog trays in several premium materials:</p> <ul> <li><strong>Kraft Paper:</strong> Eco-friendly, recyclable, natural brown finish</li> <li><strong>White Cardboard:</strong> Smooth surface, perfect for vibrant color printing</li> <li><strong>Corrugated:</strong> Extra-thick with superior insulation and durability</li> <li><strong>Food-Safe Plastic:</strong> Reusable, durable, and easy to clean</li> </ul> <p>All materials are <strong>FDA-approved</strong>, food-grade, and safe for direct food contact.</p>"
+    "answer": "<p>We offer hot dog trays in several premium materials:</p> <ul> <li><strong>Kraft Paper:</strong> Eco-friendly, recyclable, natural brown finish</li> <li><strong>White Cardboard:</strong> Smooth surface, perfect for vibrant color printing</li> <li><strong>Corrugated:</strong> Extra-thick with superior insulation and durability</li> <li><strong>Food-Safe Plastic:</strong> Reusable, durable, and easy to clean</li> </ul> <p>All materials are <strong>food-grade</strong>, food-grade, and safe for direct food contact.</p>"
   },
   {
     "question": "Are your hot dog trays eco-friendly?",
@@ -33,7 +33,7 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "Can I order samples before placing a bulk order?",
-    "answer": "<p><strong>Yes!</strong> We offer sample packs so you can feel the quality of our materials and see the printing quality before committing to a large order. Contact us at <strong>(503) 461-4788</strong> or <strong>info@hotdogtrays.com</strong> to request samples.</p> <p>Standard shipping costs apply for sample orders.</p>"
+    "answer": "<p><strong>Yes!</strong> We offer sample packs so you can feel the quality of our materials and see the printing quality before committing to a large order. Contact us at <strong>(503) 461-4788</strong> or <strong>info@hotdogtrays.com</strong> to request samples.</p>"
   },
   {
     "question": "What payment methods do you accept?",
@@ -41,45 +41,10 @@ export const homeFaqs: ProductFaq[] = [
   }
 ];
 
-export const productPageFaqs: ProductFaq[] = [
-  {
-    "question": "What is the minimum order quantity?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.30 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount + free shipping</li> </ul> <p>For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
-  },
-  {
-    "question": "Can I get custom printing on the trays?",
-    "answer": "<p><strong>Yes! We offer completely free custom printing and design services</strong> with every order. Our expert design team will create custom artwork featuring your logo, brand colors, and messaging at no additional cost.</p> <p><strong>What we offer:</strong></p> <ul> <li>Full-color CMYK printing (unlimited colors)</li> <li>Pantone color matching available</li> <li>High-resolution 300 DPI printing</li> <li>Multiple coating options (matte, gloss, spot UV)</li> <li>Inside or outside printing</li> <li>QR code integration</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>FREE:</strong> Design service + Up to 3 revisions + Digital proof </div> <p>You can also provide your own design files in PDF, AI, EPS, or PSD format.</p>"
-  },
-  {
-    "question": "What materials are available?",
-    "answer": "<p>We offer hot dog trays in <strong>4 premium materials</strong>, each with unique benefits:</p> <p><strong>1. Kraft Paper (250gsm)</strong></p> <ul> <li>Natural, eco-friendly brown finish</li> <li>100% recyclable & biodegradable</li> <li>FSC-certified sustainable sourcing</li> <li>Starting at $0.30 USD</li> </ul> <p><strong>2. White Cardboard (300gsm)</strong></p> <ul> <li>Bright white finish for vibrant printing</li> <li>Excellent print quality</li> <li>Strong & rigid construction</li> <li>Starting at $0.30 USD</li> </ul> <p><strong>3. Corrugated (350gsm)</strong></p> <ul> <li>Maximum durability & strength</li> <li>Excellent heat insulation</li> <li>Prevents oil seepage</li> <li>Starting at $0.30 USD</li> </ul> <p><strong>4. Food-Safe Plastic (PP)</strong></p> <ul> <li>Reusable & dishwasher safe</li> <li>BPA-free, FDA approved</li> <li>Clear or colored options</li> <li>Starting at $0.30 USD</li> </ul> <p>All materials are <strong>FDA-approved</strong> and safe for direct food contact.</p>"
-  },
-  {
-    "question": "How long does shipping take?",
-    "answer": "<p><strong>Production time:</strong> 7-10 business days after design approval</p> <p><strong>Shipping times by location:</strong></p> <ul> <li><strong>USA:</strong> 3-5 business days</li> <li><strong>Canada:</strong> 3-5 business days</li> <li><strong>UK:</strong> 5-7 business days</li> <li><strong>Australia:</strong> 7-10 business days</li> <li><strong>Europe:</strong> 5-7 business days</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Rush Production Available:</strong> Get your order in 3-5 days for an additional fee </div> <p><strong>Free Shipping:</strong> Orders of 5,000+ units qualify for free shipping within the USA.</p> <p>All orders include real-time tracking so you can monitor your delivery every step of the way.</p>"
-  },
-  {
-    "question": "Are samples available before I order?",
-    "answer": "<p><strong>Yes! We offer sample packs</strong> so you can feel the quality of our materials and see the printing quality before committing to a large order.</p> <p><strong>Sample options:</strong></p> <ul> <li><strong>Blank Samples:</strong> FREE - Request unprinted samples in each material</li> <li><strong>Pre-Printed Samples:</strong> $25 - Samples with generic designs</li> <li><strong>Custom Sample Run:</strong> From $50 - Small batch with your design (minimum 10 units)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Sample Credit:</strong> If you order within 30 days, we'll credit your sample cost toward your first order! </div> <p>Contact us at <a href=\"tel:5034614788\">(503) 461-4788</a> or <a href=\"mailto:info@hotdogtrays.com\">info@hotdogtrays.com</a> to request samples.</p>"
-  },
-  {
-    "question": "What is your return policy?",
-    "answer": "<p>We stand behind our products with a <strong>100% Satisfaction Guarantee</strong>.</p> <p><strong>Quality Issues:</strong></p> <ul> <li>If there are manufacturing defects or quality issues, we'll replace your order at no cost</li> <li>Claims must be made within 30 days of delivery</li> <li>Photo documentation required</li> </ul> <p><strong>Design Errors:</strong></p> <ul> <li>We require design approval before production</li> <li>If we make an error in production (not matching approved proof), we'll reprint at no charge</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Important:</strong> Custom printed products cannot be returned due to change of mind, as they are made specifically for your business. </div> <p><strong>Damaged in Transit:</strong></p> <ul> <li>Report damage within 48 hours of delivery</li> <li>We'll file a claim and send replacement items</li> </ul> <p>For full details, please review our <a href=\"/terms-conditions/\">Returns & Refunds Policy</a>.</p>"
-  },
-  {
-    "question": "Can I order custom sizes?",
-    "answer": "<p><strong>Yes! We offer fully custom sizes</strong> to fit your specific needs.</p> <p><strong>Standard sizes available:</strong></p> <ul> <li>Small: 6\" × 2\" × 1\"</li> <li>Medium: 8\" × 2.5\" × 1.5\"</li> <li>Large: 10\" × 3\" × 2\"</li> <li>Extra Large: 12\" × 3.5\" × 2.5\"</li> </ul> <p><strong>Custom sizing:</strong></p> <ul> <li>Any length from 6\" to 12\"</li> <li>Custom width and depth options</li> <li>Unique shapes and die-cuts available</li> <li>Minimum order: 500 units for fully custom sizes</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Free Size Consultation:</strong> Our team will help you determine the perfect dimensions for your product </div> <p><a href=\"/get-quote/\">Request a quote</a> with your custom size requirements.</p>"
-  },
-  {
-    "question": "What payment methods do you accept?",
-    "answer": "<p>We accept all major payment methods for your convenience:</p> <p><strong>Credit & Debit Cards:</strong></p> <ul> <li>Visa</li> <li>Mastercard</li> <li>American Express</li> <li>Discover</li> </ul> <p><strong>Digital Payments:</strong></p> <ul> <li>PayPal</li> <li>Apple Pay</li> <li>Google Pay</li> </ul> <p><strong>Business Payments:</strong></p> <ul> <li>Bank transfers (ACH/Wire)</li> <li>Purchase orders (for established businesses)</li> <li>Net 30 terms (available for qualified businesses)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Secure Payment:</strong> All transactions are encrypted with SSL security </div> <p>Payment is typically required before production begins. For large orders or established businesses, we offer flexible payment terms.</p>"
-  }
-];
-
 export const faqPageFaqs: ProductFaq[] = [
   {
-    "question": "What is the minimum order quantity?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.30 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount + free shipping</li> </ul> <p>For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
+    "question": "What is the smallest order, and how do volume discounts work?",
+    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.30 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount</li> </ul> <p>Shipping is free on every order, whatever the quantity. For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
   },
   {
     "question": "How do I place an order?",
@@ -103,7 +68,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "Do you offer rush orders?",
-    "answer": "<p><strong>Yes!</strong> We offer expedited production for urgent orders.</p> <p><strong>Rush options:</strong></p> <ul> <li><strong>Standard:</strong> 7-10 business days</li> <li><strong>Rush:</strong> 5-7 business days (+20% fee)</li> <li><strong>Super Rush:</strong> 3-5 business days (+40% fee)</li> </ul> <p>Rush production is subject to availability. Contact us at <a href=\"tel:5034614788\">(503) 461-4788</a> to check if rush service is available for your order.</p>"
+    "answer": "<p><strong>Yes, rush production is available for urgent orders</strong>, subject to press availability.</p> <ul> <li><strong>Rush:</strong> +20% fee</li> <li><strong>Super Rush:</strong> +40% fee</li> </ul> <p>Put your event or opening date on the quote request and we will confirm the production time we can meet before you pay. Once dispatched, delivery takes 5-7 days. Call <a href=\"tel:5034614788\">(503) 461-4788</a> to check rush availability for your order.</p>"
   },
   {
     "question": "Can I reorder the same design?",
@@ -139,15 +104,15 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "How long does production take?",
-    "answer": "<p><strong>Standard production time: 7-10 business days</strong> after design approval.</p> <p><strong>Complete timeline:</strong></p> <ul> <li>Quote & consultation: Same day</li> <li>Design & proof: 24-48 hours</li> <li>Production: 7-10 business days</li> <li>Shipping: 3-7 business days</li> <li><strong>Total: 10-17 business days</strong> from order to delivery</li> </ul> <p>Rush production available for 5-7 day or 3-5 day turnaround.</p>"
+    "answer": "<p><strong>Production starts after you approve the design proof, and the production time for your quantity and print is confirmed on your quote.</strong></p> <p><strong>Complete timeline:</strong></p> <ul> <li>Quote and consultation: same day</li> <li>Design and proof: 24-48 hours</li> <li>Production: confirmed on your quote</li> <li>Delivery after dispatch: 5-7 days, with free shipping</li> </ul> <p>Rush production is available if you are working to a fixed date.</p>"
   },
   {
     "question": "What are the shipping costs?",
-    "answer": "<p>Shipping costs vary based on order size and destination.</p> <p><strong>Estimated shipping costs:</strong></p> <ul> <li>100-500 units: $50-$150</li> <li>500-1,000 units: $100-$200</li> <li>1,000-5,000 units: $150-$300</li> <li><strong>5,000+ units: FREE SHIPPING</strong> (within USA)</li> </ul> <p>Exact shipping cost will be included in your quote.</p>"
+    "answer": "<p><strong>Shipping is free on all orders.</strong> There is no shipping charge added to your quote, whether you order 100 trays or 10,000.</p> <p>We ship to the USA, UK, Canada and Australia, and orders arrive 5-7 days after dispatch.</p>"
   },
   {
     "question": "Do you ship internationally?",
-    "answer": "<p><strong>Yes!</strong> We ship worldwide to over 50 countries.</p> <p><strong>International shipping times:</strong></p> <ul> <li><strong>Canada:</strong> 3-5 business days</li> <li><strong>UK & Europe:</strong> 5-7 business days</li> <li><strong>Australia:</strong> 7-10 business days</li> <li><strong>Asia:</strong> 7-10 business days</li> <li><strong>Other regions:</strong> 10-15 business days</li> </ul> <p>Customs duties and import taxes are the responsibility of the buyer.</p>"
+    "answer": "<p><strong>Yes. We ship to the USA, UK, Canada and Australia</strong>, with free shipping to all four.</p> <p>Delivery takes 5-7 days once your order is dispatched. For international orders, customs duties and import taxes are the responsibility of the buyer.</p>"
   },
   {
     "question": "Can I track my order?",
@@ -155,14 +120,14 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "What if my order is damaged during shipping?",
-    "answer": "<p>We pack all orders securely, but if damage occurs:</p> <ul> <li><strong>Report damage within 48 hours</strong> of delivery</li> <li>Provide photos of the damage</li> <li>We'll file a claim with the carrier</li> <li>We'll send replacement items at no cost</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>100% Satisfaction Guarantee:</strong> If any items are damaged, we'll replace them free of charge. </div>"
+    "answer": "<p>We pack all orders securely, but if damage occurs:</p> <ul> <li><strong>Report damage within 48 hours</strong> of delivery</li> <li>Provide photos of the damage</li> <li>We'll file a claim with the carrier</li> <li>We'll send replacement items at no cost</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Quality Checked Before Dispatch:</strong> If any items are damaged, we'll replace them free of charge. </div>"
   },
   {
     "question": "Do you offer expedited shipping?",
-    "answer": "<p><strong>Yes!</strong> We offer several shipping speed options:</p> <ul> <li><strong>Standard:</strong> 5-7 business days (included)</li> <li><strong>Express:</strong> 2-3 business days (+$50-$150)</li> <li><strong>Overnight:</strong> 1-2 business days (+$200-$400)</li> </ul> <p>Expedited shipping costs depend on order size and destination. Contact us for exact pricing.</p>"
+    "answer": "<p><strong>Every order ships free and arrives 5-7 days after dispatch</strong>, to the USA, UK, Canada and Australia.</p> <p>If you need your trays sooner, the faster route is rush production, which shortens the time before dispatch. Tell us your deadline on the quote request and we will confirm what is possible.</p>"
   },
   {
-    "question": "What payment methods do you accept?",
+    "question": "Which payment methods and terms are available?",
     "answer": "<p>We accept all major payment methods:</p> <p><strong>Credit & Debit Cards:</strong></p> <ul> <li>Visa, Mastercard, American Express, Discover</li> </ul> <p><strong>Digital Payments:</strong></p> <ul> <li>PayPal, Apple Pay, Google Pay</li> </ul> <p><strong>Business Payments:</strong></p> <ul> <li>Bank transfers (ACH/Wire)</li> <li>Purchase orders (for established businesses)</li> <li>Net 30 terms (available for qualified businesses)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Secure Payment:</strong> All transactions are encrypted with SSL security </div>"
   },
   {
@@ -171,7 +136,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "What is your return policy?",
-    "answer": "<p>We stand behind our products with a <strong>100% Satisfaction Guarantee</strong>.</p> <p><strong>Quality Issues:</strong></p> <ul> <li>Manufacturing defects → Free replacement</li> <li>Printing errors → Free reprint</li> <li>Quality issues → Full refund or replacement</li> <li>Claims must be made within 30 days</li> </ul> <p><strong>Design Errors:</strong></p> <ul> <li>We require design approval before production</li> <li>If we make an error (not matching proof) → Free reprint</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Important:</strong> Custom printed products cannot be returned due to change of mind, as they are made specifically for your business. </div>"
+    "answer": "<p>We stand behind our products with a <strong>Quality Checked Before Dispatch</strong>.</p> <p><strong>Quality Issues:</strong></p> <ul> <li>Manufacturing defects → Free replacement</li> <li>Printing errors → Free reprint</li> <li>Quality issues → Full refund or replacement</li> <li>Claims must be made within 30 days</li> </ul> <p><strong>Design Errors:</strong></p> <ul> <li>We require design approval before production</li> <li>If we make an error (not matching proof) → Free reprint</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Important:</strong> Custom printed products cannot be returned due to change of mind, as they are made specifically for your business. </div>"
   },
   {
     "question": "Do you offer refunds?",

@@ -4,13 +4,13 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import QuoteBlock from '../components/QuoteBlock.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import ContactContent from '../components/pages/ContactContent.astro';
-import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../data/page-extras';
 
 const path = '/contact/';
-const title = 'Contact - Hot Dog Trays';
-// No Yoast description existed for this page; created from the visible intro.
-const description =
-  'Contact Hot Dog Trays by phone, email or WhatsApp for help choosing the right custom hot dog packaging.';
+const title = pageExtras['contact'].title;
+const description = pageExtras['contact'].description;
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -22,12 +22,14 @@ const schema = graph([
   website(),
   webPage(path, title, description, 'ContactPage'),
   breadcrumbs(path, crumbs),
+  ...(pageExtras['contact'].faqs.length ? [faqPage(path, pageExtras['contact'].faqs)] : []),
 ]);
 ---
 
 <BaseLayout title={title} description={description} path={path} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <ContactContent />
+  <PageExtras extra={pageExtras['contact']} id="contact" />
   <QuoteBlock headingId="contact-quote-heading">
     <QuoteForm idPrefix="contact-quote" />
   </QuoteBlock>

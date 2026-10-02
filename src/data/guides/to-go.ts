@@ -65,7 +65,7 @@ export const toGoGuide: Guide = {
         'Flat bases and consistent footprints help more than any other single feature. Containers that stack squarely stay level; ones that taper awkwardly slide against each other and tip.',
       ],
       table: {
-        caption: 'Matching container behaviour to the journey',
+        caption: 'Matching container behavior to the journey',
         headers: ['Journey', 'Main risk', 'What helps most', 'What to avoid'],
         rows: [
           ['Counter pickup, eaten nearby', 'Very little', 'Open tray is fine', 'Over-specifying and adding cost'],
@@ -102,8 +102,8 @@ export const toGoGuide: Guide = {
     {
       heading: 'Paper or plastic for takeaway',
       body: [
-        'Both work, and the right answer depends on the menu rather than on preference. Fibre containers present well, print well and store flat. Plastic ignores grease and moisture entirely and stays rigid however long the journey.',
-        'Where menus are wet and journeys are long, plastic removes a whole class of problem. Where presentation and print quality matter most, and journeys are short, fibre usually gives the better impression.',
+        'Both work, and the right answer depends on the menu rather than on preference. Fiber containers present well, print well and store flat. Plastic ignores grease and moisture entirely and stays rigid however long the journey.',
+        'Where menus are wet and journeys are long, plastic removes a whole class of problem. Where presentation and print quality matter most, and journeys are short, fiber usually gives the better impression.',
       ],
       link: {
         href: '/product/plastic-hot-dog-trays/',

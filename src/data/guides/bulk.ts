@@ -24,7 +24,7 @@ export const bulkGuide: Guide = {
       bullets: {
         intro: 'The factors that move a bulk quote most:',
         items: [
-          'Number of print colours and whether a white underbase is needed',
+          'Number of print colors and whether a white underbase is needed',
           'Board grade and any grease barrier',
           'Whether the size is a standard tooling or a custom one',
           'How many different sizes share the same order',
@@ -89,7 +89,7 @@ export const bulkGuide: Guide = {
         {
           heading: 'Approve a proof before the run',
           body: [
-            'A proof is the last cheap moment to catch a colour shift or a typo. Once a bulk run is printed, corrections mean reprinting.',
+            'A proof is the last cheap moment to catch a color shift or a typo. Once a bulk run is printed, corrections mean reprinting.',
           ],
         },
       ],
@@ -129,7 +129,7 @@ export const bulkGuide: Guide = {
         'Not necessarily. The curve flattens, so beyond a point you gain little per unit while tying up cash and storage and increasing the risk that a design change strands the stock.',
     },
     {
-      question: 'What is the minimum order quantity?',
+      question: 'What is the minimum order for bulk hot dog trays?',
       answer:
         'Minimums depend on the format, the board and whether the tray is printed. They are confirmed on your quote rather than fixed across the range.',
     },

@@ -1,8 +1,8 @@
 /**
- * Shared behaviour for the migrated `.hdt-faq-item` accordions.
+ * Shared behavior for the migrated `.hdt-faq-item` accordions.
  *
  * The Elementor originals toggled a class only. This keeps that visual
- * behaviour (one panel open at a time) and adds the state and keyboard
+ * behavior (one panel open at a time) and adds the state and keyboard
  * semantics assistive technology needs.
  */
 export function wireFaqAccordions(root: ParentNode = document) {

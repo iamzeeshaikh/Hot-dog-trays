@@ -13,7 +13,6 @@ PROJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SOURCES = {
     'homeFaqs': 'src/components/home/HomeFaq.astro',
-    'productPageFaqs': 'src/components/product/ProductFaqSection.astro',
     'faqPageFaqs': 'src/components/pages/FaqContent.astro',
 }
 

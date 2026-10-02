@@ -32,8 +32,7 @@ const { title, description, path, ogImage, ogType, noindex, schema } = Astro.pro
     <meta name="google-site-verification" content="gi7tj-kivAVV3-SnW_HAnmWGf2gbiGuADDz7STugsqY" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Google tag (gtag.js) + Microsoft Clarity -->
-    <script is:inline src="/analytics-boot.js"></script>
-    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-N3HYCBHC8Y"></script>
+    <script defer is:inline src="/analytics-boot.js"></script>
     <script defer is:inline src="/ga4-events.js"></script>
     <link rel="icon" type="image/png" href={favicon.src} />
     <Seo

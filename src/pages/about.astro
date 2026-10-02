@@ -4,13 +4,13 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import QuoteBlock from '../components/QuoteBlock.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import AboutContent from '../components/pages/AboutContent.astro';
-import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../data/page-extras';
 
 const path = '/about/';
-const title = 'About - Hot Dog Trays';
-// No Yoast description existed for this page; created from the visible intro.
-const description =
-  'Since 2015 HotDogTrays.com has supplied custom hot dog packaging to food service businesses worldwide.';
+const title = pageExtras['about'].title;
+const description = pageExtras['about'].description;
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -22,12 +22,14 @@ const schema = graph([
   website(),
   webPage(path, title, description, 'AboutPage'),
   breadcrumbs(path, crumbs),
+  ...(pageExtras['about'].faqs.length ? [faqPage(path, pageExtras['about'].faqs)] : []),
 ]);
 ---
 
 <BaseLayout title={title} description={description} path={path} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <AboutContent />
+  <PageExtras extra={pageExtras['about']} id="about" />
   <QuoteBlock headingId="about-quote-heading">
     <QuoteForm idPrefix="about-quote" />
   </QuoteBlock>

@@ -126,7 +126,7 @@ export const foodTrucksGuide: Guide = {
     {
       question: 'How do I stop empty trays blowing away?',
       answer:
-        'Keep the stack below the level of the hatch opening and weight the top. Empty fibre trays are light enough to move in a modest gust.',
+        'Keep the stack below the level of the hatch opening and weight the top. Empty fiber trays are light enough to move in a modest gust.',
     },
     {
       question: 'Do trays soften if stored in a truck overnight?',

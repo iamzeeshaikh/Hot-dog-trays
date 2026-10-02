@@ -17,7 +17,7 @@ import { traysVsBoatsGuide } from './trays-vs-boats';
  * `hot-dog-tray-material-guide` stands in for the originally planned
  * `hot-dog-trays-with-lids`: the evidence for a lidded product line did not
  * hold up, so a guide was published rather than a commercial page asserting
- * something the catalogue does not offer. See material-guide.ts for the detail.
+ * something the catalog does not offer. See material-guide.ts for the detail.
  */
 export const guides: Guide[] = [
   sizesGuide,

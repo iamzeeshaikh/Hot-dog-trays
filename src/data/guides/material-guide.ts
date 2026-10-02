@@ -29,15 +29,15 @@ export const materialGuide: Guide = {
     {
       heading: 'The four material families',
       body: [
-        'Nearly every hot dog tray is built from one of four stocks: white paperboard, kraft paperboard, light corrugated board, or food-grade plastic. They differ in stiffness, how they cope with moisture, how printed colour appears, and what happens after use.',
+        'Nearly every hot dog tray is built from one of four stocks: white paperboard, kraft paperboard, light corrugated board, or food-grade plastic. They differ in stiffness, how they cope with moisture, how printed color appears, and what happens after use.',
         'None is best in every category. The useful question is which weakness you can live with for your particular menu.',
       ],
       table: {
         caption: 'How the common tray materials compare in service',
-        headers: ['Material', 'Stiffness', 'Grease and moisture', 'Printed colour', 'Best suited to'],
+        headers: ['Material', 'Stiffness', 'Grease and moisture', 'Printed color', 'Best suited to'],
         rows: [
           ['White paperboard', 'Good', 'Needs a barrier for wet toppings', 'Brightest and most accurate', 'Branded counters, clean presentation'],
-          ['Kraft paperboard', 'Good', 'Needs a barrier for wet toppings', 'Muted; whites do not show', 'Natural look, simple one or two colour art'],
+          ['Kraft paperboard', 'Good', 'Needs a barrier for wet toppings', 'Muted; whites do not show', 'Natural look, simple one or two color art'],
           ['Light corrugated', 'Highest', 'Copes best with heavy wet loads', 'Coarser surface, softer detail', 'Heavy portions, longer carries'],
           ['Food-grade plastic', 'Rigid, does not soften', 'Unaffected by grease or moisture', 'Limited; often unprinted', 'Wet menus, reusable service'],
         ],
@@ -72,21 +72,21 @@ export const materialGuide: Guide = {
       link: {
         href: '/paper-vs-plastic-hot-dog-trays/',
         anchor: 'a direct comparison of the two families',
-        lead: 'If the choice is essentially fibre against plastic,',
+        lead: 'If the choice is essentially fiber against plastic,',
       },
     },
     {
       heading: 'How material changes your artwork',
       body: [
-        'Printed colour is not independent of stock. White board gives the most predictable result because ink sits on a neutral base. Kraft warms every colour it carries, so blues shift, pastels weaken, and white cannot be printed at all unless a white underbase is used.',
+        'Printed color is not independent of stock. White board gives the most predictable result because ink sits on a neutral base. Kraft warms every color it carries, so blues shift, pastels weaken, and white cannot be printed at all unless a white underbase is used.',
         'This is not a reason to avoid kraft. It is a reason to design for it: bold marks, restricted palettes and strong contrast look deliberate on kraft, whereas photographic artwork rarely does.',
       ],
       bullets: {
-        intro: 'Before artwork is finalised, confirm:',
+        intro: 'Before artwork is finalized, confirm:',
         items: [
           'Which stock the design will actually print on',
           'Whether any white appears in the artwork',
-          'How many colours the design genuinely needs',
+          'How many colors the design genuinely needs',
           'Which panels stay visible once food is loaded',
           'Whether the same artwork must work across several stocks',
         ],
@@ -95,7 +95,7 @@ export const materialGuide: Guide = {
     {
       heading: 'Storage, stacking and handling',
       body: [
-        'Material affects the stockroom as much as the counter. Fibre trays generally arrive flat or nested and take little space until assembled. Rigid formats consume shelf space from the day they arrive.',
+        'Material affects the stockroom as much as the counter. Fiber trays generally arrive flat or nested and take little space until assembled. Rigid formats consume shelf space from the day they arrive.',
         'Weight matters too. A heavier board is reassuring in the hand but multiplies across a pallet, and if your storage is a cupboard behind a service window that difference is real.',
       ],
       link: {
@@ -126,7 +126,7 @@ export const materialGuide: Guide = {
     {
       question: 'Which tray material is strongest?',
       answer:
-        'Light corrugated board is the stiffest of the fibre options and copes best with heavy, wet portions. Rigid plastic does not soften at all, but it costs more in storage space and unit price.',
+        'Light corrugated board is the stiffest of the fiber options and copes best with heavy, wet portions. Rigid plastic does not soften at all, but it costs more in storage space and unit price.',
     },
     {
       question: 'Do I need a grease barrier?',
@@ -166,7 +166,7 @@ export const materialGuide: Guide = {
     {
       question: 'Does material affect how trays store before use?',
       answer:
-        'Considerably. Fibre trays usually arrive flat or nested and take little room; rigid formats occupy their full volume from delivery onward.',
+        'Considerably. Fiber trays usually arrive flat or nested and take little room; rigid formats occupy their full volume from delivery onward.',
     },
     {
       question: 'How do I compare materials fairly?',

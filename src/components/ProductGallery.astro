@@ -27,7 +27,7 @@ const matched = images
   }))
   .filter((i): i is { meta: ImageMetadata; alt: string; file: string } => Boolean(i.meta));
 
-// The click swap sets the main <img> to data-full, so serve an optimised
+// The click swap sets the main <img> to data-full, so serve an optimized
 // rendition rather than the multi-hundred-KB original (all of these are
 // prefetched at idle by product-gallery.ts).
 const resolved = await Promise.all(

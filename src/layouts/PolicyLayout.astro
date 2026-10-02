@@ -1,7 +1,9 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import { graph, organization, website, webPage, breadcrumbs } from '../lib/schema';
+import PageExtras from '../components/PageExtras.astro';
+import type { PageExtra } from '../data/page-extras';
+import { graph, organization, website, webPage, breadcrumbs, faqPage } from '../lib/schema';
 
 /**
  * Shared shell for the long-form policy pages that WordPress rendered with the
@@ -15,9 +17,11 @@ export interface Props {
   noindex?: boolean;
   /** Pre-sanitised HTML fragment migrated from the WordPress post content. */
   body: string;
+  /** Optional page-specific sections and FAQs shown under the policy text. */
+  extra?: PageExtra;
 }
 
-const { title, description, heading, path, noindex = false, body } = Astro.props;
+const { title, description, heading, path, noindex = false, body, extra } = Astro.props;
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -29,6 +33,7 @@ const schema = graph([
   website(),
   webPage(path, title, description),
   breadcrumbs(path, crumbs),
+  ...(extra?.faqs.length ? [faqPage(path, extra.faqs)] : []),
 ]);
 ---
 
@@ -44,6 +49,7 @@ const schema = graph([
     <h1 class="hdt-policy-title">{heading}</h1>
     <div class="hdt-policy-body" set:html={body} />
   </article>
+  {extra && <PageExtras extra={extra} id="policy" />}
 </BaseLayout>
 
 <style is:global>

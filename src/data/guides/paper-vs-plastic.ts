@@ -40,7 +40,7 @@ export const paperVsPlasticGuide: Guide = {
         rows: [
           ['Stiffness when dry', 'Good', 'Rigid', 'Plastic, marginally'],
           ['Stiffness after 20 minutes with sauce', 'Declines without a barrier', 'Unchanged', 'Plastic clearly'],
-          ['Print quality and colour', 'Excellent', 'Limited', 'Paperboard clearly'],
+          ['Print quality and color', 'Excellent', 'Limited', 'Paperboard clearly'],
           ['Storage volume before use', 'Flat or nested', 'Full volume from delivery', 'Paperboard clearly'],
           ['Appearance on a counter', 'Warm, natural or bright', 'Functional', 'Paperboard, usually'],
           ['Reuse', 'Single use', 'Can be washed and reused', 'Plastic'],
@@ -52,7 +52,7 @@ export const paperVsPlasticGuide: Guide = {
     {
       heading: 'Printing and how the tray looks',
       body: [
-        'Paperboard takes ink well. Colours land close to where the artwork put them, detail survives, and the surface itself contributes to how the food is perceived.',
+        'Paperboard takes ink well. Colors land close to where the artwork put them, detail survives, and the surface itself contributes to how the food is perceived.',
         'Plastic is more constrained. Printing is possible but generally simpler and less faithful, and many plastic trays are used unprinted for that reason. If the tray is part of how you present the brand, that is a real cost.',
       ],
       bullets: {
@@ -62,15 +62,15 @@ export const paperVsPlasticGuide: Guide = {
           'Portions are eaten within a few minutes of being served',
           'Storage space is tight and stock must lie flat',
           'The counter look is part of the offer',
-          'Single-use fibre suits your waste arrangements',
+          'Single-use fiber suits your waste arrangements',
         ],
       },
     },
     {
       heading: 'Storage, handling and cost over time',
       body: [
-        'Fibre trays arrive flat or nested and take very little space until they are used. Rigid plastic occupies its full volume from the day it is delivered, which is a genuine constraint in a small kitchen or a truck.',
-        'Unit cost usually favours paperboard for single-use service. Plastic can work out differently where trays are washed and reused, but that only applies if you actually have the washing capacity and the discipline to use it.',
+        'Fiber trays arrive flat or nested and take very little space until they are used. Rigid plastic occupies its full volume from the day it is delivered, which is a genuine constraint in a small kitchen or a truck.',
+        'Unit cost usually favors paperboard for single-use service. Plastic can work out differently where trays are washed and reused, but that only applies if you actually have the washing capacity and the discipline to use it.',
       ],
       steps: {
         intro: 'A way to settle the question for your own menu:',
@@ -92,13 +92,13 @@ export const paperVsPlasticGuide: Guide = {
     {
       heading: 'Disposal, without the marketing',
       body: [
-        'Neither material has a clean answer. Plain paperboard is widely accepted in fibre recycling, but barriers and laminates change how a facility treats it, and rules differ between areas. Plastic recyclability depends on the polymer, on local capability, and on whether the item is clean enough to be processed.',
+        'Neither material has a clean answer. Plain paperboard is widely accepted in fiber recycling, but barriers and laminates change how a facility treats it, and rules differ between areas. Plastic recyclability depends on the polymer, on local capability, and on whether the item is clean enough to be processed.',
         'Food contamination affects both. A tray covered in cheese sauce is a difficult recycling candidate whatever it is made from. If waste handling is genuinely part of your decision, the useful conversation is with your local waste contractor, not with a packaging brochure.',
       ],
       link: {
         href: '/product/paper-hot-dog-trays/',
-        anchor: 'fibre tray options',
-        lead: 'If fibre suits your service pattern, you can review the',
+        anchor: 'fiber tray options',
+        lead: 'If fiber suits your service pattern, you can review the',
       },
     },
   ],
@@ -116,7 +116,7 @@ export const paperVsPlasticGuide: Guide = {
     {
       question: 'Is paper always the more environmentally responsible choice?',
       answer:
-        'Not automatically. Plain paperboard is widely recycled, but barriers change that, and heavily soiled fibre is a poor recycling candidate. Local facilities decide the real outcome.',
+        'Not automatically. Plain paperboard is widely recycled, but barriers change that, and heavily soiled fiber is a poor recycling candidate. Local facilities decide the real outcome.',
     },
     {
       question: 'Can plastic trays be printed?',
@@ -126,7 +126,7 @@ export const paperVsPlasticGuide: Guide = {
     {
       question: 'Which stores better before use?',
       answer:
-        'Paperboard, clearly. Fibre trays arrive flat or nested; rigid plastic takes its full volume from the moment it is delivered.',
+        'Paperboard, clearly. Fiber trays arrive flat or nested; rigid plastic takes its full volume from the moment it is delivered.',
     },
     {
       question: 'Are plastic trays microwave or heat safe?',
@@ -146,7 +146,7 @@ export const paperVsPlasticGuide: Guide = {
     {
       question: 'Can I use both across one menu?',
       answer:
-        'Some operators do — fibre for dry counter items and plastic for wet or delivered ones. It costs a second line of stock, so it is worth it only if the menu genuinely splits.',
+        'Some operators do — fiber for dry counter items and plastic for wet or delivered ones. It costs a second line of stock, so it is worth it only if the menu genuinely splits.',
     },
     {
       question: 'How should I decide between them?',

@@ -3,14 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductGrid from '../components/ProductGrid.astro';
 import { productsAlphabetical } from '../data/products';
-import { graph, organization, website, breadcrumbs, collectionPage } from '../lib/schema';
+import { graph, organization, website, breadcrumbs, collectionPage, faqPage } from '../lib/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../data/page-extras';
 
 const path = '/shop/';
 // Metadata inherited from /product-category/products/, the stronger of the two
 // archives WooCommerce produced, which is now 301'd here.
-const title = 'Custom Hot Dog Trays | Wholesale Paper, Cardboard & Kraft';
-const description =
-  'Shop wholesale hot dog trays in paper, cardboard, kraft and plastic. Custom sizes, custom printing and bulk pricing.';
+const title = pageExtras['shop'].title;
+const description = pageExtras['shop'].description;
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -22,6 +23,7 @@ const schema = graph([
   website(),
   ...collectionPage(path, 'Shop', description, productsAlphabetical),
   breadcrumbs(path, crumbs),
+  ...(pageExtras['shop'].faqs.length ? [faqPage(path, pageExtras['shop'].faqs)] : []),
 ]);
 ---
 
@@ -32,6 +34,7 @@ const schema = graph([
     <p class="hdt-archive-count">Showing all {productsAlphabetical.length} results</p>
     <ProductGrid products={productsAlphabetical} label="All products" />
   </div>
+  <PageExtras extra={pageExtras['shop']} id="shop" />
 </BaseLayout>
 
 <style is:global>

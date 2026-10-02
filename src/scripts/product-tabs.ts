@@ -1,5 +1,5 @@
 /**
- * Tab behaviour for the migrated WooCommerce product data tabs.
+ * Tab behavior for the migrated WooCommerce product data tabs.
  *
  * Lives in a module rather than inline in the component so Astro emits it as a
  * bundled file: the site's Content-Security-Policy is `script-src 'self'`,

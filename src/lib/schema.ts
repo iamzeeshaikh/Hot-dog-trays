@@ -176,7 +176,7 @@ export function collectionPage(path: string, name: string, description: string, 
 /**
  * Article schema for the blog. Headline, description, hero image and the
  * published date all come from the post's own frontmatter, which is what the
- * page renders. Posts carry no byline, so the organisation is author as well
+ * page renders. Posts carry no byline, so the organization is author as well
  * as publisher.
  */
 export function blogPosting(post: {

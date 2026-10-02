@@ -49,7 +49,7 @@ export const productSeo: Record<string, ProductSeo> = {
   'cardboard-hot-dog-holders': {
     title: 'Cardboard Hot Dog Holders | Custom Printed Pockets',
     description:
-      'Cardboard hot dog holders with a close pocket fit for handheld eating. Custom sizes and printing for concessions and events.',
+      'Branded cardboard hot dog holders printed with your logo and colors. Firm grip for regular, jumbo or footlong dogs, free design, from $0.30 a unit.',
     reason:
       'Ranks 9.7 for "hot dog cardboard holder". Title leads with the holder format and its pocket structure to separate it from the cardboard trays page.',
     guides: [
@@ -71,7 +71,7 @@ export const productSeo: Record<string, ProductSeo> = {
     description:
       'Classic red and white striped hot dog trays for concessions, fairs and events. Custom sizes and printed alternatives available.',
     reason:
-      'Differentiated on the recognisable striped look rather than repeating "Wholesale".',
+      'Differentiated on the recognizable striped look rather than repeating "Wholesale".',
     guides: [
       { lead: 'The striped format is a concession staple, which is covered in', href: '/hot-dog-trays-for-concession-stands/', anchor: 'planning for interval rushes' },
     ],
@@ -83,7 +83,7 @@ export const productSeo: Record<string, ProductSeo> = {
     reason:
       '317 impressions, 2 clicks. Title now names the material property that drives the query rather than the repeated modifier.',
     guides: [
-      { lead: 'Printed colour behaves differently on brown board, which is explained in', href: '/hot-dog-tray-material-guide/', anchor: 'how each stock takes ink' },
+      { lead: 'Printed color behaves differently on brown board, which is explained in', href: '/hot-dog-tray-material-guide/', anchor: 'how each stock takes ink' },
     ],
   },
   'paper-hot-dog-trays': {
@@ -98,8 +98,8 @@ export const productSeo: Record<string, ProductSeo> = {
   'hot-dog-paper-holders': {
     title: 'Hot Dog Paper Holders | Custom Sizes and Printing',
     description:
-      'Paper hot dog holders that keep the bun supported for handheld service. Custom sizes, printing and bulk quantities.',
-    reason: 'Repeated wholesale pattern replaced with the customisation intent.',
+      'Paper hot dog holders that keep buns steady and fingers clean at carts and counters. Sized for classic or jumbo dogs, free design, from 100 units.',
+    reason: 'Repeated wholesale pattern replaced with the customization intent.',
     guides: [
       { lead: 'Holders suit service where customers eat on the move, such as', href: '/hot-dog-trays-for-food-trucks/', anchor: 'a market or festival pitch' },
     ],
@@ -107,7 +107,7 @@ export const productSeo: Record<string, ProductSeo> = {
   'disposable-hot-dog-holders': {
     title: 'Disposable Hot Dog Holders | Single Use, Bulk',
     description:
-      'Single-use hot dog holders for fast service with no washing up. Custom sizes, printing and wholesale quantities.',
+      'Disposable hot dog holders that stack flat and speed up service at food trucks, stadiums and school cafeterias. Kraft or white board, from 100 units.',
     reason: 'Differentiated on the single-use benefit rather than repeating "Wholesale".',
     guides: [
       { lead: 'Volume buyers should read', href: '/hot-dog-trays-in-bulk/', anchor: 'setting a reorder point' },
