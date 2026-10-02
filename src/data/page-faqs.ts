@@ -13,7 +13,7 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "How long does production and delivery take?",
-    "answer": "<p><strong>Production starts after you approve the design proof, and the production time for your order is confirmed on your quote.</strong> Once dispatched, delivery takes 5-7 days.</p> <ul> <li><strong>Shipping:</strong> free on all orders</li> <li><strong>Destinations:</strong> USA, UK, Canada and Australia</li> </ul> <p>Rush production options are available for an additional fee if you need your order faster.</p>"
+    "answer": "<p><strong>Production starts after you approve the design proof, and standard production takes 7-10 business days.</strong> Once dispatched, delivery takes 5-7 days.</p> <ul> <li><strong>Shipping:</strong> free on all orders</li> <li><strong>Destinations:</strong> USA, UK, Canada and Australia</li> </ul> <p>Rush production options are available for an additional fee if you need your order faster.</p>"
   },
   {
     "question": "Do you offer custom printing and design services?",
@@ -41,7 +41,7 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "Will I see my tray design before it goes to print?",
-    "answer": "<p>Yes. Our designers send a digital proof within 24 to 48 hours, and you can ask for up to 3 free revisions. Nothing is printed until you approve the proof. Production then starts, and the production time for your quantity and print is confirmed on your quote.</p>"
+    "answer": "<p>Yes. Our designers send a digital proof within 24 to 48 hours, and you can ask for up to 3 free revisions. Nothing is printed until you approve the proof. Production then starts, and standard production takes 7-10 business days.</p>"
   },
   {
     "question": "Do you print branded trays for small food businesses?",
@@ -112,7 +112,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "How long does production take?",
-    "answer": "<p><strong>Production starts after you approve the design proof, and the production time for your quantity and print is confirmed on your quote.</strong></p> <p><strong>Complete timeline:</strong></p> <ul> <li>Quote and consultation: same day</li> <li>Design and proof: 24-48 hours</li> <li>Production: confirmed on your quote</li> <li>Delivery after dispatch: 5-7 days, with free shipping</li> </ul> <p>Rush production is available if you are working to a fixed date.</p>"
+    "answer": "<p><strong>Production starts after you approve the design proof, and standard production takes 7-10 business days.</strong></p> <p><strong>Complete timeline:</strong></p> <ul> <li>Quote and consultation: same day</li> <li>Design and proof: 24-48 hours</li> <li>Production: 7-10 business days</li> <li>Delivery after dispatch: 5-7 days, with free shipping</li> </ul> <p>Rush production is available if you are working to a fixed date.</p>"
   },
   {
     "question": "What are the shipping costs?",

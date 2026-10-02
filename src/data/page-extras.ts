@@ -19,11 +19,11 @@ const basePageExtras: Record<string, PageExtra> = {
     "sections": [
       {
         "title": "What happens after you send your request",
-        "body": "A member of our packaging team reads every request and replies within 2 hours with detailed pricing, material options and a recommendation for your menu. If anything is missing, we ask rather than guess, so the numbers you receive match what you will actually order. Once you are happy with the price, our designers prepare your artwork and send a digital proof within 24 to 48 hours. You can ask for up to 3 free revisions before you approve it. Nothing is charged at the quote or proof stage. Payment is taken once the proof is approved. Production time for your quantity and print is confirmed on your quote, and your order then ships free with tracking.",
+        "body": "A member of our packaging team reads every request and replies within 2 hours with detailed pricing, material options and a recommendation for your menu. If anything is missing, we ask rather than guess, so the numbers you receive match what you will actually order. Once you are happy with the price, our designers prepare your artwork and send a digital proof within 24 to 48 hours. You can ask for up to 3 free revisions before you approve it. Nothing is charged at the quote or proof stage. Payment is taken once the proof is approved. Standard production takes 7-10 business days, and your order then ships free with tracking.",
         "bullets": [
           "Quote with pricing and options: within 2 hours",
           "Design proof: 24 to 48 hours, up to 3 free revisions",
-          "Production: time confirmed on your quote, starting after proof approval",
+          "Production: 7-10 business days after proof approval",
           "No setup fees, plate charges or die-cut fees for standard sizes"
         ]
       },
@@ -63,12 +63,12 @@ const basePageExtras: Record<string, PageExtra> = {
     "sections": [
       {
         "title": "Free shipping to four countries",
-        "body": "Every order ships free to the USA, UK, Canada and Australia, whatever the quantity. There is no shipping line to add at the end of your quote, so the price you approve is the price you pay for delivery to your door. Once your order leaves us, delivery usually takes 5 to 7 days. Because every order is printed to your design, production comes first, and the production time for your order is confirmed on your quote. The 5 to 7 day delivery window starts once it ships.",
+        "body": "Every order ships free to the USA, UK, Canada and Australia, whatever the quantity. There is no shipping line to add at the end of your quote, so the price you approve is the price you pay for delivery to your door. Once your order leaves us, delivery usually takes 5 to 7 days. Because every order is printed to your design, production comes first, and standard production takes 7-10 business days. The 5 to 7 day delivery window starts once it ships.",
         "bullets": [
           "Shipping cost: free on all orders",
           "Destinations: USA, UK, Canada and Australia",
           "Delivery once shipped: 5 to 7 days",
-          "Production before dispatch: confirmed on your quote"
+          "Production before dispatch: 7-10 business days after proof approval"
         ]
       },
       {
@@ -92,7 +92,7 @@ const basePageExtras: Record<string, PageExtra> = {
       },
       {
         "question": "When does the delivery window start?",
-        "answer": "The 5 to 7 day delivery window starts when your order ships. Production comes first and its time is confirmed on your quote, so put your deadline on the quote request and we will plan both."
+        "answer": "The 5 to 7 day delivery window starts when your order ships. Standard production takes 7-10 business days after proof approval, so put your deadline on the quote request and we will plan both."
       },
       {
         "question": "Who pays customs duties on orders shipped outside the USA?",
