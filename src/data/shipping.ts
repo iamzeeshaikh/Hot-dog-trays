@@ -16,6 +16,12 @@ export const SHIPPING = {
   transitDaysMin: 5,
   transitDaysMax: 7,
   /**
+   * Production before dispatch, in business days after proof approval.
+   * Confirmed by the business owner on 2 October 2026.
+   */
+  handlingDaysMin: 7,
+  handlingDaysMax: 10,
+  /**
    * Countries shipped to, as ISO 3166-1 alpha-2 for schema plus a display
    * label for the page copy.
    */

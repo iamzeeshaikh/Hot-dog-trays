@@ -117,6 +117,12 @@ export function product(p: Product, imageUrls: string[]) {
         })),
         deliveryTime: {
           '@type': 'ShippingDeliveryTime',
+          handlingTime: {
+            '@type': 'QuantitativeValue',
+            minValue: SHIPPING.handlingDaysMin,
+            maxValue: SHIPPING.handlingDaysMax,
+            unitCode: 'DAY',
+          },
           transitTime: {
             '@type': 'QuantitativeValue',
             minValue: SHIPPING.transitDaysMin,
