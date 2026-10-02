@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { blogPosting, breadcrumbs, graph, organization, website } from '../../lib/schema';
+import { blogPosting, breadcrumbs, faqPage, graph, organization, website } from '../../lib/schema';
+import PageExtras from '../../components/PageExtras.astro';
+import { extraFaqs } from '../../data/page-extras';
 import { BLOG_POSTS } from '../../lib/blog';
 
 export function getStaticPaths() {
@@ -10,6 +12,7 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = post;
+const extra = { title: '', description: '', sections: [], faqs: extraFaqs(post.slug) };
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -32,6 +35,7 @@ const schema = graph([
   website(),
   blogPosting(post),
   breadcrumbs(post.url, crumbs),
+  ...(extra.faqs.length ? [faqPage(post.url, extra.faqs)] : []),
 ]);
 ---
 <BaseLayout
@@ -60,6 +64,7 @@ const schema = graph([
       <Content />
     </div>
   </article>
+  <PageExtras extra={extra} id="post" />
 </BaseLayout>
 
 <style>

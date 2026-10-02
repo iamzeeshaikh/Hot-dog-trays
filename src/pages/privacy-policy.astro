@@ -1,6 +1,9 @@
 ---
 import PolicyLayout from '../layouts/PolicyLayout.astro';
 import body from '../content/pages/privacy-policy.html?raw';
+import { extraFaqs } from '../data/page-extras';
+
+const extra = { title: '', description: '', sections: [], faqs: extraFaqs('privacy-policy') };
 ---
 
 <PolicyLayout
@@ -9,4 +12,5 @@ import body from '../content/pages/privacy-policy.html?raw';
   heading="Privacy Policy"
   path="/privacy-policy/"
   body={body}
+  extra={extra}
 />

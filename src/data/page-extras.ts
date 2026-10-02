@@ -3,6 +3,8 @@
  * about, contact, shop, blog). They were 185-390 words each and shared most of
  * their text with each other. Questions avoid the ones on the homepage and /faq/.
  */
+import faqsExtra from './faqs-extra.json';
+
 export type PageExtra = {
   title: string;
   description: string;
@@ -10,7 +12,7 @@ export type PageExtra = {
   faqs: { question: string; answer: string }[];
 };
 
-export const pageExtras: Record<string, PageExtra> = {
+const basePageExtras: Record<string, PageExtra> = {
   "get-quote": {
     "title": "Request a Free Packaging Quote | 2-Hour Reply | HotDogTrays",
     "description": "Send your quantity, size and artwork and get pricing, material options and advice within 2 hours. Free design, no setup fees and no obligation to order.",
@@ -219,3 +221,20 @@ export const pageExtras: Record<string, PageExtra> = {
     "faqs": []
   }
 };
+
+/**
+ * Further FAQs per page (every page carries at least ten). Keys are page keys
+ * above, policy page slugs, "home", "blog" and blog post slugs.
+ */
+export const extraFaqs = (key: string): PageExtra['faqs'] =>
+  ((faqsExtra as Record<string, { q: string; a: string }[]>)[key] ?? []).map((f) => ({
+    question: f.q,
+    answer: f.a,
+  }));
+
+export const pageExtras: Record<string, PageExtra> = Object.fromEntries(
+  Object.entries(basePageExtras).map(([key, extra]) => [
+    key,
+    { ...extra, faqs: [...extra.faqs, ...extraFaqs(key)] },
+  ]),
+);

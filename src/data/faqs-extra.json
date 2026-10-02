@@ -1,0 +1,480 @@
+{
+  "contact": [
+    {
+      "q": "Can I get in touch outside your business hours?",
+      "a": "Yes. Send an email to info@hotdogtrays.com or a WhatsApp message to +1 (503) 461-4788 at any time, and the team picks it up during business hours: Monday to Friday 9am to 6pm EST and Saturday 10am to 4pm EST. We are closed on Sunday."
+    },
+    {
+      "q": "Is your phone number also your WhatsApp number?",
+      "a": "Yes. (503) 461-4788 works for calls and for WhatsApp, where you can add the +1 country code. WhatsApp is handy for sending photos of the packaging you use now, a rough sketch or your logo straight from your phone, while calls suit quick questions and checking rush availability."
+    },
+    {
+      "q": "Which email address should I send artwork files to?",
+      "a": "Send artwork to info@hotdogtrays.com. Email is the best channel for large print files, purchase orders and anything you want in writing. If you do not have a print-ready file, any version of your logo works, even a photo of your business card, and our designers recreate it at no cost."
+    },
+    {
+      "q": "How do I ask for samples before ordering?",
+      "a": "Call (503) 461-4788 or email info@hotdogtrays.com and tell us which styles and materials you are considering. Samples let you check the board, the print and how a tray holds your own menu items before you commit to a bulk order of 100 units or more."
+    },
+    {
+      "q": "Can your team call me back instead?",
+      "a": "Yes. Fill in the form on the contact page with your name, email, phone number and a short note about what you serve, and say in the note whether you prefer a call or an email back. Quote requests receive a reply within 2 hours during business hours."
+    }
+  ],
+  "shop": [
+    {
+      "q": "Which shop product suits corn dogs and fries?",
+      "a": "Paper hot dog boats are the usual choice. They are light, quick to fill and open on top, so corn dogs, fries and classic dogs can be handed over fast at takeout lines and concession stands. For a hot dog served with fries side by side, a wider tray with walls carries the combined portion better."
+    },
+    {
+      "q": "Does every product in the shop have the same minimum order?",
+      "a": "Yes. The minimum is 100 units for every style in the shop, from boats and holders to plates, trays and container paper. Volume discounts apply as quantities grow: 5% from 500 units, 10% from 1,000 units and 15% from 5,000 units, and shipping is free on all orders."
+    },
+    {
+      "q": "Which shop items can be washed and reused?",
+      "a": "The plastic hot dog trays are made from food-safe PP plastic and can be washed and reused, which suits venues with their own dishwashing. The kraft, white cardboard and corrugated styles are single use and are the better fit where food leaves the counter or is eaten on the move."
+    },
+    {
+      "q": "Is the $0.30 starting price the same across all materials?",
+      "a": "Yes, kraft, white cardboard, corrugated and food-safe plastic all start from $0.30 per unit. Your final price depends on the quantity, size, printing and any coating you choose. Request a free quote with those details and we reply within 2 hours with exact pricing."
+    },
+    {
+      "q": "Do product pages list sizes and specifications?",
+      "a": "Yes. Open any product in the shop to see its available sizes, materials and specifications. If the size you need is not listed, tell us your bun length and toppings on a quote request and our team will suggest a size or a custom option that fits your menu."
+    },
+    {
+      "q": "How can I compare two shop products before ordering?",
+      "a": "Ask for samples of both and load them with your real menu items during a normal service. Check how each one holds its shape, handles grease and fits your counter storage. Our team can also talk through the differences by phone on (503) 461-4788 if you are deciding between two styles."
+    }
+  ],
+  "get-quote": [
+    {
+      "q": "Can I request a quote by phone or WhatsApp instead of the form?",
+      "a": "Yes. Call (503) 461-4788, message the same number on WhatsApp, or email info@hotdogtrays.com. Share the product type, an estimated quantity, your timeline and any logo you have. Every channel reaches the same packaging team, and you still get pricing and options within 2 hours."
+    },
+    {
+      "q": "Can I ask for prices at two different quantities?",
+      "a": "Yes, and it is worth doing when you sit near a discount break. Discounts start at 5% from 500 units, 10% from 1,000 and 15% from 5,000. Ask for both quantities on one request and we show the unit price for each, so you can decide how much stock to hold."
+    },
+    {
+      "q": "Should I include my event or opening date on the request?",
+      "a": "Yes. Put the date on your quote request and we will tell you before you pay whether production can meet it. Production time is confirmed on your quote, delivery takes 5 to 7 days after dispatch, and rush production is available for an additional fee if the timing is tight."
+    },
+    {
+      "q": "What if I do not know which tray size I need?",
+      "a": "Tell us what you serve, such as classic, jumbo or loaded hot dogs and any sides. Our standard sizes are small 6 inch, medium 8 inch and large 10 inch, and custom sizes are available. Our team recommends the size that fits your food and budget."
+    },
+    {
+      "q": "Can I ask for a coating or inside printing on my quote?",
+      "a": "Yes. List any must-haves on the request, such as a matte, gloss or spot UV coating, printing on the inside of the tray, or an eco-friendly material like kraft or FSC-certified paper. We include each option in the pricing so you can compare costs before you approve anything."
+    },
+    {
+      "q": "What happens if my quote request is missing details?",
+      "a": "A member of our packaging team reads every request, and if something is missing we ask rather than guess. That way the numbers you receive match what you will actually order. A rough quantity range and a short note about your menu are enough for us to get started."
+    }
+  ],
+  "shipping": [
+    {
+      "q": "Can you ship to a country that is not on your list?",
+      "a": "We ship to the USA, the UK, Canada and Australia. If your business is based somewhere else, contact us before you order and we will tell you whether we can help. Please do not place an order for another destination until our team has confirmed it."
+    },
+    {
+      "q": "What should I do if my package shows delivered but has not arrived?",
+      "a": "First check with neighbors or building management and look around your mailbox or doorstep. Allow 24 hours for the carrier to update its records. If the package is still missing after that, email info@hotdogtrays.com with your order details and we will help you resolve it."
+    },
+    {
+      "q": "How do I plan delivery around an event date?",
+      "a": "Add production time and delivery together. Production starts once you approve your proof and its length is confirmed on your quote, then delivery takes 5 to 7 days after dispatch. Put your event date on the quote request so we can tell you before payment whether it can be met."
+    },
+    {
+      "q": "Can customs add time to deliveries in Canada, the UK or Australia?",
+      "a": "Yes. Customs processing can extend the usual 5 to 7 day delivery window for orders going to Canada, the UK and Australia. Any customs fees, import taxes or duties charged on arrival are paid by the customer, so allow extra time and budget when you plan a delivery date."
+    },
+    {
+      "q": "How do I return trays I no longer need?",
+      "a": "Contact us within 14 days of delivery with your order details. Returned goods must be unused and in their original packaging, because every order is made to your size and artwork. For returns like this, the customer pays the return carriage cost."
+    },
+    {
+      "q": "Is shipping still free when I choose rush production?",
+      "a": "Yes. Shipping is free on every order to the USA, UK, Canada and Australia, including rush jobs. The rush fee covers faster production only. Once your order ships, delivery usually takes 5 to 7 days, and you receive a tracking number by email when it leaves us."
+    }
+  ],
+  "about": [
+    {
+      "q": "When was HotDogTrays.com founded?",
+      "a": "HotDogTrays.com was founded in 2015. We started out making custom hot dog packaging for food service businesses, and that is still our focus today: trays, boats, holders, plates and container paper printed with each customer's own branding, with orders starting at 100 units."
+    },
+    {
+      "q": "Why did you start a hot dog packaging company?",
+      "a": "Smaller food businesses were being priced out of branded packaging by high minimum orders and limited options. We set out to fix that with a 100-unit minimum, free in-house design and a choice of materials, so a single food truck can get printed trays as easily as a large venue."
+    },
+    {
+      "q": "What types of food businesses do you work with?",
+      "a": "We work with food trucks, stadium kiosks, restaurants and catering companies. Their needs differ, from fast handheld service at a concession stand to plates and trays for a catered event, so our team recommends styles and materials based on what each business serves and how its customers eat."
+    },
+    {
+      "q": "Who looks after my order from quote to dispatch?",
+      "a": "The same team that prepares your quote follows the order through design, production and dispatch. That means you always know who to talk to, and you do not have to explain your menu, artwork or deadline again at each stage of the job."
+    },
+    {
+      "q": "Are your designers in-house?",
+      "a": "Yes. Our in-house designers prepare your artwork at no extra cost. They work from any version of your logo, send a digital proof within 24 to 48 hours and make up to 3 free revisions. You approve the final proof before anything is printed."
+    },
+    {
+      "q": "Do I approve the artwork before printing starts?",
+      "a": "Yes. Every job goes through a digital proof that you review and approve before anything is printed. Check the layout, spelling and logo position carefully at this stage. Once you approve it, production begins and the production time is the one confirmed on your quote."
+    },
+    {
+      "q": "What values guide how you work?",
+      "a": "Four values shape our work: quality first, customer first, innovation and sustainability. In practice that means careful quality checks before dispatch, a team that answers quote requests within 2 hours, steady improvement to our products and processes, and recyclable kraft and FSC-certified paper options."
+    },
+    {
+      "q": "What standards do your packaging materials meet?",
+      "a": "All of our materials are FDA-approved and food grade, which makes them safe for direct food contact. That covers kraft, white cardboard, corrugated and food-safe plastic. For businesses that want responsibly sourced board, we also offer FSC-certified paper options."
+    },
+    {
+      "q": "How do you keep branded packaging affordable for small businesses?",
+      "a": "Design is free, there are no setup fees for standard sizes, and pricing starts at $0.30 per unit with a 100-unit minimum. Volume discounts of 5%, 10% and 15% apply from 500, 1,000 and 5,000 units, and shipping is free on all orders."
+    },
+    {
+      "q": "What is your company mission?",
+      "a": "Our mission is to help food service businesses of every size get customizable packaging that supports their brand, works well for their customers and uses more sustainable materials. Low minimums and free design are how we make that practical for small operators as well as large venues."
+    }
+  ],
+  "blog": [
+    {
+      "q": "What topics does the hot dog packaging blog cover?",
+      "a": "The blog covers five buying questions: paper hot dog boats for serving and takeout, how holders differ from trays, plates for parties and buffets, grease resistant trays for busy service, and custom printed trays for food brands. Each guide focuses on one decision so you can read only what applies to you."
+    },
+    {
+      "q": "Which guide should I read first when choosing a format?",
+      "a": "Start with the guide on how hot dog holders differ from trays. It explains the shapes, materials and sizing behind each format. If you cater events or seated meals, read the guide on hot dog plates for parties and buffet service next."
+    },
+    {
+      "q": "Which guide helps a food truck or takeout counter?",
+      "a": "Read the guide on paper hot dog boats for serving and takeout. It covers boat sizing for different toppings, grease and steam control, and how boats perform at the counter compared with trays for longer carries, which suits food trucks, carts and busy takeout lines."
+    },
+    {
+      "q": "Which guide explains why trays go soft during a rush?",
+      "a": "The grease resistant trays guide explains how grease soaks into paperboard, which coatings and board weights resist it, and why corners and seams fail first. It also shows how holding time and steam affect a tray, so you can match the barrier to your real service pattern."
+    },
+    {
+      "q": "Is there a guide on printing my logo on trays?",
+      "a": "Yes. The guide on how custom hot dog trays support food brands covers which tray faces customers see, how to plan artwork around fold lines, choosing print colors that read well next to food, protecting print from grease, and the proofing steps before production."
+    },
+    {
+      "q": "Which guide covers catering and buffet events?",
+      "a": "The guide on hot dog plates for parties and buffet service is written for catered and self-serve events. It explains when plates beat trays, how to size plates for sides, how to test a plate for sag, and how many plates to plan per guest."
+    },
+    {
+      "q": "Who are the blog guides written for?",
+      "a": "The guides are written for people who buy food service packaging: food truck owners, concession and stand operators, caterers and restaurant managers. They focus on practical checks you can run with your own menu rather than general marketing advice, so you can order with fewer surprises."
+    },
+    {
+      "q": "Do the guides include tests I can run myself?",
+      "a": "Yes. Several guides include simple bench tests, such as pouring warm oil into a tray corner, holding a loaded plate by one edge to check for sag, and timing staff while they plate ten portions. Each test uses your real food and needs no special equipment."
+    },
+    {
+      "q": "How can the guides help me prepare a quote request?",
+      "a": "Each guide ends with a short checklist of what to measure and decide, such as your assembled hot dog length, tallest topping build, greasiest item and monthly volume. Bring those notes to a quote request and our team can recommend sizes and materials more accurately."
+    },
+    {
+      "q": "Can I ask a question about something I read in a guide?",
+      "a": "Yes. Call (503) 461-4788, message the same number on WhatsApp or email info@hotdogtrays.com with your question and a note about your menu. Our team can explain how the advice in a guide applies to your setup and suggest products to try."
+    }
+  ],
+  "privacy-policy": [
+    {
+      "q": "What personal information do you collect?",
+      "a": "We collect information you choose to give us, such as your name, email address, phone number, shipping or billing address, and any details you submit through our contact or inquiry forms. We only collect this when you provide it, for example when you request a quote or contact our team."
+    },
+    {
+      "q": "What information is collected automatically when I visit the site?",
+      "a": "When you visit, we may automatically collect your IP address, browser type and device information, the pages you view, the time you spend on the site and the website that referred you. We use this data to understand how visitors use the site and to improve it."
+    },
+    {
+      "q": "How do you use the information I provide?",
+      "a": "We use it to respond to your inquiries, process orders and quotations, improve our website and its content, send updates or service-related information, and prevent fraud while keeping the website secure. We do not use your details for purposes outside those listed in our privacy policy."
+    },
+    {
+      "q": "Do you sell or rent my personal information?",
+      "a": "No. We do not sell, trade or rent your personal information to anyone. It is shared only with trusted service providers that help run the website, or with legal authorities when the law requires it or when we need to protect our rights."
+    },
+    {
+      "q": "Who else might receive my data?",
+      "a": "Only two groups: trusted service providers who help us operate the website, and legal authorities where disclosure is required by law or needed to protect our rights. Every third party that receives your information is required to keep it secure and confidential."
+    },
+    {
+      "q": "Does the website use cookies?",
+      "a": "Yes. The site may use cookies and similar tracking technologies to improve your experience and analyze traffic. You can control or turn off cookies in your browser settings, but some parts of the website may not work properly if you do."
+    },
+    {
+      "q": "How do you protect my personal data?",
+      "a": "We use reasonable technical and organizational measures to protect your personal information. We work to keep your data safe, but no method of sending information over the internet is completely secure, so we cannot promise absolute security for data in transit."
+    },
+    {
+      "q": "Can I ask you to correct or delete my data?",
+      "a": "Depending on where you are located, you may have the right to request access to your personal data, ask for it to be corrected or deleted, and opt out of marketing messages. Contact us by phone at (503) 461-4788 or by email at info@hotdogtrays.com to make a request."
+    },
+    {
+      "q": "Is the website intended for children?",
+      "a": "No. HotDogTrays.com is not intended for children under the age of 13, and we do not knowingly collect personal information from children. The site is built for businesses buying food service packaging, such as food trucks, restaurants and caterers."
+    },
+    {
+      "q": "How will I know if the privacy policy changes?",
+      "a": "Any update is posted on the privacy policy page with a new effective date at the top. The current version took effect on January 21, 2026. We may update the policy at any time, so check the page if you want to see how your information is handled now."
+    }
+  ],
+  "terms-conditions": [
+    {
+      "q": "What uses of the website are not allowed?",
+      "a": "You may use the website only for lawful purposes. You must not use it for fraud or any unlawful activity, try to gain unauthorized access to our systems, or interfere with the security or functioning of the site. By using the website you agree to these terms."
+    },
+    {
+      "q": "Can I reuse text or images from your website?",
+      "a": "Not without our written permission. All text, images, graphics, logos, product descriptions and design elements on the site belong to HotDogTrays.com unless stated otherwise. You may not copy or redistribute them, or use our branding for commercial purposes, without authorization."
+    },
+    {
+      "q": "What happens if a price on the website is wrong?",
+      "a": "We work to keep product descriptions, pricing and availability accurate, but errors can happen. The terms let us correct any error or inaccuracy, change or discontinue products without notice, and refuse or cancel an order that was placed at an incorrect price."
+    },
+    {
+      "q": "Why might an order be canceled or refused?",
+      "a": "An order may be canceled or refused because of a pricing error, stock limitations or suspected fraudulent activity. When you place an order, you also confirm that you can legally enter a binding agreement and that the information you provide is accurate and complete."
+    },
+    {
+      "q": "Are delivery dates guaranteed under the terms?",
+      "a": "No. Shipping times and delivery estimates are given for convenience and are not guaranteed, since delays can happen for reasons outside our control. We are not responsible for delays caused by shipping carriers or by incorrect address details provided by the customer."
+    },
+    {
+      "q": "What condition must returned goods be in?",
+      "a": "Returned goods must be unused and in their original packaging, because every order is produced to your own size and artwork. Returns are accepted within 14 days of delivery. To start one, contact us within that window with your order details."
+    },
+    {
+      "q": "Who pays return carriage if my order arrives faulty?",
+      "a": "We do. If an order arrives faulty, damaged or different from the proof you approved, we cover the return carriage and put the order right at no cost to you. For all other returns within the 14-day window, the customer pays the return carriage."
+    },
+    {
+      "q": "What does the limitation of liability section cover?",
+      "a": "To the extent the law allows, HotDogTrays.com is not liable for damages arising from use of the website or being unable to use it, errors or omissions in website content, or product misuse and improper handling. Products are provided as is unless a warranty is stated."
+    },
+    {
+      "q": "Which laws govern these terms and conditions?",
+      "a": "The terms are governed by and interpreted under the laws that apply in the United States, without regard to conflict of law principles. If you have a question about how any part of the terms applies to you, contact us at info@hotdogtrays.com or (503) 461-4788."
+    },
+    {
+      "q": "When do changes to the terms take effect?",
+      "a": "Changes take effect as soon as they are posted on the terms and conditions page. We may update the terms at any time, and continuing to use the website after a change means you accept the revised terms, so it is worth checking the page before placing an order."
+    }
+  ],
+  "grease-resistant-hot-dog-trays-for-busy-service": [
+    {
+      "q": "Why do paperboard trays go soft under chili dogs?",
+      "a": "Grease attacks board in two stages. First it stains the surface, which looks bad but still holds. Then it soaks into the fibers, and the board loses stiffness right where the food sits. That second stage is what makes a base flex and tip the bun mid-service."
+    },
+    {
+      "q": "Which grease barrier types will I see from tray suppliers?",
+      "a": "Common options include fluorochemical-free barriers built into the sheet, aqueous coatings that stay recyclable and compostable, PE lamination for the wettest menu items, dense natural kraft that works uncoated for short service, and wax treatments, which are fading because many recycling programs reject them."
+    },
+    {
+      "q": "Can uncoated kraft trays handle grease at all?",
+      "a": "Yes, for short service windows. Dense uncoated kraft copes with plain franks that are served and eaten within a few minutes. Sauced, cheesy or chili builds need an engineered grease barrier, especially when the food waits on the counter or under a heat lamp before it reaches the customer."
+    },
+    {
+      "q": "Why do tray corners leak before the base does?",
+      "a": "Every fold cracks the coating on a microscopic level, and sauce runs to the corners by gravity, so grease reaches the weakest point first. Locked corner designs and doubled walls at the fold line hold their stiffness longer, and trays with fewer folds often perform better at the same board weight."
+    },
+    {
+      "q": "How can I test a tray corner for grease resistance?",
+      "a": "Pour a spoonful of warm oil into a corner of each sample tray and wait ten minutes. Then compare the stain and press the board to check for softness. Differences between competing trays show up at the seams long before the flat surfaces tell you anything useful."
+    },
+    {
+      "q": "How does holding time change the coating I need?",
+      "a": "Grease moves faster when hot, so a tray holding a fresh frank for five minutes has an easy job, while one under a heat lamp for twenty minutes does not. Time your longest real hold, including preorders and delivery staging, and choose the barrier level to match it."
+    },
+    {
+      "q": "Do open trays hold up better than closed clamshells?",
+      "a": "With the same coating, yes. Open trays let steam escape, while a closed clamshell traps moisture that softens the board from above as grease works in from below. That combination is why clamshells often fail faster in hot, sauced service than an open tray made from similar board."
+    },
+    {
+      "q": "What does a one hour bench test with real food involve?",
+      "a": "Load several sample trays with your greasiest builds and hold them at service temperature for your longest realistic window. Press each base for soft spots, slide a loaded tray across a steel counter, carry one for a minute, and leave one loaded overnight to see where it fails."
+    },
+    {
+      "q": "Can poor storage weaken grease resistance before service?",
+      "a": "Yes. Humidity softens board in advance, and a damp tray gives way to oil much faster. Store sealed cartons off the floor and away from steam tables, keep working stacks covered near the grill, rotate older stock first, and wipe dispenser racks weekly to stop grease film transferring."
+    },
+    {
+      "q": "Should I order one grease resistant grade or two?",
+      "a": "Two grades often work better than one heavy grade everywhere. Serve plain franks in standard trays and save barrier-coated stock for chili and cheese builds. The split saves money on simple orders and protects the messy ones, and liner sheets can extend the holding window further."
+    }
+  ],
+  "hot-dog-holders-and-how-they-differ-from-trays": [
+    {
+      "q": "Why do suppliers call the same item a tray, holder or boat?",
+      "a": "There is no industry standard for these names, so one catalog's holder is another's boat or tray. Compare the stated internal length, wall height and photos instead of the product name. Those dimensions tell you far more about whether the item suits your menu than the label does."
+    },
+    {
+      "q": "How does a hot dog boat compare with a holder?",
+      "a": "A boat sits between a holder and a tray. It has flared walls and a wider footprint than a holder, while a holder keeps its walls close to the bun along its length. Holders give a firmer grip for eating on the move, and boats show the food off more."
+    },
+    {
+      "q": "Can a narrow holder carry as much weight as a tray?",
+      "a": "Usually not as comfortably. A tray spreads weight across a wide base, while a holder concentrates the same load over less board, which asks more of the material. Menus that pair a hot dog with a full side tend to suit trays, and single items suit holders."
+    },
+    {
+      "q": "Which board grades are used to make hot dog holders?",
+      "a": "Common stocks include natural kraft for stiffness and a rustic look, clay-coated board for sharp printed color, grease-resistant treated board for sauced builds, molded pulp for smooth curves and compostable disposal, and coated card for heavy portions that wait longer before they are eaten."
+    },
+    {
+      "q": "Why are molded pulp holders becoming more common?",
+      "a": "Molded pulp gives smooth curves without visible seams and can be composted after use. Event organizers keep tightening their waste rules, so more vendors at festivals and venues now choose pulp holders to meet those requirements while still giving customers a firm, comfortable grip."
+    },
+    {
+      "q": "How tall should holder walls be for chili and slaw toppings?",
+      "a": "Taller than for plain dogs. Shallow holders work for plain franks and show the food off, but chili, cheese and slaw need higher walls that catch whatever slides sideways. If your menu covers both, stocking two wall depths usually works better than one compromise size."
+    },
+    {
+      "q": "Will a standard holder fit a bratwurst?",
+      "a": "Not always. A holder cut for a slim frank can pinch a bratwurst or a loaded sausage. Measure the widest item on your menu, fully dressed, and size the holder from that one. Width matters less than length, but it still deserves a check before you order."
+    },
+    {
+      "q": "Does grease affect a holder faster than a tray?",
+      "a": "Yes. A holder concentrates grease along a narrow channel, so the same coating lasts less time than it would on a wide tray base under identical food. Match the barrier to the wettest item the holder will carry, and choose coated stock for anything that waits under a lamp."
+    },
+    {
+      "q": "Should a dine-in restaurant use holders or trays?",
+      "a": "Trays usually suit dine-in tables better, because the wider base carries sides on the same piece of board. Holders do their best work where customers eat standing up. Businesses that run both often stock holders for the walk-up window and trays for seated service."
+    },
+    {
+      "q": "What should I watch for when trialing holder samples?",
+      "a": "Load the samples during a real service rush rather than a quiet hour. Watch how staff hand them over, and note any flex, leaking or pinching of the bun. Then confirm case counts, print options and the storage space you have before placing the full order."
+    }
+  ],
+  "hot-dog-plates-for-parties-and-buffet-service": [
+    {
+      "q": "When should I choose hot dog plates over trays?",
+      "a": "Choose plates when guests sit down to eat. A plate gives open surface for chips, slaw and beans and a flat base for cutting with a fork. Trays suit standing, handheld service where raised walls and a narrow grip matter more than room for sides."
+    },
+    {
+      "q": "How deep is a typical hot dog plate?",
+      "a": "Usually well under an inch overall. The shallow profile keeps the food visible and makes a plastic fork easy to use. Some plates add low compartment ridges to keep wet sides away from the bun without making the plate much deeper."
+    },
+    {
+      "q": "How do I stop a loaded plate from sagging?",
+      "a": "Choose heavier board, a rolled rim or a fluted surface, since each one adds stiffness across the wide span. Test by loading a sample with your heaviest realistic portion and holding it flat by one edge. If it folds toward the middle, it will fold in a guest's hand too."
+    },
+    {
+      "q": "Does a rolled rim make a plate noticeably stronger?",
+      "a": "Yes. A rolled or embossed edge stiffens the whole plate, much like the lip on a paper cup. Plain cut edges cost less but flex more under a loaded portion. For very heavy or saucy menus, a formed serving tray holds its shape better than any flat plate."
+    },
+    {
+      "q": "What plate size fits a hot dog with chips and slaw?",
+      "a": "A medium plate near nine inches suits a dog with chips and slaw. Around seven inches works for a dog and one light side, and ten inches or more suits loaded builds with several sides. Oval plates fit a footlong, and compartment styles keep wet and dry sides apart."
+    },
+    {
+      "q": "Should I size buffet plates to the average portion?",
+      "a": "No. Guests at a buffet reliably serve themselves more than the average, so plates sized to a typical portion end up overflowing and spilling sides. Size toward the generous end of the range instead. An under-filled plate never causes a complaint, but a crowded one often does."
+    },
+    {
+      "q": "What helps plates separate easily from a stack?",
+      "a": "Slightly textured or embossed surfaces separate better than perfectly smooth ones. At a self-serve line guests hold tongs in one hand, so test by pulling ten plates from a stack one-handed and noting any that stick together before you settle on a style."
+    },
+    {
+      "q": "Do lightweight plates work at outdoor parties?",
+      "a": "They can struggle. Wind lifts the lightest stock off tables, especially when plates are empty. A plate with some weight stays put better outdoors, and keeping unused stacks covered or weighted helps too. Once loaded with food, most plates sit securely."
+    },
+    {
+      "q": "Why should I plan more than one plate per guest?",
+      "a": "Second helpings are the quantity mistake most event buyers make. Many guests come back for more, and a fresh plate is the norm. Plan closer to one and a half plates per guest, then add a small margin, so the buffet does not run short late in the event."
+    },
+    {
+      "q": "Which plate coatings suit venues with compost programs?",
+      "a": "Uncoated and aqueous-coated paper plates compost in most programs that accept food-soiled paper. Heavy poly coatings help with grease but complicate disposal at venues focused on waste. Ask the venue what its waste stream accepts before you choose a coating for the event."
+    }
+  ],
+  "how-custom-hot-dog-trays-support-food-brands": [
+    {
+      "q": "Which part of a hot dog tray shows a logo best?",
+      "a": "The exterior walls usually work hardest, because everyone nearby in the line sees them and a repeated logo survives partial cover by hands. Interior walls face the customer with every bite, the rim shows in dispenser stacks, and the inside floor appears in overhead food photos."
+    },
+    {
+      "q": "Is printing on the inside of a tray worth it?",
+      "a": "It can be, especially for brands whose customers post top-down food photos. Sauces will cover part of the interior within minutes, though, and interior print needs a grease-resistant coating applied over the ink. Test it with your greasiest menu item before ordering a full run."
+    },
+    {
+      "q": "Should I choose the tray format before designing artwork?",
+      "a": "Yes. Print plans depend on the physical canvas. A shallow open tray offers long side panels, while a deep boat has taller walls crossed by a fold line. Choose size and depth from your menu first, then design on that exact template to avoid rework."
+    },
+    {
+      "q": "What is a dieline and why does my designer need it?",
+      "a": "A dieline is the flat template of the tray showing every cut and fold line. Trays are printed flat and folded afterward, so the dieline shows your designer where folds will cross the artwork. Designs built without it often arrive distorted at the corners."
+    },
+    {
+      "q": "How far should logos and text sit from fold lines?",
+      "a": "Keep logos and text at least 6 mm clear of every fold and edge. Let background colors and patterns run across folds instead of type, and place the main logo on a long exterior wall, centered between the folds, so it stays readable once the tray is assembled."
+    },
+    {
+      "q": "Why do repeated logo patterns work well on trays?",
+      "a": "A small repeated mark survives any fold position and still reads when hands or food cover part of the tray. One large logo stretched across a fold can look broken. Many operators pair one clean wall logo with a patterned base to get both effects."
+    },
+    {
+      "q": "Do red or yellow brand colors work on hot dog trays?",
+      "a": "They can, but use care. Reds and yellows sit close to ketchup and mustard, so they can blur together with the food at close range. Strong contrast between the board and the ink keeps your mark readable at a glance, which matters more than an exact shade."
+    },
+    {
+      "q": "What should I check on a digital proof for printed trays?",
+      "a": "Check the layout, spelling and the position of artwork against the fold lines. For color-critical brand marks, ask for a printed sample as well. When you approve, reference the exact proof version so production uses the artwork you signed off."
+    },
+    {
+      "q": "Can I run seasonal designs on the same tray?",
+      "a": "Yes. Seasonal runs, such as a summer design and a game-day design, can share one dieline, so only the artwork changes. Plan each run with enough lead time that new stock arrives before the old trays run out, and keep each approved file on record."
+    },
+    {
+      "q": "How does a printed tray help a food truck brand?",
+      "a": "For many food trucks, the tray is the only branded item a customer touches. It travels across festival grounds, sits on picnic tables and appears in phone photos, so it works like a business card handed out with every order at little extra cost per unit."
+    }
+  ],
+  "paper-hot-dog-boats-for-serving-and-takeout": [
+    {
+      "q": "Why is it called a hot dog boat?",
+      "a": "The name comes from its profile. A paper boat is a die-cut sheet of board folded into an open tray with sloped walls, and it sits low and wide like a rowboat hull. The corners lock or glue so the walls stay upright under a loaded hot dog."
+    },
+    {
+      "q": "Why do paper hot dog boats have no lid?",
+      "a": "Boats are built for immediate service. The open top keeps toppings visible, lets staff add sauce after the handover, and means the customer never has to open any packaging. It also lets steam escape, which keeps the bun firmer than a closed box would."
+    },
+    {
+      "q": "What does the flared wall angle on a boat do?",
+      "a": "Boat walls flare outward at roughly thirty degrees. That angle guides toppings toward the center, gives fingers room to grip, and lets boats nest into tall stacks so a small counter can store more of them. The flat base keeps the bun level while customers carry it."
+    },
+    {
+      "q": "Does board thickness or stiffness matter more for a boat?",
+      "a": "Stiffness matters more. A boat must hold its shape when carried one-handed with a loaded portion, and its folded walls add rigidity of their own. That is why boats often use lighter board than flat trays while still feeling firm in a customer's hand."
+    },
+    {
+      "q": "Why do buns stay firmer in an open boat?",
+      "a": "Steam rises out of an open boat instead of condensing inside a closed container. With nowhere to collect, the moisture does not soak back into the bun, so it stays firm for the walk to a table. A coated interior then resists grease for a normal serving window."
+    },
+    {
+      "q": "When should I add a liner inside a paper boat?",
+      "a": "Add a greaseproof liner when food waits longer before it is eaten or carries heavy sauces like chili. The liner catches the worst of the grease, extends the holding window and keeps the boat drier, which also makes cleanup quicker between busy rushes."
+    },
+    {
+      "q": "How long should a boat be for a standard frank?",
+      "a": "Allow about half an inch of interior length beyond the bun. Standard boats near 7 inches suit classic dressed franks, snack boats around 5 inches suit corn dogs and sides, and footlong boats with reinforced bases fit 12 inch buns. Size from your longest menu item."
+    },
+    {
+      "q": "Do paper boats work for delivery app orders?",
+      "a": "Only inside a closed outer container. Delivery is the one channel where an open boat needs extra protection. Inside that container the boat still helps by keeping the food arranged so it arrives looking the way it left the kitchen. For walk-away carries, a sturdier serving tray adds wall support."
+    },
+    {
+      "q": "Are used paper hot dog boats compostable?",
+      "a": "Uncoated and aqueous-coated boats are accepted in many US composting programs, and they compact flat in bins instead of trapping air like clamshells. Event organizers increasingly ask for compostable service items, so check what your venue accepts before choosing a coated or uncoated grade."
+    },
+    {
+      "q": "How do I compare boat samples with my current packaging?",
+      "a": "Time a staff member plating ten portions in boats against your current packaging, carry a loaded boat one-handed, and leave one standing for twenty minutes before checking the base. Also measure the nested stack height against your counter storage space before ordering."
+    }
+  ]
+}

@@ -38,6 +38,14 @@ export const homeFaqs: ProductFaq[] = [
   {
     "question": "What payment methods do you accept?",
     "answer": "<p>We accept all major payment methods:</p> <ul> <li>Credit cards (Visa, Mastercard, American Express, Discover)</li> <li>PayPal</li> <li>Bank transfers (ACH/Wire)</li> <li>Purchase orders for established businesses</li> </ul> <p>Payment is typically required before production begins. Net 30 terms are available for qualified businesses.</p>"
+  },
+  {
+    "question": "Will I see my tray design before it goes to print?",
+    "answer": "<p>Yes. Our designers send a digital proof within 24 to 48 hours, and you can ask for up to 3 free revisions. Nothing is printed until you approve the proof. Production then starts, and the production time for your quantity and print is confirmed on your quote.</p>"
+  },
+  {
+    "question": "Do you print branded trays for small food businesses?",
+    "answer": "<p>Yes. Orders start at 100 units, so a single food truck, cart or one-off event can still get trays with its own logo. Design is free, there are no setup fees for standard sizes, pricing starts at $0.30 per unit, and shipping is free on every order.</p>"
   }
 ];
 
