@@ -1,0 +1,75 @@
+{
+  "_note": "Ratings the old WordPress site emitted, restored 2026-10-05 (aggregateRating only: the old Review node's text and date were never recorded). Only these paths may carry a rating; products added after the migration get none.",
+  "ratings": {
+    "/product/cardboard-hot-dog-holders/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/cardboard-hot-dog-trays/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/disposable-hot-dog-holders/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/disposable-hot-dog-trays/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/hot-dog-boats-paper/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/hot-dog-container-paper/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/hot-dog-food-tray/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/hot-dog-paper-holders/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/hot-dog-plates/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/hot-dog-serving-tray/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/kraft-hot-dog-tray/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/paper-hot-dog-trays/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/plastic-hot-dog-trays/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    },
+    "/product/red-and-white-hot-dog-trays/": {
+      "ratingValue": "4.5",
+      "reviewCount": 1,
+      "_source": "reports/STRUCTURED_DATA_REPORT.md lines 25-28 and MIGRATION_REPORT.md lines 210-212 (WordPress build: aggregateRating 4.5 from one review, every product page); page list from reports/live-snapshot.json (WP site captured 2026-07-31)"
+    }
+  }
+}

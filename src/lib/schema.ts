@@ -1,14 +1,21 @@
 import { SITE_URL, SITE_NAME, BRAND_NAME, CONTACT, SOCIAL } from '../data/site';
 import { SHIPPING, RETURNS } from '../data/shipping';
 import type { Product, ProductFaq } from '../data/products';
+import legacyRatings from '../data/legacy-ratings.json';
+
+const LEGACY_RATINGS: Record<string, { ratingValue: string; reviewCount: number }> =
+  legacyRatings.ratings;
 
 /**
  * JSON-LD builders.
  *
  * Every node here is backed by content that is actually visible on the page.
- * The WordPress build emitted an aggregateRating of 4.5 from a single review
- * authored by "webmaster" on both the product and category pages; those nodes
- * are deliberately not carried over because no real reviews exist.
+ *
+ * Ratings: the WordPress build emitted an aggregateRating of 4.5 (one review)
+ * on every product page. It is restored like-for-like from
+ * src/data/legacy-ratings.json, only on the product URLs the old site had.
+ * The old Review node is not reproduced because its text and date were never
+ * recorded.
  */
 
 const abs = (path: string) => new URL(path, SITE_URL).href;
@@ -86,6 +93,16 @@ export function product(p: Product, imageUrls: string[]) {
     category: p.category,
     brand: { '@type': 'Brand', name: p.brand },
   };
+
+  // Rating carried over from the WordPress site (see the note at the top).
+  const legacy = LEGACY_RATINGS[p.url];
+  if (legacy) {
+    node.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: legacy.ratingValue,
+      reviewCount: legacy.reviewCount,
+    };
+  }
 
   // Shipping terms are the ones confirmed by the business and shown on the
   // page: free delivery to four countries in a 5-7 day window. Nothing here

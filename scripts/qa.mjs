@@ -15,6 +15,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('../dist/client', import.meta.url));
 const BASE = process.env.QA_BASE ?? 'http://localhost:4321';
 const SITE = 'https://hotdogtrays.com';
+const LEGACY_RATINGS = JSON.parse(
+  await readFile(fileURLToPath(new URL('../src/data/legacy-ratings.json', import.meta.url)), 'utf8'),
+).ratings;
 
 const results = [];
 const pass = (name, detail = '') => results.push({ ok: true, name, detail });
@@ -137,9 +140,20 @@ for (const p of pages) {
   }
   if (counts.Product) productSchemas++;
 
-  // no fabricated ratings or reviews anywhere
-  if (/aggregateRating|"review"|"@type":"Review"/.test(p.html)) {
-    fail(`no fabricated reviews: ${p.path}`, 'rating/review node present');
+  // Ratings only where the old WordPress site had one, with its exact values
+  // (src/data/legacy-ratings.json); no Review nodes anywhere.
+  if (/"review"|"@type":"Review"/.test(p.html)) {
+    fail(`no review nodes: ${p.path}`, 'review node present');
+  }
+  const ratingMatches = [...p.html.matchAll(/"aggregateRating":(\{[^}]*\})/g)];
+  const expected = LEGACY_RATINGS[p.path];
+  if (ratingMatches.length && !expected) {
+    fail(`rating only on legacy pages: ${p.path}`, 'aggregateRating not listed in legacy-ratings.json');
+  } else if (expected) {
+    const got = ratingMatches.length === 1 ? JSON.parse(ratingMatches[0][1]) : null;
+    if (!got || got.ratingValue !== expected.ratingValue || got.reviewCount !== expected.reviewCount) {
+      fail(`legacy rating matches: ${p.path}`, JSON.stringify(got));
+    } else pass(`legacy rating matches: ${p.path}`, `${got.ratingValue} / ${got.reviewCount}`);
   }
 }
 pass('product schema count', `${productSchemas} pages carry Product schema`);
