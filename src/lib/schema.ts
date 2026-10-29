@@ -1,5 +1,6 @@
 import { SITE_URL, SITE_NAME, BRAND_NAME, CONTACT, SOCIAL } from '../data/site';
-import { SHIPPING, RETURNS } from '../data/shipping';
+import { SHIPPING } from '../data/shipping';
+import { PACK_QTY, PACK_PRICE_TEXT } from '../data/order';
 import type { Product, ProductFaq } from '../data/products';
 import legacyRatings from '../data/legacy-ratings.json';
 
@@ -81,7 +82,6 @@ export function faqPage(path: string, faqs: ProductFaq[]) {
 }
 
 export function product(p: Product, imageUrls: string[]) {
-  const price = Number.parseFloat(p.price);
   const node: Record<string, unknown> = {
     '@type': 'Product',
     '@id': `${abs(p.url)}#product`,
@@ -104,67 +104,56 @@ export function product(p: Product, imageUrls: string[]) {
     };
   }
 
-  // Shipping terms are the ones confirmed by the business and shown on the
-  // page: free delivery to four countries in a 5-7 day window. Nothing here
-  // is inferred — see src/data/shipping.ts.
-  if (Number.isFinite(price)) {
-    node.offers = {
-      '@type': 'Offer',
-      '@id': `${abs(p.url)}#offer`,
-      price: price.toFixed(2),
-      priceCurrency: p.currency,
-      priceValidUntil: '2027-08-04',
-      itemCondition: 'https://schema.org/NewCondition',
-      availability: p.inStock
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
-      url: abs(p.url),
-      seller: { '@id': `${SITE_URL}/#organization` },
-      shippingDetails: {
-        '@type': 'OfferShippingDetails',
-        '@id': `${SITE_URL}/#shipping`,
-        shippingRate: {
-          '@type': 'MonetaryAmount',
-          value: SHIPPING.rate,
-          currency: SHIPPING.currency,
+  // Online pack price (src/data/order.ts, owner 2026-10-29): 100 trays for $30.00,
+  // the same constant the order box, the checkout, /api/order and the Merchant feed
+  // read. Shipping comes from src/data/shipping.ts. Returns are defective-only.
+  node.offers = {
+    '@type': 'Offer',
+    '@id': `${abs(p.url)}#offer`,
+    price: PACK_PRICE_TEXT,
+    priceCurrency: 'USD',
+    eligibleQuantity: { '@type': 'QuantitativeValue', value: PACK_QTY, unitCode: 'C62' },
+    priceValidUntil: '2027-08-04',
+    itemCondition: 'https://schema.org/NewCondition',
+    availability: p.inStock
+      ? 'https://schema.org/InStock'
+      : 'https://schema.org/OutOfStock',
+    url: abs(p.url),
+    seller: { '@id': `${SITE_URL}/#organization` },
+    shippingDetails: SHIPPING.destinations.map((d) => ({
+      '@type': 'OfferShippingDetails',
+      shippingRate: {
+        '@type': 'MonetaryAmount',
+        value: SHIPPING.rate,
+        currency: SHIPPING.currency,
+      },
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: d.code },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: {
+          '@type': 'QuantitativeValue',
+          minValue: SHIPPING.handlingDaysMin,
+          maxValue: SHIPPING.handlingDaysMax,
+          unitCode: 'DAY',
         },
-        shippingDestination: SHIPPING.destinations.map((d) => ({
-          '@type': 'DefinedRegion',
-          addressCountry: d.code,
-        })),
-        deliveryTime: {
-          '@type': 'ShippingDeliveryTime',
-          handlingTime: {
-            '@type': 'QuantitativeValue',
-            minValue: SHIPPING.handlingDaysMin,
-            maxValue: SHIPPING.handlingDaysMax,
-            unitCode: 'DAY',
-          },
-          transitTime: {
-            '@type': 'QuantitativeValue',
-            minValue: SHIPPING.transitDaysMin,
-            maxValue: SHIPPING.transitDaysMax,
-            unitCode: 'DAY',
-          },
+        transitTime: {
+          '@type': 'QuantitativeValue',
+          minValue: SHIPPING.transitDaysMin,
+          maxValue: SHIPPING.transitDaysMax,
+          unitCode: 'DAY',
         },
       },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        '@id': `${SITE_URL}/#returnpolicy`,
-        applicableCountry: RETURNS.country,
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: RETURNS.windowDays,
-        returnMethod: 'https://schema.org/ReturnByMail',
-        // The seller covers carriage on faulty or incorrect orders, but schema
-        // has no field for that exception, so the default case is declared here
-        // and the exception is stated on the Terms page.
-        returnFees: RETURNS.customerPaysReturnShipping
-          ? 'https://schema.org/ReturnShippingFees'
-          : 'https://schema.org/FreeReturn',
-        merchantReturnLink: `${SITE_URL}/terms-conditions/`,
-      },
-    };
-  }
+    })),
+    // Custom-printed trays are not returnable; damaged, defective or misprinted
+    // orders reported within RETURNS.claimDays are reprinted or refunded.
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      '@id': `${SITE_URL}/#returnpolicy`,
+      applicableCountry: SHIPPING.destinations.map((d) => d.code),
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+      merchantReturnLink: `${SITE_URL}/terms-conditions/`,
+    },
+  };
 
   return node;
 }

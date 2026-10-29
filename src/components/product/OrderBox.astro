@@ -1,0 +1,162 @@
+---
+/**
+ * Online order box on every product page. The price comes from src/data/order.ts,
+ * the same constant the Product Offer JSON-LD and the Merchant feed read, so the
+ * page, the listing and the order cannot disagree. "Add to order" keeps the line in
+ * localStorage and opens /checkout/.
+ */
+import { PACK_QTY, PACK_PRICE, MAX_PACKS, SHIP_LINE, PAYMENT_LINE, money } from '../../data/order';
+
+interface Props {
+  slug: string;
+  name: string;
+}
+const { slug, name } = Astro.props;
+const options = Array.from({ length: MAX_PACKS }, (_, i) => i + 1);
+---
+
+<form class="hdt-order-box" id="order" data-hdt-order data-slug={slug} data-pack={PACK_PRICE} action="/checkout/" method="get">
+  <p class="hdt-ob-title">Order online</p>
+  <p class="hdt-ob-price"><strong>{money(PACK_PRICE)}</strong> <span>for {PACK_QTY} {name.toLowerCase()}</span></p>
+  <p class="hdt-ob-ship"><i class="fas fa-truck-fast" aria-hidden="true"></i> {SHIP_LINE}</p>
+  <div class="hdt-ob-row">
+    <label class="hdt-ob-field">
+      <span>Quantity</span>
+      <select name="packs" aria-label={`Quantity of ${name}`}>
+        {options.map((n) => <option value={n}>{(n * PACK_QTY).toLocaleString('en-US')} trays</option>)}
+      </select>
+    </label>
+    <p class="hdt-ob-total">Total <strong data-total>{money(PACK_PRICE)}</strong></p>
+  </div>
+  <input type="hidden" name="add" value={slug} />
+  <button type="submit" class="hdt-ob-btn">Add to order <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+  <p class="hdt-ob-note">{PAYMENT_LINE} The price covers our standard build. Special sizes, materials and finishes are priced by quote.</p>
+</form>
+
+<script>
+  const KEY = 'hdt-cart';
+  for (const f of document.querySelectorAll<HTMLFormElement>('[data-hdt-order]')) {
+    const sel = f.querySelector('select') as HTMLSelectElement;
+    const out = f.querySelector('[data-total]') as HTMLElement;
+    const pack = Number(f.dataset.pack);
+    sel.addEventListener('change', () => {
+      out.textContent = `$${(Number(sel.value) * pack).toFixed(2)}`;
+    });
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let cart: { slug: string; packs: number }[] = [];
+      try {
+        cart = JSON.parse(localStorage.getItem(KEY) || '[]');
+      } catch {}
+      const slug = f.dataset.slug as string;
+      const packs = Number(sel.value);
+      const line = cart.find((l) => l.slug === slug);
+      if (line) line.packs = packs;
+      else cart.push({ slug, packs });
+      try {
+        localStorage.setItem(KEY, JSON.stringify(cart));
+      } catch {}
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+      w.gtag?.('event', 'add_to_cart', { currency: 'USD', value: packs * pack, items: [{ item_id: slug, quantity: packs }] });
+      location.href = `/checkout/?add=${encodeURIComponent(slug)}&packs=${packs}`;
+    });
+  }
+</script>
+
+<style>
+  .hdt-order-box {
+    margin: 0 0 22px;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid #f9c74f;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgb(29 53 87 / 6%);
+  }
+  .hdt-ob-title {
+    margin: 0 0 6px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #66707f;
+  }
+  .hdt-ob-price {
+    margin: 0;
+    color: #1d3557;
+    font-size: 0.95rem;
+  }
+  .hdt-ob-price strong {
+    margin-right: 4px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #e63946;
+    line-height: 1.1;
+  }
+  .hdt-ob-ship {
+    margin: 8px 0 14px;
+    color: #1d7a3a;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .hdt-ob-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 14px;
+  }
+  .hdt-ob-field {
+    display: grid;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #66707f;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .hdt-ob-field select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d6d9de;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #1d3557;
+    background: #fff;
+  }
+  .hdt-ob-total {
+    margin: 0 0 10px;
+    color: #4a5568;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .hdt-ob-total strong {
+    color: #1d3557;
+    font-size: 1.15rem;
+  }
+  .hdt-ob-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 24px;
+    border: 0;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f9c74f, #e63946);
+    color: #1d3557;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .hdt-ob-note {
+    margin: 12px 0 0;
+    color: #66707f;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+</style>

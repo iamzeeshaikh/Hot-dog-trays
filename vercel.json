@@ -4,22 +4,12 @@
   "redirects": [
     {
       "source": "/cart",
-      "destination": "/get-quote/",
+      "destination": "/checkout/",
       "statusCode": 301
     },
     {
       "source": "/cart/",
-      "destination": "/get-quote/",
-      "statusCode": 301
-    },
-    {
-      "source": "/checkout",
-      "destination": "/get-quote/",
-      "statusCode": 301
-    },
-    {
-      "source": "/checkout/",
-      "destination": "/get-quote/",
+      "destination": "/checkout/",
       "statusCode": 301
     },
     {

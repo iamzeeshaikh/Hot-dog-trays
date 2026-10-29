@@ -8,6 +8,7 @@ import ProductGallery from '../../components/ProductGallery.astro';
 import ProductInquiryForm from '../../components/ProductInquiryForm.astro';
 import RelatedProducts from '../../components/RelatedProducts.astro';
 import ProductTabs from '../../components/ProductTabs.astro';
+import OrderBox from '../../components/product/OrderBox.astro';
 
 import Features from '../../components/product/Features.astro';
 import MaterialOptions from '../../components/product/MaterialOptions.astro';
@@ -17,7 +18,8 @@ import OrderProcess from '../../components/product/OrderProcess.astro';
 import ProductUseCases from '../../components/product/ProductUseCases.astro';
 import Guarantee from '../../components/product/Guarantee.astro';
 
-import { products, getRelated, startingPrice, type Product } from '../../data/products';
+import { products, getRelated, type Product } from '../../data/products';
+import { PACK_QTY, PACK_PRICE, money } from '../../data/order';
 import { CATEGORY } from '../../data/site';
 import { SHIPPING, RETURNS, shippingCountriesSentence, shippingWindow } from '../../data/shipping';
 import { productSeo } from '../../data/product-seo';
@@ -54,7 +56,6 @@ const galleryUrls = product.images
   .map((i) => files[`/src/assets/products/${i.file}`]?.default.src)
   .filter((s): s is string => Boolean(s));
 
-const price = startingPrice(product);
 const related = getRelated(product);
 
 // Per-product metadata overrides and guide cross-links. Falls back to the
@@ -111,20 +112,17 @@ const schema = graph([
 
       <div class="hdt-product-layout">
         <div class="hdt-product-summary">
+          <OrderBox slug={product.slug} name={product.name} />
           <div class="hdt-product-short" set:html={product.shortDescription} />
 
           <dl class="hdt-product-meta">
-            {
-              price && (
-                <div class="hdt-meta-row hdt-meta-price">
-                  <dt>Starting price</dt>
-                  <dd>
-                    <span class="hdt-price-value">${price}</span>
-                    <span class="hdt-price-currency">USD</span>
-                  </dd>
-                </div>
-              )
-            }
+            <div class="hdt-meta-row hdt-meta-price">
+              <dt>Price</dt>
+              <dd>
+                <span class="hdt-price-value">{money(PACK_PRICE)}</span>
+                <span class="hdt-price-currency">for {PACK_QTY}</span>
+              </dd>
+            </div>
             <div class="hdt-meta-row">
               <dt>Availability</dt>
               <dd>
@@ -149,7 +147,7 @@ const schema = graph([
             </div>
             <div class="hdt-meta-row">
               <dt>Returns</dt>
-              <dd><a href="/terms-conditions/">{RETURNS.windowDays} days from delivery</a></dd>
+              <dd><a href="/terms-conditions/">Defective items, {RETURNS.claimDays} days</a></dd>
             </div>
             <div class="hdt-meta-row">
               <dt>SKU</dt>

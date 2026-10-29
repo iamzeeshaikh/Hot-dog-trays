@@ -43,17 +43,14 @@ export const shippingCountriesSentence = (() => {
 export const shippingWindow = `${SHIPPING.transitDaysMin}-${SHIPPING.transitDaysMax} days`;
 
 /**
- * Returns, confirmed by the business owner on 3 August 2026.
+ * Returns, changed by the business owner on 29 October 2026: defective only.
  *
- * Fourteen days from delivery. The customer covers return carriage as the
- * default, which is what `returnFees` declares; where an order arrives faulty
- * or incorrect the business covers it, and that exception is stated on the
- * Terms page because schema has no field for it.
+ * Custom-printed trays are made to the buyer's artwork and cannot be resold, so
+ * they are not returnable. Damaged, defective or misprinted orders reported within
+ * `claimDays` of delivery, with photos, are reprinted free or refunded.
  */
 export const RETURNS = {
-  windowDays: 14,
-  /** Customer pays return carriage unless the order was faulty or incorrect. */
-  customerPaysReturnShipping: true,
-  faultyOrdersCoveredBySeller: true,
-  country: 'US',
+  /** Days from delivery to report a damaged, defective or misprinted order. */
+  claimDays: 14,
+  defectiveOnly: true,
 } as const;

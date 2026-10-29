@@ -91,8 +91,8 @@
       "a": "Yes. Customs processing can extend the usual 5 to 7 day delivery window for orders going to Canada, the UK and Australia. Any customs fees, import taxes or duties charged on arrival are paid by the customer, so allow extra time and budget when you plan a delivery date."
     },
     {
-      "q": "How do I return trays I no longer need?",
-      "a": "Contact us within 14 days of delivery with your order details. Returned goods must be unused and in their original packaging, because every order is made to your size and artwork. For returns like this, the customer pays the return carriage cost."
+      "q": "Can I return trays I no longer need?",
+      "a": "No. Every order is printed to your own size and artwork, so trays cannot be returned for a change of mind. If an order arrives damaged, defective or misprinted, contact us within 14 days of delivery with photos and we reprint it free or refund it."
     },
     {
       "q": "Is shipping still free when I choose rush production?",
@@ -247,12 +247,12 @@
       "a": "No. Shipping times and delivery estimates are given for convenience and are not guaranteed, since delays can happen for reasons outside our control. We are not responsible for delays caused by shipping carriers or by incorrect address details provided by the customer."
     },
     {
-      "q": "What condition must returned goods be in?",
-      "a": "Returned goods must be unused and in their original packaging, because every order is produced to your own size and artwork. Returns are accepted within 14 days of delivery. To start one, contact us within that window with your order details."
+      "q": "Can a custom order be returned?",
+      "a": "Custom-printed trays are not returnable, because every order is produced to your own size and artwork. Damaged, defective or misprinted orders are the exception: report them within 14 days of delivery with photos and your order details."
     },
     {
       "q": "Who pays return carriage if my order arrives faulty?",
-      "a": "We do. If an order arrives faulty, damaged or different from the proof you approved, we cover the return carriage and put the order right at no cost to you. For all other returns within the 14-day window, the customer pays the return carriage."
+      "a": "We do. If an order arrives faulty, damaged or different from the proof you approved, we reprint it or refund it at no cost to you, including any carriage. Report it within 14 days of delivery with photos."
     },
     {
       "q": "What does the limitation of liability section cover?",

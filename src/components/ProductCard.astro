@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { Product } from '../data/products';
-import { startingPrice } from '../data/products';
+import { PACK_QTY, PACK_PRICE, money } from '../data/order';
 
 export interface Props {
   product: Product;
@@ -18,7 +18,6 @@ const files = import.meta.glob<{ default: ImageMetadata }>(
 
 const first = product.images[0];
 const meta = first ? files[`/src/assets/products/${first.file}`]?.default : undefined;
-const price = startingPrice(product);
 ---
 
 <li class="hdt-product-card">
@@ -38,7 +37,7 @@ const price = startingPrice(product);
     }
     <h2 class="hdt-product-card-title">{product.name}</h2>
   </a>
-  {price && <p class="hdt-product-card-price">From <strong>${price} USD</strong></p>}
+  <p class="hdt-product-card-price"><strong>{money(PACK_PRICE)}</strong> for {PACK_QTY}</p>
   <a href={product.url} class="hdt-product-card-cta">
     Get Free Quote
     <span class="hdt-visually-hidden">for {product.name}</span>

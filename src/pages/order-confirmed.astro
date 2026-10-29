@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { graph, organization, website } from '../lib/schema';
+import { SHIPPING } from '../data/shipping';
+import { PAYMENT_METHODS } from '../data/order';
+
+const pay = JSON.stringify(Object.fromEntries(PAYMENT_METHODS.map((m) => [m.id, m.detail])));
+---
+
+<BaseLayout
+  title="Order Received | Hot Dog Trays"
+  description="Your hot dog tray order has been received. We email a free digital proof before anything is printed."
+  path="/order-confirmed/"
+  noindex
+  schema={graph([organization(), website()])}
+>
+  <section class="hdt-oc" data-pay={pay}>
+    <div class="hdt-oc-inner">
+      <h1>Order received</h1>
+      <p class="hdt-oc-lede">Thank you. Your order is with our team and a copy is on its way to your inbox.</p>
+      <p data-ref hidden>Your order number: <strong data-ref-value></strong></p>
+      <h2>What happens next</h2>
+      <ol>
+        <li>We check your artwork and email a free digital proof.</li>
+        <li>You approve the proof or ask for changes. Nothing is printed before you approve.</li>
+        <li data-pay-line>{PAYMENT_METHODS[0].detail}</li>
+        <li>Production takes {SHIPPING.handlingDaysMin}–{SHIPPING.handlingDaysMax} business days, then your order ships free and arrives in {SHIPPING.transitDaysMin}–{SHIPPING.transitDaysMax} days.</li>
+      </ol>
+      <p class="hdt-oc-small">Questions? Call (503) 461-4788 or email info@hotdogtrays.com and quote your order number.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const root = document.querySelector('[data-pay]') as HTMLElement | null;
+  if (root) {
+    const pay = JSON.parse(root.dataset.pay || '{}') as Record<string, string>;
+    const q = new URLSearchParams(location.search);
+    const ref = q.get('ref');
+    const p = q.get('pay');
+    if (ref) {
+      const r = root.querySelector('[data-ref]') as HTMLElement;
+      (r.querySelector('[data-ref-value]') as HTMLElement).textContent = ref;
+      r.hidden = false;
+    }
+    if (p && pay[p]) (root.querySelector('[data-pay-line]') as HTMLElement).textContent = pay[p];
+  }
+</script>
+
+<style>
+  .hdt-oc { padding: 40px 20px 70px; }
+  .hdt-oc-inner { max-width: 760px; margin: 0 auto; color: #1d3557; line-height: 1.7; }
+  .hdt-oc h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; }
+  .hdt-oc-lede { color: #4a5568; }
+  .hdt-oc-small { color: #66707f; font-size: 0.9rem; }
+</style>

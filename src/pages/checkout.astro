@@ -1,0 +1,273 @@
+---
+/**
+ * Checkout for the online order box. No card is taken on the site: the order is
+ * emailed to the office and paid by PayPal invoice, bank transfer invoice, or cash
+ * on delivery in the US and Canada. Lines live in localStorage; /api/order re-prices
+ * every line from src/data/order.ts.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { graph, organization, website } from '../lib/schema';
+import { SHIPPING } from '../data/shipping';
+import {
+  PACK_QTY,
+  PACK_PRICE,
+  MAX_PACKS,
+  SHIP_COUNTRIES,
+  SHIP_LINE,
+  PAYMENT_METHODS,
+  COD_COUNTRIES,
+  ORDER_CATALOG,
+} from '../data/order';
+
+const cfg = JSON.stringify({ catalog: ORDER_CATALOG, pack: PACK_PRICE, qty: PACK_QTY, max: MAX_PACKS, cod: COD_COUNTRIES });
+---
+
+<BaseLayout
+  title="Checkout | Hot Dog Trays"
+  description={`Order custom hot dog trays online: ${PACK_QTY} trays for $${PACK_PRICE.toFixed(2)} with free shipping. Pay by invoice after you approve your free proof.`}
+  path="/checkout/"
+  noindex
+  schema={graph([organization(), website()])}
+>
+  <section class="hdt-co">
+    <div class="hdt-co-inner">
+      <h1>Checkout</h1>
+      <p class="hdt-co-lede">{SHIP_LINE}. Nothing is printed or charged before you approve a free digital proof of your artwork.</p>
+
+      <form id="hdt-co-form" class="hdt-co-grid" novalidate data-cfg={cfg}>
+        <div class="hdt-co-main">
+          <fieldset class="hdt-co-set">
+            <legend>Your details</legend>
+            <div class="hdt-co-two">
+              <label class="hdt-co-f hdt-co-wide"><span>Full name *</span><input name="name" autocomplete="name" required maxlength="120" /></label>
+              <label class="hdt-co-f"><span>Email *</span><input name="email" type="email" autocomplete="email" required maxlength="180" /></label>
+              <label class="hdt-co-f"><span>Phone *</span><input name="phone" type="tel" autocomplete="tel" required maxlength="40" /></label>
+              <label class="hdt-co-f hdt-co-wide"><span>Company (optional)</span><input name="company" autocomplete="organization" maxlength="140" /></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="hdt-co-set">
+            <legend>Shipping address</legend>
+            <div class="hdt-co-two">
+              <label class="hdt-co-f hdt-co-wide"><span>Country *</span>
+                <select name="country" id="co-country" autocomplete="country" required>
+                  {SHIP_COUNTRIES.map((c) => <option value={c.code}>{c.name}</option>)}
+                </select>
+              </label>
+              <label class="hdt-co-f hdt-co-wide"><span>Address *</span><input name="address1" autocomplete="address-line1" required maxlength="200" /></label>
+              <label class="hdt-co-f hdt-co-wide"><span>Apartment, suite, unit (optional)</span><input name="address2" autocomplete="address-line2" maxlength="200" /></label>
+              <label class="hdt-co-f"><span>City *</span><input name="city" autocomplete="address-level2" required maxlength="100" /></label>
+              <label class="hdt-co-f"><span>State, province or county</span><input name="region" autocomplete="address-level1" maxlength="60" /></label>
+              <label class="hdt-co-f"><span>ZIP or postcode *</span><input name="postal" autocomplete="postal-code" required maxlength="20" /></label>
+            </div>
+            <p class="hdt-co-small">Shipping somewhere else? <a href="/get-quote/">Request a quote</a> with your country.</p>
+          </fieldset>
+
+          <fieldset class="hdt-co-set">
+            <legend>Payment</legend>
+            {PAYMENT_METHODS.map((m, i) => (
+              <label class="hdt-co-pay" data-pm={m.id}>
+                <input type="radio" name="payment" value={m.id} checked={i === 0} />
+                <span><strong>{m.name}</strong><br /><small>{m.detail}</small></span>
+              </label>
+            ))}
+          </fieldset>
+
+          <fieldset class="hdt-co-set">
+            <legend>Artwork and notes</legend>
+            <label class="hdt-co-f"><span>Logo or artwork file (optional, up to 4 MB)</span><input name="artwork" type="file" accept=".pdf,.ai,.eps,.svg,.png,.jpg,.jpeg,.zip" /></label>
+            <label class="hdt-co-f"><span>Notes: size, colors, deadline (optional)</span><textarea name="notes" rows="4" maxlength="3000"></textarea></label>
+          </fieldset>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hdt-co-hp" />
+        </div>
+
+        <aside class="hdt-co-side">
+          <h2>Your order</h2>
+          <table class="hdt-co-lines"><tbody data-lines><tr><td>Your order is empty. <a href="/shop/">Choose trays</a></td></tr></tbody></table>
+          <table class="hdt-co-sum">
+            <tr><td>Shipping</td><td class="r hdt-co-free">Free</td></tr>
+            <tr><th>Total</th><th class="r" data-grand>$0.00</th></tr>
+          </table>
+          <p class="hdt-co-small">Production {SHIPPING.handlingDaysMin}–{SHIPPING.handlingDaysMax} business days after proof approval, then {SHIPPING.transitDaysMin}–{SHIPPING.transitDaysMax} days in transit. Prices in US dollars.</p>
+          <p class="hdt-co-err" data-err role="alert"></p>
+          <button type="submit" class="hdt-co-btn" data-place disabled>Place order</button>
+          <p class="hdt-co-small">Questions? Call (503) 461-4788 or email info@hotdogtrays.com.</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  type Cfg = { catalog: Record<string, string>; pack: number; qty: number; max: number; cod: string[] };
+  const KEY = 'hdt-cart';
+  const LOADED = Date.now();
+  const form = document.getElementById('hdt-co-form') as HTMLFormElement | null;
+  if (form) {
+    const C = JSON.parse(form.dataset.cfg || '{}') as Cfg;
+    const linesEl = form.querySelector('[data-lines]') as HTMLElement;
+    const grandEl = form.querySelector('[data-grand]') as HTMLElement;
+    const errEl = form.querySelector('[data-err]') as HTMLElement;
+    const btn = form.querySelector('[data-place]') as HTMLButtonElement;
+    const money = (n: number) => `$${n.toFixed(2)}`;
+    const esc = (s: string) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c] as string);
+
+    let cart: { slug: string; packs: number }[] = [];
+    try {
+      cart = JSON.parse(localStorage.getItem(KEY) || '[]');
+    } catch {}
+    const q = new URLSearchParams(location.search);
+    const add = q.get('add');
+    if (add && C.catalog[add]) {
+      const packs = Math.min(C.max, Math.max(1, parseInt(q.get('packs') || '1', 10) || 1));
+      const hit = cart.find((l) => l.slug === add);
+      if (hit) hit.packs = packs;
+      else cart.push({ slug: add, packs });
+      history.replaceState(null, '', '/checkout/');
+    }
+    cart = cart.filter((l) => C.catalog[l.slug] && l.packs >= 1);
+    const save = () => {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(cart));
+      } catch {}
+    };
+    save();
+
+    const render = () => {
+      if (!cart.length) {
+        linesEl.innerHTML = '<tr><td>Your order is empty. <a href="/shop/">Choose trays</a></td></tr>';
+        grandEl.textContent = money(0);
+        btn.disabled = true;
+        return;
+      }
+      let total = 0;
+      linesEl.innerHTML = cart
+        .map((l, i) => {
+          const name = C.catalog[l.slug];
+          const sum = l.packs * C.pack;
+          total += sum;
+          let opts = '';
+          for (let n = 1; n <= C.max; n++) opts += `<option value="${n}"${n === l.packs ? ' selected' : ''}>${(n * C.qty).toLocaleString('en-US')} trays</option>`;
+          return `<tr><td><a href="/product/${esc(l.slug)}/">${esc(name)}</a><br><select data-i="${i}" aria-label="Quantity for ${esc(name)}">${opts}</select> <button type="button" data-rm="${i}" class="hdt-co-rm">Remove</button></td><td class="r">${money(sum)}</td></tr>`;
+        })
+        .join('');
+      grandEl.textContent = money(total);
+      btn.disabled = false;
+    };
+    linesEl.addEventListener('change', (e) => {
+      const t = e.target as HTMLSelectElement;
+      const i = t.getAttribute('data-i');
+      if (i !== null) {
+        cart[+i].packs = +t.value;
+        save();
+        render();
+      }
+    });
+    linesEl.addEventListener('click', (e) => {
+      const i = (e.target as HTMLElement).getAttribute('data-rm');
+      if (i !== null) {
+        cart.splice(+i, 1);
+        save();
+        render();
+      }
+    });
+    form.addEventListener('input', (e) => (e.target as HTMLElement).removeAttribute('aria-invalid'));
+    render();
+
+    // Cash on delivery only for US and Canadian addresses.
+    const countryEl = form.querySelector('#co-country') as HTMLSelectElement;
+    const codBox = form.querySelector('[data-pm="cod"]') as HTMLElement;
+    const codRule = () => {
+      const ok = C.cod.includes(countryEl.value);
+      const r = codBox.querySelector('input') as HTMLInputElement;
+      r.disabled = !ok;
+      codBox.classList.toggle('off', !ok);
+      if (!ok && r.checked) (form.querySelector('input[name=payment][value=paypal]') as HTMLInputElement).checked = true;
+    };
+    countryEl.addEventListener('change', codRule);
+    codRule();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      errEl.textContent = '';
+      const bad = [...form.querySelectorAll<HTMLInputElement>('[required]')].filter((el) => {
+        const v = el.value.trim();
+        const ok = v && (el.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+        if (!ok) el.setAttribute('aria-invalid', 'true');
+        return !ok;
+      });
+      if (bad.length) {
+        errEl.textContent = 'Please fill in the highlighted fields.';
+        bad[0].focus();
+        return;
+      }
+      const file = (form.elements.namedItem('artwork') as HTMLInputElement).files?.[0];
+      if (file && file.size > 4 * 1024 * 1024) {
+        errEl.textContent = 'The artwork file is over 4 MB. Email it to us after ordering instead.';
+        return;
+      }
+      const data = new FormData(form);
+      data.append('items', JSON.stringify(cart));
+      data.append('ts', String(LOADED));
+      btn.disabled = true;
+      btn.textContent = 'Placing order…';
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+      w.gtag?.('event', 'begin_checkout', { currency: 'USD', value: cart.reduce((s, l) => s + l.packs * C.pack, 0) });
+      fetch('/api/order/', { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then((r) => r.json().catch(() => ({ ok: false, error: 'Server error' })))
+        .then((res) => {
+          if (!res.ok) throw new Error(res.error || 'Could not place the order');
+          w.gtag?.('event', 'purchase', { transaction_id: res.ref, currency: 'USD', value: res.total });
+          try {
+            localStorage.removeItem(KEY);
+          } catch {}
+          location.href = `/order-confirmed/?ref=${encodeURIComponent(res.ref)}&pay=${encodeURIComponent(res.payment)}`;
+        })
+        .catch((err: Error) => {
+          errEl.textContent = `${err.message}. Please try again, or call (503) 461-4788.`;
+          btn.disabled = false;
+          btn.textContent = 'Place order';
+        });
+    });
+  }
+</script>
+
+<style is:global>
+  .hdt-co { padding: 30px 20px 60px; background: #fafafa; }
+  .hdt-co-inner { max-width: 1240px; margin: 0 auto; }
+  .hdt-co h1 { margin: 0 0 8px; color: #1d3557; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; }
+  .hdt-co-lede { margin: 0 0 24px; color: #4a5568; max-width: 720px; line-height: 1.6; }
+  .hdt-co-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .hdt-co-set { margin: 0 0 20px; padding: 18px 20px; background: #fff; border: 1px solid #e6e8ec; border-radius: 14px; }
+  .hdt-co-set legend { padding: 0 6px; font-weight: 800; color: #1d3557; }
+  .hdt-co-two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 16px; }
+  .hdt-co-wide { grid-column: 1 / -1; }
+  .hdt-co-f { display: grid; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #4a5568; margin-bottom: 4px; }
+  .hdt-co-f input, .hdt-co-f select, .hdt-co-f textarea { width: 100%; padding: 11px 12px; border: 1px solid #d6d9de; border-radius: 10px; font: inherit; font-size: 1rem; font-weight: 400; color: #1d3557; background: #fff; box-sizing: border-box; }
+  .hdt-co-f [aria-invalid='true'] { border-color: #b91c1c; }
+  .hdt-co-pay { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px solid #eef0f3; cursor: pointer; color: #1d3557; }
+  .hdt-co-pay:first-of-type { border-top: 0; }
+  .hdt-co-pay small { color: #66707f; line-height: 1.5; }
+  .hdt-co-pay.off { opacity: 0.45; cursor: not-allowed; }
+  .hdt-co-pay input { margin-top: 4px; }
+  .hdt-co-side { position: sticky; top: 100px; padding: 20px; background: #fff; border: 1px solid #e6e8ec; border-radius: 14px; }
+  .hdt-co-side h2 { margin: 0 0 12px; font-size: 1.25rem; color: #1d3557; }
+  .hdt-co-lines, .hdt-co-sum { width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #1d3557; }
+  .hdt-co-lines td { padding: 10px 0; border-bottom: 1px solid #eef0f3; vertical-align: top; }
+  .hdt-co-lines select { margin-top: 6px; padding: 7px 9px; border: 1px solid #d6d9de; border-radius: 8px; font: inherit; }
+  .hdt-co-rm { background: none; border: 0; color: #b91c1c; cursor: pointer; font-size: 0.82rem; }
+  .hdt-co-sum td, .hdt-co-sum th { padding: 8px 0; text-align: left; }
+  .r { text-align: right !important; white-space: nowrap; }
+  .hdt-co-free { color: #1d7a3a; font-weight: 700; }
+  .hdt-co-small { color: #66707f; font-size: 0.82rem; line-height: 1.55; }
+  .hdt-co-small a { color: #c92a35; font-weight: 700; }
+  .hdt-co-err { min-height: 1em; color: #b91c1c; font-size: 0.9rem; }
+  .hdt-co-btn { width: 100%; padding: 14px 24px; border: 0; border-radius: 50px; background: linear-gradient(135deg, #f9c74f, #e63946); color: #1d3557; font-weight: 900; font-size: 0.95rem; letter-spacing: 0.03em; text-transform: uppercase; cursor: pointer; }
+  .hdt-co-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .hdt-co-hp { position: absolute; left: -9999px; }
+  @media (max-width: 900px) {
+    .hdt-co-grid { grid-template-columns: minmax(0, 1fr); }
+    .hdt-co-side { position: static; }
+    .hdt-co-two { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

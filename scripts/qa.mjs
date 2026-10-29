@@ -321,7 +321,8 @@ pass('no inline style attributes anywhere (strict style-src)');
 
 // --- 10. no secrets or private exports in the build ----------------------
 const allFiles = await walk(ROOT);
-const leaked = allFiles.filter((f) => /\.(sql|csv)$/i.test(f) || /\.xml$/i.test(f) && !f.endsWith('sitemap.xml'));
+// merchant-feed.xml is the public Google Merchant feed (2026-10-29), not an export.
+const leaked = allFiles.filter((f) => /\.(sql|csv)$/i.test(f) || /\.xml$/i.test(f) && !f.endsWith('sitemap.xml') && !f.endsWith('merchant-feed.xml'));
 if (leaked.length) fail('private export in build', leaked.join(', '));
 else pass('no SQL/CSV/XML exports in build output');
 
@@ -393,8 +394,8 @@ if (serverUp) {
 
   // redirects: single hop, correct target, no loop
   for (const [from, to] of [
-    ['/cart/', '/get-quote/'],
-    ['/checkout/', '/get-quote/'],
+    // /checkout/ is the online-order checkout since 2026-10-29; the old cart URL lands there.
+    ['/cart/', '/checkout/'],
   ]) {
     const r = await head(BASE + from);
     if (r.status !== 301) {

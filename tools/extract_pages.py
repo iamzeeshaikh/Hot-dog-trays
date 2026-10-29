@@ -35,13 +35,12 @@ CONTENT_OVERRIDES = {
             'Return and refund eligibility, if applicable, will be evaluated on a '
             'case-by-case basis. Please contact us directly for return requests or '
             'concerns regarding your order.',
-            'Orders may be returned within <strong>14 days of delivery</strong>. Because '
-            'every order is produced to your own size and artwork, returned goods must be '
-            'unused and in their original packaging.\n\nReturn carriage is paid by the '
-            'customer. Where an order arrives faulty, damaged or different from the approved '
-            'proof, we cover the return carriage and put the order right at no cost to you.'
-            '\n\nTo start a return, contact us within the 14-day window with your order '
-            'details.',
+            'Custom-printed trays are made to your own size and artwork, so they <strong>cannot '
+            'be returned</strong> for a change of mind and cannot be resold.\n\nWhere an order '
+            'arrives damaged, defective, misprinted or different from the approved proof, tell us '
+            'within <strong>14 days of delivery</strong> with photos and your order details. We '
+            'will reprint the affected trays free of charge or refund them, and we cover any '
+            'carriage involved.\n\nApproved refunds are paid back through the method you paid with.',
         ),
     ],
 }
