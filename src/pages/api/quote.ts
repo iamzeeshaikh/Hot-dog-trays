@@ -173,10 +173,9 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 
   // ---- spam traps --------------------------------------------------------
-  if (fields.website_hp || fields.company_hp) {
-    // Silently accept so bots do not learn the trap exists.
-    return json({ ok: true }, 200);
-  }
+  // A filled hidden field is probably a bot, but the lead is never dropped:
+  // it goes through labelled "[Possible spam]" (owner's rule).
+  const possibleSpam = Boolean(fields.website_hp || fields.company_hp);
 
   const kind = ['quote', 'inquiry', 'newsletter'].includes(fields.kind) ? fields.kind : 'quote';
 
@@ -268,8 +267,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       },
       to: [...LEAD_RECIPIENTS],
       replyTo: email,
-      subject: `${label} — hotdogtrays.com`,
-      text: textBody,
+      subject: `${possibleSpam ? '[Possible spam] ' : ''}${label} — hotdogtrays.com`,
+      text: possibleSpam ? `[Possible spam] hidden field filled\n\n${textBody}` : textBody,
       html: htmlBody,
       attachments,
     });
