@@ -23,12 +23,6 @@ const quickLinks = [
   { label: 'Terms & Conditions', href: '/terms-conditions/' },
 ];
 
-const socials = [
-  { href: 'https://facebook.com/hotdogtrays', label: 'Facebook', glyph: '📘' },
-  { href: 'https://instagram.com/hotdogtrays', label: 'Instagram', glyph: '📷' },
-  { href: 'https://twitter.com/hotdogtrays', label: 'Twitter', glyph: '🐦' },
-  { href: 'https://linkedin.com/company/hotdogtrays', label: 'LinkedIn', glyph: '💼' },
-];
 
 const year = new Date().getFullYear();
 ---
@@ -42,26 +36,9 @@ const year = new Date().getFullYear();
           <div class="hdt-footer-logo-text">HotDogTrays</div>
         </div>
         <p class="hdt-footer-about">
-          Your trusted source for premium wholesale hot dog trays. We've been serving food trucks,
-          stadiums, restaurants, and catering businesses worldwide for over 10 years with quality
-          products and exceptional service.
+          Custom printed hot dog trays, boats and holders for food trucks, stadiums, restaurants
+          and caterers. Packs of 100 for $30, with free shipping to the USA, UK, Canada and Australia.
         </p>
-        <h3>Follow Us</h3>
-        <div class="hdt-social-links">
-          {
-            socials.map((s) => (
-              <a
-                href={s.href}
-                class="hdt-social-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${s.label} (opens in a new tab)`}
-              >
-                <span aria-hidden="true">{s.glyph}</span>
-              </a>
-            ))
-          }
-        </div>
       </div>
 
       <div class="hdt-footer-column">
@@ -98,7 +75,7 @@ const year = new Date().getFullYear();
           <div class="hdt-footer-contact-icon" aria-hidden="true">📍</div>
           <div class="hdt-footer-contact-text">
             <strong>Address</strong>
-            <span>{CONTACT.address.street}<br />New York, NY 10030</span>
+            <span>{CONTACT.address.street}<br />{CONTACT.address.locality}, {CONTACT.address.region} {CONTACT.address.postalCode}</span>
           </div>
         </div>
 

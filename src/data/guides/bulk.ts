@@ -19,7 +19,7 @@ export const bulkGuide: Guide = {
       heading: 'What actually drives the unit price',
       body: [
         'Two costs sit behind every printed tray: the setup, which is spent once however many you order, and the running cost, which repeats per unit. Bulk pricing works by spreading that fixed setup across more units.',
-        'This is why the saving per unit is steepest at the low end. Moving from a very small run to a moderate one changes the price noticeably; doubling an already large run changes it far less. Knowing where that curve flattens for your design is more useful than assuming bigger is always better.',
+        'This is why the saving per unit is steepest at the low end. Moving from a very small run to a moderate one changes the price noticeably; doubling an already large run changes it far less. Knowing where that curve flattens for your design is more useful than assuming bigger is always better. On this site the standard build is a flat $30 per pack of 100 trays whatever the quantity, so the curve only matters for very large or special runs, which we quote separately.',
       ],
       bullets: {
         intro: 'The factors that move a bulk quote most:',
@@ -36,7 +36,7 @@ export const bulkGuide: Guide = {
       heading: 'Sizing the order to your actual usage',
       body: [
         'The right quantity starts from consumption, not from a price break. Count trays used in a normal week, then in your busiest week, and work from the busier figure so a good month does not empty the stockroom.',
-        'Then decide how many weeks of cover you want. Longer cover means fewer orders and a better unit price; it also means more of your money sitting on a shelf as cardboard.',
+        'Then decide how many weeks of cover you want. Longer cover means fewer orders; it also means more of your money sitting on a shelf as cardboard.',
       ],
       steps: {
         intro: 'A straightforward way to arrive at a quantity:',
@@ -46,7 +46,7 @@ export const bulkGuide: Guide = {
           'Multiply the busier figure by the weeks of cover you want.',
           'Check that quantity physically fits your storage.',
           'Add a small buffer for spoilage and miscounts.',
-          'Compare that figure against the quoted price breaks.',
+          'Round that figure up to whole packs of 100.',
         ],
       },
       link: {
@@ -70,7 +70,7 @@ export const bulkGuide: Guide = {
           ['Several months of cover', 'Better again', 'Significant', 'Design changes leave stock stranded'],
           ['A year or more', 'Best per unit', 'Substantial', 'Cash tied up, damage over long storage'],
         ],
-        note: 'Relative comparison. Actual price breaks and minimums are confirmed on your quote.',
+        note: 'General industry comparison. Our standard trays are a flat $30 per pack of 100; only very large or special runs are quoted.',
       },
     },
     {
@@ -116,7 +116,7 @@ export const bulkGuide: Guide = {
     {
       question: 'How many hot dog trays should I order at once?',
       answer:
-        'Start from your busiest recent week rather than an average one, multiply by the weeks of cover you want, and check the result fits your storage before comparing it against price breaks.',
+        'Start from your busiest recent week rather than an average one, multiply by the weeks of cover you want, and check the result fits your storage before you order.',
     },
     {
       question: 'Why is the price per tray so much lower in bulk?',
@@ -131,7 +131,7 @@ export const bulkGuide: Guide = {
     {
       question: 'What is the minimum order for bulk hot dog trays?',
       answer:
-        'Minimums depend on the format, the board and whether the tray is printed. They are confirmed on your quote rather than fixed across the range.',
+        'On our standard builds the minimum is one pack of 100 trays for $30, and you can order up to 50 packs online. Larger or special runs are quoted.',
     },
     {
       question: 'How should bulk packaging be stored?',
@@ -141,7 +141,7 @@ export const bulkGuide: Guide = {
     {
       question: 'Can I split one bulk order across several sizes?',
       answer:
-        'Often yes, though each size may carry its own setup. Ask for the quote both ways — combined and separate — to see which works out better.',
+        'Yes. Each product is ordered in packs of 100 at $30 a pack, so you can mix formats in one order. Special sizes outside the range are quoted.',
     },
     {
       question: 'Should I buy plain or printed trays in bulk?',

@@ -1,6 +1,5 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { Image } from 'astro:assets';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -19,7 +18,7 @@ import ProductUseCases from '../../components/product/ProductUseCases.astro';
 import Guarantee from '../../components/product/Guarantee.astro';
 
 import { products, getRelated, type Product } from '../../data/products';
-import { PACK_QTY, PACK_PRICE, money } from '../../data/order';
+import { PACK_QTY, PACK_PRICE, PAYMENT_LINE, money } from '../../data/order';
 import { CATEGORY } from '../../data/site';
 import { SHIPPING, RETURNS, shippingCountriesSentence, shippingWindow } from '../../data/shipping';
 import { productSeo } from '../../data/product-seo';
@@ -32,11 +31,6 @@ import {
   product as productSchema,
 } from '../../lib/schema';
 
-import payments from '../../assets/site/payments.png';
-import paymentImage from '../../assets/site/payment-image.jpeg';
-import dmca from '../../assets/site/dmca-badge-w250-2x1-01.png';
-import secureIcons from '../../assets/site/secure-icons.png';
-import guaranteeImage from '../../assets/site/guarantee_image.webp';
 
 export const getStaticPaths = (() =>
   products.map((p) => ({ params: { slug: p.slug }, props: { product: p } }))) satisfies GetStaticPaths;
@@ -161,13 +155,13 @@ const schema = graph([
 
           <ul class="hdt-product-usps">
             <li><i class="fas fa-pen-ruler" aria-hidden="true" /> Free custom design</li>
-            <li><i class="fas fa-leaf" aria-hidden="true" /> Food-safe &amp; recyclable</li>
-            <li><i class="fas fa-truck-fast" aria-hidden="true" /> Fast worldwide shipping</li>
-            <li><i class="fas fa-layer-group" aria-hidden="true" /> Low minimums, bulk pricing</li>
+            <li><i class="fas fa-leaf" aria-hidden="true" /> Food-safe board</li>
+            <li><i class="fas fa-truck-fast" aria-hidden="true" /> Free shipping to the US, UK, CA &amp; AU</li>
+            <li><i class="fas fa-layer-group" aria-hidden="true" /> 100 trays for $30, no setup fees</li>
           </ul>
 
           <a href="#inquiry-form" class="hdt-product-cta">
-            Get Free Quote
+            Quote a Larger Run
             <i class="fas fa-arrow-right" aria-hidden="true" />
           </a>
         </div>
@@ -181,13 +175,9 @@ const schema = graph([
         </div>
       </div>
 
-      <div class="hdt-trust-badges">
-        <Image src={paymentImage} alt="Accepted payment methods" loading="lazy" densities={[1]} />
-        <Image src={payments} alt="Card payment providers" loading="lazy" densities={[1]} />
-        <Image src={dmca} alt="DMCA protected" loading="lazy" densities={[1]} />
-        <Image src={secureIcons} alt="Secure checkout and SSL protection" loading="lazy" densities={[1]} />
-        <Image src={guaranteeImage} alt="Satisfaction guarantee" loading="lazy" densities={[1]} />
-      </div>
+      <p class="hdt-pay-note">
+        <i class="fas fa-file-invoice" aria-hidden="true"></i> {PAYMENT_LINE}
+      </p>
     </div>
   </section>
 
@@ -482,30 +472,13 @@ const schema = graph([
     font-weight: 700;
   }
 
-  .hdt-trust-badges {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 46px;
-    padding-top: 32px;
+  .hdt-pay-note {
+    margin: 40px 0 0;
+    padding-top: 28px;
     border-top: 1px solid #ededed;
-  }
-
-  .hdt-trust-badges img {
-    max-height: 74px;
-    width: auto;
-    filter: grayscale(0.25);
-    opacity: 0.9;
-    transition:
-      filter 0.3s,
-      opacity 0.3s;
-  }
-
-  .hdt-trust-badges img:hover {
-    filter: none;
-    opacity: 1;
+    text-align: center;
+    color: #1d3557;
+    font-weight: 600;
   }
 
   /* --- responsive ------------------------------------------------------- */
@@ -577,13 +550,8 @@ const schema = graph([
     font-weight: 700;
   }
 
-  .hdt-trust-badges {
-      gap: 20px;
-      margin-top: 34px;
-    }
-
-    .hdt-trust-badges img {
-      max-height: 54px;
+  .hdt-pay-note {
+      margin-top: 30px;
     }
   }
 </style>

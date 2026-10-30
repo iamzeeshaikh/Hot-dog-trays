@@ -6,7 +6,7 @@
     },
     {
       "q": "Is your phone number also your WhatsApp number?",
-      "a": "Yes. (503) 461-4788 works for calls and for WhatsApp, where you can add the +1 country code. WhatsApp is handy for sending photos of the packaging you use now, a rough sketch or your logo straight from your phone, while calls suit quick questions and checking rush availability."
+      "a": "Yes. (503) 461-4788 works for calls and for WhatsApp, where you can add the +1 country code. WhatsApp is handy for sending photos of the packaging you use now, a rough sketch or your logo straight from your phone, while calls suit quick questions and checking a delivery date."
     },
     {
       "q": "Which email address should I send artwork files to?",
@@ -28,15 +28,15 @@
     },
     {
       "q": "Does every product in the shop have the same minimum order?",
-      "a": "Yes. The minimum is 100 units for every style in the shop, from boats and holders to plates, trays and container paper. Volume discounts apply as quantities grow: 5% from 500 units, 10% from 1,000 units and 15% from 5,000 units, and shipping is free on all orders."
+      "a": "Yes. Every style in the shop, from boats and holders to plates, trays and container paper, is sold in packs of 100 for $30, so the minimum is one pack. You can order up to 50 packs at a time online, and shipping is free on all orders."
     },
     {
       "q": "Which shop items can be washed and reused?",
       "a": "The plastic hot dog trays are made from food-safe PP plastic and can be washed and reused, which suits venues with their own dishwashing. The kraft, white cardboard and corrugated styles are single use and are the better fit where food leaves the counter or is eaten on the move."
     },
     {
-      "q": "Is the $0.30 starting price the same across all materials?",
-      "a": "Yes, kraft, white cardboard, corrugated and food-safe plastic all start from $0.30 per unit. Your final price depends on the quantity, size, printing and any coating you choose. Request a free quote with those details and we reply within 2 hours with exact pricing."
+      "q": "Is the $30 pack price the same across all materials?",
+      "a": "Yes. Every product is $30 for a pack of 100 on its standard build, whether it is kraft, white cardboard, corrugated or food-safe plastic. That covers your printed artwork, the proof and free shipping. Only special sizes, materials or finishes are priced by quote, and we reply to those within 2 hours during business hours."
     },
     {
       "q": "Do product pages list sizes and specifications?",
@@ -53,12 +53,12 @@
       "a": "Yes. Call (503) 461-4788, message the same number on WhatsApp, or email info@hotdogtrays.com. Share the product type, an estimated quantity, your timeline and any logo you have. Every channel reaches the same packaging team, and you still get pricing and options within 2 hours."
     },
     {
-      "q": "Can I ask for prices at two different quantities?",
-      "a": "Yes, and it is worth doing when you sit near a discount break. Discounts start at 5% from 500 units, 10% from 1,000 and 15% from 5,000. Ask for both quantities on one request and we show the unit price for each, so you can decide how much stock to hold."
+      "q": "When do I need a quote instead of ordering online?",
+      "a": "Order online when you want up to 50 packs of 100 trays on a product's standard build, at $30 a pack. Ask for a quote when you need more than that, or a size, material, coating or print position that is not on the product page. We price those before you commit."
     },
     {
       "q": "Should I include my event or opening date on the request?",
-      "a": "Yes. Put the date on your quote request and we will tell you before you pay whether production can meet it. Standard production takes 7-10 business days, delivery takes 5 to 7 days after dispatch, and rush production is available for an additional fee if the timing is tight."
+      "a": "Yes. Put the date on your quote request and we will tell you before you pay whether production can meet it. Standard production takes 7-10 business days after proof approval, and delivery takes 5 to 7 days after dispatch."
     },
     {
       "q": "What if I do not know which tray size I need?",
@@ -66,7 +66,7 @@
     },
     {
       "q": "Can I ask for a coating or inside printing on my quote?",
-      "a": "Yes. List any must-haves on the request, such as a matte, gloss or spot UV coating, printing on the inside of the tray, or an eco-friendly material like kraft or FSC-certified paper. We include each option in the pricing so you can compare costs before you approve anything."
+      "a": "Yes. List any must-haves on the request, such as a matte, gloss or spot UV coating, printing on the inside of the tray, or a kraft board for a natural look. We include each option in the pricing so you can compare costs before you approve anything."
     },
     {
       "q": "What happens if my quote request is missing details?",
@@ -95,18 +95,18 @@
       "a": "No. Every order is printed to your own size and artwork, so trays cannot be returned for a change of mind. If an order arrives damaged, defective or misprinted, contact us within 14 days of delivery with photos and we reprint it free or refund it."
     },
     {
-      "q": "Is shipping still free when I choose rush production?",
-      "a": "Yes. Shipping is free on every order to the USA, UK, Canada and Australia, including rush jobs. The rush fee covers faster production only. Once your order ships, delivery usually takes 5 to 7 days, and you receive a tracking number by email when it leaves us."
+      "q": "Can I pay extra for faster shipping?",
+      "a": "No. We do not sell paid express shipping. Every order ships free to the USA, UK, Canada and Australia, and delivery usually takes 5 to 7 days once it leaves us. You receive a tracking number by email when it ships."
     }
   ],
   "about": [
     {
-      "q": "When was HotDogTrays.com founded?",
-      "a": "HotDogTrays.com was founded in 2015. We started out making custom hot dog packaging for food service businesses, and that is still our focus today: trays, boats, holders, plates and container paper printed with each customer's own branding, with orders starting at 100 units."
+      "q": "What does HotDogTrays.com make?",
+      "a": "We make custom printed hot dog packaging for food service businesses: trays, boats, holders, plates and container paper printed with each customer's own branding. Every product is sold in packs of 100 for $30, with free design and free shipping to the USA, UK, Canada and Australia."
     },
     {
       "q": "Why did you start a hot dog packaging company?",
-      "a": "Smaller food businesses were being priced out of branded packaging by high minimum orders and limited options. We set out to fix that with a 100-unit minimum, free in-house design and a choice of materials, so a single food truck can get printed trays as easily as a large venue."
+      "a": "Smaller food businesses were being priced out of branded packaging by high minimum orders and limited options. We set out to fix that with packs of 100 trays, free in-house design and a choice of materials, so a single food truck can get printed trays as easily as a large venue."
     },
     {
       "q": "What types of food businesses do you work with?",
@@ -126,15 +126,15 @@
     },
     {
       "q": "What values guide how you work?",
-      "a": "Four values shape our work: quality first, customer first, innovation and sustainability. In practice that means careful quality checks before dispatch, a team that answers quote requests within 2 hours, steady improvement to our products and processes, and recyclable kraft and FSC-certified paper options."
+      "a": "Four values shape our work: quality first, customer first, innovation and sustainability. In practice that means checks before dispatch, a team that answers quote requests within 2 hours during business hours, steady improvement to our products and processes, and paper and kraft options for businesses that want less plastic."
     },
     {
       "q": "What standards do your packaging materials meet?",
-      "a": "All of our materials are FDA-approved and food grade, which makes them safe for direct food contact. That covers kraft, white cardboard, corrugated and food-safe plastic. For businesses that want responsibly sourced board, we also offer FSC-certified paper options."
+      "a": "All of our materials are food grade, which makes them safe for direct food contact. That covers kraft, white cardboard, corrugated and food-safe PP plastic. If you need paperwork for a particular material, ask us before you order and we will tell you what we can provide."
     },
     {
       "q": "How do you keep branded packaging affordable for small businesses?",
-      "a": "Design is free, there are no setup fees for standard sizes, and pricing starts at $0.30 per unit with a 100-unit minimum. Volume discounts of 5%, 10% and 15% apply from 500, 1,000 and 5,000 units, and shipping is free on all orders."
+      "a": "Design is free, there are no setup fees for standard sizes, and every product is $30 for a pack of 100 trays, which is $0.30 a tray. The minimum is a single pack, and shipping is free on all orders."
     },
     {
       "q": "What is your company mission?",

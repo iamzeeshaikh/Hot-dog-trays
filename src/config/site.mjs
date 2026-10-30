@@ -8,7 +8,7 @@ export const SITE_URL = 'https://hotdogtrays.com';
 
 /** Paths that must never enter the sitemap or be indexed. */
 export const NOINDEX_PATHS = [
-  '/sample-page/', // WordPress boilerplate: kept at 200, removed from the index
+  '/sample-page/', // WordPress boilerplate: removed 2026-10-31, now 404s
   '/404/',
   '/api/',
 ];

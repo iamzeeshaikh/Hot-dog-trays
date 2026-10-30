@@ -15,11 +15,11 @@ export type PageExtra = {
 const basePageExtras: Record<string, PageExtra> = {
   "get-quote": {
     "title": "Request a Free Packaging Quote | 2-Hour Reply | HotDogTrays",
-    "description": "Send your quantity, size and artwork and get pricing, material options and advice within 2 hours. Free design, no setup fees and no obligation to order.",
+    "description": "Standard trays are $30 per 100 with free shipping. For larger runs or special sizes, send your details and get a quote within 2 hours. Free design.",
     "sections": [
       {
         "title": "What happens after you send your request",
-        "body": "A member of our packaging team reads every request and replies within 2 hours with detailed pricing, material options and a recommendation for your menu. If anything is missing, we ask rather than guess, so the numbers you receive match what you will actually order. Once you are happy with the price, our designers prepare your artwork and send a digital proof within 24 to 48 hours. You can ask for up to 3 free revisions before you approve it. Nothing is charged at the quote or proof stage. Payment is taken once the proof is approved. Standard production takes 7-10 business days, and your order then ships free with tracking.",
+        "body": "A member of our packaging team reads every request and replies within 2 hours with detailed pricing, material options and a recommendation for your menu. If anything is missing, we ask rather than guess, so the numbers you receive match what you will actually order. Once you are happy with the price, our designers prepare your artwork and send a digital proof within 24 to 48 hours. You can ask for up to 3 free revisions before you approve it. Nothing is charged at the quote or proof stage. Once the proof is approved we email a PayPal or bank transfer invoice, or you can pay cash on delivery in the US and Canada. Standard production takes 7-10 business days, and your order then ships free with tracking.",
         "bullets": [
           "Quote with pricing and options: within 2 hours",
           "Design proof: 24 to 48 hours, up to 3 free revisions",
@@ -29,7 +29,7 @@ const basePageExtras: Record<string, PageExtra> = {
       },
       {
         "title": "Not sure what to ask for? Send what you know",
-        "body": "You do not need a finished spec sheet to get a useful quote. Tell us what you serve, roughly how many pieces you need and when you need them, and our team will suggest a size, material and finish that fit your budget. The minimum order is 100 units, and volume discounts begin at 500 units, so a rough quantity range is enough for us to show you where the price breaks fall. For artwork, any version of your logo works, even a photo of your business card, and we will recreate it as a print-ready file.",
+        "body": "You do not need a finished spec sheet to get a useful quote. Tell us what you serve, roughly how many pieces you need and when you need them, and our team will suggest a size, material and finish that fit your budget. Standard trays are $30 for a pack of 100 and can be ordered straight from any product page, so a quote is only needed for larger runs or special builds. A rough quantity range is enough for us to price those. For artwork, any version of your logo works, even a photo of your business card, and we will recreate it as a print-ready file.",
         "bullets": [
           "What you serve: classic, jumbo or loaded hot dogs, with or without sides",
           "An estimated quantity and your delivery date",
@@ -41,7 +41,7 @@ const basePageExtras: Record<string, PageExtra> = {
     "faqs": [
       {
         "question": "Does it cost anything to request a quote?",
-        "answer": "No. Quotes are free and carry no obligation. You do not pay anything to receive a quote or to approve a design proof. Payment is only due before production begins."
+        "answer": "No. Quotes are free and carry no obligation. You do not pay anything to receive a quote or to approve a design proof. For invoice payments, you pay after approving the proof and before production begins."
       },
       {
         "question": "Can I get a quote before my artwork is ready?",
@@ -52,8 +52,8 @@ const basePageExtras: Record<string, PageExtra> = {
         "answer": "Our team responds within 2 hours with pricing, material options and recommendations. Our business hours are Monday to Friday 9:00 AM to 6:00 PM EST and Saturday 10:00 AM to 4:00 PM EST."
       },
       {
-        "question": "Will my quote include volume discounts?",
-        "answer": "Yes. Discounts are applied automatically by quantity: 5% from 500 units, 10% from 1,000 units and 15% from 5,000 units. If you are close to a break point, ask us to quote both quantities so you can compare."
+        "question": "Do I need a quote for a standard order?",
+        "answer": "No. Every product can be ordered online in packs of 100 trays for $30, up to 50 packs at a time, with free shipping. Send a quote request only for larger runs or for special sizes, materials or finishes."
       }
     ]
   },
@@ -63,7 +63,7 @@ const basePageExtras: Record<string, PageExtra> = {
     "sections": [
       {
         "title": "Free shipping to four countries",
-        "body": "Every order ships free to the USA, UK, Canada and Australia, whatever the quantity. There is no shipping line to add at the end of your quote, so the price you approve is the price you pay for delivery to your door. Once your order leaves us, delivery usually takes 5 to 7 days. Because every order is printed to your design, production comes first, and standard production takes 7-10 business days. The 5 to 7 day delivery window starts once it ships.",
+        "body": "Every order ships free to the USA, UK, Canada and Australia, whatever the quantity. There is no shipping line added at checkout, so the pack price already covers delivery to your door. Once your order leaves us, delivery usually takes 5 to 7 days. Because every order is printed to your design, production comes first, and standard production takes 7-10 business days. The 5 to 7 day delivery window starts once it ships.",
         "bullets": [
           "Shipping cost: free on all orders",
           "Destinations: USA, UK, Canada and Australia",
@@ -82,7 +82,7 @@ const basePageExtras: Record<string, PageExtra> = {
       },
       {
         "title": "If something goes wrong in transit",
-        "body": "If a package shows as delivered but has not arrived, check with neighbors or building management and allow 24 hours for the carrier to update before contacting us. If a box arrives damaged, email info@hotdogtrays.com with photos of the package and the product and we will arrange a replacement or resolve it with you. Returns are accepted within 14 days of delivery. The buyer covers return shipping, except when an order arrives faulty or incorrect, in which case we cover it."
+        "body": "If a package shows as delivered but has not arrived, check with neighbors or building management and allow 24 hours for the carrier to update before contacting us. If a box arrives damaged, email info@hotdogtrays.com with photos of the package and the product and we will reprint the damaged trays free or refund them. Damaged, defective or misprinted orders must be reported within 14 days of delivery, and we cover any shipping involved. Because every tray is printed to your artwork, we do not accept change-of-mind returns. Approved refunds are issued within 10 business days."
       }
     ],
     "faqs": [
@@ -92,7 +92,7 @@ const basePageExtras: Record<string, PageExtra> = {
       },
       {
         "question": "When does the delivery window start?",
-        "answer": "The 5 to 7 day delivery window starts when your order ships. Standard production takes 7-10 business days after proof approval, so put your deadline on the quote request and we will plan both."
+        "answer": "The 5 to 7 day delivery window starts when your order ships. Standard production takes 7-10 business days after proof approval, so tell us your deadline when you order and we will confirm before you pay whether we can meet it."
       },
       {
         "question": "Who pays customs duties on orders shipped outside the USA?",
@@ -111,31 +111,31 @@ const basePageExtras: Record<string, PageExtra> = {
     "faqs": []
   },
   "about": {
-    "title": "About HotDogTrays.com | Food Packaging Company Since 2015",
-    "description": "Since 2015 we have helped food trucks, stadiums, restaurants and caterers get branded food packaging with a free design team and minimums from 100 units.",
+    "title": "About HotDogTrays.com | Custom Printed Hot Dog Trays",
+    "description": "We print custom hot dog trays for food trucks, stadiums, restaurants and caterers: 100 trays for $30, free design and free shipping to 4 countries.",
     "sections": [
       {
         "title": "How we work with food businesses",
-        "body": "We started in 2015 because smaller food businesses were being priced out of branded packaging by high minimums and limited options. That is still the problem we solve. Orders start at 100 units, our in-house designers prepare artwork at no extra cost, and every job goes through a digital proof that you approve before anything is printed. The same team that quotes your order follows it through design, production and dispatch, so you always know who to talk to.",
+        "body": "Smaller food businesses are often priced out of branded packaging by high minimums and limited options. That is the problem we solve. Orders start at one pack of 100 trays for $30, our in-house designers prepare artwork at no extra cost, and every job goes through a digital proof that you approve before anything is printed. The same team that quotes your order follows it through design, production and dispatch, so you always know who to talk to.",
         "bullets": [
           "Food trucks, stadium kiosks, restaurants and catering companies",
           "Free design service with up to 3 revisions",
           "Kraft, white cardboard, corrugated and food-safe plastic",
-          "FDA-approved, food-grade materials and FSC-certified paper options"
+          "Food-grade board and inks, with kraft options for a natural look"
         ]
       }
     ],
     "faqs": []
   },
   "contact": {
-    "title": "Contact Hot Dog Trays | Phone, Email, WhatsApp and Office",
-    "description": "Call, email or WhatsApp the Hot Dog Trays team in New York. See business hours, which channel suits your question and what to include for a fast answer.",
+    "title": "Contact Hot Dog Trays | Phone, Email, WhatsApp and Hours",
+    "description": "Call, email or WhatsApp the Hot Dog Trays team in Brooklyn, New York. See business hours, which channel suits your question and what to include for a fast answer.",
     "sections": [
       {
         "title": "Which channel to use",
         "body": "Every channel reaches the same team, so pick whichever is easiest for you. A few simple rules help us answer faster.",
         "bullets": [
-          "Phone (503) 461-4788: best for a quick conversation, checking rush availability or talking through options while you decide",
+          "Phone (503) 461-4788: best for a quick conversation, checking a delivery date or talking through options while you decide",
           "WhatsApp +1 (503) 461-4788: handy for sending photos of a current tray, a sketch or your logo straight from your phone",
           "Email info@hotdogtrays.com: best for artwork files, purchase orders, delivery questions and anything you want in writing",
           "The form on this page: a good choice when you want us to call or email you back"
@@ -146,8 +146,8 @@ const basePageExtras: Record<string, PageExtra> = {
         "body": "Most back-and-forth happens because a detail is missing. If you already have an order with us, put your order number in the first line so we can pull up your design and history straight away. For a delivery problem, add the tracking number and attach photos of the package and the product if anything arrived damaged. For a reorder, the previous order number is enough for us to find your saved artwork. For anything new, a short note about what you serve and the timing you are working toward gives our team enough to start."
       },
       {
-        "title": "Office, hours and replies",
-        "body": "Our office is at 303 W 137th Street, #5A, New York, NY 10030, United States. The team is available Monday to Friday from 9:00 AM to 6:00 PM EST and on Saturday from 10:00 AM to 4:00 PM EST, and we are closed on Sunday. Quote requests receive a reply within 2 hours, and design proofs follow within 24 to 48 hours once your artwork is under way."
+        "title": "Address, hours and replies",
+        "body": "Our business address is 1639 70th St, Brooklyn, NY 11204, United States. The team is available Monday to Friday from 9:00 AM to 6:00 PM EST and on Saturday from 10:00 AM to 4:00 PM EST, and we are closed on Sunday. Quote requests receive a reply within 2 hours, and design proofs follow within 24 to 48 hours once your artwork is under way."
       }
     ],
     "faqs": [
@@ -160,12 +160,12 @@ const basePageExtras: Record<string, PageExtra> = {
         "answer": "Yes. Message us at +1 (503) 461-4788 with your logo, a photo of the packaging you use now or a rough sketch. For large print files, email works best at info@hotdogtrays.com."
       },
       {
-        "question": "Where is your office located?",
-        "answer": "Our office is at 303 W 137th Street, #5A, New York, NY 10030, United States."
+        "question": "What is your business address?",
+        "answer": "Our business address is 1639 70th St, Brooklyn, NY 11204, United States. We take orders online and by phone, email and WhatsApp."
       },
       {
         "question": "Who do I contact about an order that has already shipped?",
-        "answer": "Email info@hotdogtrays.com with your order number and tracking number. If anything arrived damaged, attach photos of the package and the product and we will arrange a replacement or resolve it with you."
+        "answer": "Email info@hotdogtrays.com with your order number and tracking number. If anything arrived damaged, attach photos of the package and the product and we will reprint or refund the damaged trays, as long as it is reported within 14 days of delivery."
       },
       {
         "question": "What should I include when I get in touch about a reorder?",
@@ -175,11 +175,11 @@ const basePageExtras: Record<string, PageExtra> = {
   },
   "shop": {
     "title": "Hot Dog Trays, Boats, Holders and Plates | Shop All Styles",
-    "description": "Browse hot dog trays, paper boats, holders, plates and container paper in kraft, cardboard, corrugated and plastic. From $0.30 a unit, 100-unit minimum.",
+    "description": "Browse hot dog trays, paper boats, holders, plates and container paper in kraft, cardboard, corrugated and plastic. $30 for 100, free shipping.",
     "sections": [
       {
         "title": "Hot dog trays and serving packaging",
-        "body": "This is the full range of hot dog trays and related serving packaging we produce, from simple paper boats to sturdy corrugated trays with room for sides. Each style can be printed with your logo and brand colors, and our design team prepares the artwork free. Choose kraft for a natural, recyclable look, white cardboard for bright full-color printing, corrugated for heavy toppings and heat, or food-safe plastic if you want something reusable. Pricing starts at $0.30 a unit with a 100-unit minimum, and every material is FDA-approved and food-grade. Open any product to see sizes and specifications, or request a free quote."
+        "body": "This is the full range of hot dog trays and related serving packaging we produce, from simple paper boats to sturdy corrugated trays with room for sides. Each style can be printed with your logo and brand colors, and our design team prepares the artwork free. Choose kraft for a natural, recyclable look, white cardboard for bright full-color printing, corrugated for heavy toppings and heat, or food-safe plastic if you want something reusable. Every product is $30 for a pack of 100 ($0.30 a tray) with free shipping, and every material is food-grade. Open any product to see sizes and specifications and to order, or request a free quote for larger runs."
       },
       {
         "title": "Trays or boats?",
@@ -201,11 +201,11 @@ const basePageExtras: Record<string, PageExtra> = {
       },
       {
         "question": "Can I order plain trays without any printing?",
-        "answer": "Yes. Printing is optional, and plain trays are priced differently from full-color printed ones. Tell us which you need when you request a quote."
+        "answer": "Yes. Printing is optional. Tell us you want plain trays when you order or in a quote request, and we will confirm the details before you pay."
       },
       {
         "question": "Are these products safe for direct contact with food?",
-        "answer": "Yes. All of our materials are FDA-approved, food-grade and safe for direct food contact, including the kraft, cardboard, corrugated and plastic options."
+        "answer": "Yes. All of our materials are food-grade and safe for direct food contact, including the kraft, cardboard, corrugated and plastic options."
       }
     ]
   },

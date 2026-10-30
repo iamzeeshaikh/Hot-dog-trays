@@ -17,10 +17,10 @@ export const CONTACT = {
   email: 'info@hotdogtrays.com',
   emailHref: 'mailto:info@hotdogtrays.com',
   address: {
-    street: '303 W 137th Street, #5A',
-    locality: 'New York',
+    street: '1639 70th St',
+    locality: 'Brooklyn',
     region: 'NY',
-    postalCode: '10030',
+    postalCode: '11204',
     country: 'US',
   },
 } as const;

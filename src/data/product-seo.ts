@@ -49,7 +49,7 @@ export const productSeo: Record<string, ProductSeo> = {
   'cardboard-hot-dog-holders': {
     title: 'Cardboard Hot Dog Holders | Custom Printed Pockets',
     description:
-      'Branded cardboard hot dog holders printed with your logo and colors. Firm grip for regular, jumbo or footlong dogs, free design, from $0.30 a unit.',
+      'Branded cardboard hot dog holders printed with your logo and colors. Firm grip for regular, jumbo or footlong dogs, with free design and free shipping.',
     reason:
       'Ranks 9.7 for "hot dog cardboard holder". Title leads with the holder format and its pocket structure to separate it from the cardboard trays page.',
     guides: [

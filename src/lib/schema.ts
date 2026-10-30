@@ -1,22 +1,16 @@
-import { SITE_URL, SITE_NAME, BRAND_NAME, CONTACT, SOCIAL } from '../data/site';
+import { SITE_URL, SITE_NAME, BRAND_NAME, CONTACT } from '../data/site';
 import { SHIPPING } from '../data/shipping';
 import { PACK_QTY, PACK_PRICE_TEXT } from '../data/order';
 import type { Product, ProductFaq } from '../data/products';
-import legacyRatings from '../data/legacy-ratings.json';
-
-const LEGACY_RATINGS: Record<string, { ratingValue: string; reviewCount: number }> =
-  legacyRatings.ratings;
 
 /**
  * JSON-LD builders.
  *
  * Every node here is backed by content that is actually visible on the page.
  *
- * Ratings: the WordPress build emitted an aggregateRating of 4.5 (one review)
- * on every product page. It is restored like-for-like from
- * src/data/legacy-ratings.json, only on the product URLs the old site had.
- * The old Review node is not reproduced because its text and date were never
- * recorded.
+ * No aggregateRating or Review nodes: the owner removed every rating on
+ * 2026-10-31 (Merchant Center misrepresentation fix) because none can be
+ * backed by real, visible customer reviews.
  */
 
 const abs = (path: string) => new URL(path, SITE_URL).href;
@@ -37,7 +31,6 @@ export function organization() {
       postalCode: CONTACT.address.postalCode,
       addressCountry: CONTACT.address.country,
     },
-    sameAs: SOCIAL.map((s) => s.href),
   };
 }
 
@@ -93,16 +86,6 @@ export function product(p: Product, imageUrls: string[]) {
     category: p.category,
     brand: { '@type': 'Brand', name: p.brand },
   };
-
-  // Rating carried over from the WordPress site (see the note at the top).
-  const legacy = LEGACY_RATINGS[p.url];
-  if (legacy) {
-    node.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: legacy.ratingValue,
-      reviewCount: legacy.reviewCount,
-    };
-  }
 
   // Online pack price (src/data/order.ts, owner 2026-10-29): 100 trays for $30.00,
   // the same constant the order box, the checkout, /api/order and the Merchant feed

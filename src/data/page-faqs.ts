@@ -9,35 +9,35 @@ import type { ProductFaq } from './products';
 export const homeFaqs: ProductFaq[] = [
   {
     "question": "What is the minimum order quantity?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.30 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount</li> </ul> <p>Shipping is free on every order, whatever the quantity. For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
+    "answer": "<p>The minimum is <strong>one pack of 100 trays</strong>. Every product is ordered online in packs of 100 for <strong>$30.00</strong>, which works out at $0.30 a tray, and shipping is free.</p> <ul> <li><strong>1 pack:</strong> 100 trays for $30</li> <li><strong>5 packs:</strong> 500 trays for $150</li> <li><strong>10 packs:</strong> 1,000 trays for $300</li> </ul> <p>You can order up to 50 packs at a time online. For larger runs or special sizes, materials or finishes, <a href=\"/get-quote/\">send us a quote request</a> and we will price the job before you commit.</p>"
   },
   {
     "question": "How long does production and delivery take?",
-    "answer": "<p><strong>Production starts after you approve the design proof, and standard production takes 7-10 business days.</strong> Once dispatched, delivery takes 5-7 days.</p> <ul> <li><strong>Shipping:</strong> free on all orders</li> <li><strong>Destinations:</strong> USA, UK, Canada and Australia</li> </ul> <p>Rush production options are available for an additional fee if you need your order faster.</p>"
+    "answer": "<p><strong>Production starts after you approve the design proof, and standard production takes 7-10 business days.</strong> Once dispatched, delivery takes 5-7 days.</p> <ul> <li><strong>Shipping:</strong> free on all orders</li> <li><strong>Destinations:</strong> USA, UK, Canada and Australia</li> </ul> <p>If you have an event date, tell us when you order and we will confirm before you pay whether we can meet it.</p>"
   },
   {
     "question": "Do you offer custom printing and design services?",
-    "answer": "<p><strong>Yes! We offer completely free design services</strong> with every order. Our expert design team will create custom artwork featuring your logo, brand colors, and messaging at no additional cost.</p> <p>We offer:</p> <ul> <li>Full-color CMYK printing</li> <li>Custom sizes and shapes</li> <li>Multiple coating options (matte, gloss, spot UV)</li> <li>Up to 3 free design revisions</li> </ul> <p>You can also provide your own design files in PDF, AI, EPS, or PSD format.</p>"
+    "answer": "<p><strong>Yes. Design is free</strong> with every order. Our design team prepares artwork with your logo, brand colors and messaging at no extra cost.</p> <p>We offer:</p> <ul> <li>Full-color CMYK printing</li> <li>Custom sizes and shapes</li> <li>Multiple coating options (matte, gloss, spot UV)</li> <li>Up to 3 free design revisions</li> </ul> <p>You can also provide your own design files in PDF, AI, EPS, or PSD format.</p>"
   },
   {
     "question": "What materials are your hot dog trays made from?",
-    "answer": "<p>We offer hot dog trays in several premium materials:</p> <ul> <li><strong>Kraft Paper:</strong> Eco-friendly, recyclable, natural brown finish</li> <li><strong>White Cardboard:</strong> Smooth surface, perfect for vibrant color printing</li> <li><strong>Corrugated:</strong> Extra-thick with superior insulation and durability</li> <li><strong>Food-Safe Plastic:</strong> Reusable, durable, and easy to clean</li> </ul> <p>All materials are <strong>food-grade</strong>, food-grade, and safe for direct food contact.</p>"
+    "answer": "<p>We make hot dog trays in four main materials:</p> <ul> <li><strong>Kraft Paper:</strong> Natural brown board with a rustic finish</li> <li><strong>White Cardboard:</strong> Smooth surface, perfect for vibrant color printing</li> <li><strong>Corrugated:</strong> Thicker fluted board that holds heat in and resists crushing</li> <li><strong>Food-Safe Plastic:</strong> Reusable, durable, and easy to clean</li> </ul> <p>All of them are <strong>food-grade</strong> and safe for direct food contact.</p>"
   },
   {
     "question": "Are your hot dog trays eco-friendly?",
-    "answer": "<p><strong>Yes! Environmental sustainability is important to us.</strong> We offer multiple eco-friendly options:</p> <ul> <li><strong>100% Recyclable:</strong> All paper and cardboard trays can be recycled</li> <li><strong>Biodegradable:</strong> Break down naturally without harming the environment</li> <li><strong>FSC-Certified Paper:</strong> Sourced from responsibly managed forests</li> <li><strong>Compostable Coatings:</strong> Plant-based, non-toxic finishes</li> </ul>"
+    "answer": "<p>Most of the range is paper-based, which gives you a lower-plastic option:</p> <ul> <li><strong>Recyclable board:</strong> Uncoated paper and cardboard trays can go in paper recycling where your local rules accept them</li> <li><strong>Kraft options:</strong> Unbleached brown board for a natural look</li> <li><strong>Water-based coatings:</strong> Available on request for grease resistance</li> <li><strong>Check locally:</strong> Grease-soaked trays and coated board are treated differently by each recycling service</li> </ul>"
   },
   {
     "question": "How much do custom hot dog trays cost?",
-    "answer": "<p>Pricing starts at <strong>$0.30 USD</strong> for bulk orders. The exact price depends on:</p> <ul> <li>Order quantity (larger orders = lower per-unit cost)</li> <li>Material type selected</li> <li>Printing requirements (full-color vs. plain)</li> <li>Special features or finishes</li> </ul> <p><strong>Request a free quote</strong> to get exact pricing for your specific needs. There are no hidden fees or setup charges.</p>"
+    "answer": "<p>Every product costs <strong>$30.00 for a pack of 100 trays</strong> ($0.30 a tray), with free design and free shipping to the USA, UK, Canada and Australia. The pack price covers:</p> <ul> <li>Our standard board for that product</li> <li>Your own printed artwork</li> <li>A digital proof with up to 3 free revisions</li> <li>Delivery to your door</li> </ul> <p>There are no setup charges on the standard build. Only very large runs or special sizes, materials and finishes are priced by quote.</p>"
   },
   {
     "question": "Can I order samples before placing a bulk order?",
-    "answer": "<p><strong>Yes!</strong> We offer sample packs so you can feel the quality of our materials and see the printing quality before committing to a large order. Contact us at <strong>(503) 461-4788</strong> or <strong>info@hotdogtrays.com</strong> to request samples.</p>"
+    "answer": "<p><strong>Yes.</strong> Ask us about samples of our materials and printing before you order. Contact us at <strong>(503) 461-4788</strong> or <strong>info@hotdogtrays.com</strong> to request them.</p>"
   },
   {
     "question": "What payment methods do you accept?",
-    "answer": "<p>We accept all major payment methods:</p> <ul> <li>Credit cards (Visa, Mastercard, American Express, Discover)</li> <li>PayPal</li> <li>Bank transfers (ACH/Wire)</li> <li>Purchase orders for established businesses</li> </ul> <p>Payment is typically required before production begins. Net 30 terms are available for qualified businesses.</p>"
+    "answer": "<p>Orders are paid by invoice after you approve your free digital proof:</p> <ul> <li>PayPal invoice (pay with your PayPal balance or a card through PayPal)</li> <li>Bank transfer invoice</li> <li>Cash on delivery for US and Canadian addresses</li> <li>Nothing is charged when you place the order on the website</li> </ul> <p>For invoice payments, production starts once the invoice is paid. Cash on delivery orders are paid when the trays arrive.</p>"
   },
   {
     "question": "Will I see my tray design before it goes to print?",
@@ -45,42 +45,42 @@ export const homeFaqs: ProductFaq[] = [
   },
   {
     "question": "Do you print branded trays for small food businesses?",
-    "answer": "<p>Yes. Orders start at 100 units, so a single food truck, cart or one-off event can still get trays with its own logo. Design is free, there are no setup fees for standard sizes, pricing starts at $0.30 per unit, and shipping is free on every order.</p>"
+    "answer": "<p>Yes. The minimum is one pack of 100 trays for $30, so a single food truck, cart or one-off event can still get trays with its own logo. Design is free, there are no setup fees for standard sizes, and shipping is free on every order.</p>"
   }
 ];
 
 export const faqPageFaqs: ProductFaq[] = [
   {
-    "question": "What is the smallest order, and how do volume discounts work?",
-    "answer": "<p>Our minimum order quantity starts at <strong>100 units</strong>. This allows us to maintain competitive wholesale pricing while ensuring quality production.</p> <div class=\"hdt-faq-highlight\"> <strong>Volume Discounts Available:</strong> </div> <ul> <li><strong>100-500 units:</strong> Standard pricing starting at $0.30 USD</li> <li><strong>500-1,000 units:</strong> 5% discount</li> <li><strong>1,000-5,000 units:</strong> 10% discount</li> <li><strong>5,000+ units:</strong> 15% discount</li> </ul> <p>Shipping is free on every order, whatever the quantity. For orders above 10,000 units, please <a href=\"/contact/\">contact us</a> for special pricing.</p>"
+    "question": "What is the smallest order, and how does pack pricing work?",
+    "answer": "<p>The smallest order is <strong>one pack of 100 trays for $30.00</strong> ($0.30 a tray). Every product is sold in packs of 100 at the same price, and shipping is free.</p> <ul> <li><strong>1 pack:</strong> 100 trays for $30</li> <li><strong>5 packs:</strong> 500 trays for $150</li> <li><strong>10 packs:</strong> 1,000 trays for $300</li> </ul> <p>You can order up to 50 packs at a time online. For larger runs, or special sizes, materials and finishes, <a href=\"/contact/\">ask us</a> for a quote.</p>"
   },
   {
     "question": "How do I place an order?",
-    "answer": "<p>Ordering is simple! Follow these steps:</p> <ul> <li><strong>Step 1:</strong> Request a free quote through our <a href=\"/get-quote/\">quote form</a></li> <li><strong>Step 2:</strong> Our team will send you pricing and options within 2 hours</li> <li><strong>Step 3:</strong> Approve your design proof (free design service included)</li> <li><strong>Step 4:</strong> Make payment and we start production</li> <li><strong>Step 5:</strong> Receive your order in 10-17 days</li> </ul> <p>You can also call us at <a href=\"tel:5034614788\">(503) 461-4788</a> to speak with a packaging specialist.</p>"
+    "answer": "<p>Ordering is simple! Follow these steps:</p> <ul> <li><strong>Step 1:</strong> Open any product in the <a href=\"/shop/\">shop</a>, choose how many packs of 100 you need and check out</li> <li><strong>Step 2:</strong> Send your logo or artwork; our design service is free</li> <li><strong>Step 3:</strong> Approve your digital proof (up to 3 free revisions)</li> <li><strong>Step 4:</strong> Pay the PayPal or bank transfer invoice we send, or choose cash on delivery in the US and Canada</li> <li><strong>Step 5:</strong> Production takes 7-10 business days, then delivery takes 5-7 days</li> </ul> <p>You can also call us at <a href=\"tel:5034614788\">(503) 461-4788</a> to talk through a larger or special run.</p>"
   },
   {
     "question": "What are your prices?",
-    "answer": "<p>Pricing depends on several factors:</p> <ul> <li>Material type (Kraft, Cardboard, Corrugated, Plastic)</li> <li>Order quantity (volume discounts available)</li> <li>Size and dimensions</li> <li>Printing options (colors, coatings)</li> <li>Customization complexity</li> </ul> <p><strong>Starting prices:</strong></p> <ul> <li>Kraft Paper (250gsm): $0.30 USD</li> <li>White Cardboard (300gsm): $0.30 USD</li> <li>Corrugated (350gsm): $0.30 USD</li> <li>Plastic (PP): $0.30 USD</li> </ul> <p>Request a <a href=\"/get-quote/\">free quote</a> for exact pricing based on your needs.</p>"
+    "answer": "<p>Every product is <strong>$30.00 for a pack of 100 trays</strong>, which is $0.30 a tray. That price includes:</p> <ul> <li>Our standard board for the product (kraft, white cardboard, corrugated or PP plastic)</li> <li>Your own printed artwork</li> <li>Free design and a digital proof with up to 3 revisions</li> <li>Free shipping to the USA, UK, Canada and Australia</li> </ul> <p>Only very large runs or special sizes, materials and finishes are priced separately. Request a <a href=\"/get-quote/\">free quote</a> for those.</p>"
   },
   {
     "question": "Do you offer samples?",
-    "answer": "<p><strong>Yes!</strong> We offer sample packs so you can feel the quality before ordering.</p> <p><strong>Sample options:</strong></p> <ul> <li><strong>Blank Samples:</strong> FREE - Unprinted samples in each material</li> <li><strong>Pre-Printed Samples:</strong> $25 - Samples with generic designs</li> <li><strong>Custom Sample Run:</strong> From $50 - Small batch with your design (minimum 10 units)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Sample Credit:</strong> If you order within 30 days, we'll credit your sample cost toward your first order! </div>"
+    "answer": "<p><strong>Yes.</strong> If you want to see and feel a material before you order, ask us for samples.</p> <p>Call <a href=\"tel:5034614788\">(503) 461-4788</a> or email info@hotdogtrays.com with the product you are considering and your delivery address, and we will tell you which samples we can send. Many customers instead start with a single pack of 100, which is only $30.</p>"
   },
   {
     "question": "Can I order different sizes in one order?",
-    "answer": "<p>Yes, you can order multiple sizes in a single order! The minimum quantity applies to the total order, not each individual size.</p> <p><strong>For example:</strong></p> <ul> <li>50 units of Small (6\")</li> <li>30 units of Medium (8\")</li> <li>20 units of Large (10\")</li> <li>Total: 100 units ✓</li> </ul> <p>Each size may have slightly different pricing based on material usage.</p>"
+    "answer": "<p>Yes. You can add several products to one order. Each product is ordered in packs of 100 trays at $30 a pack.</p> <p><strong>For example:</strong></p> <ul> <li>1 pack of paper hot dog trays: 100 trays, $30</li> <li>2 packs of hot dog boats: 200 boats, $60</li> <li>Total: 300 pieces for $90, shipped free</li> </ul> <p>If you need a size that is not on the site, send us a quote request.</p>"
   },
   {
     "question": "Are there any setup fees?",
-    "answer": "<p><strong>No setup fees!</strong> We believe in transparent pricing.</p> <p><strong>What's included at no extra cost:</strong></p> <ul> <li>Free design service</li> <li>Free digital proofs</li> <li>Free revisions (up to 3)</li> <li>No plate charges</li> <li>No die-cut fees for standard sizes</li> </ul> <p>You pay only for the trays themselves - no hidden fees!</p>"
+    "answer": "<p><strong>No setup fees</strong> on our standard builds.</p> <p><strong>What's included at no extra cost:</strong></p> <ul> <li>Free design service</li> <li>Free digital proofs</li> <li>Free revisions (up to 3)</li> <li>No plate charges</li> <li>No die-cut fees for standard sizes</li> </ul> <p>You pay $30 per pack of 100 trays and nothing else.</p>"
   },
   {
     "question": "Do you offer rush orders?",
-    "answer": "<p><strong>Yes, rush production is available for urgent orders</strong>, subject to press availability.</p> <ul> <li><strong>Rush:</strong> +20% fee</li> <li><strong>Super Rush:</strong> +40% fee</li> </ul> <p>Put your event or opening date on the quote request and we will confirm the production time we can meet before you pay. Once dispatched, delivery takes 5-7 days. Call <a href=\"tel:5034614788\">(503) 461-4788</a> to check rush availability for your order.</p>"
+    "answer": "<p>Standard production takes <strong>7-10 business days</strong> after you approve your proof. We do not sell paid rush upgrades online.</p> <p>Tell us your event or opening date when you order and we will confirm the production time we can meet before you pay. Once dispatched, delivery takes 5-7 days. Call <a href=\"tel:5034614788\">(503) 461-4788</a> if your date is tight.</p>"
   },
   {
     "question": "Can I reorder the same design?",
-    "answer": "<p><strong>Absolutely!</strong> Reordering is quick and easy.</p> <p>We keep your design files on record for 2 years, so you can reorder anytime without going through the design process again.</p> <p><strong>Benefits of reordering:</strong></p> <ul> <li>Faster turnaround (no design approval needed)</li> <li>Consistent branding across all orders</li> <li>Same great pricing (or better with volume discounts)</li> </ul> <p>Simply mention your previous order number when requesting a quote.</p>"
+    "answer": "<p><strong>Absolutely!</strong> Reordering is quick and easy.</p> <p>We keep your design files on record for 2 years, so you can reorder anytime without going through the design process again.</p> <p><strong>Benefits of reordering:</strong></p> <ul> <li>Faster turnaround (no design approval needed)</li> <li>Consistent branding across all orders</li> <li>The same $30 pack price</li> </ul> <p>Simply mention your previous order number when you reorder.</p>"
   },
   {
     "question": "Can I customize the trays with my logo?",
@@ -100,7 +100,7 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "Can I print on both sides?",
-    "answer": "<p><strong>Yes!</strong> You can print on the inside, outside, or both sides of your trays.</p> <p><strong>Popular printing options:</strong></p> <ul> <li><strong>Outside only:</strong> Most common, best for branding</li> <li><strong>Inside only:</strong> Visible when filled with food</li> <li><strong>Both sides:</strong> Maximum brand exposure</li> </ul> <p>Printing on both sides may have a small additional cost depending on the design complexity.</p>"
+    "answer": "<p><strong>Yes!</strong> You can print on the inside, outside, or both sides of your trays.</p> <p><strong>Popular printing options:</strong></p> <ul> <li><strong>Outside only:</strong> Most common, best for branding</li> <li><strong>Inside only:</strong> Visible when filled with food</li> <li><strong>Both sides:</strong> Maximum brand exposure</li> </ul> <p>Tell us where you want the print when you send your artwork, and we will show it on your proof.</p>"
   },
   {
     "question": "What coating options are available?",
@@ -112,11 +112,11 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "How long does production take?",
-    "answer": "<p><strong>Production starts after you approve the design proof, and standard production takes 7-10 business days.</strong></p> <p><strong>Complete timeline:</strong></p> <ul> <li>Quote and consultation: same day</li> <li>Design and proof: 24-48 hours</li> <li>Production: 7-10 business days</li> <li>Delivery after dispatch: 5-7 days, with free shipping</li> </ul> <p>Rush production is available if you are working to a fixed date.</p>"
+    "answer": "<p><strong>Production starts after you approve the design proof, and standard production takes 7-10 business days.</strong></p> <p><strong>Complete timeline:</strong></p> <ul> <li>Quote and consultation: same day</li> <li>Design and proof: 24-48 hours</li> <li>Production: 7-10 business days</li> <li>Delivery after dispatch: 5-7 days, with free shipping</li> </ul> <p>If you are working to a fixed date, tell us when you order and we will confirm before you pay whether we can meet it.</p>"
   },
   {
     "question": "What are the shipping costs?",
-    "answer": "<p><strong>Shipping is free on all orders.</strong> There is no shipping charge added to your quote, whether you order 100 trays or 10,000.</p> <p>We ship to the USA, UK, Canada and Australia, and orders arrive 5-7 days after dispatch.</p>"
+    "answer": "<p><strong>Shipping is free on all orders.</strong> There is no shipping charge added at checkout, whether you order one pack of 100 trays or fifty.</p> <p>We ship to the USA, UK, Canada and Australia, and orders arrive 5-7 days after dispatch.</p>"
   },
   {
     "question": "Do you ship internationally?",
@@ -124,34 +124,34 @@ export const faqPageFaqs: ProductFaq[] = [
   },
   {
     "question": "Can I track my order?",
-    "answer": "<p><strong>Yes!</strong> All orders include tracking.</p> <p>You'll receive:</p> <ul> <li>Order confirmation email immediately</li> <li>Design proof within 24-48 hours</li> <li>Production start notification</li> <li>Shipping notification with tracking number</li> <li>Delivery confirmation</li> </ul> <p>Track your order 24/7 at any time using your tracking number.</p>"
+    "answer": "<p><strong>Yes.</strong> We email a tracking number when your order ships (where the carrier provides one).</p> <p>You'll receive:</p> <ul> <li>Order confirmation email immediately</li> <li>Design proof within 24-48 hours</li> <li>Production start notification</li> <li>Shipping notification with tracking number</li> <li>Delivery confirmation</li> </ul> <p>Use the tracking number in your shipping email to follow the delivery on the carrier's website.</p>"
   },
   {
     "question": "What if my order is damaged during shipping?",
-    "answer": "<p>We pack all orders securely, but if damage occurs:</p> <ul> <li><strong>Report damage within 48 hours</strong> of delivery</li> <li>Provide photos of the damage</li> <li>We'll file a claim with the carrier</li> <li>We'll send replacement items at no cost</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Quality Checked Before Dispatch:</strong> If any items are damaged, we'll replace them free of charge. </div>"
+    "answer": "<p>We pack all orders securely, but if damage occurs:</p> <ul> <li><strong>Report damage within 14 days</strong> of delivery</li> <li>Provide photos of the damage</li> <li>We review the photos and confirm the problem</li> <li>We reprint the damaged trays free or refund them, and we cover any shipping</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Refund timing:</strong> Approved refunds are issued within 10 business days. </div>"
   },
   {
     "question": "Do you offer expedited shipping?",
-    "answer": "<p><strong>Every order ships free and arrives 5-7 days after dispatch</strong>, to the USA, UK, Canada and Australia.</p> <p>If you need your trays sooner, the faster route is rush production, which shortens the time before dispatch. Tell us your deadline on the quote request and we will confirm what is possible.</p>"
+    "answer": "<p><strong>Every order ships free and arrives 5-7 days after dispatch</strong>, to the USA, UK, Canada and Australia.</p> <p>We do not sell paid express shipping. If you have a deadline, tell us when you order and we will confirm before you pay whether production and delivery can meet it.</p>"
   },
   {
     "question": "Which payment methods and terms are available?",
-    "answer": "<p>We accept all major payment methods:</p> <p><strong>Credit & Debit Cards:</strong></p> <ul> <li>Visa, Mastercard, American Express, Discover</li> </ul> <p><strong>Digital Payments:</strong></p> <ul> <li>PayPal, Apple Pay, Google Pay</li> </ul> <p><strong>Business Payments:</strong></p> <ul> <li>Bank transfers (ACH/Wire)</li> <li>Purchase orders (for established businesses)</li> <li>Net 30 terms (available for qualified businesses)</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Secure Payment:</strong> All transactions are encrypted with SSL security </div>"
+    "answer": "<p>We do not take payment on the website. Orders are paid by invoice after you approve your free digital proof:</p> <ul> <li><strong>PayPal invoice:</strong> pay with your PayPal balance or a card through PayPal</li> <li><strong>Bank transfer invoice:</strong> our bank details are on the invoice</li> <li><strong>Cash on delivery:</strong> for US and Canadian addresses, paid when the trays arrive</li> </ul> <p>Prices are in US dollars. We do not offer credit terms.</p>"
   },
   {
     "question": "When do I need to pay?",
-    "answer": "<p><strong>Payment is required before production begins.</strong></p> <p><strong>Payment schedule:</strong></p> <ul> <li>Receive quote (no payment required)</li> <li>Approve design proof (no payment required)</li> <li><strong>Make payment → Production starts</strong></li> </ul> <p><strong>For established businesses:</strong></p> <ul> <li>50% deposit to start production</li> <li>50% balance before shipping</li> <li>Net 30 terms available (approval required)</li> </ul>"
+    "answer": "<p><strong>Not until you have approved your proof.</strong></p> <ul> <li>Place your order on the website (no payment taken)</li> <li>Approve your design proof (no payment required)</li> <li><strong>Pay the PayPal or bank transfer invoice → production starts</strong></li> </ul> <p>With cash on delivery (US and Canada only), production starts once you approve the proof and you pay when the trays are delivered.</p>"
   },
   {
     "question": "What is your return policy?",
-    "answer": "<p>Custom-printed trays are made to your artwork, so they are <strong>not returnable</strong>. We put things right when the fault is ours:</p> <ul> <li>Damaged in transit → Free reprint or refund</li> <li>Manufacturing defects → Free reprint or refund</li> <li>Printing errors or a mismatch with your approved proof → Free reprint or refund</li> <li>Report it within 14 days of delivery, with photos</li> </ul> <p><strong>Design Errors:</strong></p> <ul> <li>We require design approval before production</li> <li>If we make an error (not matching proof) → Free reprint</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Important:</strong> Custom printed products cannot be returned due to change of mind, as they are made specifically for your business. </div>"
+    "answer": "<p>Custom-printed trays are made to your artwork, so they are <strong>not returnable</strong>. We put things right when the fault is ours:</p> <ul> <li>Damaged in transit → Free reprint or refund</li> <li>Manufacturing defects → Free reprint or refund</li> <li>Printing errors or a mismatch with your approved proof → Free reprint or refund</li> <li>Report it within 14 days of delivery, with photos; we cover any shipping involved</li> </ul> <p><strong>Design Errors:</strong></p> <ul> <li>We require design approval before production</li> <li>If we make an error (not matching proof) → Free reprint</li> </ul> <div class=\"hdt-faq-highlight\"> <strong>Important:</strong> Custom printed products cannot be returned due to change of mind, as they are made specifically for your business. </div>"
   },
   {
     "question": "Do you offer refunds?",
-    "answer": "<p><strong>Yes</strong>, when the fault is ours:</p> <p><strong>Free reprint or refund if:</strong></p> <ul> <li>The trays arrive damaged</li> <li>They have a manufacturing defect</li> <li>The printing does not match your approved proof</li> <li>You cancel before production starts</li> </ul> <p><strong>No refund for:</strong></p> <ul> <li>Change of mind after production starts</li> <li>Approved designs (even if you later change your mind)</li> <li>Incorrect information provided by customer</li> </ul> <p>For full details, see our <a href=\"/terms-conditions/\">Returns & Refunds Policy</a>.</p>"
+    "answer": "<p><strong>Yes</strong>, when the fault is ours:</p> <p><strong>Free reprint or refund if:</strong></p> <ul> <li>The trays arrive damaged</li> <li>They have a manufacturing defect</li> <li>The printing does not match your approved proof</li> <li>You report the problem within 14 days of delivery, with photos</li> </ul> <p><strong>No refund for:</strong></p> <ul> <li>Change of mind after production starts</li> <li>Approved designs (even if you later change your mind)</li> <li>Incorrect information provided by customer</li> </ul> <p>Approved refunds are issued within 10 business days, back to the way you paid. For full details, see our <a href=\"/terms-conditions/\">Returns & Refunds Policy</a>.</p>"
   },
   {
-    "question": "Is my payment information secure?",
-    "answer": "<p><strong>Absolutely!</strong> We take security very seriously.</p> <p><strong>Security measures:</strong></p> <ul> <li>SSL encryption on all pages</li> <li>PCI DSS compliant payment processing</li> <li>Secure payment gateway</li> <li>No credit card data stored on our servers</li> <li>Fraud detection systems</li> </ul> <p>Your financial information is safe and will never be shared with third parties.</p>"
+    "question": "How do invoice payments work?",
+    "answer": "<p>After you approve your proof, we email an invoice for the order total.</p> <ul> <li><strong>PayPal invoice:</strong> open the link in the email and pay inside PayPal</li> <li><strong>Bank transfer invoice:</strong> send the transfer using the bank details on the invoice and quote your order number</li> <li>Production starts as soon as the payment arrives</li> </ul> <p>We never ask for card numbers by email, phone or on this website.</p>"
   }
 ];
